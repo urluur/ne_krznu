@@ -91,11 +91,10 @@ int main() {
         SDL_BlitSurface(image, NULL, surface, NULL);
         SDL_Delay(80);
         if (izhod_switch == 1) {
-            sound_oof();
             break;
         }
     }
-    
+    sound_oof();
     cleanUp();
     return 0;
 }
