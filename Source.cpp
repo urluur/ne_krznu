@@ -8,9 +8,9 @@
 #include "function_definitions.h"
 #undef main
 using namespace std;
-SDL_Window* window;
-SDL_Surface* surface;
-SDL_Surface* image;
+SDL_Window* window=NULL;
+SDL_Surface* surface=NULL;
+SDL_Surface* image=NULL;
 
 const int Window_width = 720;
 const int Window_height = 640;
@@ -23,10 +23,6 @@ void cleanUp() {
 }
 
 int init() {
-    window = NULL;
-    surface = NULL;
-    image = NULL;
-
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         printf("SDL Init, Error: %d", SDL_GetError());
         return -1;
@@ -95,6 +91,7 @@ int main() {
         SDL_BlitSurface(image, NULL, surface, NULL);
         SDL_Delay(80);
         if (izhod_switch == 1) {
+            sound_oof();
             break;
         }
     }
