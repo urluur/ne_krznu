@@ -54,21 +54,14 @@ int main() {
             if (pozicija_cursorja == 1) {
                 pozicija_cursorja = 4;
             }
-            else {
-                pozicija_cursorja--;
-            }
+            else { pozicija_cursorja--; }
         }
         else if (keys[SDL_SCANCODE_DOWN]) {
             sound_cursorMove();
-            if (pozicija_cursorja == 4)
-            {
-                pozicija_cursorja = 1;
-            }
-            else
-            {
-                pozicija_cursorja++;
-            }
+            if (pozicija_cursorja == 4) { pozicija_cursorja = 1; }
+            else { pozicija_cursorja++;}
         }
+        SDL_FreeSurface(image);
         switch (pozicija_cursorja) {
         case 1:
             image = SDL_LoadBMP("main_zacni.bmp");
@@ -87,7 +80,6 @@ int main() {
             break;
         }
         SDL_UpdateWindowSurface(window);
-        SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 255, 0, 0));
         SDL_BlitSurface(image, NULL, surface, NULL);
         SDL_Delay(80);
         if (izhod_switch == 1) {
