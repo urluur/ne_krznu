@@ -5,12 +5,13 @@ using namespace std;
 SDL_Window* window=NULL;
 SDL_Surface* surface=NULL;
 SDL_Surface* image=NULL;
+Sounds sound;
 
 const int Window_width = 720;
 const int Window_height = 640;
 const Uint8* keys = SDL_GetKeyboardState(NULL);
 
-void nastavitve(Mix_Music *bgm);
+void nastavitve();
 
 int init() {
     
@@ -28,13 +29,13 @@ int init() {
 
     surface = SDL_GetWindowSurface(window);
     srand(time(NULL));
+//Sounds sound;
     return 0;
 }
 
 void cleanUp() {
     SDL_DestroyWindow(window);
     SDL_FreeSurface(image);
-    Mix_Quit();
     SDL_Quit();
 }
 
@@ -44,12 +45,6 @@ int main() {
     getline(cin, ime);
     cout << "Pozdravljen/a " << ime << "!" << endl;
     init();
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
-        cout << "Mixer error: " << Mix_GetError() << endl;
-    }
-    Mix_Music* bgm = Mix_LoadMUS("common/sounds/soundtrack.wav");
-
-
     SDL_Event event;
     SDL_PollEvent(&event);
     int pozicija_cursorja = 1;
@@ -58,14 +53,14 @@ int main() {
         SDL_PollEvent(&event);
         SDL_PumpEvents();
         if (keys[SDL_SCANCODE_UP]) {
-            sound_cursorMove();
+            sound.cursorMove();
             if (pozicija_cursorja == 1) {
                 pozicija_cursorja = 4;
             }
             else { pozicija_cursorja--; }
         }
         else if (keys[SDL_SCANCODE_DOWN]) {
-            sound_cursorMove();
+            sound.cursorMove();
             if (pozicija_cursorja == 4) { pozicija_cursorja = 1; }
             else { pozicija_cursorja++;}
         }
@@ -80,7 +75,7 @@ int main() {
         case 3:
             image = SDL_LoadBMP("common/images/main_nastavitve.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
-                nastavitve(bgm);
+                nastavitve();
                 pozicija_cursorja = 1;
             }
             break;
@@ -97,19 +92,13 @@ int main() {
         if (izhod_switch == 1) {
             break;
         }
-
-        if (!Mix_PlayingMusic()) {
-            Mix_PlayMusic(bgm, -1);
-        }
     }
-    sound_oof();
-    bgm = nullptr;
-    Mix_Quit();
+    sound.oof();
     cleanUp();
     return 0;
 }
 
-void nastavitve(Mix_Music* bgm) {
+void nastavitve() {
     SDL_Event ev_nastavitve;
     int main = 0;
     int pozicija_cursorja = 1;
@@ -117,14 +106,14 @@ void nastavitve(Mix_Music* bgm) {
         SDL_PollEvent(&ev_nastavitve);
         SDL_PumpEvents();
         if (keys[SDL_SCANCODE_UP]) {
-            sound_cursorMove();
+            sound.cursorMove();
             if (pozicija_cursorja == 1) {
                 pozicija_cursorja = 4;
             }
             else { pozicija_cursorja--; }
         }
         else if (keys[SDL_SCANCODE_DOWN]) {
-            sound_cursorMove();
+            sound.cursorMove();
             if (pozicija_cursorja == 4) { pozicija_cursorja = 1; }
             else { pozicija_cursorja++; }
         }
@@ -139,14 +128,9 @@ void nastavitve(Mix_Music* bgm) {
         case 3:
             image = SDL_LoadBMP("common/images/set_zvok.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
-                SDL_Delay(20);
-                if (!Mix_PlayingMusic()) {
-                    Mix_PlayMusic(bgm, -1);
-                }
-                else {
-                    Mix_HaltMusic();
-                }
+                sound.toggle();
             }
+            
             break;
         case 4:
             image = SDL_LoadBMP("common/images/set_nazaj.bmp");
@@ -162,5 +146,5 @@ void nastavitve(Mix_Music* bgm) {
         SDL_BlitSurface(image, NULL, surface, NULL);
         SDL_Delay(80);
     }
-    sound_oof();
+    sound.oof();
 }
