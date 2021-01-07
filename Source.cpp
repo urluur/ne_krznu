@@ -139,6 +139,7 @@ void nastavitve(Mix_Music* bgm) {
         case 3:
             image = SDL_LoadBMP("common/images/set_zvok.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
+                SDL_Delay(20);
                 if (!Mix_PlayingMusic()) {
                     Mix_PlayMusic(bgm, -1);
                 }
@@ -153,6 +154,9 @@ void nastavitve(Mix_Music* bgm) {
                 main = 1;
             }
             break;
+        }
+        if (!(!keys[SDL_SCANCODE_ESCAPE] || ev_nastavitve.type != SDL_QUIT)) {
+            main = 1;
         }
         SDL_UpdateWindowSurface(window);
         SDL_BlitSurface(image, NULL, surface, NULL);
