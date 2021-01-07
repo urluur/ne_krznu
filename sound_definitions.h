@@ -4,7 +4,7 @@ using namespace std;
 class Sounds {
 private:
     Mix_Music* bgm;
-    int mute = 0;
+    int mute;
     bool played;
 public:
     Sounds();
@@ -25,17 +25,21 @@ Sounds::Sounds(){
         if (!Mix_PlayingMusic()) {
             Mix_PlayMusic(bgm, -1);
         }
+        mute = 0;
 }
 
 void Sounds::toggle() {
-    if (!Mix_PlayingMusic) {
-        Mix_ResumeMusic();
-        mute = 0;
+    if (mute == 0) {
+        mute = 1;
+        Mix_PauseMusic();
+        cout << "Glasba se je ustavila .." << endl;
     }
     else {
-        Mix_HaltMusic();
-        mute = 1;
+        mute = 0;
+        Mix_ResumeMusic();
+        cout << "Glasba se nadaljuje.." << endl;
     }
+
 }
 
 void Sounds::cursorMove() {
