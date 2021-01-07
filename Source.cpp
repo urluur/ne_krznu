@@ -29,7 +29,6 @@ int init() {
 
     surface = SDL_GetWindowSurface(window);
     srand(time(NULL));
-//Sounds sound;
     return 0;
 }
 
@@ -68,19 +67,30 @@ int main() {
         switch (pozicija_cursorja) {
         case 1:
             image = SDL_LoadBMP("common/images/main_zacni.bmp");
+            if (keys[SDL_SCANCODE_RETURN]) {
+                sound.zacni();
+
+            }
             break;
         case 2:
             image = SDL_LoadBMP("common/images/main_vec.bmp");
+            if (keys[SDL_SCANCODE_RETURN]) {
+                sound.vec();
+
+            }
             break;
         case 3:
             image = SDL_LoadBMP("common/images/main_nastavitve.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
+                sound.nastavitve();
+
                 nastavitve();
                 pozicija_cursorja = 1;
             }
             break;
         case 4:
             if (keys[SDL_SCANCODE_RETURN]) {
+                sound.izhod();
                 izhod_switch = 1;
             }
             image = SDL_LoadBMP("common/images/main_izhod.bmp");
@@ -93,6 +103,7 @@ int main() {
             break;
         }
     }
+    sound.nasvidenje();
     sound.oof();
     cleanUp();
     return 0;
@@ -121,13 +132,22 @@ void nastavitve() {
         switch (pozicija_cursorja) {
         case 1:
             image = SDL_LoadBMP("common/images/set_dimenzije.bmp");
+            if (keys[SDL_SCANCODE_RETURN]) {
+                sound.dimenzije();
+
+            }
             break;
         case 2:
             image = SDL_LoadBMP("common/images/set_ime.bmp");
+            if (keys[SDL_SCANCODE_RETURN]) {
+                sound.spremeni_ime();
+
+            }
             break;
         case 3:
             image = SDL_LoadBMP("common/images/set_zvok.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
+                sound.spremeni_zvok();
                 sound.toggle();
             }
             
@@ -135,6 +155,7 @@ void nastavitve() {
         case 4:
             image = SDL_LoadBMP("common/images/set_nazaj.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
+                sound.nazaj();
                 main = 1;
             }
             break;

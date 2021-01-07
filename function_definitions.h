@@ -10,5 +10,5 @@
 #include <SDL_mixer.h>
 #include <string>
 
-#include "sound_definitions.h"
+#include "sounds.h"
 #include "GameManager.h"

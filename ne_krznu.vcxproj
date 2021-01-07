@@ -145,11 +145,12 @@ SDL2main.lib;Winmm.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDepen
   <ItemGroup>
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="sounds.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="function_definitions.h" />
     <ClInclude Include="GameManager.h" />
-    <ClInclude Include="sound_definitions.h" />
+    <ClInclude Include="sounds.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

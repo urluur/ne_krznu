@@ -21,15 +21,18 @@
     <ClCompile Include="GameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sounds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="function_definitions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sound_definitions.h">
+    <ClInclude Include="GameManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameManager.h">
+    <ClInclude Include="sounds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
