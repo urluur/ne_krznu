@@ -8,6 +8,7 @@
 #include <MMSystem.h>
 #include <fstream>
 #include <SDL_mixer.h>
+#include <string>
 
 #include "sound_definitions.h"
 #include "GameManager.h"
