@@ -9,6 +9,7 @@
 #include <fstream>
 #include <SDL_mixer.h>
 #include <string>
+#include <SDL_image.h>
 
 #include "SoundManager.h"
 #include "GameManager.h"
