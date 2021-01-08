@@ -2,7 +2,9 @@
 #include "WindowManager.h"
 #include "SoundManager.h"
 #include "Igralec.h"
+#include <iostream>
 #include <string>
+using namespace std;
 class GameManager{
 private:
 public:
@@ -10,5 +12,6 @@ public:
 	SoundManager sound;
 	Igralec igralec;
 	GameManager();
+	int init(GameManager& igra);
 
 };

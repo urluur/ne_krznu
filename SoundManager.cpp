@@ -67,8 +67,6 @@ void SoundManager::zacni() {
     if (mute == 0)
         played = PlaySound(TEXT("common/sounds/zacni.wav"), NULL, SND_SYNC);
 }
-
-
 void SoundManager::lestvica() {
     if (mute == 0)
         played = PlaySound(TEXT("common/sounds/lestvica.wav"), NULL, SND_ASYNC);

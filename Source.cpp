@@ -2,17 +2,14 @@
 #undef main
 using namespace std;
 
-const int Window_width = 720;
-const int Window_height = 640;
 const Uint8* keys = SDL_GetKeyboardState(NULL);
 
-int init(GameManager &igra);
 void nastavitve(GameManager &igra);
 void vec(GameManager& igra);
 
 int main() {
     GameManager igra;
-    init(igra);
+    igra.init(igra);
     igra.igralec.setName();
     SDL_Event event;
     SDL_PollEvent(&event);
@@ -75,27 +72,12 @@ int main() {
         }
     }
     igra.sound.nasvidenje();
-    igra.sound.oof();
     SDL_DestroyWindow(igra.okno.window);
     SDL_FreeSurface(igra.okno.image);
     SDL_Quit();
     return 0;
 }
 
-int init(GameManager &igra) {
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
-        cout << "SDL Init, Error: " << SDL_GetError() << endl;
-        return -1;
-    }
-    igra.okno.window = SDL_CreateWindow("NE krznu -urlu", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Window_width, Window_height, SDL_WINDOW_SHOWN);
-    if (igra.okno.window == NULL) {
-        cout << "SDL Create Window, Error: " << SDL_GetError() << endl;
-        return -1;
-    }
-    igra.okno.surface = SDL_GetWindowSurface(igra.okno.window);
-    srand(time(NULL));
-    return 0;
-}
 void nastavitve(GameManager &igra) {
     SDL_Event ev_nastavitve;
     int main = 0;
