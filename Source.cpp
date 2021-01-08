@@ -6,44 +6,19 @@ SDL_Window* window=NULL;
 SDL_Surface* surface=NULL;
 SDL_Surface* image=NULL;
 Sounds sound;
+Igralec igralec;
 
 const int Window_width = 720;
 const int Window_height = 640;
 const Uint8* keys = SDL_GetKeyboardState(NULL);
 
+int init();
 void nastavitve();
-
-int init() {
-    
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
-        printf("SDL Init, Error: %d", SDL_GetError());
-        return -1;
-    }
-
-    window = SDL_CreateWindow("NE krznu -urlu", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Window_width, Window_height, SDL_WINDOW_SHOWN);
-
-    if (window == NULL) {
-        printf("SDL Create Window, Error: %d", SDL_GetError());
-        return -1;
-    }
-
-    surface = SDL_GetWindowSurface(window);
-    srand(time(NULL));
-    return 0;
-}
-
-void cleanUp() {
-    SDL_DestroyWindow(window);
-    SDL_FreeSurface(image);
-    SDL_Quit();
-}
+void cleanUp();
 
 int main() {
-    cout << "Vpisi svoje ime, bumbar!" << endl;
-    string ime;
-    getline(cin, ime);
-    cout << "Pozdravljen/a " << ime << "!" << endl;
     init();
+    igralec.setName();
     SDL_Event event;
     SDL_PollEvent(&event);
     int pozicija_cursorja = 1;
@@ -83,7 +58,7 @@ int main() {
             image = SDL_LoadBMP("common/images/main_nastavitve.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
                 sound.nastavitve();
-
+                SDL_Delay(10);
                 nastavitve();
                 pozicija_cursorja = 1;
             }
@@ -109,6 +84,20 @@ int main() {
     return 0;
 }
 
+int init() {
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
+        printf("SDL Init, Error: %d", SDL_GetError());
+        return -1;
+    }
+    window = SDL_CreateWindow("NE krznu -urlu", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Window_width, Window_height, SDL_WINDOW_SHOWN);
+    if (window == NULL) {
+        printf("SDL Create Window, Error: %d", SDL_GetError());
+        return -1;
+    }
+    surface = SDL_GetWindowSurface(window);
+    srand(time(NULL));
+    return 0;
+}
 void nastavitve() {
     SDL_Event ev_nastavitve;
     int main = 0;
@@ -141,7 +130,7 @@ void nastavitve() {
             image = SDL_LoadBMP("common/images/set_ime.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
                 sound.spremeni_ime();
-
+                igralec.setName();
             }
             break;
         case 3:
@@ -168,4 +157,10 @@ void nastavitve() {
         SDL_Delay(80);
     }
     sound.oof();
+}
+
+void cleanUp() {
+    SDL_DestroyWindow(window);
+    SDL_FreeSurface(image);
+    SDL_Quit();
 }

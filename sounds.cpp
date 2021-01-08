@@ -50,7 +50,7 @@ void Sounds::nasvidenje() {
 }
 void Sounds::nazaj() {
     if (mute == 0)
-        played = PlaySound(TEXT("common/sounds/nazaj.wav"), NULL, SND_ASYNC);
+        played = PlaySound(TEXT("common/sounds/nazaj.wav"), NULL, SND_SYNC);
 }
 void Sounds::spremeni_ime() {
     if (mute == 0)

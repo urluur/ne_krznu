@@ -24,6 +24,9 @@
     <ClCompile Include="sounds.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Igralec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="function_definitions.h">
@@ -33,6 +36,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sounds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Igralec.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

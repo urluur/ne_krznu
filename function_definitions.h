@@ -12,3 +12,4 @@
 
 #include "sounds.h"
 #include "GameManager.h"
+#include "igralec.h"
