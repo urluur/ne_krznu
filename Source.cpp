@@ -8,6 +8,7 @@ const Uint8* keys = SDL_GetKeyboardState(NULL);
 
 int init(GameManager &igra);
 void nastavitve(GameManager &igra);
+void vec(GameManager& igra);
 
 int main() {
     GameManager igra;
@@ -45,7 +46,7 @@ int main() {
             igra.okno.image = SDL_LoadBMP("common/images/main_vec.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.vec();
-
+                vec(igra);
             }
             break;
         case 3:
@@ -98,23 +99,32 @@ void nastavitve(GameManager &igra) {
     SDL_Event ev_nastavitve;
     int main = 0;
     int pozicija_cursorja = 1;
-    while (main == 0) {
+
+    while (main == 0)
+    {
         SDL_PollEvent(&ev_nastavitve);
         SDL_PumpEvents();
-        if (keys[SDL_SCANCODE_UP]) {
+        if (keys[SDL_SCANCODE_UP])
+        {
             igra.sound.cursorMove();
-            if (pozicija_cursorja == 1) {
+            if (pozicija_cursorja == 1){
                 pozicija_cursorja = 4;
             }
-            else { pozicija_cursorja--; }
+            else {
+                pozicija_cursorja--;
+            }
         }
-        else if (keys[SDL_SCANCODE_DOWN]) {
+        else if (keys[SDL_SCANCODE_DOWN])
+        {
             igra.sound.cursorMove();
             if (pozicija_cursorja == 4) { pozicija_cursorja = 1; }
             else { pozicija_cursorja++; }
         }
+
         SDL_FreeSurface(igra.okno.image);
-        switch (pozicija_cursorja) {
+
+        switch (pozicija_cursorja)
+        {
         case 1:
             igra.okno.image = SDL_LoadBMP("common/images/set_dimenzije.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
@@ -145,12 +155,86 @@ void nastavitve(GameManager &igra) {
             }
             break;
         }
+
         if (!(!keys[SDL_SCANCODE_ESCAPE] || ev_nastavitve.type != SDL_QUIT)) {
             main = 1;
         }
+
         SDL_UpdateWindowSurface(igra.okno.window);
         SDL_BlitSurface(igra.okno.image, NULL, igra.okno.surface, NULL);
-        SDL_Delay(80);
+        SDL_Delay(75);
     }
+
+    igra.sound.oof();
+}
+void vec(GameManager& igra) {
+    SDL_Event ev_vec;
+    int main = 0;
+    int pozicija_cursorja = 1;
+
+    while (main == 0)
+    {
+        SDL_PollEvent(&ev_vec);
+        SDL_PumpEvents();
+        if (keys[SDL_SCANCODE_UP])
+        {
+            igra.sound.cursorMove();
+            if (pozicija_cursorja == 1) {
+                pozicija_cursorja = 4;
+            }
+            else {
+                pozicija_cursorja--;
+            }
+        }
+        else if (keys[SDL_SCANCODE_DOWN])
+        {
+            igra.sound.cursorMove();
+            if (pozicija_cursorja == 4) { pozicija_cursorja = 1; }
+            else { pozicija_cursorja++; }
+        }
+
+        SDL_FreeSurface(igra.okno.image);
+
+        switch (pozicija_cursorja)
+        {
+        case 1:
+            igra.okno.image = SDL_LoadBMP("common/images/vec_lestvica.bmp");
+            if (keys[SDL_SCANCODE_RETURN]) {
+                //igra.sound.dimenzije();
+
+            }
+            break;
+        case 2:
+            igra.okno.image = SDL_LoadBMP("common/images/vec_izvorna.bmp");
+            if (keys[SDL_SCANCODE_RETURN]) {
+                //igra.sound.spremeni_ime();
+                system("start https://github.com/urluur/ne_krznu");
+            }
+            break;
+        case 3:
+            igra.okno.image = SDL_LoadBMP("common/images/vec_izbris.bmp");
+            if (keys[SDL_SCANCODE_RETURN]) {
+                //igra.sound.spremeni_zvok();
+            }
+
+            break;
+        case 4:
+            igra.okno.image = SDL_LoadBMP("common/images/vec_nazaj.bmp");
+            if (keys[SDL_SCANCODE_RETURN]) {
+                igra.sound.nazaj();
+                main = 1;
+            }
+            break;
+        }
+
+        if (!(!keys[SDL_SCANCODE_ESCAPE] || ev_vec.type != SDL_QUIT)) {
+            main = 1;
+        }
+
+        SDL_UpdateWindowSurface(igra.okno.window);
+        SDL_BlitSurface(igra.okno.image, NULL, igra.okno.surface, NULL);
+        SDL_Delay(75);
+    }
+
     igra.sound.oof();
 }
