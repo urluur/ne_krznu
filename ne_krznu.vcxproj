@@ -145,7 +145,6 @@ SDL2main.lib;Winmm.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDepen
   <ItemGroup>
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Igralec.cpp" />
-    <ClCompile Include="Image.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="WindowManager.cpp" />
@@ -154,7 +153,6 @@ SDL2main.lib;Winmm.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDepen
     <ClInclude Include="function_definitions.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Igralec.h" />
-    <ClInclude Include="Image.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
