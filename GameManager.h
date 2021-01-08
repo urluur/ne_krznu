@@ -1,10 +1,14 @@
 #pragma once
+#include "WindowManager.h"
+#include "SoundManager.h"
+#include "Igralec.h"
 #include <string>
 class GameManager{
 private:
-	std::string player_name;
 public:
+	WindowManager okno;
+	SoundManager zvok;
+	Igralec igralec;
 	GameManager();
-	void setPlayerName(std::string);
-	std::string getPlayerName();
+
 };
