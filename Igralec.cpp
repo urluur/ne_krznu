@@ -3,7 +3,7 @@
 using namespace std;
 
 void Igralec::setName() {
-	cout << "Vpisi svoje ime, bumbar!" << endl;
+	cout << "Vpisi svoje ime, " << ime << endl;
 	getline(cin, ime);
 	cout << "Pozdravljen/a " << ime << "!" << endl;
 }
@@ -14,7 +14,9 @@ void Igralec::setName(string s) {
 string Igralec::getName() {
 	return ime;
 }
-
+Igralec::Igralec() {
+	ime = "bumbar";
+}
 Igralec::~Igralec() {
 	cout << "Nasvidenje " << ime << "!" << endl;
 }

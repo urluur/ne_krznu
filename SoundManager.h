@@ -23,6 +23,9 @@ public:
     void spremeni_zvok();
     void vec();
     void zacni();
+    void lestvica();
+    void izvorna();
+    void izbris();
     ~SoundManager();
 };
 

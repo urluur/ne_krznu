@@ -8,6 +8,6 @@ public:
 	void setName();
 	void setName(std::string);
 	std::string getName();
+	Igralec();
 	~Igralec();
 };
-

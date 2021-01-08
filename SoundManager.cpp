@@ -61,12 +61,28 @@ void SoundManager::spremeni_zvok() {
 }
 void SoundManager::vec() {
     if (mute == 0)
-        played = PlaySound(TEXT("common/sounds/vec.wav"), NULL, SND_ASYNC);
+        played = PlaySound(TEXT("common/sounds/vec.wav"), NULL, SND_SYNC);
 }
 void SoundManager::zacni() {
     if (mute == 0)
-        played = PlaySound(TEXT("common/sounds/zacni.wav"), NULL, SND_ASYNC);
+        played = PlaySound(TEXT("common/sounds/zacni.wav"), NULL, SND_SYNC);
 }
+
+
+void SoundManager::lestvica() {
+    if (mute == 0)
+        played = PlaySound(TEXT("common/sounds/lestvica.wav"), NULL, SND_ASYNC);
+}
+void SoundManager::izvorna() {
+    if (mute == 0)
+        played = PlaySound(TEXT("common/sounds/izvorna.wav"), NULL, SND_ASYNC);
+}
+void SoundManager::izbris() {
+    if (mute == 0)
+        played = PlaySound(TEXT("common/sounds/izbris.wav"), NULL, SND_ASYNC);
+}
+
+
 
 SoundManager::~SoundManager() {
     bgm = nullptr;

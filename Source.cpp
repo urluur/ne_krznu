@@ -46,6 +46,7 @@ int main() {
             igra.okno.image = SDL_LoadBMP("common/images/main_vec.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.vec();
+                SDL_Delay(10);
                 vec(igra);
             }
             break;
@@ -200,21 +201,21 @@ void vec(GameManager& igra) {
         case 1:
             igra.okno.image = SDL_LoadBMP("common/images/vec_lestvica.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
-                //igra.sound.dimenzije();
+                igra.sound.lestvica();
 
             }
             break;
         case 2:
             igra.okno.image = SDL_LoadBMP("common/images/vec_izvorna.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
-                //igra.sound.spremeni_ime();
+                igra.sound.izvorna();
                 system("start https://github.com/urluur/ne_krznu");
             }
             break;
         case 3:
             igra.okno.image = SDL_LoadBMP("common/images/vec_izbris.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
-                //igra.sound.spremeni_zvok();
+                igra.sound.izbris();
             }
 
             break;
