@@ -10,6 +10,6 @@
 #include <SDL_mixer.h>
 #include <string>
 
-#include "sounds.h"
+#include "SoundManager.h"
 #include "GameManager.h"
 #include "igralec.h"

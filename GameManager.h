@@ -7,7 +7,7 @@ class GameManager{
 private:
 public:
 	WindowManager okno;
-	SoundManager zvok;
+	SoundManager sound;
 	Igralec igralec;
 	GameManager();
 

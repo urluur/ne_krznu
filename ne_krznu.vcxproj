@@ -147,7 +147,6 @@ SDL2main.lib;Winmm.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDepen
     <ClCompile Include="Igralec.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="sounds.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,7 +154,6 @@ SDL2main.lib;Winmm.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDepen
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Igralec.h" />
     <ClInclude Include="SoundManager.h" />
-    <ClInclude Include="sounds.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

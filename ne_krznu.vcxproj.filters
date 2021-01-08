@@ -21,9 +21,6 @@
     <ClCompile Include="GameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sounds.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Igralec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -39,9 +36,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sounds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Igralec.h">

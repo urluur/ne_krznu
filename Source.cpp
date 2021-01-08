@@ -21,14 +21,14 @@ int main() {
         SDL_PollEvent(&event);
         SDL_PumpEvents();
         if (keys[SDL_SCANCODE_UP]) {
-            igra.zvok.sound.cursorMove();
+            igra.sound.cursorMove();
             if (pozicija_cursorja == 1) {
                 pozicija_cursorja = 4;
             }
             else { pozicija_cursorja--; }
         }
         else if (keys[SDL_SCANCODE_DOWN]) {
-            igra.zvok.sound.cursorMove();
+            igra.sound.cursorMove();
             if (pozicija_cursorja == 4) { pozicija_cursorja = 1; }
             else { pozicija_cursorja++;}
         }
@@ -37,21 +37,21 @@ int main() {
         case 1:
             igra.okno.image = SDL_LoadBMP("common/images/main_zacni.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
-                igra.zvok.sound.zacni();
+                igra.sound.zacni();
 
             }
             break;
         case 2:
             igra.okno.image = SDL_LoadBMP("common/images/main_vec.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
-                igra.zvok.sound.vec();
+                igra.sound.vec();
 
             }
             break;
         case 3:
             igra.okno.image = SDL_LoadBMP("common/images/main_nastavitve.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
-                igra.zvok.sound.nastavitve();
+                igra.sound.nastavitve();
                 SDL_Delay(10);
                 nastavitve(igra);
                 pozicija_cursorja = 1;
@@ -59,7 +59,7 @@ int main() {
             break;
         case 4:
             if (keys[SDL_SCANCODE_RETURN]) {
-                igra.zvok.sound.izhod();
+                igra.sound.izhod();
                 izhod_switch = 1;
             }
             igra.okno.image = SDL_LoadBMP("common/images/main_izhod.bmp");
@@ -72,8 +72,8 @@ int main() {
             break;
         }
     }
-    igra.zvok.sound.nasvidenje();
-    igra.zvok.sound.oof();
+    igra.sound.nasvidenje();
+    igra.sound.oof();
     SDL_DestroyWindow(igra.okno.window);
     SDL_FreeSurface(igra.okno.image);
     SDL_Quit();
@@ -82,12 +82,12 @@ int main() {
 
 int init(GameManager &igra) {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
-        printf("SDL Init, Error: %d", SDL_GetError());
+        cout << "SDL Init, Error: " << SDL_GetError() << endl;
         return -1;
     }
     igra.okno.window = SDL_CreateWindow("NE krznu -urlu", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Window_width, Window_height, SDL_WINDOW_SHOWN);
     if (igra.okno.window == NULL) {
-        printf("SDL Create Window, Error: %d", SDL_GetError());
+        cout << "SDL Create Window, Error: " << SDL_GetError() << endl;
         return -1;
     }
     igra.okno.surface = SDL_GetWindowSurface(igra.okno.window);
@@ -102,14 +102,14 @@ void nastavitve(GameManager &igra) {
         SDL_PollEvent(&ev_nastavitve);
         SDL_PumpEvents();
         if (keys[SDL_SCANCODE_UP]) {
-            igra.zvok.sound.cursorMove();
+            igra.sound.cursorMove();
             if (pozicija_cursorja == 1) {
                 pozicija_cursorja = 4;
             }
             else { pozicija_cursorja--; }
         }
         else if (keys[SDL_SCANCODE_DOWN]) {
-            igra.zvok.sound.cursorMove();
+            igra.sound.cursorMove();
             if (pozicija_cursorja == 4) { pozicija_cursorja = 1; }
             else { pozicija_cursorja++; }
         }
@@ -118,29 +118,29 @@ void nastavitve(GameManager &igra) {
         case 1:
             igra.okno.image = SDL_LoadBMP("common/images/set_dimenzije.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
-                igra.zvok.sound.dimenzije();
+                igra.sound.dimenzije();
 
             }
             break;
         case 2:
             igra.okno.image = SDL_LoadBMP("common/images/set_ime.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
-                igra.zvok.sound.spremeni_ime();
+                igra.sound.spremeni_ime();
                 igra.igralec.setName();
             }
             break;
         case 3:
             igra.okno.image = SDL_LoadBMP("common/images/set_zvok.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
-                igra.zvok.sound.spremeni_zvok();
-                igra.zvok.sound.toggle();
+                igra.sound.spremeni_zvok();
+                igra.sound.toggle();
             }
             
             break;
         case 4:
             igra.okno.image = SDL_LoadBMP("common/images/set_nazaj.bmp");
             if (keys[SDL_SCANCODE_RETURN]) {
-                igra.zvok.sound.nazaj();
+                igra.sound.nazaj();
                 main = 1;
             }
             break;
@@ -152,5 +152,5 @@ void nastavitve(GameManager &igra) {
         SDL_BlitSurface(igra.okno.image, NULL, igra.okno.surface, NULL);
         SDL_Delay(80);
     }
-    igra.zvok.sound.oof();
+    igra.sound.oof();
 }
