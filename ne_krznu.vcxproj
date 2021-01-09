@@ -95,7 +95,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;
-SDL2main.lib;Winmm.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+SDL2main.lib;Winmm.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -147,6 +147,7 @@ SDL2main.lib;Winmm.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDepen
     <ClCompile Include="Igralec.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +155,7 @@ SDL2main.lib;Winmm.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDepen
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Igralec.h" />
     <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
