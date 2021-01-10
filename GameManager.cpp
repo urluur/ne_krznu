@@ -24,6 +24,11 @@ int GameManager::init(GameManager& igra) {
         return EXIT_FAILURE;
     }
     igra.okno.surface = SDL_GetWindowSurface(igra.okno.window);
+    if (!(IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG)))
+    {
+        printf("IMG_Init Error: %s\n", IMG_GetError());
+        return false;
+    }
     srand(time(NULL));
     return EXIT_SUCCESS;
 }

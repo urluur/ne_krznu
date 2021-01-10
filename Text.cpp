@@ -1,5 +1,4 @@
 #include "Text.h"
-#include "Text.h"
 
 Text::Text(SDL_Renderer* renderer, const std::string& font_path, int font_size, const std::string& message_text, const SDL_Color& colour) {
     SDL_QueryTexture(text_texture, NULL, NULL, &text_rect.w, &text_rect.h);
@@ -17,6 +16,11 @@ Text::Text(SDL_Renderer* renderer, const std::string& font_path, int font_size, 
     if (!text_texture) {
         std::cerr << "Failed to create text texture: " << TTF_GetError() << std::endl;
     }
+    int w, h;
+    if (TTF_SizeText(font, message_text.c_str(), &w, &h))
+        std::cout << "TTF_SizeText error!" << std::endl;
+    text_rect.w = w;
+    text_rect.h = h;
 }
 
 void Text::display(int x, int y, SDL_Renderer* renderer) const {

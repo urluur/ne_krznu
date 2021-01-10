@@ -95,7 +95,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;
-SDL2main.lib;Winmm.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+SDL2main.lib;Winmm.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -145,6 +145,7 @@ SDL2main.lib;Winmm.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</Ad
   <ItemGroup>
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Igralec.cpp" />
+    <ClCompile Include="Image.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Text.cpp" />
@@ -154,6 +155,7 @@ SDL2main.lib;Winmm.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</Ad
     <ClInclude Include="function_definitions.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Igralec.h" />
+    <ClInclude Include="Image.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="WindowManager.h" />

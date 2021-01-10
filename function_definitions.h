@@ -16,3 +16,4 @@
 #include "GameManager.h"
 #include "igralec.h"
 #include "Text.h"
+#include "Image.h"

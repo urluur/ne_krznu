@@ -4,6 +4,7 @@
 #include "Igralec.h"
 #include <iostream>
 #include <string>
+#include <SDL_image.h>
 using namespace std;
 class GameManager{
 private:
