@@ -9,14 +9,16 @@ void vec(GameManager& igra);
 
 int main() {
     GameManager igra;
+    igra.sound.toggle(); //samo za testing
     igra.init(igra);
     
-    igra.igralec.setName();
+    //igra.igralec.setName(); //izklopljeno za hitrejsi debugging
+    /* ce bom mogoce kadarkol namesto navadnih 
     Text main_zacni(igra.okno.renderer, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", 36, "Zacni", {0,0,0,255});
     Text main_vec(igra.okno.renderer, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", 36, "Vec", { 0,0,0,255 });
     Text main_nastavitve(igra.okno.renderer, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", 36, "Nastavitve", { 0,0,0,255 });
     Text main_izhod(igra.okno.renderer, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", 36, "Izhod", { 0,0,0,255 });
-    igra.sound.toggle(); //samo za testing
+    */
     SDL_Event event;
     SDL_PollEvent(&event);
     int pozicija_cursorja = 1;
@@ -180,6 +182,7 @@ void vec(GameManager& igra) {
     int pozicija_cursorja = 1;
     Image img_vec(igra.okno.renderer, "common/images/vec.png", 0, 0, igra.okno.returnWindow_width(), igra.okno.returnWindow_height());
     Image cursor;
+    Image github(igra.okno.renderer, "common/images/github.png", 20, 20, 279, 66);
     while (main == 0)
     {
         SDL_PollEvent(&ev_vec);
@@ -216,9 +219,7 @@ void vec(GameManager& igra) {
             }
             break;
         case 2:
-            //igra.okno.image = SDL_LoadBMP("common/images/vec_izvorna.bmp");
-            //premakni cursor na izvorna koda
-            //dodej zravn github logo
+            github.display(igra.okno.renderer);
             cursor.init(igra.okno.renderer, "common/images/cursor.png", 20, 310, 98, 49);
             cursor.display(igra.okno.renderer);
             if (keys[SDL_SCANCODE_RETURN]) {
