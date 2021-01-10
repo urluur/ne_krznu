@@ -10,6 +10,11 @@ void vec(GameManager& igra);
 int main() {
     GameManager igra;
     igra.init(igra);
+
+    //font ne dela in ne vem zakaj
+    //Text upisi(igra.okno.renderer, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", 36, "Upis ime u konzolo", {0,0,0,1});
+    //upisi.display(20,20,igra.okno.renderer);
+    
     igra.igralec.setName();
     SDL_Event event;
     SDL_PollEvent(&event);

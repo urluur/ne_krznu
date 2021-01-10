@@ -1,4 +1,5 @@
 #include "GameManager.h"
+#include "SDL_ttf.h"
 GameManager::GameManager() {
 	//definiram privzete lastnosti
 }
@@ -16,6 +17,10 @@ int GameManager::init(GameManager& igra) {
     igra.okno.renderer = SDL_CreateRenderer(igra.okno.window, -1, 0);
     if (igra.okno.renderer == nullptr) {
         std::cout << "Could not create renderer! SDL error" << SDL_GetError() << std::endl;
+        return EXIT_FAILURE;
+    }
+    if (TTF_Init()) {
+        std::cout << "TTF_Init Error: " << TTF_GetError() << std::endl;
         return EXIT_FAILURE;
     }
     igra.okno.surface = SDL_GetWindowSurface(igra.okno.window);

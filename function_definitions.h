@@ -15,3 +15,4 @@
 #include "SoundManager.h"
 #include "GameManager.h"
 #include "igralec.h"
+#include "Text.h"
