@@ -23,6 +23,8 @@ Text::Text(SDL_Renderer* renderer, const std::string& font_path, int font_size, 
     text_rect.h = h;
 }
 
+//Text main_zacni(igra.okno.renderer, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", 36, "Zacni", {0,0,0,255});
+
 void Text::display(int x, int y, SDL_Renderer* renderer) const {
     text_rect.x = x;
     text_rect.y = y;

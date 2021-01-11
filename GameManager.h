@@ -14,5 +14,6 @@ public:
 	Igralec igralec;
 	GameManager();
 	int init(GameManager& igra);
+	const Uint8* keys = SDL_GetKeyboardState(NULL);
 
 };
