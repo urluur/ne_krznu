@@ -4,6 +4,7 @@ GameManager::GameManager() {
 	//definiram privzete lastnosti
 }
 
+//inicializiranje sdl okna
 int GameManager::init(GameManager& igra) {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         cout << "SDL Init, Error: " << SDL_GetError() << endl;

@@ -18,6 +18,7 @@ int main() {
     int izhod_switch = 0;
     Image main(igra.okno.renderer, "common/images/main.png", 0, 0, igra.okno.returnWindowWidth(), igra.okno.returnWindowHeight());
     Image cursor;
+
     while (!igra.keys[SDL_SCANCODE_ESCAPE] && event.type != SDL_QUIT) {
         SDL_PollEvent(&event);
         SDL_PumpEvents();
@@ -36,15 +37,15 @@ int main() {
             if (pozicija_cursorja == 4) { pozicija_cursorja = 1; }
             else { pozicija_cursorja++;}
         }
-        SDL_FreeSurface(igra.okno.image);
         switch (pozicija_cursorja) {
         case 1:
             cursor.init(igra.okno.renderer, "common/images/cursor.png", 20, 120, 98, 49);
             cursor.display(igra.okno.renderer);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.zacni();
+                SDL_RenderClear(igra.okno.renderer);
                 //call za zacetek igre
-                cout << sizeof(igra) << endl;
+                
             }
             break;
         case 2:
