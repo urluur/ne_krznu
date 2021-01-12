@@ -4,8 +4,8 @@
 class WindowManager
 {
 private:
-    int Window_width = 720;
-    int Window_height = 640;
+    int Window_width = 720; //default
+    int Window_height = 640; //default
 	
 public:
 	SDL_Renderer* renderer;
@@ -16,6 +16,8 @@ public:
 	WindowManager();
 	int returnWindowWidth();
 	int returnWindowHeight();
+	void nastaviWindowWidth(int novHeight);
+	void nastaviWindowHeight(int novWidth);
 	~WindowManager();
 };
 

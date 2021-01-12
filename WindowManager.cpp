@@ -19,3 +19,9 @@ int WindowManager::returnWindowWidth() {
 int WindowManager::returnWindowHeight() {
 	return Window_height;
 }
+void WindowManager::nastaviWindowWidth(int novWidth) {
+	Window_width = novWidth;
+}
+void WindowManager::nastaviWindowHeight(int novHeight) {
+	Window_height = novHeight;
+}
