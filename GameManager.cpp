@@ -5,11 +5,11 @@ GameManager::GameManager() {
 }
 
 int GameManager::init(GameManager& igra) {
-    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) { //SDL_INIT_VIDEO | SDL_INIT_AUDIO
+    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         cout << "SDL Init, Error: " << SDL_GetError() << endl;
         return -1;
     }
-    igra.okno.window = SDL_CreateWindow("NE krznu -urlu", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, igra.okno.returnWindow_width(), igra.okno.returnWindow_height(), SDL_WINDOW_SHOWN);
+    igra.okno.window = SDL_CreateWindow("NE krznu -urlu", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, igra.okno.returnWindowWidth(), igra.okno.returnWindowHeight(), SDL_WINDOW_SHOWN);
     if (igra.okno.window == NULL) {
         cout << "SDL Create Window, Error: " << SDL_GetError() << endl;
         return -1;

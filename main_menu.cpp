@@ -7,7 +7,7 @@ void nastavitve(GameManager& igra) {
     SDL_Event ev_nastavitve;
     int main = 0;
     int pozicija_cursorja = 1;
-    Image img_nastavitve(igra.okno.renderer, "common/images/nastavitve.png", 0, 0, igra.okno.returnWindow_width(), igra.okno.returnWindow_height());
+    Image img_nastavitve(igra.okno.renderer, "common/images/nastavitve.png", 0, 0, igra.okno.returnWindowWidth(), igra.okno.returnWindowHeight());
     Image cursor;
     while (main == 0)
     {
@@ -85,7 +85,7 @@ void vec(GameManager& igra) {
     SDL_Event ev_vec;
     int main = 0;
     int pozicija_cursorja = 1;
-    Image img_vec(igra.okno.renderer, "common/images/vec.png", 0, 0, igra.okno.returnWindow_width(), igra.okno.returnWindow_height());
+    Image img_vec(igra.okno.renderer, "common/images/vec.png", 0, 0, igra.okno.returnWindowWidth(), igra.okno.returnWindowHeight());
     Image cursor;
     Image github(igra.okno.renderer, "common/images/github.png", 20, 20, 279, 66);
     while (main == 0)

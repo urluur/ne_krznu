@@ -16,7 +16,7 @@ int main() {
     SDL_PollEvent(&event);
     int pozicija_cursorja = 1;
     int izhod_switch = 0;
-    Image main(igra.okno.renderer, "common/images/main.png", 0, 0, igra.okno.returnWindow_width(), igra.okno.returnWindow_height());
+    Image main(igra.okno.renderer, "common/images/main.png", 0, 0, igra.okno.returnWindowWidth(), igra.okno.returnWindowHeight());
     Image cursor;
     while (!igra.keys[SDL_SCANCODE_ESCAPE] && event.type != SDL_QUIT) {
         SDL_PollEvent(&event);

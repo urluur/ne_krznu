@@ -13,9 +13,9 @@ WindowManager::~WindowManager() {
 	image = NULL;
 	renderer = nullptr;
 }
-int WindowManager::returnWindow_width() {
+int WindowManager::returnWindowWidth() {
 	return Window_width;
 }
-int WindowManager::returnWindow_height() {
+int WindowManager::returnWindowHeight() {
 	return Window_height;
 }

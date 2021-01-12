@@ -9,22 +9,13 @@ private:
 	
 public:
 	SDL_Renderer* renderer;
-	/*
-	cheat sheet:
-	screen = SDL_GetWindowSurface(window);
-	SDL_RenderClear(renderer);
-	SDL_RenderPresent(renderer);
-
-	SDL_UpdateWindowSurface(igra.okno.window);
-	SDL_BlitSurface(igra.okno.image, NULL, igra.okno.surface, NULL);
-	*/
 	SDL_Window* window;
 	SDL_Surface* surface;
 	SDL_Surface* image;
 
-	int returnWindow_width();
-	int returnWindow_height();
 	WindowManager();
+	int returnWindowWidth();
+	int returnWindowHeight();
 	~WindowManager();
 };
 
