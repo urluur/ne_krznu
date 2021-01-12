@@ -7,7 +7,7 @@ void vec(GameManager& igra);
 
 int main() {
     GameManager igra;
-    igra.sound.toggle(); //samo za testing
+    //igra.sound.toggle(); //samo za testing
     igra.init(igra);
     
     //igra.igralec.setName(); //izklopljeno za hitrejsi debugging
@@ -16,13 +16,14 @@ int main() {
     SDL_PollEvent(&event);
     int pozicija_cursorja = 1;
     int izhod_switch = 0;
-    Image main(igra.okno.renderer, "common/images/main.png", 0, 0, igra.okno.returnWindowWidth(), igra.okno.returnWindowHeight());
+    Image main;
     Image cursor;
 
     while (!igra.keys[SDL_SCANCODE_ESCAPE] && event.type != SDL_QUIT) {
         SDL_PollEvent(&event);
         SDL_PumpEvents();
         SDL_RenderClear(igra.okno.renderer);
+        main.init(igra.okno.renderer, "common/images/main.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
         main.display(igra.okno.renderer);
         
         if (igra.keys[SDL_SCANCODE_UP]) {
@@ -39,7 +40,7 @@ int main() {
         }
         switch (pozicija_cursorja) {
         case 1:
-            cursor.init(igra.okno.renderer, "common/images/cursor.png", 20, 120, 98, 49);
+            cursor.init(igra.okno.renderer, "common/images/cursor.png", igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(120), igra.okno.scalerCalculator(98), igra.okno.scalerCalculator(49));
             cursor.display(igra.okno.renderer);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.zacni();
@@ -49,7 +50,7 @@ int main() {
             }
             break;
         case 2:
-            cursor.init(igra.okno.renderer, "common/images/cursor.png", 20, 180, 98, 49);
+            cursor.init(igra.okno.renderer, "common/images/cursor.png", igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(180), igra.okno.scalerCalculator(98), igra.okno.scalerCalculator(49));
             cursor.display(igra.okno.renderer);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.vec();
@@ -60,7 +61,7 @@ int main() {
             }
             break;
         case 3:
-            cursor.init(igra.okno.renderer, "common/images/cursor.png", 20, 240, 98, 49);
+            cursor.init(igra.okno.renderer, "common/images/cursor.png", igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(240), igra.okno.scalerCalculator(98), igra.okno.scalerCalculator(49));
             cursor.display(igra.okno.renderer);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.nastavitve();
@@ -75,7 +76,7 @@ int main() {
                 igra.sound.izhod();
                 izhod_switch = 1;
             }
-            cursor.init(igra.okno.renderer, "common/images/cursor.png", 20, 320, 98, 49);
+            cursor.init(igra.okno.renderer, "common/images/cursor.png", igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(320), igra.okno.scalerCalculator(98), igra.okno.scalerCalculator(49));
             cursor.display(igra.okno.renderer);
             break;
         }

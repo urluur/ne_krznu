@@ -1,11 +1,13 @@
 #pragma once
 #include <sdl.h>
+#include <iostream>
 
 class WindowManager
 {
 private:
     int Window_width = 720; //default
     int Window_height = 640; //default
+	int scaler = 15;
 	
 public:
 	SDL_Renderer* renderer;
@@ -16,8 +18,8 @@ public:
 	WindowManager();
 	int returnWindowWidth();
 	int returnWindowHeight();
-	void nastaviWindowWidth(int novHeight);
-	void nastaviWindowHeight(int novWidth);
+	void toggleScaler();
+	int scalerCalculator(int stevilo);
 	~WindowManager();
 };
 

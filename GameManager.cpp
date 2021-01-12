@@ -10,7 +10,7 @@ int GameManager::init(GameManager& igra) {
         cout << "SDL Init, Error: " << SDL_GetError() << endl;
         return -1;
     }
-    igra.okno.window = SDL_CreateWindow("NE krznu -urlu", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, igra.okno.returnWindowWidth(), igra.okno.returnWindowHeight(), SDL_WINDOW_SHOWN);
+    igra.okno.window = SDL_CreateWindow("NE krznu -urlu", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()), SDL_WINDOW_SHOWN);
     if (igra.okno.window == NULL) {
         cout << "SDL Create Window, Error: " << SDL_GetError() << endl;
         return -1;
