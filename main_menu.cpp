@@ -127,27 +127,208 @@ void overworld(GameManager& igra) {
             level_clear = 2;
             break;
         case 2:
+            x = 165;
+            y = 350;
 
+            final_x = 350;
+            final_y = 450;
+            while (true) {
+                if (x != final_x) {
+                    if (x < final_x) {
+                        x++;
+                    }
+                    else {
+                        x--;
+                    }
+                }
+                if (y != final_y) {
+                    if (y < final_y) {
+                        y++;
+                    }
+                    else {
+                        y--;
+                    }
+                }
+                if (x == final_x && y == final_y) {
+                    break;
+                }
+                SDL_RenderClear(igra.okno.renderer);
+                img_overworld.display(igra.okno.renderer);
+                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+                img_player.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+                SDL_Delay(10);
+            }
+
+            SDL_PumpEvents();
+            while (!igra.keys[SDL_SCANCODE_RETURN]) {
+                SDL_PollEvent(&ev_overworld);
+                SDL_PumpEvents();
+                img_press_enter.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+            }
 
             //animacija3(igra);
+
             cout << "Tretji nivo" << endl;
             //level_clear = level3();
             level_clear = 3;
             break;
         case 3:
-            level_clear = 4;
+            x = 350;
+            y = 450;
+
+            final_x = 466;
+            final_y = 240;
+            while (true) {
+                if (x != final_x) {
+                    if (x < final_x) {
+                        x++;
+                    }
+                    else {
+                        x--;
+                    }
+                }
+                if (y != final_y) {
+                    if (y < final_y) {
+                        y++;
+                    }
+                    else {
+                        y--;
+                    }
+                }
+                if (x == final_x && y == final_y) {
+                    break;
+                }
+                SDL_RenderClear(igra.okno.renderer);
+                img_overworld.display(igra.okno.renderer);
+                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+                img_player.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+                SDL_Delay(10);
+            }
+
+            SDL_PumpEvents();
+            while (!igra.keys[SDL_SCANCODE_RETURN]) {
+                SDL_PollEvent(&ev_overworld);
+                SDL_PumpEvents();
+                img_press_enter.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+            }
+
             //animacija4(igra);
+
             cout << "Cetrti nivo" << endl;
-            SDL_Delay(1000);
+            //level_clear = level4();
+            level_clear = 4;
             break;
         case 4:
-            level_clear = 5;
+            //naris se mozija
+            x = 466;
+            y = 240;
+            img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+            img_player.display(igra.okno.renderer);
+            SDL_RenderPresent(igra.okno.renderer);
+            SDL_PumpEvents();
+            while (!igra.keys[SDL_SCANCODE_RETURN]) {
+                SDL_PollEvent(&ev_overworld);
+                SDL_PumpEvents();
+                img_press_enter.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+            }
+            SDL_RenderClear(igra.okno.renderer);
+            
             //animacija5(igra);
+
+
+            final_x = 420;
+            final_y = 100;
+            while (true) {
+                if (x != final_x) {
+                    if (x < final_x) {
+                        x++;
+                    }
+                    else {
+                        x--;
+                    }
+                }
+                if (y != final_y) {
+                    if (y < final_y) {
+                        y++;
+                    }
+                    else {
+                        y--;
+                    }
+                }
+                if (x == final_x && y == final_y) {
+                    break;
+                }
+                SDL_RenderClear(igra.okno.renderer);
+                img_overworld.display(igra.okno.renderer);
+                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+                img_player.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+                SDL_Delay(10);
+            }
+
+            SDL_PumpEvents();
+            while (!igra.keys[SDL_SCANCODE_RETURN]) {
+                SDL_PollEvent(&ev_overworld);
+                SDL_PumpEvents();
+                img_press_enter.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+            }
+
+
             cout << "Peti nivo" << endl;
-            SDL_Delay(1000);
+            //level_clear = level5();
+            level_clear = 5;
             break;
         case 5:
+            x = 420;
+            y = 100;
+            final_x = 425;
+            final_y = 50;
+            while (true) {
+                if (x != final_x) {
+                    if (x < final_x) {
+                        x++;
+                    }
+                    else {
+                        x--;
+                    }
+                }
+                if (y != final_y) {
+                    if (y < final_y) {
+                        y++;
+                    }
+                    else {
+                        y--;
+                    }
+                }
+                if (x == final_x && y == final_y) {
+                    break;
+                }
+                SDL_RenderClear(igra.okno.renderer);
+                img_overworld.display(igra.okno.renderer);
+                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+                img_player.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+                SDL_Delay(10);
+            }
+
+            SDL_PumpEvents();
+            while (!igra.keys[SDL_SCANCODE_RETURN]) {
+                SDL_PollEvent(&ev_overworld);
+                SDL_PumpEvents();
+                img_press_enter.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+            }
             cout << "Zmaga!" << endl;
+            img_overworld.init(igra.okno.renderer, "common/images/overworld.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+            img_overworld.display(igra.okno.renderer);
+            img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+            img_player.display(igra.okno.renderer);
             img_zastavica_fullscreen.init(igra.okno.renderer, "common/images/zastavica_fullscreen.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
             img_zastavica_fullscreen.display(igra.okno.renderer);
             SDL_RenderPresent(igra.okno.renderer);
