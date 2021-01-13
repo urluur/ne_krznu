@@ -20,6 +20,7 @@ public:
 	int returnWindowHeight();
 	void toggleScaler();
 	int scalerCalculator(int stevilo);
+	int vrniScaler();
 	~WindowManager();
 };
 

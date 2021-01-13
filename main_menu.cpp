@@ -152,6 +152,14 @@ void nastavitve(GameManager& igra) {
                 cout << "spreminjam velikost okna" << endl;
                 igra.okno.toggleScaler();
                 SDL_SetWindowSize(igra.okno.window, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+                if (igra.okno.vrniScaler() == 100) {
+                    SDL_SetWindowFullscreen(igra.okno.window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+                }
+                else {
+                    SDL_SetWindowFullscreen(igra.okno.window, 0);
+                }
+                
+                
             }
             break;
         case 2:

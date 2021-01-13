@@ -28,6 +28,9 @@ void WindowManager::toggleScaler() {
 		scaler = 15;
 		break;
 	case 15:
+		scaler = 100;
+		break;
+	case 100:
 		scaler = 5;
 		break;
 	case 5:
@@ -47,7 +50,12 @@ int WindowManager::scalerCalculator(int stevilo) {
 		return stevilo * 1.5;
 	case 5:
 		return stevilo * 0.5;
+	case 100:
+		return stevilo * 1.7;
 	default:
 		std::cout << "Error: scalerCalculator" << std::endl;
 	}
+}
+int WindowManager::vrniScaler() {
+	return scaler;
 }
