@@ -11,11 +11,12 @@ void overworld(GameManager& igra) {
     Image img_drevo;
     Image imgs_farma[5];
     Image img_zastavica_fullscreen;
+    Image img_press_enter;
+    int blink = 0;
 
     int level_clear=0;
     img_overworld.init(igra.okno.renderer, "common/images/overworld.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
     img_overworld.display(igra.okno.renderer);
-
 
 
     while (main == 0) {
@@ -28,18 +29,42 @@ void overworld(GameManager& igra) {
 
         switch (level_clear) {
         case 0:
-            SDL_Delay(3000);
+            img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(55), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+            img_player.display(igra.okno.renderer);
+            img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+            while (!igra.keys[SDL_SCANCODE_RETURN]) {
+                SDL_PollEvent(&ev_overworld);
+                SDL_PumpEvents();
+                img_press_enter.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+            }
             animacija1(igra);
             cout << "Prvi nivo" << endl;
-            SDL_Delay(1000);
             //level_clear = level1();
             level_clear = 1;
             break;
         case 1:
+            img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+            for (int i = 55; i < 180; i++) {
+                SDL_RenderClear(igra.okno.renderer);
+                img_overworld.display(igra.okno.renderer);
+                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(i), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+                img_player.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+                SDL_Delay(10);
+            }
+            
+            SDL_PumpEvents();
+            while (!igra.keys[SDL_SCANCODE_RETURN]) {
+                SDL_PollEvent(&ev_overworld);
+                SDL_PumpEvents();
+                img_press_enter.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+            }
             //animacija2(igra);
-            level_clear = 2;
             cout << "Drugi nivo" << endl;
-            SDL_Delay(1000);
+            //level_clear = level2();
+            level_clear = 2;
             break;
         case 2:
             //animacija3(igra);
