@@ -257,5 +257,25 @@ void animacija1(GameManager& igra) {
     //refresh
     SDL_RenderPresent(igra.okno.renderer);
     igra.sound.animacija1();
-    SDL_Delay(3000);
+    SDL_Event ev_anim1;
+    SDL_PollEvent(&ev_anim1);
+    SDL_PumpEvents();
+    Image img_press_enter;
+    int blink = 0;
+    img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+    while (!igra.keys[SDL_SCANCODE_RETURN]) {
+        SDL_PollEvent(&ev_anim1);
+        SDL_PumpEvents();
+        SDL_RenderClear(igra.okno.renderer);
+        odzadje.display(igra.okno.renderer);
+        if (blink < 100) {
+            img_press_enter.display(igra.okno.renderer);
+        }
+        else if(blink > 150){
+            blink = 0;
+        }
+        blink++;
+        SDL_RenderPresent(igra.okno.renderer);
+        SDL_Delay(10);
+    }
 }
