@@ -43,11 +43,8 @@ void overworld(GameManager& igra) {
                 SDL_RenderPresent(igra.okno.renderer);
             }
             animacija1(igra);
-            cout << "Prvi nivo" << endl;
-            //level_clear = level1();
-            level_clear = 1;
-            break;
-        case 1:
+
+            //premik na 1. nivo
             img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
             for (int i = 55; i < 180; i++) { //na 180, 160
                 SDL_RenderClear(igra.okno.renderer);
@@ -57,7 +54,7 @@ void overworld(GameManager& igra) {
                 SDL_RenderPresent(igra.okno.renderer);
                 SDL_Delay(10);
             }
-            
+
             SDL_PumpEvents();
             while (!igra.keys[SDL_SCANCODE_RETURN]) {
                 SDL_PollEvent(&ev_overworld);
@@ -65,12 +62,12 @@ void overworld(GameManager& igra) {
                 img_press_enter.display(igra.okno.renderer);
                 SDL_RenderPresent(igra.okno.renderer);
             }
-            //animacija2(igra);
-            cout << "Drugi nivo" << endl;
-            //level_clear = level2();
-            level_clear = 2;
+
+            cout << "Prvi nivo" << endl;
+            //level_clear = level1();
+            level_clear = 1;
             break;
-        case 2:
+        case 1:
             x = 180;
             y = 160;
             img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
@@ -84,6 +81,8 @@ void overworld(GameManager& igra) {
                 SDL_RenderPresent(igra.okno.renderer);
                 SDL_Delay(10);
             }
+            animacija2(igra);
+
             final_x = 165;
             final_y = 350;
             while (true) {
@@ -121,6 +120,15 @@ void overworld(GameManager& igra) {
                 img_press_enter.display(igra.okno.renderer);
                 SDL_RenderPresent(igra.okno.renderer);
             }
+
+
+            cout << "Drugi nivo" << endl;
+            //level_clear = level2();
+            level_clear = 2;
+            break;
+        case 2:
+
+
             //animacija3(igra);
             cout << "Tretji nivo" << endl;
             //level_clear = level3();
@@ -364,6 +372,40 @@ void animacija1(GameManager& igra) {
             img_press_enter.display(igra.okno.renderer);
         }
         else if(blink > 150){
+            blink = 0;
+        }
+        blink++;
+        SDL_RenderPresent(igra.okno.renderer);
+        SDL_Delay(10);
+    }
+}
+
+void animacija2(GameManager& igra) {
+    //clear
+    SDL_RenderClear(igra.okno.renderer);
+    Image odzadje;
+    odzadje.init(igra.okno.renderer, "common/images/animacija2.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+    odzadje.display(igra.okno.renderer);
+
+    //refresh
+    SDL_RenderPresent(igra.okno.renderer);
+    igra.sound.animacija2();
+    SDL_Event ev_anim2;
+    SDL_Delay(500);
+    SDL_PollEvent(&ev_anim2);
+    SDL_PumpEvents();
+    Image img_press_enter;
+    int blink = 0;
+    img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+    while (!igra.keys[SDL_SCANCODE_RETURN]) {
+        SDL_PollEvent(&ev_anim2);
+        SDL_PumpEvents();
+        SDL_RenderClear(igra.okno.renderer);
+        odzadje.display(igra.okno.renderer);
+        if (blink < 100) {
+            img_press_enter.display(igra.okno.renderer);
+        }
+        else if (blink > 150) {
             blink = 0;
         }
         blink++;

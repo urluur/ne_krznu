@@ -27,6 +27,7 @@ public:
     void izvorna();
     void izbris();
     void animacija1();
+    void animacija2();
     ~SoundManager();
 };
 
