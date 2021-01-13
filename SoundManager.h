@@ -26,6 +26,7 @@ public:
     void lestvica();
     void izvorna();
     void izbris();
+    void animacija1();
     ~SoundManager();
 };
 

@@ -4,6 +4,7 @@ using namespace std;
 
 void nastavitve(GameManager &igra);
 void vec(GameManager& igra);
+void overworld(GameManager& igra);
 
 int main() {
     GameManager igra;
@@ -46,7 +47,7 @@ int main() {
                 igra.sound.zacni();
                 SDL_RenderClear(igra.okno.renderer);
                 //call za zacetek igre
-                
+                overworld(igra);
             }
             break;
         case 2:
