@@ -168,7 +168,7 @@ void overworld(GameManager& igra) {
                 SDL_RenderPresent(igra.okno.renderer);
             }
 
-            //animacija3(igra);
+            animacija3(igra);
 
             cout << "Tretji nivo" << endl;
             //level_clear = level3();
@@ -226,20 +226,7 @@ void overworld(GameManager& igra) {
             //naris se mozija
             x = 466;
             y = 240;
-            img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
-            img_player.display(igra.okno.renderer);
-            SDL_RenderPresent(igra.okno.renderer);
-            SDL_PumpEvents();
-            while (!igra.keys[SDL_SCANCODE_RETURN]) {
-                SDL_PollEvent(&ev_overworld);
-                SDL_PumpEvents();
-                img_press_enter.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-            }
-            SDL_RenderClear(igra.okno.renderer);
-            
             //animacija5(igra);
-
 
             final_x = 420;
             final_y = 100;
@@ -580,6 +567,39 @@ void animacija2(GameManager& igra) {
     img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
     while (!igra.keys[SDL_SCANCODE_RETURN]) {
         SDL_PollEvent(&ev_anim2);
+        SDL_PumpEvents();
+        SDL_RenderClear(igra.okno.renderer);
+        odzadje.display(igra.okno.renderer);
+        if (blink < 100) {
+            img_press_enter.display(igra.okno.renderer);
+        }
+        else if (blink > 150) {
+            blink = 0;
+        }
+        blink++;
+        SDL_RenderPresent(igra.okno.renderer);
+        SDL_Delay(10);
+    }
+}
+void animacija3(GameManager& igra) {
+    //clear
+    SDL_RenderClear(igra.okno.renderer);
+    Image odzadje;
+    odzadje.init(igra.okno.renderer, "common/images/animacija3.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+    odzadje.display(igra.okno.renderer);
+
+    //refresh
+    SDL_RenderPresent(igra.okno.renderer);
+    igra.sound.animacija3();
+    SDL_Event ev_anim3;
+    SDL_Delay(500);
+    SDL_PollEvent(&ev_anim3);
+    SDL_PumpEvents();
+    Image img_press_enter;
+    int blink = 0;
+    img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+    while (!igra.keys[SDL_SCANCODE_RETURN]) {
+        SDL_PollEvent(&ev_anim3);
         SDL_PumpEvents();
         SDL_RenderClear(igra.okno.renderer);
         odzadje.display(igra.okno.renderer);

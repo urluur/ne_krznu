@@ -87,6 +87,18 @@ void SoundManager::animacija2() {
     if (mute == 0)
         played = PlaySound(TEXT("common/sounds/animacija2.wav"), NULL, SND_SYNC);
 }
+void SoundManager::animacija3() {
+    if (mute == 0)
+        played = PlaySound(TEXT("common/sounds/animacija3.wav"), NULL, SND_SYNC);
+}
+void SoundManager::animacija4() {
+    if (mute == 0)
+        played = PlaySound(TEXT("common/sounds/animacija4.wav"), NULL, SND_SYNC);
+}
+void SoundManager::animacija5() {
+    if (mute == 0)
+        played = PlaySound(TEXT("common/sounds/animacija5.wav"), NULL, SND_SYNC);
+}
 
 
 SoundManager::~SoundManager() {
