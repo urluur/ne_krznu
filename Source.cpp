@@ -8,7 +8,7 @@ void overworld(GameManager& igra);
 
 int main() {
     GameManager igra;
-    //igra.sound.toggle(); //samo za testing
+    igra.sound.toggle(); //samo za testing
     igra.init(igra);
     
     //igra.igralec.setName(); //izklopljeno za hitrejsi debugging

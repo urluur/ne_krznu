@@ -17,9 +17,13 @@ void overworld(GameManager& igra) {
     int level_clear=0;
     img_overworld.init(igra.okno.renderer, "common/images/overworld.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
     img_overworld.display(igra.okno.renderer);
-
+     
+    int x, y;
+    int final_x, final_y;
+    bool x_bool=false, y_bool=false;
 
     while (main == 0) {
+        SDL_Delay(500);
         SDL_PollEvent(&ev_overworld);
         SDL_PumpEvents();
         SDL_RenderClear(igra.okno.renderer);
@@ -45,7 +49,7 @@ void overworld(GameManager& igra) {
             break;
         case 1:
             img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-            for (int i = 55; i < 180; i++) {
+            for (int i = 55; i < 180; i++) { //na 180, 160
                 SDL_RenderClear(igra.okno.renderer);
                 img_overworld.display(igra.okno.renderer);
                 img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(i), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
@@ -67,10 +71,60 @@ void overworld(GameManager& igra) {
             level_clear = 2;
             break;
         case 2:
+            x = 180;
+            y = 160;
+            img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+            while (x>90 && y<300) {
+                x--;
+                y++;
+                SDL_RenderClear(igra.okno.renderer);
+                img_overworld.display(igra.okno.renderer);
+                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+                img_player.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+                SDL_Delay(10);
+            }
+            final_x = 165;
+            final_y = 350;
+            while (true) {
+                if (x != final_x) {
+                    if (x < final_x) {
+                        x++;
+                    }
+                    else {
+                        x--;
+                    }
+                }
+                if (y != final_y) {
+                    if (y < final_y) {
+                        y++;
+                    }
+                    else {
+                        y--;
+                    }
+                }
+                if (x == final_x && y == final_y) {
+                    break;
+                }
+                SDL_RenderClear(igra.okno.renderer);
+                img_overworld.display(igra.okno.renderer);
+                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+                img_player.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+                SDL_Delay(10);
+            }
+
+            SDL_PumpEvents();
+            while (!igra.keys[SDL_SCANCODE_RETURN]) {
+                SDL_PollEvent(&ev_overworld);
+                SDL_PumpEvents();
+                img_press_enter.display(igra.okno.renderer);
+                SDL_RenderPresent(igra.okno.renderer);
+            }
             //animacija3(igra);
-            level_clear = 3;
             cout << "Tretji nivo" << endl;
-            SDL_Delay(1000);
+            //level_clear = level3();
+            level_clear = 3;
             break;
         case 3:
             level_clear = 4;
@@ -112,6 +166,8 @@ void overworld(GameManager& igra) {
 void nastavitve(GameManager& igra) {
     SDL_RenderClear(igra.okno.renderer);
     SDL_Event ev_nastavitve;
+    SDL_Delay(200);
+    SDL_PollEvent(&ev_nastavitve);
     int main = 0;
     int pozicija_cursorja = 1;
     Image img_nastavitve;
@@ -200,7 +256,9 @@ void nastavitve(GameManager& igra) {
     //igra.sound.oof();
 }
 void vec(GameManager& igra) {
+    SDL_Delay(200);
     SDL_Event ev_vec;
+    SDL_PollEvent(&ev_vec);
     int main = 0;
     int pozicija_cursorja = 1;
     Image img_vec;
@@ -291,6 +349,7 @@ void animacija1(GameManager& igra) {
     SDL_RenderPresent(igra.okno.renderer);
     igra.sound.animacija1();
     SDL_Event ev_anim1;
+    SDL_Delay(500);
     SDL_PollEvent(&ev_anim1);
     SDL_PumpEvents();
     Image img_press_enter;
