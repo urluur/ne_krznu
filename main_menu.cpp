@@ -42,7 +42,7 @@ void overworld(GameManager& igra) {
                 img_press_enter.display(igra.okno.renderer);
                 SDL_RenderPresent(igra.okno.renderer);
             }
-            animacija1(igra);
+            animacija(igra, 1);
 
             //premik na 1. nivo
             img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
@@ -81,7 +81,7 @@ void overworld(GameManager& igra) {
                 SDL_RenderPresent(igra.okno.renderer);
                 SDL_Delay(10);
             }
-            animacija2(igra);
+            animacija(igra, 2);
 
             final_x = 165;
             final_y = 350;
@@ -168,7 +168,7 @@ void overworld(GameManager& igra) {
                 SDL_RenderPresent(igra.okno.renderer);
             }
 
-            animacija3(igra);
+            animacija(igra, 3);
 
             cout << "Tretji nivo" << endl;
             //level_clear = level3();
@@ -216,7 +216,7 @@ void overworld(GameManager& igra) {
                 SDL_RenderPresent(igra.okno.renderer);
             }
 
-            //animacija4(igra);
+            //animacija(igra, 4);
 
             cout << "Cetrti nivo" << endl;
             //level_clear = level4();
@@ -226,7 +226,7 @@ void overworld(GameManager& igra) {
             //naris se mozija
             x = 466;
             y = 240;
-            //animacija5(igra);
+            //animacija(igra, 5);
 
             final_x = 420;
             final_y = 100;
@@ -514,92 +514,47 @@ void vec(GameManager& igra) {
     //igra.sound.oof();
 }
 
-void animacija1(GameManager& igra) {
-    //clear
+void animacija(GameManager& igra, int stAnim) {
     SDL_RenderClear(igra.okno.renderer);
     Image odzadje;
-    odzadje.init(igra.okno.renderer, "common/images/animacija1.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-    odzadje.display(igra.okno.renderer);
-
-    //refresh
-    SDL_RenderPresent(igra.okno.renderer);
-    igra.sound.animacija1();
-    SDL_Event ev_anim1;
-    SDL_Delay(500);
-    SDL_PollEvent(&ev_anim1);
-    SDL_PumpEvents();
-    Image img_press_enter;
-    int blink = 0;
-    img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-    while (!igra.keys[SDL_SCANCODE_RETURN]) {
-        SDL_PollEvent(&ev_anim1);
-        SDL_PumpEvents();
-        SDL_RenderClear(igra.okno.renderer);
+    switch (stAnim) {
+    case 1:
+        odzadje.init(igra.okno.renderer, "common/images/animacija1.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
         odzadje.display(igra.okno.renderer);
-        if (blink < 100) {
-            img_press_enter.display(igra.okno.renderer);
-        }
-        else if(blink > 150){
-            blink = 0;
-        }
-        blink++;
         SDL_RenderPresent(igra.okno.renderer);
-        SDL_Delay(10);
-    }
-}
-
-void animacija2(GameManager& igra) {
-    //clear
-    SDL_RenderClear(igra.okno.renderer);
-    Image odzadje;
-    odzadje.init(igra.okno.renderer, "common/images/animacija2.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-    odzadje.display(igra.okno.renderer);
-
-    //refresh
-    SDL_RenderPresent(igra.okno.renderer);
-    igra.sound.animacija2();
-    SDL_Event ev_anim2;
-    SDL_Delay(500);
-    SDL_PollEvent(&ev_anim2);
-    SDL_PumpEvents();
-    Image img_press_enter;
-    int blink = 0;
-    img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-    while (!igra.keys[SDL_SCANCODE_RETURN]) {
-        SDL_PollEvent(&ev_anim2);
-        SDL_PumpEvents();
-        SDL_RenderClear(igra.okno.renderer);
+        break;
+    case 2:
+        odzadje.init(igra.okno.renderer, "common/images/animacija2.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
         odzadje.display(igra.okno.renderer);
-        if (blink < 100) {
-            img_press_enter.display(igra.okno.renderer);
-        }
-        else if (blink > 150) {
-            blink = 0;
-        }
-        blink++;
         SDL_RenderPresent(igra.okno.renderer);
-        SDL_Delay(10);
+        break;
+    case 3:
+        odzadje.init(igra.okno.renderer, "common/images/animacija3.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+        odzadje.display(igra.okno.renderer);
+        SDL_RenderPresent(igra.okno.renderer); break;
+    case 4:
+        odzadje.init(igra.okno.renderer, "common/images/animacija4.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+        odzadje.display(igra.okno.renderer);
+        SDL_RenderPresent(igra.okno.renderer);
+        break;
+    case 5:
+        odzadje.init(igra.okno.renderer, "common/images/animacija5.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+        odzadje.display(igra.okno.renderer);
+        SDL_RenderPresent(igra.okno.renderer);
+        break;
+    default:
+        cout << "Error: stAnim switch" << endl;
     }
-}
-void animacija3(GameManager& igra) {
-    //clear
-    SDL_RenderClear(igra.okno.renderer);
-    Image odzadje;
-    odzadje.init(igra.okno.renderer, "common/images/animacija3.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-    odzadje.display(igra.okno.renderer);
-
-    //refresh
-    SDL_RenderPresent(igra.okno.renderer);
-    igra.sound.animacija3();
-    SDL_Event ev_anim3;
+    igra.sound.soundAnimacija(stAnim);
+    SDL_Event ev_anim;
     SDL_Delay(500);
-    SDL_PollEvent(&ev_anim3);
+    SDL_PollEvent(&ev_anim);
     SDL_PumpEvents();
     Image img_press_enter;
     int blink = 0;
     img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
     while (!igra.keys[SDL_SCANCODE_RETURN]) {
-        SDL_PollEvent(&ev_anim3);
+        SDL_PollEvent(&ev_anim);
         SDL_PumpEvents();
         SDL_RenderClear(igra.okno.renderer);
         odzadje.display(igra.okno.renderer);

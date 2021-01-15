@@ -26,11 +26,7 @@ public:
     void lestvica();
     void izvorna();
     void izbris();
-    void animacija1();
-    void animacija2();
-    void animacija3();
-    void animacija4();
-    void animacija5();
+    void soundAnimacija(int animSt);
     ~SoundManager();
 };
 
