@@ -29,6 +29,7 @@ void overworld(GameManager& igra) {
         SDL_RenderClear(igra.okno.renderer);
         img_overworld.init(igra.okno.renderer, "common/images/overworld.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
         img_overworld.display(igra.okno.renderer);
+        narisiFarmeAliDosezke(igra, level_clear);
         SDL_RenderPresent(igra.okno.renderer);
 
         switch (level_clear) {
@@ -36,27 +37,11 @@ void overworld(GameManager& igra) {
             img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(55), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
             img_player.display(igra.okno.renderer);
             img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-            haltEnter(igra, img_press_enter, ev_overworld);
+            haltEnter(igra, img_press_enter, ev_overworld, 0);
             animacija(igra, 1);
+            premakniNaXY(igra, x, y, 180, 160, img_overworld, img_player, 0);
 
-            //premik na 1. nivo
-            img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-            for (int i = 55; i < 180; i++) { //na 180, 160
-                SDL_RenderClear(igra.okno.renderer);
-                img_overworld.display(igra.okno.renderer);
-                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(i), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
-                img_player.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-                SDL_Delay(10);
-            }
-
-            SDL_PumpEvents();
-            while (!igra.keys[SDL_SCANCODE_RETURN]) {
-                SDL_PollEvent(&ev_overworld);
-                SDL_PumpEvents();
-                img_press_enter.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-            }
+            haltEnter(igra, img_press_enter, ev_overworld, 0);
 
             cout << "Prvi nivo" << endl;
             //level_clear = level1();
@@ -65,19 +50,19 @@ void overworld(GameManager& igra) {
         case 1:
             img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
 
-            premakniNaXY(igra, x, y, 90, 250, img_overworld, img_player);
+            premakniNaXY(igra, x, y, 90, 250, img_overworld, img_player, level_clear);
             animacija(igra, 2);
-            premakniNaXY(igra, x, y, 165, 350, img_overworld, img_player);
-            haltEnter(igra, img_press_enter, ev_overworld);
+            premakniNaXY(igra, x, y, 165, 350, img_overworld, img_player, level_clear);
+            haltEnter(igra, img_press_enter, ev_overworld, 1);
 
             cout << "Drugi nivo" << endl;
             //level_clear = level2();
             level_clear = 2;
             break;
         case 2:
-            premakniNaXY(igra, x, y, 200, 450, img_overworld, img_player);
-            premakniNaXY(igra, x, y, 350, 450, img_overworld, img_player);
-            haltEnter(igra, img_press_enter, ev_overworld);
+            premakniNaXY(igra, x, y, 200, 450, img_overworld, img_player, level_clear);
+            premakniNaXY(igra, x, y, 350, 450, img_overworld, img_player, level_clear);
+            haltEnter(igra, img_press_enter, ev_overworld, 2);
             animacija(igra, 3);
 
             cout << "Tretji nivo" << endl;
@@ -85,8 +70,8 @@ void overworld(GameManager& igra) {
             level_clear = 3;
             break;
         case 3:
-            premakniNaXY(igra, x, y, 466, 240, img_overworld, img_player);
-            haltEnter(igra, img_press_enter, ev_overworld);
+            premakniNaXY(igra, x, y, 466, 240, img_overworld, img_player, level_clear);
+            haltEnter(igra, img_press_enter, ev_overworld, 3);
             //animacija(igra, 4);
 
             cout << "Cetrti nivo" << endl;
@@ -95,16 +80,16 @@ void overworld(GameManager& igra) {
             break;
         case 4:
             //animacija(igra, 5);
-            premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player);
-            haltEnter(igra, img_press_enter, ev_overworld);
+            premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player, level_clear);
+            haltEnter(igra, img_press_enter, ev_overworld, 4);
 
             cout << "Peti nivo" << endl;
             //level_clear = level5();
             level_clear = 5;
             break;
         case 5:
-            premakniNaXY(igra, x, y, 425, 30, img_overworld, img_player);
-            haltEnter(igra, img_press_enter, ev_overworld);
+            premakniNaXY(igra, x, y, 425, 30, img_overworld, img_player, level_clear);
+            haltEnter(igra, img_press_enter, ev_overworld, 4);
 
             cout << "Zmaga!" << endl;
             img_overworld.init(igra.okno.renderer, "common/images/overworld.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
@@ -364,7 +349,7 @@ void animacija(GameManager& igra, int stAnim) {
     }
 }
 
-void premakniNaXY(GameManager &igra, int &x, int &y, int final_x, int final_y, Image &img_overworld, Image &img_player){
+void premakniNaXY(GameManager &igra, int &x, int &y, int final_x, int final_y, Image &img_overworld, Image &img_player, int nivo){
     while (true) {
         if (x != final_x) {
             if (x < final_x) x++;
@@ -380,17 +365,74 @@ void premakniNaXY(GameManager &igra, int &x, int &y, int final_x, int final_y, I
         img_overworld.display(igra.okno.renderer);
         img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
         img_player.display(igra.okno.renderer);
+        narisiFarmeAliDosezke(igra, nivo);
         SDL_RenderPresent(igra.okno.renderer);
         SDL_Delay(10);
     }
 }
 
-void haltEnter(GameManager& igra, Image& img_press_enter, SDL_Event &ev_overworld) {
+void haltEnter(GameManager& igra, Image& img_press_enter, SDL_Event &ev_overworld, int nivo) {
     SDL_PumpEvents();
     while (!igra.keys[SDL_SCANCODE_RETURN]) {
         SDL_PollEvent(&ev_overworld);
         SDL_PumpEvents();
         img_press_enter.display(igra.okno.renderer);
         SDL_RenderPresent(igra.okno.renderer);
+    }
+}
+
+void narisiFarmeAliDosezke(GameManager& igra, int nivo) {
+    Image monolith[5];
+    int x[5] = {};
+    int y[5] = {};
+    switch (nivo) {
+    case 0:
+        monolith[0].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(200), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[1].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(150), igra.okno.scalerCalculator(370), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[2].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(350), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(460), igra.okno.scalerCalculator(235), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(450), igra.okno.scalerCalculator(95), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        break;
+    case 1:
+        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(200), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[1].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(150), igra.okno.scalerCalculator(370), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[2].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(350), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(460), igra.okno.scalerCalculator(235), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(450), igra.okno.scalerCalculator(95), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        break;
+    case 2:
+        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(200), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(150), igra.okno.scalerCalculator(370), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[2].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(350), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(460), igra.okno.scalerCalculator(235), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(450), igra.okno.scalerCalculator(95), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        break;
+    case 3:
+        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(200), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(150), igra.okno.scalerCalculator(370), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[2].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(350), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(460), igra.okno.scalerCalculator(235), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(450), igra.okno.scalerCalculator(95), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        break;
+    case 4:
+        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(200), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(150), igra.okno.scalerCalculator(370), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[2].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(350), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[3].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(460), igra.okno.scalerCalculator(235), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(450), igra.okno.scalerCalculator(95), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        break;
+    case 5:
+        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(200), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(150), igra.okno.scalerCalculator(370), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[2].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(350), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[3].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(460), igra.okno.scalerCalculator(235), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[4].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(450), igra.okno.scalerCalculator(95), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        break;
+    default:
+        cout << "Error: narisiFarmeAliDosezke switch" << endl;
+    }
+
+    for (int i = 0; i < 5; i++) {
+        monolith[i].display(igra.okno.renderer);
     }
 }
