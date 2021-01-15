@@ -18,7 +18,7 @@ void overworld(GameManager& igra) {
     img_overworld.init(igra.okno.renderer, "common/images/overworld.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
     img_overworld.display(igra.okno.renderer);
      
-    int x, y;
+    int x=180, y=160;
     int final_x, final_y;
     bool x_bool=false, y_bool=false;
 
@@ -36,12 +36,7 @@ void overworld(GameManager& igra) {
             img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(55), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
             img_player.display(igra.okno.renderer);
             img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-            while (!igra.keys[SDL_SCANCODE_RETURN]) {
-                SDL_PollEvent(&ev_overworld);
-                SDL_PumpEvents();
-                img_press_enter.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-            }
+            haltEnter(igra, img_press_enter, ev_overworld);
             animacija(igra, 1);
 
             //premik na 1. nivo
@@ -68,106 +63,21 @@ void overworld(GameManager& igra) {
             level_clear = 1;
             break;
         case 1:
-            x = 180;
-            y = 160;
             img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-            while (x>90 && y<300) {
-                x--;
-                y++;
-                SDL_RenderClear(igra.okno.renderer);
-                img_overworld.display(igra.okno.renderer);
-                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
-                img_player.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-                SDL_Delay(10);
-            }
+
+            premakniNaXY(igra, x, y, 90, 250, img_overworld, img_player);
             animacija(igra, 2);
-
-            final_x = 165;
-            final_y = 350;
-            while (true) {
-                if (x != final_x) {
-                    if (x < final_x) {
-                        x++;
-                    }
-                    else {
-                        x--;
-                    }
-                }
-                if (y != final_y) {
-                    if (y < final_y) {
-                        y++;
-                    }
-                    else {
-                        y--;
-                    }
-                }
-                if (x == final_x && y == final_y) {
-                    break;
-                }
-                SDL_RenderClear(igra.okno.renderer);
-                img_overworld.display(igra.okno.renderer);
-                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
-                img_player.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-                SDL_Delay(10);
-            }
-
-            SDL_PumpEvents();
-            while (!igra.keys[SDL_SCANCODE_RETURN]) {
-                SDL_PollEvent(&ev_overworld);
-                SDL_PumpEvents();
-                img_press_enter.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-            }
-
+            premakniNaXY(igra, x, y, 165, 350, img_overworld, img_player);
+            haltEnter(igra, img_press_enter, ev_overworld);
 
             cout << "Drugi nivo" << endl;
             //level_clear = level2();
             level_clear = 2;
             break;
         case 2:
-            x = 165;
-            y = 350;
-
-            final_x = 350;
-            final_y = 450;
-            while (true) {
-                if (x != final_x) {
-                    if (x < final_x) {
-                        x++;
-                    }
-                    else {
-                        x--;
-                    }
-                }
-                if (y != final_y) {
-                    if (y < final_y) {
-                        y++;
-                    }
-                    else {
-                        y--;
-                    }
-                }
-                if (x == final_x && y == final_y) {
-                    break;
-                }
-                SDL_RenderClear(igra.okno.renderer);
-                img_overworld.display(igra.okno.renderer);
-                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
-                img_player.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-                SDL_Delay(10);
-            }
-
-            SDL_PumpEvents();
-            while (!igra.keys[SDL_SCANCODE_RETURN]) {
-                SDL_PollEvent(&ev_overworld);
-                SDL_PumpEvents();
-                img_press_enter.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-            }
-
+            premakniNaXY(igra, x, y, 200, 450, img_overworld, img_player);
+            premakniNaXY(igra, x, y, 350, 450, img_overworld, img_player);
+            haltEnter(igra, img_press_enter, ev_overworld);
             animacija(igra, 3);
 
             cout << "Tretji nivo" << endl;
@@ -175,47 +85,8 @@ void overworld(GameManager& igra) {
             level_clear = 3;
             break;
         case 3:
-            x = 350;
-            y = 450;
-
-            final_x = 466;
-            final_y = 240;
-            while (true) {
-                if (x != final_x) {
-                    if (x < final_x) {
-                        x++;
-                    }
-                    else {
-                        x--;
-                    }
-                }
-                if (y != final_y) {
-                    if (y < final_y) {
-                        y++;
-                    }
-                    else {
-                        y--;
-                    }
-                }
-                if (x == final_x && y == final_y) {
-                    break;
-                }
-                SDL_RenderClear(igra.okno.renderer);
-                img_overworld.display(igra.okno.renderer);
-                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
-                img_player.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-                SDL_Delay(10);
-            }
-
-            SDL_PumpEvents();
-            while (!igra.keys[SDL_SCANCODE_RETURN]) {
-                SDL_PollEvent(&ev_overworld);
-                SDL_PumpEvents();
-                img_press_enter.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-            }
-
+            premakniNaXY(igra, x, y, 466, 240, img_overworld, img_player);
+            haltEnter(igra, img_press_enter, ev_overworld);
             //animacija(igra, 4);
 
             cout << "Cetrti nivo" << endl;
@@ -223,94 +94,18 @@ void overworld(GameManager& igra) {
             level_clear = 4;
             break;
         case 4:
-            //naris se mozija
-            x = 466;
-            y = 240;
             //animacija(igra, 5);
-
-            final_x = 420;
-            final_y = 100;
-            while (true) {
-                if (x != final_x) {
-                    if (x < final_x) {
-                        x++;
-                    }
-                    else {
-                        x--;
-                    }
-                }
-                if (y != final_y) {
-                    if (y < final_y) {
-                        y++;
-                    }
-                    else {
-                        y--;
-                    }
-                }
-                if (x == final_x && y == final_y) {
-                    break;
-                }
-                SDL_RenderClear(igra.okno.renderer);
-                img_overworld.display(igra.okno.renderer);
-                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
-                img_player.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-                SDL_Delay(10);
-            }
-
-            SDL_PumpEvents();
-            while (!igra.keys[SDL_SCANCODE_RETURN]) {
-                SDL_PollEvent(&ev_overworld);
-                SDL_PumpEvents();
-                img_press_enter.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-            }
-
+            premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player);
+            haltEnter(igra, img_press_enter, ev_overworld);
 
             cout << "Peti nivo" << endl;
             //level_clear = level5();
             level_clear = 5;
             break;
         case 5:
-            x = 420;
-            y = 100;
-            final_x = 425;
-            final_y = 50;
-            while (true) {
-                if (x != final_x) {
-                    if (x < final_x) {
-                        x++;
-                    }
-                    else {
-                        x--;
-                    }
-                }
-                if (y != final_y) {
-                    if (y < final_y) {
-                        y++;
-                    }
-                    else {
-                        y--;
-                    }
-                }
-                if (x == final_x && y == final_y) {
-                    break;
-                }
-                SDL_RenderClear(igra.okno.renderer);
-                img_overworld.display(igra.okno.renderer);
-                img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
-                img_player.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-                SDL_Delay(10);
-            }
+            premakniNaXY(igra, x, y, 425, 30, img_overworld, img_player);
+            haltEnter(igra, img_press_enter, ev_overworld);
 
-            SDL_PumpEvents();
-            while (!igra.keys[SDL_SCANCODE_RETURN]) {
-                SDL_PollEvent(&ev_overworld);
-                SDL_PumpEvents();
-                img_press_enter.display(igra.okno.renderer);
-                SDL_RenderPresent(igra.okno.renderer);
-            }
             cout << "Zmaga!" << endl;
             img_overworld.init(igra.okno.renderer, "common/images/overworld.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
             img_overworld.display(igra.okno.renderer);
@@ -328,7 +123,6 @@ void overworld(GameManager& igra) {
             cout << "Error: level_clear" << endl;
         }
         SDL_RenderPresent(igra.okno.renderer);
-
 
         if ((igra.keys[SDL_SCANCODE_ESCAPE] || ev_overworld.type == SDL_QUIT)) {
             main = 1;
@@ -567,5 +361,36 @@ void animacija(GameManager& igra, int stAnim) {
         blink++;
         SDL_RenderPresent(igra.okno.renderer);
         SDL_Delay(10);
+    }
+}
+
+void premakniNaXY(GameManager &igra, int &x, int &y, int final_x, int final_y, Image &img_overworld, Image &img_player){
+    while (true) {
+        if (x != final_x) {
+            if (x < final_x) x++;
+            else x--;
+        }
+        if (y != final_y) {
+            if (y < final_y) y++;
+            else y--;
+        }
+        if (x == final_x && y == final_y) break;
+
+        SDL_RenderClear(igra.okno.renderer);
+        img_overworld.display(igra.okno.renderer);
+        img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+        img_player.display(igra.okno.renderer);
+        SDL_RenderPresent(igra.okno.renderer);
+        SDL_Delay(10);
+    }
+}
+
+void haltEnter(GameManager& igra, Image& img_press_enter, SDL_Event &ev_overworld) {
+    SDL_PumpEvents();
+    while (!igra.keys[SDL_SCANCODE_RETURN]) {
+        SDL_PollEvent(&ev_overworld);
+        SDL_PumpEvents();
+        img_press_enter.display(igra.okno.renderer);
+        SDL_RenderPresent(igra.okno.renderer);
     }
 }
