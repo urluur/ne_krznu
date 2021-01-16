@@ -18,7 +18,7 @@ void overworld(GameManager& igra) {
     img_overworld.init(igra.okno.renderer, "common/images/overworld.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
     img_overworld.display(igra.okno.renderer);
      
-    int x=180, y=160;
+    int x=90, y=160;
     int final_x, final_y;
     bool x_bool=false, y_bool=false;
 
