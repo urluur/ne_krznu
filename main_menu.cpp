@@ -45,11 +45,9 @@ void overworld(GameManager& igra) {
 
             cout << "Prvi nivo" << endl;
             //level_clear = level1();
-            level_clear = 1;
+            level_clear = 1; //testing
             break;
         case 1:
-            img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-
             premakniNaXY(igra, x, y, 90, 250, img_overworld, img_player, level_clear);
             animacija(igra, 2);
             premakniNaXY(igra, x, y, 165, 350, img_overworld, img_player, level_clear);
@@ -57,10 +55,12 @@ void overworld(GameManager& igra) {
 
             cout << "Drugi nivo" << endl;
             //level_clear = level2();
-            level_clear = 2;
+            level_clear = 2; //testing
             break;
         case 2:
             premakniNaXY(igra, x, y, 200, 450, img_overworld, img_player, level_clear);
+            premakniNaXY(igra, x, y, 275, 500, img_overworld, img_player, level_clear);
+            premakniNaXY(igra, x, y, 325, 500, img_overworld, img_player, level_clear);
             premakniNaXY(igra, x, y, 350, 450, img_overworld, img_player, level_clear);
             haltEnter(igra, img_press_enter, ev_overworld, 2);
             animacija(igra, 3);
@@ -70,22 +70,26 @@ void overworld(GameManager& igra) {
             level_clear = 3;
             break;
         case 3:
-            premakniNaXY(igra, x, y, 466, 240, img_overworld, img_player, level_clear);
-            haltEnter(igra, img_press_enter, ev_overworld, 3);
-            //animacija(igra, 4);
+            premakniNaXY(igra, x, y, 460, 320, img_overworld, img_player, level_clear);
 
+            animacija(igra, 4);
+            premakniNaXY(igra, x, y, 460, 240, img_overworld, img_player, level_clear);
+            haltEnter(igra, img_press_enter, ev_overworld, 3);
             cout << "Cetrti nivo" << endl;
             //level_clear = level4();
             level_clear = 4;
+            premakniNaXY(igra, x, y, 420, 150, img_overworld, img_player, level_clear); //testing d se pokaze
+            //haltEnter(igra, img_press_enter, ev_overworld, 3);
             break;
         case 4:
-            //animacija(igra, 5);
+            animacija(igra, 5);
             premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player, level_clear);
             haltEnter(igra, img_press_enter, ev_overworld, 4);
 
             cout << "Peti nivo" << endl;
             //level_clear = level5();
             level_clear = 5;
+            //haltEnter(igra, img_press_enter, ev_overworld, 4);
             break;
         case 5:
             premakniNaXY(igra, x, y, 425, 30, img_overworld, img_player, level_clear);
@@ -351,6 +355,7 @@ void animacija(GameManager& igra, int stAnim) {
 }
 
 void premakniNaXY(GameManager &igra, int &x, int &y, int final_x, int final_y, Image &img_overworld, Image &img_player, int nivo){
+    int i = 0;
     while (true) {
         if (x != final_x) {
             if (x < final_x) x++;
@@ -360,19 +365,36 @@ void premakniNaXY(GameManager &igra, int &x, int &y, int final_x, int final_y, I
             if (y < final_y) y++;
             else y--;
         }
-        if (x == final_x && y == final_y) break;
+        if (x == final_x && y == final_y) {
+            SDL_RenderClear(igra.okno.renderer);
+            img_overworld.display(igra.okno.renderer);
+            narisiFarmeAliDosezke(igra, nivo);
+            img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+            img_player.display(igra.okno.renderer);
+            SDL_RenderPresent(igra.okno.renderer);
+            break;
+        }
 
         SDL_RenderClear(igra.okno.renderer);
         img_overworld.display(igra.okno.renderer);
-        img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+        
+        if (i < 10)
+            img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+        else if (i > 20)
+            i = 0;
+        else
+            img_player.init(igra.okno.renderer, "common/images/player_noge.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
         narisiFarmeAliDosezke(igra, nivo);
         img_player.display(igra.okno.renderer);
         SDL_RenderPresent(igra.okno.renderer);
         SDL_Delay(10);
+        i+=1;
     }
 }
 
 void haltEnter(GameManager& igra, Image& img_press_enter, SDL_Event &ev_overworld, int nivo) {
+    SDL_Delay(200);
+    SDL_PollEvent(&ev_overworld);
     SDL_PumpEvents();
     while (!igra.keys[SDL_SCANCODE_RETURN]) {
         SDL_PollEvent(&ev_overworld);
