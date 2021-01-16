@@ -98,6 +98,7 @@ void overworld(GameManager& igra) {
             img_player.display(igra.okno.renderer);
             img_zastavica_fullscreen.init(igra.okno.renderer, "common/images/zastavica_fullscreen.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
             img_zastavica_fullscreen.display(igra.okno.renderer);
+            narisiFarmeAliDosezke(igra, level_clear);
             SDL_RenderPresent(igra.okno.renderer);
 
             //prikaz rekordov
@@ -364,8 +365,8 @@ void premakniNaXY(GameManager &igra, int &x, int &y, int final_x, int final_y, I
         SDL_RenderClear(igra.okno.renderer);
         img_overworld.display(igra.okno.renderer);
         img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
-        img_player.display(igra.okno.renderer);
         narisiFarmeAliDosezke(igra, nivo);
+        img_player.display(igra.okno.renderer);
         SDL_RenderPresent(igra.okno.renderer);
         SDL_Delay(10);
     }
@@ -383,50 +384,50 @@ void haltEnter(GameManager& igra, Image& img_press_enter, SDL_Event &ev_overworl
 
 void narisiFarmeAliDosezke(GameManager& igra, int nivo) {
     Image monolith[5];
-    int x[5] = {};
-    int y[5] = {};
+    int x[5] = {200, 100, 320, 460, 450};
+    int y[5] = {160, 435, 420, 215, 95};
     switch (nivo) {
     case 0:
-        monolith[0].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(200), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[1].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(150), igra.okno.scalerCalculator(370), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[2].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(350), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(460), igra.okno.scalerCalculator(235), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(450), igra.okno.scalerCalculator(95), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[0].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[0]), igra.okno.scalerCalculator(y[0]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[1].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[1]), igra.okno.scalerCalculator(y[1]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[2].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[2]), igra.okno.scalerCalculator(y[2]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[3]), igra.okno.scalerCalculator(y[3]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[4]), igra.okno.scalerCalculator(y[4]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
         break;
     case 1:
-        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(200), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[1].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(150), igra.okno.scalerCalculator(370), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[2].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(350), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(460), igra.okno.scalerCalculator(235), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(450), igra.okno.scalerCalculator(95), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[0]), igra.okno.scalerCalculator(y[0]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[1].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[1]), igra.okno.scalerCalculator(y[1]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[2].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[2]), igra.okno.scalerCalculator(y[2]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[3]), igra.okno.scalerCalculator(y[3]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[4]), igra.okno.scalerCalculator(y[4]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
         break;
     case 2:
-        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(200), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(150), igra.okno.scalerCalculator(370), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[2].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(350), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(460), igra.okno.scalerCalculator(235), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(450), igra.okno.scalerCalculator(95), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[0]), igra.okno.scalerCalculator(y[0]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[1]), igra.okno.scalerCalculator(y[1]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[2].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[2]), igra.okno.scalerCalculator(y[2]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[3]), igra.okno.scalerCalculator(y[3]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[4]), igra.okno.scalerCalculator(y[4]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
         break;
     case 3:
-        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(200), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(150), igra.okno.scalerCalculator(370), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[2].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(350), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(460), igra.okno.scalerCalculator(235), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(450), igra.okno.scalerCalculator(95), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[0]), igra.okno.scalerCalculator(y[0]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[1]), igra.okno.scalerCalculator(y[1]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[2].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[2]), igra.okno.scalerCalculator(y[2]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[3]), igra.okno.scalerCalculator(y[3]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[4]), igra.okno.scalerCalculator(y[4]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
         break;
     case 4:
-        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(200), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(150), igra.okno.scalerCalculator(370), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[2].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(350), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[3].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(460), igra.okno.scalerCalculator(235), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(450), igra.okno.scalerCalculator(95), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[0]), igra.okno.scalerCalculator(y[0]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[1]), igra.okno.scalerCalculator(y[1]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[2].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[2]), igra.okno.scalerCalculator(y[2]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[3].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[3]), igra.okno.scalerCalculator(y[3]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[4]), igra.okno.scalerCalculator(y[4]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
         break;
     case 5:
-        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(200), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(150), igra.okno.scalerCalculator(370), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[2].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(350), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[3].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(460), igra.okno.scalerCalculator(235), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[4].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(450), igra.okno.scalerCalculator(95), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[0]), igra.okno.scalerCalculator(y[0]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[1]), igra.okno.scalerCalculator(y[1]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[2].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[2]), igra.okno.scalerCalculator(y[2]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[3].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[3]), igra.okno.scalerCalculator(y[3]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        monolith[4].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[4]), igra.okno.scalerCalculator(y[4]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
         break;
     default:
         cout << "Error: narisiFarmeAliDosezke switch" << endl;
