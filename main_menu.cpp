@@ -44,8 +44,7 @@ void overworld(GameManager& igra) {
             haltEnter(igra, img_press_enter, ev_overworld, 0);
 
             cout << "Prvi nivo" << endl;
-            //level_clear = level1();
-            level_clear = 1; //testing
+            level_clear = igra.level(1);
             break;
         case 1:
             premakniNaXY(igra, x, y, 90, 250, img_overworld, img_player, level_clear);
@@ -54,8 +53,7 @@ void overworld(GameManager& igra) {
             haltEnter(igra, img_press_enter, ev_overworld, 1);
 
             cout << "Drugi nivo" << endl;
-            //level_clear = level2();
-            level_clear = 2; //testing
+            level_clear = igra.level(2);
             break;
         case 2:
             premakniNaXY(igra, x, y, 200, 450, img_overworld, img_player, level_clear);
@@ -66,8 +64,7 @@ void overworld(GameManager& igra) {
             animacija(igra, 3);
 
             cout << "Tretji nivo" << endl;
-            //level_clear = level3();
-            level_clear = 3;
+            level_clear = igra.level(3);
             break;
         case 3:
             premakniNaXY(igra, x, y, 460, 320, img_overworld, img_player, level_clear);
@@ -76,8 +73,7 @@ void overworld(GameManager& igra) {
             premakniNaXY(igra, x, y, 460, 240, img_overworld, img_player, level_clear);
             haltEnter(igra, img_press_enter, ev_overworld, 3);
             cout << "Cetrti nivo" << endl;
-            //level_clear = level4();
-            level_clear = 4;
+            level_clear = igra.level(4);
             premakniNaXY(igra, x, y, 420, 150, img_overworld, img_player, level_clear); //testing d se pokaze
             //haltEnter(igra, img_press_enter, ev_overworld, 3);
             break;
@@ -87,8 +83,7 @@ void overworld(GameManager& igra) {
             haltEnter(igra, img_press_enter, ev_overworld, 4);
 
             cout << "Peti nivo" << endl;
-            //level_clear = level5();
-            level_clear = 5;
+            level_clear = igra.level(5);
             //haltEnter(igra, img_press_enter, ev_overworld, 4);
             break;
         case 5:

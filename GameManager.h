@@ -15,5 +15,5 @@ public:
 	GameManager();
 	int init(GameManager& igra);
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
-
+	int level(int nivo);
 };

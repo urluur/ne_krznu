@@ -36,3 +36,8 @@ int GameManager::init(GameManager& igra) {
     srand(time(NULL));
     return EXIT_SUCCESS;
 }
+
+int GameManager::level(int nivo) {
+    
+    return nivo;
+}
