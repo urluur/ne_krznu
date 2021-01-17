@@ -406,8 +406,8 @@ void haltEnter(GameManager& igra, Image& img_press_enter, SDL_Event &ev_overworl
 
 void narisiFarmeAliDosezke(GameManager& igra, int nivo) {
     Image monolith[5];
-    int x[5] = {200, 100, 320, 460, 450};
-    int y[5] = {160, 435, 420, 215, 95};
+    int x[5] = {210, 100, 320, 460, 450};
+    int y[5] = {160, 425, 420, 215, 100};
     switch (nivo) {
     case 0:
         monolith[0].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[0]), igra.okno.scalerCalculator(y[0]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
