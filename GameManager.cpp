@@ -37,6 +37,7 @@ int GameManager::init(GameManager& igra) {
     return EXIT_SUCCESS;
 }
 
+//actual igra
 int GameManager::level(int nivo) {
     
     return nivo;
