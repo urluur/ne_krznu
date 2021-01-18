@@ -97,6 +97,9 @@ void SoundManager::soundAnimacija(int animSt) {
         case 5:
             played = PlaySound(TEXT("common/sounds/animacija5.wav"), NULL, SND_SYNC);
             break;
+        case 6:
+            played = PlaySound(TEXT("common/sounds/animacija6.wav"), NULL, SND_SYNC);
+            break;
         default:
             cout << "Error: sound animSt" << endl;
         }

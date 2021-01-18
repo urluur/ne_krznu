@@ -80,6 +80,7 @@ void overworld(GameManager& igra) {
         case 4:
             animacija(igra, 5);
             premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player, level_clear);
+            animacija(igra, 6);
             haltEnter(igra, img_press_enter, ev_overworld, 4);
 
             cout << "Peti nivo" << endl;
@@ -299,31 +300,28 @@ void animacija(GameManager& igra, int stAnim) {
     switch (stAnim) {
     case 1:
         odzadje.init(igra.okno.renderer, "common/images/animacija1.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-        odzadje.display(igra.okno.renderer);
-        SDL_RenderPresent(igra.okno.renderer);
         break;
     case 2:
         odzadje.init(igra.okno.renderer, "common/images/animacija2.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-        odzadje.display(igra.okno.renderer);
-        SDL_RenderPresent(igra.okno.renderer);
         break;
     case 3:
         odzadje.init(igra.okno.renderer, "common/images/animacija3.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-        odzadje.display(igra.okno.renderer);
-        SDL_RenderPresent(igra.okno.renderer); break;
+        break;
     case 4:
         odzadje.init(igra.okno.renderer, "common/images/animacija4.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-        odzadje.display(igra.okno.renderer);
-        SDL_RenderPresent(igra.okno.renderer);
         break;
     case 5:
         odzadje.init(igra.okno.renderer, "common/images/animacija5.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-        odzadje.display(igra.okno.renderer);
-        SDL_RenderPresent(igra.okno.renderer);
+        break;
+    case 6:
+        odzadje.init(igra.okno.renderer, "common/images/animacija6.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
         break;
     default:
         cout << "Error: stAnim switch" << endl;
     }
+    odzadje.display(igra.okno.renderer);
+    SDL_RenderPresent(igra.okno.renderer);
+
     igra.sound.soundAnimacija(stAnim);
     SDL_Event ev_anim;
     SDL_Delay(500);
