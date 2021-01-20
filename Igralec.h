@@ -3,7 +3,7 @@
 class Igralec
 {
 private:
-	std::string ime;
+	std::string ime = "bumbar";
 public:
 	void setName();
 	void setName(std::string);

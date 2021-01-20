@@ -37,8 +37,31 @@ int GameManager::init(GameManager& igra) {
     return EXIT_SUCCESS;
 }
 
-//actual igra
-int GameManager::level(int nivo) {
-    
-    return nivo;
+void GameManager::level(int &nivo) {
+    cout << igralec.getName() << " zacenja " << nivo << " level" << endl;
+    pripraviPolje();
+    if (nivo < 5) {
+        nivo++;
+        //tuki gre igra
+    }
+    else {
+        nivo = -1;
+    }
+}
+
+void GameManager::pripraviPolje() {
+    //postauljanje usega na pravo mesto
+}
+
+void GameManager::haltEnter(int nivo) {
+    Image img_press_enter(okno.renderer, "common/images/pressreturn.png", 0, 0, okno.scalerCalculator(okno.returnWindowWidth()), okno.scalerCalculator(okno.returnWindowHeight()));
+    SDL_Delay(200);
+    SDL_PollEvent(&event);
+    SDL_PumpEvents();
+    while (!keys[SDL_SCANCODE_RETURN]) {
+        SDL_PollEvent(&event);
+        SDL_PumpEvents();
+        img_press_enter.display(okno.renderer);
+        SDL_RenderPresent(okno.renderer);
+    }
 }
