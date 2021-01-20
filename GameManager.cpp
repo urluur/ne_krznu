@@ -38,19 +38,16 @@ int GameManager::init(GameManager& igra) {
 }
 
 void GameManager::level(int &nivo) {
+    nivo++; //spremeni level_clear in zdej vemo u kerem nivoju smo
     cout << igralec.getName() << " zacenja " << nivo << " level" << endl;
     pripraviPolje();
-    if (nivo < 5) {
-        nivo++;
-        //tuki gre igra
-    }
-    else {
-        nivo = -1;
-    }
+    //tuki pride pole igra ku igra
+
+
 }
 
 void GameManager::pripraviPolje() {
-    //postauljanje usega na pravo mesto
+    //postauljanje usega na pravo zacetno mesto
 }
 
 void GameManager::haltEnter(int nivo) {

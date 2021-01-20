@@ -318,15 +318,14 @@ void animacija(GameManager& igra, int stAnim) {
     SDL_RenderPresent(igra.okno.renderer);
 
     igra.sound.soundAnimacija(stAnim);
-    SDL_Event ev_anim;
     SDL_Delay(500);
-    SDL_PollEvent(&ev_anim);
+    SDL_PollEvent(&igra.event);
     SDL_PumpEvents();
     Image img_press_enter;
     int blink = 0;
     img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
     while (!igra.keys[SDL_SCANCODE_RETURN]) {
-        SDL_PollEvent(&ev_anim);
+        SDL_PollEvent(&igra.event);
         SDL_PumpEvents();
         SDL_RenderClear(igra.okno.renderer);
         odzadje.display(igra.okno.renderer);
