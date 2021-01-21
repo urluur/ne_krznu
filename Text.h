@@ -6,9 +6,9 @@
 
 class Text {
 public:
-    Text(SDL_Renderer* renderer, const std::string& font_path, int font_size, const std::string& message_text, const SDL_Color& colour);
-    void display(int x, int y, SDL_Renderer* renderer) const;
-    void update(SDL_Renderer* renderer, const std::string& message_text, const SDL_Color& colour);
+    Text(SDL_Renderer* ren, const std::string& font_path, int font_size, const std::string& message_text, const SDL_Color& colour);
+    void display(int x, int y, SDL_Renderer* ren) const;
+    void update(SDL_Renderer* ren, const std::string& message_text, const SDL_Color& colour);
 
     ~Text();
 private:

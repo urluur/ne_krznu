@@ -4,14 +4,14 @@ WindowManager::WindowManager() {
 	window = NULL;
 	surface = NULL;
 	image = NULL;
-	renderer = nullptr;
+	ren = nullptr;
 
 }
 WindowManager::~WindowManager() {
 	window = NULL;
 	surface = NULL;
 	image = NULL;
-	renderer = nullptr;
+	ren = nullptr;
 }
 int WindowManager::returnWindowWidth() {
 	return Window_width;
@@ -40,7 +40,7 @@ void WindowManager::toggleScaler() {
 		std::cout << "Error: toggleScaler" << std::endl;
 	}
 }
-int WindowManager::scalerCalculator(int stevilo) {
+int WindowManager::scaleCal(int stevilo) {
 	switch (scaler) {
 	case 1:
 		return stevilo * 1;
@@ -53,7 +53,7 @@ int WindowManager::scalerCalculator(int stevilo) {
 	case 100:
 		return stevilo * 1.7;
 	default:
-		std::cout << "Error: scalerCalculator" << std::endl;
+		std::cout << "Error: scaleCal" << std::endl;
 	}
 }
 int WindowManager::vrniScaler() {

@@ -2,7 +2,7 @@
 using namespace std;
 
 void overworld(GameManager& igra) {
-    SDL_RenderClear(igra.okno.renderer);
+    SDL_RenderClear(igra.okno.ren);
     int main = 0;
     int level_igralca = 1;
     Image img_overworld;
@@ -13,8 +13,8 @@ void overworld(GameManager& igra) {
     int blink = 0;
 
     int level_clear=0;
-    img_overworld.init(igra.okno.renderer, "common/images/overworld.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-    img_overworld.display(igra.okno.renderer);
+    img_overworld.init(igra.okno.ren, "common/img/overworld.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+    img_overworld.display(igra.okno.ren);
      
     int x=90, y=160;
     int final_x, final_y;
@@ -24,30 +24,31 @@ void overworld(GameManager& igra) {
         SDL_Delay(500);
         SDL_PollEvent(&igra.event);
         SDL_PumpEvents();
-        SDL_RenderClear(igra.okno.renderer);
-        img_overworld.init(igra.okno.renderer, "common/images/overworld.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-        img_overworld.display(igra.okno.renderer);
+        SDL_RenderClear(igra.okno.ren);
+        img_overworld.init(igra.okno.ren, "common/img/overworld.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        img_overworld.display(igra.okno.ren);
         narisiFarmeAliDosezke(igra, level_clear);
-        SDL_RenderPresent(igra.okno.renderer);
+        SDL_RenderPresent(igra.okno.ren);
 
         switch (level_clear) {
         case 0:
-            img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(55), igra.okno.scalerCalculator(160), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
-            img_player.display(igra.okno.renderer);
-            igra.haltEnter(0);
+            img_player.init(igra.okno.ren, "common/img/player.png", igra.okno.scaleCal(55), igra.okno.scaleCal(160), igra.okno.scaleCal(29), igra.okno.scaleCal(64));
+            img_player.display(igra.okno.ren);
+            igra.haltEnter(0); // takoj ko odpremo in je na ladji
             animacija(igra, 1);
-            premakniNaXY(igra, x, y, 180, 160, img_overworld, img_player, 0);
 
-            igra.haltEnter(0);
+            premakniNaXY(igra, x, y, 180, 160, img_overworld, img_player, 0);
+            igra.haltEnter(0); // prej ko se zacne prvi level in smo zravn hiske 
 
             cout << "Prvi nivo" << endl;
             igra.level(level_clear);
             break;
         case 1:
             premakniNaXY(igra, x, y, 90, 250, img_overworld, img_player, level_clear);
+            igra.haltEnter(1); // stojimo pred mostom
             animacija(igra, 2);
             premakniNaXY(igra, x, y, 165, 350, img_overworld, img_player, level_clear);
-            igra.haltEnter(1);
+            igra.haltEnter(1); // stojimo pred 2. levelom
 
             cout << "Drugi nivo" << endl;
             igra.level(level_clear);
@@ -56,32 +57,34 @@ void overworld(GameManager& igra) {
             premakniNaXY(igra, x, y, 200, 450, img_overworld, img_player, level_clear);
             premakniNaXY(igra, x, y, 275, 500, img_overworld, img_player, level_clear);
             premakniNaXY(igra, x, y, 325, 500, img_overworld, img_player, level_clear);
-            premakniNaXY(igra, x, y, 350, 450, img_overworld, img_player, level_clear);
-            igra.haltEnter(2);
+            igra.haltEnter(level_clear); //stojimo na kotu
             animacija(igra, 3);
+            premakniNaXY(igra, x, y, 350, 450, img_overworld, img_player, level_clear);
+            igra.haltEnter(level_clear); //stojimo na 3. levelu
 
             cout << "Tretji nivo" << endl;
             igra.level(level_clear);
             break;
         case 3:
-            premakniNaXY(igra, x, y, 460, 320, img_overworld, img_player, level_clear);
-
+            premakniNaXY(igra, x, y, 445, 320, img_overworld, img_player, level_clear);
+            igra.haltEnter(level_clear); // stojimo na lojtri
             animacija(igra, 4);
             premakniNaXY(igra, x, y, 460, 240, img_overworld, img_player, level_clear);
-            igra.haltEnter(3);
+            igra.haltEnter(level_clear); //stojimo na 4. levelu
             cout << "Cetrti nivo" << endl;
             igra.level(level_clear);
             premakniNaXY(igra, x, y, 420, 150, img_overworld, img_player, level_clear); //testing d se pokaze
-            //haltEnter(igra, img_press_enter, 3); //narobe napisan
+            igra.haltEnter(level_clear);
             break;
         case 4:
             animacija(igra, 5);
             premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player, level_clear);
-            animacija(igra, 6);
             igra.haltEnter(4);
+            animacija(igra, 6);
 
             cout << "Peti nivo" << endl;
             igra.level(level_clear);
+            premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player, level_clear);
             igra.haltEnter(4);
             break;
         case 5:
@@ -89,14 +92,14 @@ void overworld(GameManager& igra) {
             igra.haltEnter(4);
 
             cout << "Zmaga!" << endl;
-            img_overworld.init(igra.okno.renderer, "common/images/overworld.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-            img_overworld.display(igra.okno.renderer);
-            img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
-            img_player.display(igra.okno.renderer);
-            img_zastavica_fullscreen.init(igra.okno.renderer, "common/images/zastavica_fullscreen.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-            img_zastavica_fullscreen.display(igra.okno.renderer);
+            img_overworld.init(igra.okno.ren, "common/img/overworld.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+            img_overworld.display(igra.okno.ren);
+            img_player.init(igra.okno.ren, "common/img/player.png", igra.okno.scaleCal(x), igra.okno.scaleCal(y), igra.okno.scaleCal(29), igra.okno.scaleCal(64));
+            img_player.display(igra.okno.ren);
+            img_zastavica_fullscreen.init(igra.okno.ren, "common/img/zastavica_fullscreen.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+            img_zastavica_fullscreen.display(igra.okno.ren);
             narisiFarmeAliDosezke(igra, level_clear);
-            SDL_RenderPresent(igra.okno.renderer);
+            SDL_RenderPresent(igra.okno.ren);
 
             //prikaz rekordov
             SDL_Delay(3000);
@@ -105,19 +108,19 @@ void overworld(GameManager& igra) {
         default:
             cout << "Error: level_clear" << endl;
         }
-        SDL_RenderPresent(igra.okno.renderer);
+        SDL_RenderPresent(igra.okno.ren);
 
         if ((igra.keys[SDL_SCANCODE_ESCAPE] || igra.event.type == SDL_QUIT)) {
             main = 1;
             //zasilno shranjevanje podatkov
         }
     }
-    SDL_RenderClear(igra.okno.renderer);
+    SDL_RenderClear(igra.okno.ren);
     //shranjevanje recordov
 }
 
 void nastavitve(GameManager& igra) {
-    SDL_RenderClear(igra.okno.renderer);
+    SDL_RenderClear(igra.okno.ren);
     SDL_Delay(200);
     SDL_PollEvent(&igra.event);
     int main = 0;
@@ -128,9 +131,9 @@ void nastavitve(GameManager& igra) {
     {
         SDL_PollEvent(&igra.event);
         SDL_PumpEvents();
-        SDL_RenderClear(igra.okno.renderer);
-        img_nastavitve.init(igra.okno.renderer, "common/images/nastavitve.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-        img_nastavitve.display(igra.okno.renderer);
+        SDL_RenderClear(igra.okno.ren);
+        img_nastavitve.init(igra.okno.ren, "common/img/nastavitve.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        img_nastavitve.display(igra.okno.ren);
         if (igra.keys[SDL_SCANCODE_UP])
         {
             igra.sound.cursorMove();
@@ -153,13 +156,13 @@ void nastavitve(GameManager& igra) {
         switch (pozicija_cursorja)
         {
         case 1:
-            cursor.init(igra.okno.renderer, "common/images/cursor.png", igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(210), igra.okno.scalerCalculator(98), igra.okno.scalerCalculator(49));
-            cursor.display(igra.okno.renderer);
+            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(210), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.dimenzije();
-                cout << "spreminjam velikost okna" << endl;
+                cout << "spreminjam velikost okna";
                 igra.okno.toggleScaler();
-                SDL_SetWindowSize(igra.okno.window, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+                SDL_SetWindowSize(igra.okno.window, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
                 if (igra.okno.vrniScaler() == 100) {
                     SDL_SetWindowFullscreen(igra.okno.window, SDL_WINDOW_FULLSCREEN_DESKTOP);
                 }
@@ -171,16 +174,16 @@ void nastavitve(GameManager& igra) {
             }
             break;
         case 2:
-            cursor.init(igra.okno.renderer, "common/images/cursor.png", igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(310), igra.okno.scalerCalculator(98), igra.okno.scalerCalculator(49));
-            cursor.display(igra.okno.renderer);
+            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(310), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.spremeni_ime();
                 igra.igralec.setName();
             }
             break;
         case 3:
-            cursor.init(igra.okno.renderer, "common/images/cursor.png", igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(98), igra.okno.scalerCalculator(49));
-            cursor.display(igra.okno.renderer);
+            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(420), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.spremeni_zvok();
                 igra.sound.toggle();
@@ -188,8 +191,8 @@ void nastavitve(GameManager& igra) {
 
             break;
         case 4:
-            cursor.init(igra.okno.renderer, "common/images/cursor.png", igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(510), igra.okno.scalerCalculator(98), igra.okno.scalerCalculator(49));
-            cursor.display(igra.okno.renderer);
+            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(510), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.nazaj();
                 main = 1;
@@ -201,7 +204,7 @@ void nastavitve(GameManager& igra) {
             main = 1;
         }
 
-        SDL_RenderPresent(igra.okno.renderer);
+        SDL_RenderPresent(igra.okno.ren);
         SDL_Delay(75);
     }
 
@@ -214,14 +217,14 @@ void vec(GameManager& igra) {
     int pozicija_cursorja = 1;
     Image img_vec;
     Image cursor;
-    Image github(igra.okno.renderer, "common/images/github.png", igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(279), igra.okno.scalerCalculator(66));
+    Image github(igra.okno.ren, "common/img/github.png", igra.okno.scaleCal(20), igra.okno.scaleCal(20), igra.okno.scaleCal(279), igra.okno.scaleCal(66));
     while (main == 0)
     {
         SDL_PollEvent(&igra.event);
         SDL_PumpEvents();
-        SDL_RenderClear(igra.okno.renderer);
-        img_vec.init(igra.okno.renderer, "common/images/vec.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
-        img_vec.display(igra.okno.renderer);
+        SDL_RenderClear(igra.okno.ren);
+        img_vec.init(igra.okno.ren, "common/img/vec.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        img_vec.display(igra.okno.ren);
         if (igra.keys[SDL_SCANCODE_UP])
         {
             igra.sound.cursorMove();
@@ -244,33 +247,33 @@ void vec(GameManager& igra) {
         switch (pozicija_cursorja)
         {
         case 1:
-            cursor.init(igra.okno.renderer, "common/images/cursor.png", igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(210), igra.okno.scalerCalculator(98), igra.okno.scalerCalculator(49));
-            cursor.display(igra.okno.renderer);
+            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(210), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.lestvica();
 
             }
             break;
         case 2:
-            github.display(igra.okno.renderer);
-            cursor.init(igra.okno.renderer, "common/images/cursor.png", igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(310), igra.okno.scalerCalculator(98), igra.okno.scalerCalculator(49));
-            cursor.display(igra.okno.renderer);
+            github.display(igra.okno.ren);
+            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(310), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.izvorna();
                 system("start https://github.com/urluur/ne_krznu");
             }
             break;
         case 3:
-            cursor.init(igra.okno.renderer, "common/images/cursor.png", igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(420), igra.okno.scalerCalculator(98), igra.okno.scalerCalculator(49));
-            cursor.display(igra.okno.renderer);
+            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(420), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.izbris();
             }
 
             break;
         case 4:
-            cursor.init(igra.okno.renderer, "common/images/cursor.png", igra.okno.scalerCalculator(20), igra.okno.scalerCalculator(530), igra.okno.scalerCalculator(98), igra.okno.scalerCalculator(49));
-            cursor.display(igra.okno.renderer);
+            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(530), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.nazaj();
                 main = 1;
@@ -282,7 +285,7 @@ void vec(GameManager& igra) {
             main = 1;
         }
 
-        SDL_RenderPresent(igra.okno.renderer);
+        SDL_RenderPresent(igra.okno.ren);
         SDL_Delay(75);
     }
 
@@ -290,55 +293,58 @@ void vec(GameManager& igra) {
 }
 
 void animacija(GameManager& igra, int stAnim) {
-    SDL_RenderClear(igra.okno.renderer);
+    SDL_RenderClear(igra.okno.ren);
     Image odzadje;
     switch (stAnim) {
     case 1:
-        odzadje.init(igra.okno.renderer, "common/images/animacija1.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+        odzadje.init(igra.okno.ren, "common/img/animacija1.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
         break;
     case 2:
-        odzadje.init(igra.okno.renderer, "common/images/animacija2.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+        odzadje.init(igra.okno.ren, "common/img/animacija2.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
         break;
     case 3:
-        odzadje.init(igra.okno.renderer, "common/images/animacija3.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+        odzadje.init(igra.okno.ren, "common/img/animacija3.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
         break;
     case 4:
-        odzadje.init(igra.okno.renderer, "common/images/animacija4.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+        odzadje.init(igra.okno.ren, "common/img/animacija4.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
         break;
     case 5:
-        odzadje.init(igra.okno.renderer, "common/images/animacija5.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+        odzadje.init(igra.okno.ren, "common/img/animacija5.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
         break;
     case 6:
-        odzadje.init(igra.okno.renderer, "common/images/animacija6.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+        odzadje.init(igra.okno.ren, "common/img/animacija6.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
         break;
     default:
         cout << "Error: stAnim switch" << endl;
     }
-    odzadje.display(igra.okno.renderer);
-    SDL_RenderPresent(igra.okno.renderer);
+    odzadje.display(igra.okno.ren);
+    SDL_RenderPresent(igra.okno.ren);
 
     igra.sound.soundAnimacija(stAnim);
     SDL_Delay(500);
+    
     SDL_PollEvent(&igra.event);
     SDL_PumpEvents();
-    Image img_press_enter;
+    Image img_enter;
     int blink = 0;
-    img_press_enter.init(igra.okno.renderer, "common/images/pressreturn.png", 0, 0, igra.okno.scalerCalculator(igra.okno.returnWindowWidth()), igra.okno.scalerCalculator(igra.okno.returnWindowHeight()));
+    cout << "Animacija caka na enter" << endl;
+    img_enter.init(igra.okno.ren, "common/img/pressreturn.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
     while (!igra.keys[SDL_SCANCODE_RETURN]) {
         SDL_PollEvent(&igra.event);
         SDL_PumpEvents();
-        SDL_RenderClear(igra.okno.renderer);
-        odzadje.display(igra.okno.renderer);
+        SDL_RenderClear(igra.okno.ren);
+        odzadje.display(igra.okno.ren);
         if (blink < 100) {
-            img_press_enter.display(igra.okno.renderer);
+            img_enter.display(igra.okno.ren);
         }
         else if (blink > 150) {
             blink = 0;
         }
         blink++;
-        SDL_RenderPresent(igra.okno.renderer);
+        SDL_RenderPresent(igra.okno.ren);
         SDL_Delay(10);
     }
+    cout << "Pritisnili ste enter :)" << endl;
 }
 
 void premakniNaXY(GameManager &igra, int &x, int &y, int final_x, int final_y, Image &img_overworld, Image &img_player, int nivo){
@@ -353,84 +359,84 @@ void premakniNaXY(GameManager &igra, int &x, int &y, int final_x, int final_y, I
             else y--;
         }
         if (x == final_x && y == final_y) {
-            SDL_RenderClear(igra.okno.renderer);
-            img_overworld.display(igra.okno.renderer);
+            SDL_RenderClear(igra.okno.ren);
+            img_overworld.display(igra.okno.ren);
             narisiFarmeAliDosezke(igra, nivo);
-            img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
-            img_player.display(igra.okno.renderer);
-            SDL_RenderPresent(igra.okno.renderer);
+            img_player.init(igra.okno.ren, "common/img/player_event.png", igra.okno.scaleCal(x), igra.okno.scaleCal(y), igra.okno.scaleCal(29), igra.okno.scaleCal(64));
+            img_player.display(igra.okno.ren);
+            SDL_RenderPresent(igra.okno.ren);
             break;
         }
 
-        SDL_RenderClear(igra.okno.renderer);
-        img_overworld.display(igra.okno.renderer);
+        SDL_RenderClear(igra.okno.ren);
+        img_overworld.display(igra.okno.ren);
         
         if (i < 10)
-            img_player.init(igra.okno.renderer, "common/images/player.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+            img_player.init(igra.okno.ren, "common/img/player.png", igra.okno.scaleCal(x), igra.okno.scaleCal(y), igra.okno.scaleCal(29), igra.okno.scaleCal(64));
         else if (i > 20)
             i = 0;
         else
-            img_player.init(igra.okno.renderer, "common/images/player_noge.png", igra.okno.scalerCalculator(x), igra.okno.scalerCalculator(y), igra.okno.scalerCalculator(29), igra.okno.scalerCalculator(64));
+            img_player.init(igra.okno.ren, "common/img/player_noge.png", igra.okno.scaleCal(x), igra.okno.scaleCal(y), igra.okno.scaleCal(29), igra.okno.scaleCal(64));
         narisiFarmeAliDosezke(igra, nivo);
-        img_player.display(igra.okno.renderer);
-        SDL_RenderPresent(igra.okno.renderer);
+        img_player.display(igra.okno.ren);
+        SDL_RenderPresent(igra.okno.ren);
         SDL_Delay(10);
         i+=1;
     }
 }
 
 void narisiFarmeAliDosezke(GameManager& igra, int nivo) {
-    Image monolith[5];
+    Image hisa[5];
     int x[5] = {210, 100, 320, 460, 450};
     int y[5] = {160, 425, 420, 215, 100};
     switch (nivo) {
     case 0:
-        monolith[0].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[0]), igra.okno.scalerCalculator(y[0]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[1].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[1]), igra.okno.scalerCalculator(y[1]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[2].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[2]), igra.okno.scalerCalculator(y[2]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[3]), igra.okno.scalerCalculator(y[3]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[4]), igra.okno.scalerCalculator(y[4]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        hisa[0].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[0]), igra.okno.scaleCal(y[0]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[1].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[1]), igra.okno.scaleCal(y[1]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[2].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[2]), igra.okno.scaleCal(y[2]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[3].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[3]), igra.okno.scaleCal(y[3]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[4].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[4]), igra.okno.scaleCal(y[4]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
         break;
     case 1:
-        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[0]), igra.okno.scalerCalculator(y[0]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[1].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[1]), igra.okno.scalerCalculator(y[1]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[2].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[2]), igra.okno.scalerCalculator(y[2]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[3]), igra.okno.scalerCalculator(y[3]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[4]), igra.okno.scalerCalculator(y[4]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        hisa[0].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[0]), igra.okno.scaleCal(y[0]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[1].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[1]), igra.okno.scaleCal(y[1]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[2].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[2]), igra.okno.scaleCal(y[2]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[3].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[3]), igra.okno.scaleCal(y[3]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[4].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[4]), igra.okno.scaleCal(y[4]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
         break;
     case 2:
-        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[0]), igra.okno.scalerCalculator(y[0]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[1]), igra.okno.scalerCalculator(y[1]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[2].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[2]), igra.okno.scalerCalculator(y[2]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[3]), igra.okno.scalerCalculator(y[3]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[4]), igra.okno.scalerCalculator(y[4]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        hisa[0].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[0]), igra.okno.scaleCal(y[0]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[1].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[1]), igra.okno.scaleCal(y[1]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[2].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[2]), igra.okno.scaleCal(y[2]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[3].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[3]), igra.okno.scaleCal(y[3]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[4].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[4]), igra.okno.scaleCal(y[4]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
         break;
     case 3:
-        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[0]), igra.okno.scalerCalculator(y[0]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[1]), igra.okno.scalerCalculator(y[1]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[2].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[2]), igra.okno.scalerCalculator(y[2]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[3].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[3]), igra.okno.scalerCalculator(y[3]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[4]), igra.okno.scalerCalculator(y[4]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        hisa[0].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[0]), igra.okno.scaleCal(y[0]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[1].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[1]), igra.okno.scaleCal(y[1]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[2].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[2]), igra.okno.scaleCal(y[2]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[3].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[3]), igra.okno.scaleCal(y[3]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[4].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[4]), igra.okno.scaleCal(y[4]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
         break;
     case 4:
-        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[0]), igra.okno.scalerCalculator(y[0]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[1]), igra.okno.scalerCalculator(y[1]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[2].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[2]), igra.okno.scalerCalculator(y[2]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[3].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[3]), igra.okno.scalerCalculator(y[3]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[4].init(igra.okno.renderer, "common/images/farma.png", igra.okno.scalerCalculator(x[4]), igra.okno.scalerCalculator(y[4]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        hisa[0].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[0]), igra.okno.scaleCal(y[0]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[1].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[1]), igra.okno.scaleCal(y[1]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[2].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[2]), igra.okno.scaleCal(y[2]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[3].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[3]), igra.okno.scaleCal(y[3]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[4].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[4]), igra.okno.scaleCal(y[4]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
         break;
     case 5:
-        monolith[0].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[0]), igra.okno.scalerCalculator(y[0]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[1].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[1]), igra.okno.scalerCalculator(y[1]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[2].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[2]), igra.okno.scalerCalculator(y[2]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[3].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[3]), igra.okno.scalerCalculator(y[3]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
-        monolith[4].init(igra.okno.renderer, "common/images/iglu.png", igra.okno.scalerCalculator(x[4]), igra.okno.scalerCalculator(y[4]), igra.okno.scalerCalculator(66), igra.okno.scalerCalculator(61));
+        hisa[0].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[0]), igra.okno.scaleCal(y[0]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[1].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[1]), igra.okno.scaleCal(y[1]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[2].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[2]), igra.okno.scaleCal(y[2]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[3].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[3]), igra.okno.scaleCal(y[3]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        hisa[4].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[4]), igra.okno.scaleCal(y[4]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
         break;
     default:
         cout << "Error: narisiFarmeAliDosezke switch" << endl;
     }
 
     for (int i = 0; i < 5; i++) {
-        monolith[i].display(igra.okno.renderer);
+        hisa[i].display(igra.okno.ren);
     }
 }
