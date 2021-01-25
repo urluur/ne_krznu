@@ -81,17 +81,15 @@ void overworld(GameManager& igra) {
             premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player, level_clear);
             igra.haltEnter(4);
             animacija(igra, 6);
-
             cout << "Peti nivo" << endl;
             igra.level(level_clear);
-            premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player, level_clear);
-            igra.haltEnter(4);
             break;
         case 5:
             premakniNaXY(igra, x, y, 425, 30, img_overworld, img_player, level_clear);
             igra.haltEnter(4);
 
             cout << "Zmaga!" << endl;
+            animacija(igra, 7);
             img_overworld.init(igra.okno.ren, "common/img/overworld.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
             img_overworld.display(igra.okno.ren);
             img_player.init(igra.okno.ren, "common/img/player.png", igra.okno.scaleCal(x), igra.okno.scaleCal(y), igra.okno.scaleCal(29), igra.okno.scaleCal(64));
@@ -314,6 +312,9 @@ void animacija(GameManager& igra, int stAnim) {
     case 6:
         odzadje.init(igra.okno.ren, "common/img/animacija6.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
         break;
+    case 7:
+        odzadje.init(igra.okno.ren, "common/img/animacija7.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        break;
     default:
         cout << "Error: stAnim switch" << endl;
     }
@@ -387,55 +388,16 @@ void premakniNaXY(GameManager &igra, int &x, int &y, int final_x, int final_y, I
 
 void narisiFarmeAliDosezke(GameManager& igra, int nivo) {
     Image hisa[5];
-    int x[5] = {210, 100, 320, 460, 450};
-    int y[5] = {160, 425, 420, 215, 100};
-    switch (nivo) {
-    case 0:
-        hisa[0].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[0]), igra.okno.scaleCal(y[0]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[1].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[1]), igra.okno.scaleCal(y[1]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[2].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[2]), igra.okno.scaleCal(y[2]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[3].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[3]), igra.okno.scaleCal(y[3]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[4].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[4]), igra.okno.scaleCal(y[4]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        break;
-    case 1:
-        hisa[0].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[0]), igra.okno.scaleCal(y[0]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[1].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[1]), igra.okno.scaleCal(y[1]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[2].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[2]), igra.okno.scaleCal(y[2]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[3].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[3]), igra.okno.scaleCal(y[3]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[4].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[4]), igra.okno.scaleCal(y[4]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        break;
-    case 2:
-        hisa[0].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[0]), igra.okno.scaleCal(y[0]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[1].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[1]), igra.okno.scaleCal(y[1]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[2].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[2]), igra.okno.scaleCal(y[2]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[3].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[3]), igra.okno.scaleCal(y[3]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[4].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[4]), igra.okno.scaleCal(y[4]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        break;
-    case 3:
-        hisa[0].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[0]), igra.okno.scaleCal(y[0]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[1].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[1]), igra.okno.scaleCal(y[1]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[2].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[2]), igra.okno.scaleCal(y[2]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[3].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[3]), igra.okno.scaleCal(y[3]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[4].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[4]), igra.okno.scaleCal(y[4]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        break;
-    case 4:
-        hisa[0].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[0]), igra.okno.scaleCal(y[0]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[1].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[1]), igra.okno.scaleCal(y[1]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[2].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[2]), igra.okno.scaleCal(y[2]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[3].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[3]), igra.okno.scaleCal(y[3]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[4].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[4]), igra.okno.scaleCal(y[4]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        break;
-    case 5:
-        hisa[0].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[0]), igra.okno.scaleCal(y[0]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[1].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[1]), igra.okno.scaleCal(y[1]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[2].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[2]), igra.okno.scaleCal(y[2]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[3].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[3]), igra.okno.scaleCal(y[3]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        hisa[4].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[4]), igra.okno.scaleCal(y[4]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
-        break;
-    default:
-        cout << "Error: narisiFarmeAliDosezke switch" << endl;
+    int x[5] = { 210, 100, 320, 460, 450 };
+    int y[5] = { 160, 425, 420, 215, 100 };
+    for (int i = 0; i < 5; i++) {
+        if (i<nivo) {
+            hisa[i].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[i]), igra.okno.scaleCal(y[i]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        }
+        else {
+            hisa[i].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[i]), igra.okno.scaleCal(y[i]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+        }
     }
-
     for (int i = 0; i < 5; i++) {
         hisa[i].display(igra.okno.ren);
     }
