@@ -11,6 +11,7 @@ class GameManager{
 private:
 	//bom pol spremenu na private
 	bool konecLevela;
+	bool completed;
 public:
 	SDL_Event event;
 	WindowManager okno;
@@ -23,4 +24,6 @@ public:
 	void pripraviPolje();
 	void haltEnter(int nivo);
 	void updateMap();
+	bool isCompleted();
+	void setCompleted();
 };

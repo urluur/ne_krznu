@@ -13,7 +13,7 @@ void overworld(GameManager& igra) {
     int blink = 0;
 
     int level_clear=0;
-    img_overworld.init(igra.okno.ren, "common/img/overworld.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+    img_overworld.ini(igra, "common/img/overworld.png");
     img_overworld.display(igra.okno.ren);
      
     int x=90, y=160;
@@ -27,14 +27,14 @@ void overworld(GameManager& igra) {
         SDL_PollEvent(&igra.event);
         SDL_PumpEvents();
         SDL_RenderClear(igra.okno.ren);
-        img_overworld.init(igra.okno.ren, "common/img/overworld.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        img_overworld.ini(igra, "common/img/overworld.png");
         img_overworld.display(igra.okno.ren);
         narisiFarmeAliDosezke(igra, level_clear);
         SDL_RenderPresent(igra.okno.ren);
 
         switch (level_clear) {
         case 0:
-            img_player.init(igra.okno.ren, "common/img/player.png", igra.okno.scaleCal(55), igra.okno.scaleCal(160), igra.okno.scaleCal(29), igra.okno.scaleCal(64));
+            img_player.init(igra, "common/img/player.png", 55, 160, 29, 64);
             img_player.display(igra.okno.ren);
             igra.haltEnter(0); // takoj ko odpremo in je na ladji
             animacija(igra, 1);
@@ -92,11 +92,11 @@ void overworld(GameManager& igra) {
 
             cout << "Zmaga!" << endl;
             animacija(igra, 7);
-            img_overworld.init(igra.okno.ren, "common/img/overworld.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+            img_overworld.ini(igra, "common/img/overworld.png");
             img_overworld.display(igra.okno.ren);
-            img_player.init(igra.okno.ren, "common/img/player.png", igra.okno.scaleCal(x), igra.okno.scaleCal(y), igra.okno.scaleCal(29), igra.okno.scaleCal(64));
+            img_player.init(igra, "common/img/player.png", x, y, 29, 64);
             img_player.display(igra.okno.ren);
-            img_zastavica_fullscreen.init(igra.okno.ren, "common/img/zastavica_fullscreen.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+            img_zastavica_fullscreen.ini(igra, "common/img/zastavica_fullscreen.png");
             img_zastavica_fullscreen.display(igra.okno.ren);
             narisiFarmeAliDosezke(igra, level_clear);
             SDL_RenderPresent(igra.okno.ren);
@@ -104,6 +104,7 @@ void overworld(GameManager& igra) {
             //prikaz rekordov
             SDL_Delay(3000);
             main = 1;
+            igra.setCompleted();
             break;
         default:
             cout << "Error: level_clear" << endl;
@@ -131,7 +132,7 @@ void nastavitve(GameManager& igra) {
         SDL_PollEvent(&igra.event);
         SDL_PumpEvents();
         SDL_RenderClear(igra.okno.ren);
-        img_nastavitve.init(igra.okno.ren, "common/img/nastavitve.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        img_nastavitve.ini(igra, "common/img/nastavitve.png");
         img_nastavitve.display(igra.okno.ren);
         if (igra.keys[SDL_SCANCODE_UP])
         {
@@ -155,7 +156,7 @@ void nastavitve(GameManager& igra) {
         switch (pozicija_cursorja)
         {
         case 1:
-            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(210), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.init(igra, "common/img/cursor.png", 20, 210, 98, 49);
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.dimenzije();
@@ -173,7 +174,7 @@ void nastavitve(GameManager& igra) {
             }
             break;
         case 2:
-            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(310), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.init(igra, "common/img/cursor.png", 20, 310, 98, 49);
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.spremeni_ime();
@@ -181,7 +182,7 @@ void nastavitve(GameManager& igra) {
             }
             break;
         case 3:
-            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(420), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.init(igra, "common/img/cursor.png", 20, 420, 98, 49);
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.spremeni_zvok();
@@ -191,7 +192,7 @@ void nastavitve(GameManager& igra) {
 
             break;
         case 4:
-            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(510), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.init(igra, "common/img/cursor.png", 20, 510, 98, 49);
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.nazaj();
@@ -217,13 +218,13 @@ void vec(GameManager& igra) {
     int pozicija_cursorja = 1;
     Image img_vec;
     Image cursor;
-    Image github(igra.okno.ren, "common/img/github.png", igra.okno.scaleCal(20), igra.okno.scaleCal(20), igra.okno.scaleCal(279), igra.okno.scaleCal(66));
+    Image github(igra.okno.ren, "common/img/github.png", 20, 20, 279, 66);
     while (main == 0)
     {
         SDL_PollEvent(&igra.event);
         SDL_PumpEvents();
         SDL_RenderClear(igra.okno.ren);
-        img_vec.init(igra.okno.ren, "common/img/vec.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        img_vec.ini(igra, "common/img/vec.png");
         img_vec.display(igra.okno.ren);
         if (igra.keys[SDL_SCANCODE_UP])
         {
@@ -247,7 +248,7 @@ void vec(GameManager& igra) {
         switch (pozicija_cursorja)
         {
         case 1:
-            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(210), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.init(igra, "common/img/cursor.png", 20, 210, 98, 49);
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.lestvica();
@@ -256,7 +257,7 @@ void vec(GameManager& igra) {
             break;
         case 2:
             github.display(igra.okno.ren);
-            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(310), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.init(igra, "common/img/cursor.png", 20, 310, 98, 49);
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.izvorna();
@@ -264,7 +265,7 @@ void vec(GameManager& igra) {
             }
             break;
         case 3:
-            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(420), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.init(igra, "common/img/cursor.png", 20, 420, 98, 49);
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.izbris();
@@ -272,7 +273,7 @@ void vec(GameManager& igra) {
 
             break;
         case 4:
-            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(530), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.init(igra, "common/img/cursor.png", 20, 530, 98, 49);
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.nazaj();
@@ -297,25 +298,25 @@ void animacija(GameManager& igra, int stAnim) {
     Image odzadje;
     switch (stAnim) {
     case 1:
-        odzadje.init(igra.okno.ren, "common/img/animacija1.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        odzadje.ini(igra, "common/img/animacija1.png");
         break;
     case 2:
-        odzadje.init(igra.okno.ren, "common/img/animacija2.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        odzadje.ini(igra, "common/img/animacija2.png");
         break;
     case 3:
-        odzadje.init(igra.okno.ren, "common/img/animacija3.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        odzadje.ini(igra, "common/img/animacija3.png");
         break;
     case 4:
-        odzadje.init(igra.okno.ren, "common/img/animacija4.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        odzadje.ini(igra, "common/img/animacija4.png");
         break;
     case 5:
-        odzadje.init(igra.okno.ren, "common/img/animacija5.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        odzadje.ini(igra, "common/img/animacija5.png");
         break;
     case 6:
-        odzadje.init(igra.okno.ren, "common/img/animacija6.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        odzadje.ini(igra, "common/img/animacija6.png");
         break;
     case 7:
-        odzadje.init(igra.okno.ren, "common/img/animacija7.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        odzadje.ini(igra, "common/img/animacija7.png");
         break;
     default:
         cout << "Error: stAnim switch" << endl;
@@ -331,7 +332,7 @@ void animacija(GameManager& igra, int stAnim) {
     Image img_enter;
     int blink = 0;
     cout << "Animacija caka na enter" << endl;
-    img_enter.init(igra.okno.ren, "common/img/pressreturn.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+    img_enter.ini(igra, "common/img/pressreturn.png");
     while (!igra.keys[SDL_SCANCODE_RETURN]) {
         SDL_PollEvent(&igra.event);
         SDL_PumpEvents();
@@ -365,7 +366,7 @@ void premakniNaXY(GameManager &igra, int &x, int &y, int final_x, int final_y, I
             SDL_RenderClear(igra.okno.ren);
             img_overworld.display(igra.okno.ren);
             narisiFarmeAliDosezke(igra, nivo);
-            img_player.init(igra.okno.ren, "common/img/player_event.png", igra.okno.scaleCal(x), igra.okno.scaleCal(y), igra.okno.scaleCal(29), igra.okno.scaleCal(64));
+            img_player.init(igra, "common/img/player_event.png", x, y, 29, 64);
             img_player.display(igra.okno.ren);
             SDL_RenderPresent(igra.okno.ren);
             break;
@@ -375,11 +376,11 @@ void premakniNaXY(GameManager &igra, int &x, int &y, int final_x, int final_y, I
         img_overworld.display(igra.okno.ren);
         
         if (i < 10)
-            img_player.init(igra.okno.ren, "common/img/player.png", igra.okno.scaleCal(x), igra.okno.scaleCal(y), igra.okno.scaleCal(29), igra.okno.scaleCal(64));
+            img_player.init(igra, "common/img/player.png", x, y, 29, 64);
         else if (i > 20)
             i = 0;
         else
-            img_player.init(igra.okno.ren, "common/img/player_noge.png", igra.okno.scaleCal(x), igra.okno.scaleCal(y), igra.okno.scaleCal(29), igra.okno.scaleCal(64));
+            img_player.init(igra, "common/img/player_noge.png", x, y, 29, 64);
         narisiFarmeAliDosezke(igra, nivo);
         img_player.display(igra.okno.ren);
         SDL_RenderPresent(igra.okno.ren);
@@ -394,10 +395,10 @@ void narisiFarmeAliDosezke(GameManager& igra, int nivo) {
     int y[5] = { 160, 425, 420, 215, 100 };
     for (int i = 0; i < 5; i++) {
         if (i<nivo) {
-            hisa[i].init(igra.okno.ren, "common/img/iglu.png", igra.okno.scaleCal(x[i]), igra.okno.scaleCal(y[i]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+            hisa[i].init(igra, "common/img/iglu.png", x[i], y[i], 66, 61);
         }
         else {
-            hisa[i].init(igra.okno.ren, "common/img/farma.png", igra.okno.scaleCal(x[i]), igra.okno.scaleCal(y[i]), igra.okno.scaleCal(66), igra.okno.scaleCal(61));
+            hisa[i].init(igra, "common/img/farma.png", x[i], y[i], 66, 61);
         }
     }
     for (int i = 0; i < 5; i++) {

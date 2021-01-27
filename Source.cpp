@@ -29,7 +29,12 @@ int main() {
         SDL_PollEvent(&event);
         SDL_PumpEvents();
         SDL_RenderClear(igra.okno.ren);
-        main.init(igra.okno.ren, "common/img/main.png", 0, 0, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
+        if (igra.isCompleted()) {
+            main.ini(igra, "common/img/main_completed.png");
+        }
+        else {
+            main.ini(igra, "common/img/main.png");
+        }
         main.display(igra.okno.ren);
         
         if (igra.keys[SDL_SCANCODE_UP]) {
@@ -46,7 +51,7 @@ int main() {
         }
         switch (pozicija_cursorja) {
         case 1:
-            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(120), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.init(igra, "common/img/cursor.png", 20, 120, 98, 49);
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.zacni();
@@ -55,7 +60,7 @@ int main() {
             }
             break;
         case 2:
-            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(180), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.init(igra, "common/img/cursor.png", 20, 180, 98, 49);
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.vec();
@@ -66,7 +71,7 @@ int main() {
             }
             break;
         case 3:
-            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(240), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.init(igra, "common/img/cursor.png", 20, 240, 98, 49);
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.nastavitve();
@@ -81,7 +86,7 @@ int main() {
                 igra.sound.izhod();
                 izhod_switch = true;
             }
-            cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(320), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
+            cursor.init(igra, "common/img/cursor.png", 20, 320, 98, 49);
             cursor.display(igra.okno.ren);
             break;
         }

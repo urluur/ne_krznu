@@ -3,6 +3,7 @@
 GameManager::GameManager() {
 	//definiram privzete lastnosti
     konecLevela = false;
+    completed = false;
 }
 
 void GameManager::level(int &nivo) {
@@ -81,4 +82,12 @@ void GameManager::haltEnter(int nivo) {
         SDL_RenderPresent(okno.ren);
     }
     cout << "\"Enter\" was pressed" << endl;
+}
+
+bool GameManager::isCompleted() {
+    return completed;
+}
+
+void GameManager::setCompleted() {
+    completed = true;
 }

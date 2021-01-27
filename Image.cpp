@@ -22,7 +22,8 @@ Image::Image(SDL_Renderer* ren, const char* filePath, int x, int y, int w, int h
 	rect.h = h;
 }
 
-void Image::init(SDL_Renderer* ren, const char* filePath, int x, int y, int w, int h) {
+
+void Image::init(GameManager& igra, const char* filePath, int x, int y, int w, int h) {
 	if (image_texture != nullptr && image_surface != nullptr) {
 		SDL_FreeSurface(image_surface);
 		SDL_DestroyTexture(image_texture);
@@ -30,16 +31,20 @@ void Image::init(SDL_Renderer* ren, const char* filePath, int x, int y, int w, i
 
 	image_surface = IMG_Load(filePath);
 
-	image_texture = SDL_CreateTextureFromSurface(ren, image_surface);
+	image_texture = SDL_CreateTextureFromSurface(igra.okno.ren, image_surface);
 
 	flipped = (w <= 0) ? true : false;
 
 	w = (w <= 0) ? w *= -1 : w *= 1;
 
-	rect.x = x;
-	rect.y = y;
-	rect.w = w;
-	rect.h = h;
+	rect.x = igra.okno.scaleCal(x);
+	rect.y = igra.okno.scaleCal(y);
+	rect.w = igra.okno.scaleCal(w);
+	rect.h = igra.okno.scaleCal(h);
+}
+
+void Image::ini(GameManager& igra, const char* filePath) {
+	init(igra, filePath, 0, 0, 720, 640);
 }
 
 void Image::display(SDL_Renderer* ren) {
