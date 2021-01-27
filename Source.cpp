@@ -9,15 +9,19 @@ void overworld(GameManager& igra);
 
 int main() {
     GameManager igra;
+    {
+        bool problemi = igra.init();
+        if (problemi) {
+            return EXIT_FAILURE;
+        }
+    }
     //igra.sound.toggle(); //samo za testing
-    igra.init(igra);
-    
     //igra.igralec.setName(); //izklopljeno za hitrejsi debugging
 
     SDL_Event event;
     SDL_PollEvent(&event);
-    int pozicija_cursorja = 1;
-    int izhod_switch = 0;
+    short pozicija_cursorja = 1;
+    bool izhod_switch = false;
     Image main;
     Image cursor;
 
@@ -47,7 +51,6 @@ int main() {
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.zacni();
                 SDL_RenderClear(igra.okno.ren);
-                //call za zacetek igre
                 overworld(igra);
             }
             break;
@@ -76,7 +79,7 @@ int main() {
         case 4:
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.izhod();
-                izhod_switch = 1;
+                izhod_switch = true;
             }
             cursor.init(igra.okno.ren, "common/img/cursor.png", igra.okno.scaleCal(20), igra.okno.scaleCal(320), igra.okno.scaleCal(98), igra.okno.scaleCal(49));
             cursor.display(igra.okno.ren);
@@ -84,7 +87,7 @@ int main() {
         }
         SDL_RenderPresent(igra.okno.ren);
         SDL_Delay(80);
-        if (izhod_switch == 1) {
+        if (izhod_switch) {
             break;
         }
     }
@@ -92,5 +95,5 @@ int main() {
     SDL_DestroyWindow(igra.okno.window);
     SDL_FreeSurface(igra.okno.image);
     SDL_Quit();
-    return 0;
+    return EXIT_SUCCESS;
 }

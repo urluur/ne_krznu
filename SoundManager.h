@@ -7,7 +7,7 @@ class SoundManager
 {
 private:
 	Mix_Music* bgm;
-    int mute;
+    bool mute;
     bool played;
 public:
 	SoundManager();

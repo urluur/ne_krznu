@@ -13,32 +13,38 @@ WindowManager::~WindowManager() {
 	image = NULL;
 	ren = nullptr;
 }
-int WindowManager::returnWindowWidth() {
+short WindowManager::returnWindowWidth() {
 	return Window_width;
 }
-int WindowManager::returnWindowHeight() {
+short WindowManager::returnWindowHeight() {
 	return Window_height;
 }
 void WindowManager::toggleScaler() {
 	switch (scaler) {
 	case 1:
 		scaler = 12;
+		cout << "1,2";
 		break;
 	case 12:
 		scaler = 15;
+		cout << "1,5";
 		break;
 	case 15:
 		scaler = 100;
+		cout << "fullscreen";
 		break;
 	case 100:
 		scaler = 5;
+		cout << "0,5";
 		break;
 	case 5:
 		scaler = 1;
+		cout << "1 (original)";
 		break;
 	default:
 		std::cout << "Error: toggleScaler" << std::endl;
 	}
+	cout << endl;
 }
 int WindowManager::scaleCal(int stevilo) {
 	switch (scaler) {
@@ -53,9 +59,9 @@ int WindowManager::scaleCal(int stevilo) {
 	case 100:
 		return stevilo * 1.7;
 	default:
-		std::cout << "Error: scaleCal" << std::endl;
+		cout << "Error: scaleCal" << endl;
 	}
 }
-int WindowManager::vrniScaler() {
+short WindowManager::vrniScaler() {
 	return scaler;
 }

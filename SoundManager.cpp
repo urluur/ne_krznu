@@ -1,6 +1,7 @@
 #include "SoundManager.h"
 using namespace std;
 SoundManager::SoundManager() {
+    played = false;
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
         cout << "Mixer error: " << Mix_GetError() << endl;
     }

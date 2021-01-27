@@ -20,6 +20,8 @@ void overworld(GameManager& igra) {
     int final_x, final_y;
     bool x_bool=false, y_bool=false;
 
+    //previrjanje iz filov zasilnega shranjevanja
+
     while (main == 0) {
         SDL_Delay(500);
         SDL_PollEvent(&igra.event);
@@ -110,7 +112,6 @@ void overworld(GameManager& igra) {
 
         if ((igra.keys[SDL_SCANCODE_ESCAPE] || igra.event.type == SDL_QUIT)) {
             main = 1;
-            //zasilno shranjevanje podatkov
         }
     }
     SDL_RenderClear(igra.okno.ren);
@@ -158,7 +159,7 @@ void nastavitve(GameManager& igra) {
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.dimenzije();
-                cout << "spreminjam velikost okna";
+                cout << "spreminjam velikost okna na ";
                 igra.okno.toggleScaler();
                 SDL_SetWindowSize(igra.okno.window, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
                 if (igra.okno.vrniScaler() == 100) {
@@ -185,6 +186,7 @@ void nastavitve(GameManager& igra) {
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.spremeni_zvok();
                 igra.sound.toggle();
+                SDL_Delay(50);
             }
 
             break;
