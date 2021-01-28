@@ -218,7 +218,7 @@ void vec(GameManager& igra) {
     int pozicija_cursorja = 1;
     Image img_vec;
     Image cursor;
-    Image github(igra.okno.ren, "common/img/github.png", 20, 20, 279, 66);
+    Image github(igra.okno.ren, "common/img/github.png", igra.okno.scaleCal(20), igra.okno.scaleCal(20), igra.okno.scaleCal(279), igra.okno.scaleCal(66));
     while (main == 0)
     {
         SDL_PollEvent(&igra.event);

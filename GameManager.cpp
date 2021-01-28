@@ -2,6 +2,7 @@
 #include "SDL_ttf.h"
 GameManager::GameManager() {
 	//definiram privzete lastnosti
+    SDL_PollEvent(&event);
     konecLevela = false;
     completed = false;
 }

@@ -13,9 +13,9 @@ private:
 	bool konecLevela;
 	bool completed;
 public:
-	SDL_Event event;
 	WindowManager okno;
 	SoundManager sound;
+	SDL_Event event;
 	Igralec igralec;
 	GameManager();
 	int init();
