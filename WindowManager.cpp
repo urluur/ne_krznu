@@ -42,7 +42,7 @@ void WindowManager::toggleScaler() {
 		cout << "1 (original)";
 		break;
 	default:
-		std::cout << "Error: toggleScaler" << std::endl;
+		cout << "Error: toggleScaler" << endl;
 	}
 	cout << endl;
 }
@@ -59,7 +59,7 @@ int WindowManager::scaleCal(int stevilo) {
 	case 100:
 		return stevilo * 1.7;
 	default:
-		cout << "Error: scaleCal" << endl;
+		cout << "Error: scaleCal: " << scaler << endl;
 	}
 }
 short WindowManager::vrniScaler() {

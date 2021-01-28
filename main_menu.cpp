@@ -296,31 +296,16 @@ void vec(GameManager& igra) {
 void animacija(GameManager& igra, int stAnim) {
     SDL_RenderClear(igra.okno.ren);
     Image odzadje;
-    switch (stAnim) {
-    case 1:
-        odzadje.ini(igra, "common/img/animacija1.png");
-        break;
-    case 2:
-        odzadje.ini(igra, "common/img/animacija2.png");
-        break;
-    case 3:
-        odzadje.ini(igra, "common/img/animacija3.png");
-        break;
-    case 4:
-        odzadje.ini(igra, "common/img/animacija4.png");
-        break;
-    case 5:
-        odzadje.ini(igra, "common/img/animacija5.png");
-        break;
-    case 6:
-        odzadje.ini(igra, "common/img/animacija6.png");
-        break;
-    case 7:
-        odzadje.ini(igra, "common/img/animacija7.png");
-        break;
-    default:
-        cout << "Error: stAnim switch" << endl;
-    }
+
+    string pathFragment = "common/img/animacija"; // zacetek
+    pathFragment += to_string(stAnim);
+    pathFragment += ".png";
+    char* path = new char[pathFragment.size() + 1];
+    std::copy(pathFragment.begin(), pathFragment.end(), path);
+    path[pathFragment.size()] = '\0';
+    odzadje.ini(igra, path); // klic
+    delete[] path; // konec
+
     odzadje.display(igra.okno.ren);
     SDL_RenderPresent(igra.okno.ren);
 

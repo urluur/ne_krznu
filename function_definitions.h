@@ -9,6 +9,7 @@
 #include <fstream>
 #include <SDL_mixer.h>
 #include <string>
+#include <cstring>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
