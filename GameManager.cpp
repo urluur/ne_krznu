@@ -7,14 +7,17 @@ GameManager::GameManager() {
     completed = false;
 }
 
-void GameManager::level(int &nivo) {
+void GameManager::level(short &nivo) {
     cout << igralec.getName() << " zacenja " << nivo+1 << " level" << endl;
+
     //nared strukturo z usemi slikami
-    pripraviPolje();
+    //pripraviPolje();
     while (!(keys[SDL_SCANCODE_ESCAPE] || event.type == SDL_QUIT) && !konecLevela) {
         //tuki pride pole igra ku igra
+
+
         updateMap();
-        konecLevela = true;
+        konecLevela = true; //to bo v enem if-u
     }
     if (konecLevela) {
         cout << "Koncal si " << ++nivo << " nivo!" << endl;
@@ -23,18 +26,33 @@ void GameManager::level(int &nivo) {
         //zasilno shranjevanje
     }
 }
-
+/*
 void GameManager::pripraviPolje() {
+
     //dodaj da pride prek argumenta se struktura
     //postauljanje usega na pravo zacetno mesto
     //nared strukturo z usemi
     //inicializiri use slike u strukturi
 }
 
+void GameManager::nastaviOdzadje(GameManager &igra, short nivo, ) {
+    string pathFragment = "common/img/odzadje";
+    pathFragment += to_string(nivo);
+    pathFragment += ".png";
+    char* path = new char[pathFragment.size() + 1];
+    std::copy(pathFragment.begin(), pathFragment.end(), path);
+    path[pathFragment.size()] = '\0';
+    odzadje.ini(igra, path); // klic
+    delete[] path; // konec
+}*/
+
 void GameManager::updateMap() {
     //(slike).display(okno.ren);
     SDL_RenderPresent(okno.ren);
 }
+
+
+
 
 //inicializiranje sdl okna
 int GameManager::init() {
@@ -50,7 +68,7 @@ int GameManager::init() {
         cout << "SDL Create Window, Error: " << SDL_GetError() << endl;
         return -1;
     }
-    okno.ren = SDL_CreateRenderer(okno.window, -1, 0);
+    okno.ren = SDL_CreateRenderer(okno.window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (okno.ren == nullptr) {
         std::cout << "Could not create ren! SDL error" << SDL_GetError() << std::endl;
         return EXIT_FAILURE;
@@ -70,17 +88,16 @@ int GameManager::init() {
 }
 
 
-void GameManager::haltEnter(int nivo) {
+void GameManager::haltEnter(short nivo) {
     cout << "Waiting for Enter keystroke" << endl;
     Image img_enter(okno.ren, "common/img/pressreturn.png", 0, 0, okno.scaleCal(okno.returnWindowWidth()), okno.scaleCal(okno.returnWindowHeight()));
     SDL_Delay(200);
     SDL_PollEvent(&event);
+    img_enter.display(okno.ren);
+    SDL_RenderPresent(okno.ren);
     SDL_PumpEvents();
     while (!keys[SDL_SCANCODE_RETURN]) {
         SDL_PollEvent(&event);
-        SDL_PumpEvents();
-        img_enter.display(okno.ren);
-        SDL_RenderPresent(okno.ren);
     }
     cout << "\"Enter\" was pressed" << endl;
 }

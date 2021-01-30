@@ -4,15 +4,15 @@ using namespace std;
 void overworld(GameManager& igra) {
     SDL_RenderClear(igra.okno.ren);
     int main = 0;
-    int level_igralca = 1;
+    short level_igralca = 1;
     Image img_overworld;
     Image img_player;
     Image img_drevo;
     Image imgs_farma[5];
     Image img_zastavica_fullscreen;
-    int blink = 0;
+    short blink = 0;
 
-    int level_clear=0;
+    short level_clear=0;
     img_overworld.ini(igra, "common/img/overworld.png");
     img_overworld.display(igra.okno.ren);
      

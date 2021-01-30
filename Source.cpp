@@ -15,7 +15,7 @@ int main() {
             return EXIT_FAILURE;
         }
     }
-    //igra.sound.toggle(); //samo za testing
+    igra.sound.toggle(); //samo za testing
     //igra.igralec.setName(); //izklopljeno za hitrejsi debugging
 
     SDL_Event event;

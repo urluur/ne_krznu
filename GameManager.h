@@ -8,10 +8,6 @@
 #include <SDL_image.h>
 using namespace std;
 class GameManager{
-private:
-	//bom pol spremenu na private
-	bool konecLevela;
-	bool completed;
 public:
 	WindowManager okno;
 	SoundManager sound;
@@ -20,10 +16,14 @@ public:
 	GameManager();
 	int init();
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
-	void level(int &nivo);
-	void pripraviPolje();
-	void haltEnter(int nivo);
+	void level(short &nivo);
+	//void pripraviPolje();
+	void haltEnter(short nivo);
 	void updateMap();
 	bool isCompleted();
 	void setCompleted();
+private:
+	//bom pol spremenu na private
+	bool konecLevela;
+	bool completed; // zato da se spremeni main menu
 };
