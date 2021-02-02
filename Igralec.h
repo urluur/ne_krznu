@@ -1,13 +1,16 @@
 #pragma once
+#include <iostream>
 #include <string>
+using namespace std;
+
 class Igralec
 {
 private:
-	std::string ime = "bumbar";
+	string ime = "bumbar";
 public:
 	void setName();
 	void setName(std::string);
-	std::string getName();
+	string getName();
 	Igralec();
 	~Igralec();
 };

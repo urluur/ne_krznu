@@ -1,10 +1,12 @@
 #pragma once
-
 #include "function_definitions.h"
+
+// v main_menu.cpp
 void vec(GameManager& igra);
 void nastavitve(GameManager& igra);
-void overworld(GameManager& igra);
 
+// v overworld.cpp
+void overworld(GameManager& igra);
 void animacija(GameManager& igra, int stAnim);
-void premakniNaXY(GameManager &igra, int &x, int &y, int final_x, int final_y, Image &img_overworld, Image &img_player, int nivo);
-void narisiFarmeAliDosezke(GameManager& igra, int nivo);
+void premakniNaXY(GameManager &igra, short &mov_x, short &mov_y, short to_x, short to_y, Image &img_overworld, Image &img_player, short nivo);
+void narisiFarmeAliDosezke(GameManager& igra, short nivo);

@@ -1,6 +1,4 @@
 #include "Igralec.h"
-#include <iostream>
-using namespace std;
 
 void Igralec::setName() {
 	cout << "Vpisi svoje ime, " << ime << endl;

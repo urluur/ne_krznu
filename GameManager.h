@@ -25,5 +25,5 @@ public:
 private:
 	//bom pol spremenu na private
 	bool konecLevela;
-	bool completed; // zato da se spremeni main menu
+	bool completed; // zato da se spremeni main menu na koncu zgodbe
 };

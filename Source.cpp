@@ -9,12 +9,15 @@ void overworld(GameManager& igra);
 
 int main() {
     GameManager igra;
-    {
+
+    { //problem solver
         bool problemi = igra.init();
         if (problemi) {
             return EXIT_FAILURE;
         }
     }
+
+    // debug faster
     igra.sound.toggle(); //samo za testing
     //igra.igralec.setName(); //izklopljeno za hitrejsi debugging
 
@@ -27,7 +30,6 @@ int main() {
 
     while (!igra.keys[SDL_SCANCODE_ESCAPE] && event.type != SDL_QUIT) {
         SDL_PollEvent(&event);
-        SDL_PumpEvents();
         SDL_RenderClear(igra.okno.ren);
         if (igra.isCompleted()) {
             main.ini(igra, "common/img/main_completed.png");
@@ -97,6 +99,8 @@ int main() {
         }
     }
     //igra.sound.nasvidenje(); //greet
+
+    // cleanup
     SDL_DestroyWindow(igra.okno.window);
     SDL_FreeSurface(igra.okno.image);
     SDL_Quit();

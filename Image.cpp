@@ -2,7 +2,7 @@
 
 Image::Image() {}
 
-Image::Image(SDL_Renderer* ren, const char* filePath, int x, int y, int w, int h) {
+Image::Image(SDL_Renderer* ren, const char* filePath, unsigned short x, unsigned short y, unsigned short w, unsigned short h) {
 	if (image_texture != nullptr && image_surface != nullptr) {
 		SDL_FreeSurface(image_surface);
 		SDL_DestroyTexture(image_texture);
@@ -23,7 +23,7 @@ Image::Image(SDL_Renderer* ren, const char* filePath, int x, int y, int w, int h
 }
 
 
-void Image::init(GameManager& igra, const char* filePath, int x, int y, int w, int h) {
+void Image::init(GameManager& igra, const char* filePath, unsigned short x, unsigned short y, unsigned short w, unsigned short h) {
 	if (image_texture != nullptr && image_surface != nullptr) {
 		SDL_FreeSurface(image_surface);
 		SDL_DestroyTexture(image_texture);
