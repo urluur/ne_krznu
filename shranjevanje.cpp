@@ -26,6 +26,7 @@ void branjeShranjenega(class GameManager& igra) {
 	short tempLvl;
 	string tempName;
 	save >> tempLvl >> tempName;
+	cout << tempName << "je tempname" << endl;
 	igra.setNivo(tempLvl);
 	igra.igralec.setName(tempName);
 }

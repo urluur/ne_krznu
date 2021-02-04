@@ -12,21 +12,37 @@ void overworld(GameManager& igra) {
     Image img_zastavica_fullscreen;
 
     short x = 90, y = 160; //pozicija na ladji
-                           
     //loadanje savefila
     branjeShranjenega(igra);
     short level_clear=igra.getNivo();
-    if (level_clear != 0) {
-        level_clear = igra.getNivo();
-        x = igra.okno.returnWindowWidth()/2;
-        y = 0;
-        cout << "Nalagam na" << igra.getNivo()+1 << ". nivo." << endl;
-    }
 
     img_overworld.ini(igra, "common/img/overworld.png");
     img_overworld.display(igra.okno.ren);
 
-    //previrjanje iz filov zasilnega shranjevanja
+    if (level_clear != 0) {
+        level_clear = igra.getNivo();
+
+        for (;;) { // skip travel
+            premakniNaXY(igra, x, y, 180, 160, img_overworld, img_player, level_clear);
+            if (level_clear == 1) { break; }
+            premakniNaXY(igra, x, y, 90, 250, img_overworld, img_player, level_clear);
+            premakniNaXY(igra, x, y, 165, 350, img_overworld, img_player, level_clear);
+            if (level_clear == 2) { break; }
+            premakniNaXY(igra, x, y, 200, 450, img_overworld, img_player, level_clear);
+            premakniNaXY(igra, x, y, 275, 500, img_overworld, img_player, level_clear);
+            premakniNaXY(igra, x, y, 325, 500, img_overworld, img_player, level_clear);
+            premakniNaXY(igra, x, y, 350, 450, img_overworld, img_player, level_clear);
+            if (level_clear == 3) { break; }
+            premakniNaXY(igra, x, y, 445, 320, img_overworld, img_player, level_clear);
+            premakniNaXY(igra, x, y, 460, 240, img_overworld, img_player, level_clear);
+            premakniNaXY(igra, x, y, 420, 150, img_overworld, img_player, level_clear);
+            if (level_clear == 4) { break; }
+            premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player, level_clear);
+            if (level_clear == 5) { break; }
+            premakniNaXY(igra, x, y, 425, 30, img_overworld, img_player, level_clear);
+        }
+        cout << "Nalagam na" << igra.getNivo()+1 << ". nivo." << endl;
+    }
 
     while (stay) {
         SDL_Delay(100);
