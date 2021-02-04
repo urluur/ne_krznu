@@ -5,23 +5,26 @@ void branjeShranjenega(class GameManager& igra);
 void zasilnoShranjevanje(class GameManager& igra);
 
 void overworld(GameManager& igra) {
-    branjeShranjenega(igra);
     SDL_RenderClear(igra.okno.ren);
     bool stay = true;
     Image img_overworld;
     Image img_player;
     Image img_zastavica_fullscreen;
 
-    short level_clear;
-    if (igra.getNivo() == -1) {
-        level_clear = 0;
-    }
-    else {
+    short x = 90, y = 160; //pozicija na ladji
+                           
+    //loadanje savefila
+    branjeShranjenega(igra);
+    short level_clear=igra.getNivo();
+    if (level_clear != 0) {
         level_clear = igra.getNivo();
+        x = igra.okno.returnWindowWidth()/2;
+        y = 0;
+        cout << "Nalagam na" << igra.getNivo()+1 << ". nivo." << endl;
     }
+
     img_overworld.ini(igra, "common/img/overworld.png");
     img_overworld.display(igra.okno.ren);
-    short x = 90, y = 160; //pozicija na ladji
 
     //previrjanje iz filov zasilnega shranjevanja
 
@@ -38,21 +41,21 @@ void overworld(GameManager& igra) {
         case 0:
             img_player.init(igra, "common/img/player.png", 55, 160, 29, 64);
             img_player.display(igra.okno.ren);
-            igra.haltEnter(0); // takoj ko odpremo in je na ladji
+            igra.haltEnter(level_clear, igra); // takoj ko odpremo in je na ladji
             animacija(igra, 1);
 
             premakniNaXY(igra, x, y, 180, 160, img_overworld, img_player, 0);
-            igra.haltEnter(0); // prej ko se zacne prvi level in smo zravn hiske 
+            igra.haltEnter(level_clear, igra); // prej ko se zacne prvi level in smo zravn hiske 
 
             cout << "Prvi nivo" << endl;
             igra.level(level_clear, igra);
             break;
         case 1:
             premakniNaXY(igra, x, y, 90, 250, img_overworld, img_player, level_clear);
-            igra.haltEnter(1); // stojimo pred mostom
+            igra.haltEnter(1, igra); // stojimo pred mostom
             animacija(igra, 2);
             premakniNaXY(igra, x, y, 165, 350, img_overworld, img_player, level_clear);
-            igra.haltEnter(1); // stojimo pred 2. levelom
+            igra.haltEnter(1, igra); // stojimo pred 2. levelom
 
             cout << "Drugi nivo" << endl;
             igra.level(level_clear, igra);
@@ -61,36 +64,36 @@ void overworld(GameManager& igra) {
             premakniNaXY(igra, x, y, 200, 450, img_overworld, img_player, level_clear);
             premakniNaXY(igra, x, y, 275, 500, img_overworld, img_player, level_clear);
             premakniNaXY(igra, x, y, 325, 500, img_overworld, img_player, level_clear);
-            igra.haltEnter(level_clear); //stojimo na kotu
+            igra.haltEnter(level_clear, igra); //stojimo na kotu
             animacija(igra, 3);
             premakniNaXY(igra, x, y, 350, 450, img_overworld, img_player, level_clear);
-            igra.haltEnter(level_clear); //stojimo na 3. levelu
+            igra.haltEnter(level_clear, igra); //stojimo na 3. levelu
 
             cout << "Tretji nivo" << endl;
             igra.level(level_clear, igra);
             break;
         case 3:
             premakniNaXY(igra, x, y, 445, 320, img_overworld, img_player, level_clear);
-            igra.haltEnter(level_clear); // stojimo na lojtri
+            igra.haltEnter(level_clear, igra); // stojimo na lojtri
             animacija(igra, 4);
             premakniNaXY(igra, x, y, 460, 240, img_overworld, img_player, level_clear);
-            igra.haltEnter(level_clear); //stojimo na 4. levelu
+            igra.haltEnter(level_clear, igra); //stojimo na 4. levelu
             cout << "Cetrti nivo" << endl;
             igra.level(level_clear, igra);
             premakniNaXY(igra, x, y, 420, 150, img_overworld, img_player, level_clear); //testing d se pokaze
-            igra.haltEnter(level_clear);
+            igra.haltEnter(level_clear, igra);
             break;
         case 4:
             animacija(igra, 5);
             premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player, level_clear);
-            igra.haltEnter(4);
+            igra.haltEnter(level_clear, igra);
             animacija(igra, 6);
             cout << "Peti nivo" << endl;
             igra.level(level_clear, igra);
             break;
         case 5:
             premakniNaXY(igra, x, y, 425, 30, img_overworld, img_player, level_clear);
-            igra.haltEnter(4);
+            igra.haltEnter(level_clear, igra);
 
             cout << "Zmaga!" << endl;
             animacija(igra, 7);

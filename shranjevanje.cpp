@@ -5,8 +5,7 @@ void zasilnoShranjevanje(class GameManager& igra) {
 	ofstream quicksave;
 	quicksave.open("quicksave.txt");
 	if (quicksave.is_open()) {
-		quicksave << to_string(igra.getNivo()-1) << "\n";
-		quicksave << igra.igralec.getName() << "\n";
+		quicksave << to_string(igra.getNivo()) << "\n" << igra.igralec.getName() << "\n";
 	}
 	else {
 		cout << "Error: quicksave" << endl;

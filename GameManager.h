@@ -35,7 +35,7 @@ public:
 	void level(short& nivo, GameManager& igra);
 	void pripraviVse();
 	void pripraviOdzadje(GameManager& igra);
-	void haltEnter(short nivo);
+	void haltEnter(short nivo, GameManager& igra);
 	void updateMap();
 	bool isCompleted();
 	void setCompleted(bool resnica);

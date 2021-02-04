@@ -22,7 +22,7 @@ void GameManager::level(short &nivo, GameManager& igra) {
         //za testing
         SDL_RenderClear(okno.ren);
         SDL_RenderPresent(okno.ren);
-        SDL_Delay(5000);
+        SDL_Delay(1000);
 
 
         updateMap();
@@ -39,6 +39,7 @@ void GameManager::level(short &nivo, GameManager& igra) {
 
 void GameManager::pripraviVse() {
     SDL_PollEvent(&event);
+    konecLevela = false;
     //dodaj da pride prek argumenta se struktura
     //postauljanje usega na pravo zacetno mesto
     //nared strukturo z usemi
@@ -97,7 +98,7 @@ int GameManager::init() {
 }
 
 
-void GameManager::haltEnter(short nivo) {
+void GameManager::haltEnter(short nivo, GameManager& igra) {
     cout << "Waiting for Enter keystroke" << endl;
     Image img_enter(okno.ren, "common/img/pressreturn.png", 0, 0, okno.scaleCal(okno.returnWindowWidth()), okno.scaleCal(okno.returnWindowHeight()));
     SDL_Delay(200);
@@ -106,6 +107,11 @@ void GameManager::haltEnter(short nivo) {
     SDL_PollEvent(&event);
     while (!keys[SDL_SCANCODE_RETURN]) {
         SDL_PollEvent(&event);
+        if ((igra.keys[SDL_SCANCODE_ESCAPE] || igra.event.type == SDL_QUIT)) {
+            igra.setNivo(nivo);
+            zasilnoShranjevanje(igra);
+            exit(1);
+        }
     }
     cout << "\"Enter\" was pressed" << endl;
 }
@@ -116,6 +122,16 @@ bool GameManager::isCompleted() {
 
 void GameManager::setCompleted(bool resnica) {
     completed = resnica;
+    ofstream quicksave;
+    quicksave.open("quicksave.txt");
+    if (quicksave.is_open()) {
+        quicksave << "bumbar\n-1\n";
+    }
+    else {
+        cout << "Error: setting complete" << endl;
+        exit(1);
+    }
+    quicksave.close();
 }
 
 short GameManager::getNivo() {
