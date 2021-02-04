@@ -1,57 +1,66 @@
 #include "GameManager.h"
-#include "SDL_ttf.h"
+
 GameManager::GameManager() {
 	//definiram privzete lastnosti
     SDL_PollEvent(&event);
     konecLevela = false;
     completed = false;
+    trenutniNivo = -1;
 }
 
-void GameManager::level(short &nivo) {
-    cout << igralec.getName() << " zacenja " << nivo+1 << " level" << endl;
+void GameManager::level(short &nivo, GameManager& igra) {
+    trenutniNivo = nivo + 1;
+    cout << igralec.getName() << " zacenja " << trenutniNivo << " level" << endl;
 
     //nared strukturo z usemi slikami
-    //pripraviPolje();
+
+    pripraviVse();
     while (!(keys[SDL_SCANCODE_ESCAPE] || event.type == SDL_QUIT) && !konecLevela) {
         //tuki pride pole igra ku igra
 
 
+        //za testing
+        SDL_RenderClear(okno.ren);
+        SDL_RenderPresent(okno.ren);
+        SDL_Delay(5000);
+
+
         updateMap();
         konecLevela = true; //to bo v enem if-u
+        SDL_PollEvent(&event);
     }
     if (konecLevela) {
         cout << "Koncal si " << ++nivo << " nivo!" << endl;
     }
     else{
-        //zasilno shranjevanje
+        //zasilnoShranjevanje(igra);
     }
 }
-/*
-void GameManager::pripraviPolje() {
 
+void GameManager::pripraviVse() {
+    SDL_PollEvent(&event);
     //dodaj da pride prek argumenta se struktura
     //postauljanje usega na pravo zacetno mesto
     //nared strukturo z usemi
     //inicializiri use slike u strukturi
 }
 
-void GameManager::nastaviOdzadje(GameManager &igra, short nivo, ) {
+void GameManager::pripraviOdzadje(GameManager& igra) {
     string pathFragment = "common/img/odzadje";
-    pathFragment += to_string(nivo);
+    pathFragment += to_string(trenutniNivo);
     pathFragment += ".png";
     char* path = new char[pathFragment.size() + 1];
     std::copy(pathFragment.begin(), pathFragment.end(), path);
     path[pathFragment.size()] = '\0';
-    odzadje.ini(igra, path); // klic
-    delete[] path; // konec
-}*/
+    //odzadje.ini(igra, path); // klic
+    delete[] path; // konec    
+}
 
 void GameManager::updateMap() {
+    SDL_RenderClear(okno.ren);
     //(slike).display(okno.ren);
     SDL_RenderPresent(okno.ren);
 }
-
-
 
 
 //inicializiranje sdl okna
@@ -92,10 +101,9 @@ void GameManager::haltEnter(short nivo) {
     cout << "Waiting for Enter keystroke" << endl;
     Image img_enter(okno.ren, "common/img/pressreturn.png", 0, 0, okno.scaleCal(okno.returnWindowWidth()), okno.scaleCal(okno.returnWindowHeight()));
     SDL_Delay(200);
-    SDL_PollEvent(&event);
     img_enter.display(okno.ren);
     SDL_RenderPresent(okno.ren);
-    SDL_PumpEvents();
+    SDL_PollEvent(&event);
     while (!keys[SDL_SCANCODE_RETURN]) {
         SDL_PollEvent(&event);
     }
@@ -106,6 +114,14 @@ bool GameManager::isCompleted() {
     return completed;
 }
 
-void GameManager::setCompleted() {
-    completed = true;
+void GameManager::setCompleted(bool resnica) {
+    completed = resnica;
+}
+
+short GameManager::getNivo() {
+    return trenutniNivo;
+}
+
+void GameManager::setNivo(short lvl) {
+    trenutniNivo = lvl;
 }

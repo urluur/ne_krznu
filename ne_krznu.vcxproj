@@ -149,6 +149,7 @@ SDL2main.lib;Winmm.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDe
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Igralec.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="shranjevanje.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="main_menu.cpp" />

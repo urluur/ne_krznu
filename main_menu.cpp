@@ -12,7 +12,6 @@ void nastavitve(GameManager& igra) {
     while (stay)
     {
         SDL_PollEvent(&igra.event);
-        SDL_PumpEvents();
         SDL_RenderClear(igra.okno.ren);
         img_nastavitve.ini(igra, "common/img/nastavitve.png");
         img_nastavitve.display(igra.okno.ren);
@@ -104,7 +103,6 @@ void vec(GameManager& igra) {
     while (stay)
     {
         SDL_PollEvent(&igra.event);
-        SDL_PumpEvents();
         SDL_RenderClear(igra.okno.ren);
         img_vec.ini(igra, "common/img/vec.png");
         img_vec.display(igra.okno.ren);
@@ -134,7 +132,7 @@ void vec(GameManager& igra) {
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.lestvica();
-
+                branjeLestvice(igra);
             }
             break;
         case 2:
@@ -151,8 +149,8 @@ void vec(GameManager& igra) {
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.izbris();
+                deleteSave(igra);
             }
-
             break;
         case 4:
             cursor.init(igra, "common/img/cursor.png", 20, 530, 98, 49);

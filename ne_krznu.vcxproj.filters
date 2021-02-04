@@ -42,6 +42,9 @@
     <ClCompile Include="overworld.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="shranjevanje.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="function_definitions.h">
