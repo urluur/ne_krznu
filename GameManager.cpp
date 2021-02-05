@@ -106,12 +106,7 @@ void GameManager::haltEnter(short nivo, GameManager& igra) {
     SDL_RenderPresent(okno.ren);
     SDL_PollEvent(&event);
     while (!keys[SDL_SCANCODE_RETURN]) {
-        SDL_PollEvent(&event);
-        if ((igra.keys[SDL_SCANCODE_ESCAPE] || igra.event.type == SDL_QUIT)) {
-            igra.setNivo(nivo);
-            zasilnoShranjevanje(igra);
-            exit(1);
-        }
+        igra.preveriEsc(nivo);
     }
     cout << "\"Enter\" was pressed" << endl;
 }
@@ -129,6 +124,7 @@ void GameManager::setCompleted(bool resnica) {
     }
     else {
         cout << "Error: setting complete" << endl;
+        cleanup();
         exit(1);
     }
     quicksave.close();
@@ -140,4 +136,20 @@ short GameManager::getNivo() {
 
 void GameManager::setNivo(short lvl) {
     trenutniNivo = lvl;
+}
+
+void GameManager::preveriEsc(short& nivo) {
+    SDL_PollEvent(&event);
+    if ((keys[SDL_SCANCODE_ESCAPE] || event.type == SDL_QUIT)) {
+        setNivo(nivo);
+        zasilnoShranjevanje(*this);
+        cleanup();
+        exit(1);
+    }
+}
+
+void GameManager::cleanup() {
+    SDL_DestroyWindow(okno.window);
+    SDL_FreeSurface(okno.image);
+    SDL_Quit();
 }

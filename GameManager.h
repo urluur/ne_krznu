@@ -41,6 +41,8 @@ public:
 	void setCompleted(bool resnica);
 	short getNivo();
 	void setNivo(short lvl);
+	void preveriEsc(short& nivo);
+	void cleanup();
 private:
 	//bom pol spremenu na private
 	bool konecLevela;

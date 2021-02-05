@@ -187,6 +187,7 @@ void animacija(GameManager& igra, int stAnim) {
 void premakniNaXY(GameManager& igra, short& mov_x, short& mov_y, short to_x, short to_y, Image& img_overworld, Image& img_player, short nivo) {
     short i = 0;
     while (true) {
+        igra.preveriEsc(nivo);
         if (mov_x != to_x) {
             if (mov_x < to_x) mov_x++;
             else mov_x--;

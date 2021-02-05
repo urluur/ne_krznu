@@ -9,6 +9,7 @@ void zasilnoShranjevanje(class GameManager& igra) {
 	}
 	else {
 		cout << "Error: quicksave" << endl;
+		igra.cleanup();
 		exit(1);
 	}
 	quicksave.close();
@@ -21,6 +22,7 @@ void branjeShranjenega(class GameManager& igra) {
 	save.open("quicksave.txt");
 	if (save.fail()) {
 		cerr << "Error: odpiranje quicksave" << endl;
+		igra.cleanup();
 		exit(1);
 	}
 	short tempLvl;
@@ -44,6 +46,7 @@ void shranjevanjeLestvice(GameManager& igra) {
 	}
 	else {
 		cout << "Error: lead save" << endl;
+		igra.cleanup();
 		exit(1);
 	}
 	lestvica.close();
@@ -62,6 +65,7 @@ void deleteSave(GameManager& igra) {
 	}
 	else {
 		cout << "Error: delete save" << endl;
+		igra.cleanup();
 		exit(1);
 	}
 	quicksave.close();
@@ -73,12 +77,8 @@ void deleteSave(GameManager& igra) {
 	}
 	else {
 		cout << "Error: delete leaderboard" << endl;
+		igra.cleanup();
 		exit(1);
 	}
 	quicksave.close();
 }
-
-/* Spremenljivke za shranjevanje
-	v nivo shrani igra.trenutniNivo-1;
-	v ime shrani igra.igralec.getname();
-*/

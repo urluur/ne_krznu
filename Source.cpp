@@ -101,8 +101,6 @@ int main() {
     //igra.sound.nasvidenje(); //greet
 
     // cleanup
-    SDL_DestroyWindow(igra.okno.window);
-    SDL_FreeSurface(igra.okno.image);
-    SDL_Quit();
+    igra.cleanup();
     return EXIT_SUCCESS;
 }
