@@ -49,4 +49,7 @@ private:
 	bool konecLevela;
 	bool completed; // zato da se spremeni main menu na koncu zgodbe
 	short trenutniNivo;
+	short int stAktiv[5] = {4, 3, 2, 1, 0};
+	short int stNaspr[5] = {3, 5, 7, 10, 1};
+	short int stTjuln[5] = {5, 10, 50, 20, 0};
 };

@@ -27,19 +27,29 @@ void GameManager::level(short &nivo) {
     odzadje.ini(*this, path);
     delete[] path;
 
-
+    //main game loop
     while (!(keys[SDL_SCANCODE_ESCAPE] || event.type == SDL_QUIT) && !konecLevela) {
         SDL_RenderClear(okno.ren);
+
+        odzadje.display(okno.ren);
+        SDL_RenderPresent(okno.ren);
         SDL_Delay(1000);
+        
 
-
+        //* za provo dok ni levela tuki
+        if (nivo < 5)
+            stTjuln[trenutniNivo - 1]--;
+        else
+            stNaspr[trenutniNivo - 1]--;
+        //*/
 
         updateMap();
-        if (keys[SDL_SCANCODE_SPACE]) {
-            konecLevela = true; //u tem ifu sam za sprovo
+        if ((stTjuln[trenutniNivo-1] == 0 && nivo < 5) || (trenutniNivo == 5 && stNaspr[trenutniNivo-1] == 0)) {
+            konecLevela = true; //cilj nase igre
         }
         SDL_PollEvent(&event);
     }
+
     if (konecLevela) {
         cout << "Koncal si " << ++nivo << " nivo!" << endl;
     }
@@ -51,6 +61,24 @@ void GameManager::level(short &nivo) {
 void GameManager::pripraviVse() {
     SDL_PollEvent(&event);
     konecLevela = false;
+
+    stNaspr[0] = 3;
+    stNaspr[1] = 5;
+    stNaspr[2] = 7;
+    stNaspr[3] = 10;
+    stNaspr[4] = 1;
+
+    stAktiv[0] = 3;
+    stAktiv[1] = 5;
+    stAktiv[2] = 7;
+    stAktiv[3] = 10;
+    stAktiv[4] = 1;
+
+    stTjuln[0] = 3;
+    stTjuln[1] = 5;
+    stTjuln[2] = 7;
+    stTjuln[3] = 10;
+    stTjuln[4] = 1;
     //dodaj da pride prek argumenta se struktura
     //postauljanje usega na pravo zacetno mesto
     //nared strukturo z usemi

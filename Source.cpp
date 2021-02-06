@@ -28,6 +28,7 @@ int main() {
     Image main;
     Image cursor;
 
+    //main menu loop
     while (!igra.keys[SDL_SCANCODE_ESCAPE] && event.type != SDL_QUIT) {
         SDL_PollEvent(&event);
         SDL_RenderClear(igra.okno.ren);
