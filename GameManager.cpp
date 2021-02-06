@@ -30,17 +30,18 @@ void GameManager::level(short &nivo) {
     //main game loop
     while (!(keys[SDL_SCANCODE_ESCAPE] || event.type == SDL_QUIT) && !konecLevela) {
         SDL_RenderClear(okno.ren);
-
         odzadje.display(okno.ren);
-        SDL_RenderPresent(okno.ren);
-        SDL_Delay(1000);
-        
+
+        // im stuck ne vem kko bi zaceu delat actual game :/ i guess bom najprej naredu use backgrounde
+
+
 
         //* za provo dok ni levela tuki
         if (nivo < 5)
             stTjuln[trenutniNivo - 1]--;
         else
             stNaspr[trenutniNivo - 1]--;
+        SDL_Delay(500);
         //*/
 
         updateMap();
@@ -86,7 +87,6 @@ void GameManager::pripraviVse() {
 }
 
 void GameManager::updateMap() {
-    SDL_RenderClear(okno.ren);
     //(slike).display(okno.ren);
     SDL_RenderPresent(okno.ren);
 }
