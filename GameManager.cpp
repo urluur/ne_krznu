@@ -8,32 +8,43 @@ GameManager::GameManager() {
     trenutniNivo = -1;
 }
 
-void GameManager::level(short &nivo, GameManager& igra) {
+void GameManager::level(short &nivo) {
     trenutniNivo = nivo + 1;
     cout << igralec.getName() << " zacenja " << trenutniNivo << " level" << endl;
 
     //nared strukturo z usemi slikami
 
     pripraviVse();
+
+    //pripravi odzadje
+    Image odzadje;
+    string pathFragment = "common/img/odzadje";
+    pathFragment += to_string(trenutniNivo);
+    pathFragment += ".png";
+    char* path = new char[pathFragment.size() + 1];
+    std::copy(pathFragment.begin(), pathFragment.end(), path);
+    path[pathFragment.size()] = '\0';
+    odzadje.ini(*this, path);
+    delete[] path;
+
+
     while (!(keys[SDL_SCANCODE_ESCAPE] || event.type == SDL_QUIT) && !konecLevela) {
-        //tuki pride pole igra ku igra
-
-
-        //za testing
         SDL_RenderClear(okno.ren);
-        SDL_RenderPresent(okno.ren);
         SDL_Delay(1000);
 
 
+
         updateMap();
-        konecLevela = true; //to bo v enem if-u
+        if (keys[SDL_SCANCODE_SPACE]) {
+            konecLevela = true; //u tem ifu sam za sprovo
+        }
         SDL_PollEvent(&event);
     }
     if (konecLevela) {
         cout << "Koncal si " << ++nivo << " nivo!" << endl;
     }
     else{
-        //zasilnoShranjevanje(igra);
+        zasilnoShranjevanje(*this);
     }
 }
 
@@ -44,17 +55,6 @@ void GameManager::pripraviVse() {
     //postauljanje usega na pravo zacetno mesto
     //nared strukturo z usemi
     //inicializiri use slike u strukturi
-}
-
-void GameManager::pripraviOdzadje(GameManager& igra) {
-    string pathFragment = "common/img/odzadje";
-    pathFragment += to_string(trenutniNivo);
-    pathFragment += ".png";
-    char* path = new char[pathFragment.size() + 1];
-    std::copy(pathFragment.begin(), pathFragment.end(), path);
-    path[pathFragment.size()] = '\0';
-    //odzadje.ini(igra, path); // klic
-    delete[] path; // konec    
 }
 
 void GameManager::updateMap() {
@@ -98,7 +98,7 @@ int GameManager::init() {
 }
 
 
-void GameManager::haltEnter(short nivo, GameManager& igra) {
+void GameManager::haltEnter(short nivo) {
     cout << "Waiting for Enter keystroke" << endl;
     Image img_enter(okno.ren, "common/img/pressreturn.png", 0, 0, okno.scaleCal(okno.returnWindowWidth()), okno.scaleCal(okno.returnWindowHeight()));
     SDL_Delay(200);
@@ -106,7 +106,7 @@ void GameManager::haltEnter(short nivo, GameManager& igra) {
     SDL_RenderPresent(okno.ren);
     SDL_PollEvent(&event);
     while (!keys[SDL_SCANCODE_RETURN]) {
-        igra.preveriEsc(nivo);
+        preveriEsc(nivo);
     }
     cout << "\"Enter\" was pressed" << endl;
 }

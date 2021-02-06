@@ -7,6 +7,8 @@
 #include <string>
 #include <SDL_image.h>
 #include "SDL_ttf.h"
+#include "Image.h"
+
 using namespace std;
 
 struct koordinati {
@@ -32,10 +34,9 @@ public:
 	GameManager();
 	int init();
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
-	void level(short& nivo, GameManager& igra);
+	void level(short& nivo);
 	void pripraviVse();
-	void pripraviOdzadje(GameManager& igra);
-	void haltEnter(short nivo, GameManager& igra);
+	void haltEnter(short nivo);
 	void updateMap();
 	bool isCompleted();
 	void setCompleted(bool resnica);
