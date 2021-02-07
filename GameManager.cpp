@@ -8,55 +8,37 @@ GameManager::GameManager() {
     trenutniNivo = -1;
 }
 
-void GameManager::level(short &nivo) {
-    trenutniNivo = nivo + 1;
-    cout << igralec.getName() << " zacenja " << trenutniNivo << " level" << endl;
-
-    //nared strukturo z usemi slikami
-
-    pripraviVse();
-
-    //pripravi odzadje
-    Image odzadje;
-    string pathFragment = "common/img/odzadje";
-    pathFragment += to_string(trenutniNivo);
-    pathFragment += ".png";
-    char* path = new char[pathFragment.size() + 1];
-    std::copy(pathFragment.begin(), pathFragment.end(), path);
-    path[pathFragment.size()] = '\0';
-    odzadje.ini(*this, path);
-    delete[] path;
-
-    //main game loop
-    while (!(keys[SDL_SCANCODE_ESCAPE] || event.type == SDL_QUIT) && !konecLevela) {
-        SDL_RenderClear(okno.ren);
-        odzadje.display(okno.ren);
-
-        // im stuck ne vem kko bi zaceu delat actual game :/ i guess bom najprej naredu use backgrounde
-
-
-
-        //* za provo dok ni levela tuki
-        if (nivo < 5)
-            stTjuln[trenutniNivo - 1]--;
-        else
-            stNaspr[trenutniNivo - 1]--;
-        SDL_Delay(500);
-        //*/
-
-        updateMap();
-        if ((stTjuln[trenutniNivo-1] == 0 && nivo < 5) || (trenutniNivo == 5 && stNaspr[trenutniNivo-1] == 0)) {
-            konecLevela = true; //cilj nase igre
-        }
-        SDL_PollEvent(&event);
+//inicializiranje sdl okna
+int GameManager::init() {
+    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+        cout << "SDL Init, Error: " << SDL_GetError() << endl;
+        return -1;
     }
-
-    if (konecLevela) {
-        cout << "Koncal si " << ++nivo << " nivo!" << endl;
+    okno.window = SDL_CreateWindow("NE krznu -urlu",
+                                        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                                        okno.scaleCal(okno.returnWindowWidth()), okno.scaleCal(okno.returnWindowHeight()),
+                                        SDL_WINDOW_SHOWN);
+    if (okno.window == NULL) {
+        cout << "SDL Create Window, Error: " << SDL_GetError() << endl;
+        return -1;
     }
-    else{
-        zasilnoShranjevanje(*this);
+    okno.ren = SDL_CreateRenderer(okno.window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (okno.ren == nullptr) {
+        std::cout << "Could not create ren! SDL error" << SDL_GetError() << std::endl;
+        return EXIT_FAILURE;
     }
+    if (TTF_Init()) {
+        std::cout << "TTF_Init Error: " << TTF_GetError() << std::endl;
+        return EXIT_FAILURE;
+    }
+    okno.surface = SDL_GetWindowSurface(okno.window);
+    if (!(IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG)))
+    {
+        printf("IMG_Init Error: %s\n", IMG_GetError());
+        return false;
+    }
+    srand((unsigned int)time(NULL));
+    return EXIT_SUCCESS;
 }
 
 void GameManager::pripraviVse() {
@@ -89,40 +71,6 @@ void GameManager::pripraviVse() {
 void GameManager::updateMap() {
     //(slike).display(okno.ren);
     SDL_RenderPresent(okno.ren);
-}
-
-
-//inicializiranje sdl okna
-int GameManager::init() {
-    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-        cout << "SDL Init, Error: " << SDL_GetError() << endl;
-        return -1;
-    }
-    okno.window = SDL_CreateWindow("NE krznu -urlu",
-                                        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                                        okno.scaleCal(okno.returnWindowWidth()), okno.scaleCal(okno.returnWindowHeight()),
-                                        SDL_WINDOW_SHOWN);
-    if (okno.window == NULL) {
-        cout << "SDL Create Window, Error: " << SDL_GetError() << endl;
-        return -1;
-    }
-    okno.ren = SDL_CreateRenderer(okno.window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    if (okno.ren == nullptr) {
-        std::cout << "Could not create ren! SDL error" << SDL_GetError() << std::endl;
-        return EXIT_FAILURE;
-    }
-    if (TTF_Init()) {
-        std::cout << "TTF_Init Error: " << TTF_GetError() << std::endl;
-        return EXIT_FAILURE;
-    }
-    okno.surface = SDL_GetWindowSurface(okno.window);
-    if (!(IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG)))
-    {
-        printf("IMG_Init Error: %s\n", IMG_GetError());
-        return false;
-    }
-    srand((unsigned int)time(NULL));
-    return EXIT_SUCCESS;
 }
 
 
