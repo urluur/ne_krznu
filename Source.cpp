@@ -19,7 +19,7 @@ int main() {
 
     // debug faster
     igra.sound.toggle(); //samo za testing
-    //igra.igralec.setName(); //izklopljeno za hitrejsi debugging
+    branjeShranjenega(igra);
 
     SDL_Event event;
     SDL_PollEvent(&event);

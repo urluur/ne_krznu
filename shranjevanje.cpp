@@ -1,11 +1,12 @@
 #include "function_definitions.h"
 
 void zasilnoShranjevanje(class GameManager& igra) {
-	cout << "Zasilno shranjujem..." << endl;
+	cout << "Zasilno shranjujem... ";
 	ofstream quicksave;
 	quicksave.open("quicksave.txt");
 	if (quicksave.is_open()) {
-		quicksave << to_string(igra.getNivo()) << "\n" << igra.igralec.getName() << "\n";
+		quicksave << igra.igralec.getName() << "\n" << to_string(igra.getNivo()) << "\n";
+		cout << "Opazam da si koncal/a " << to_string(igra.getNivo()) << " nivo in se klices " << igra.igralec.getName() << endl;
 	}
 	else {
 		cout << "Error: quicksave" << endl;
@@ -27,10 +28,11 @@ void branjeShranjenega(class GameManager& igra) {
 	}
 	short tempLvl;
 	string tempName;
-	save >> tempLvl >> tempName;
-	cout << tempName << "je tempname" << endl;
+	save >> tempName >> tempLvl;
+	cout << tempName << " je tempname" << endl; //tuki neki ne dela
 	igra.setNivo(tempLvl);
 	igra.igralec.setName(tempName);
+	cout << "Opazam da si koncal/a " << to_string(igra.getNivo()) << " nivo in se klices " << igra.igralec.getName() << endl;
 }
 
 void branjeLestvice(GameManager& igra) {
@@ -45,7 +47,7 @@ void shranjevanjeLestvice(GameManager& igra) {
 		//shrani sortirano
 	}
 	else {
-		cout << "Error: lead save" << endl;
+		cout << "Error: load save" << endl;
 		igra.cleanup();
 		exit(1);
 	}
@@ -58,10 +60,10 @@ void deleteSave(GameManager& igra) {
 	quicksave.open("quicksave.txt");
 	if (quicksave.is_open()) {
 		igra.igralec.setName("bumbar");
-		igra.setNivo(-1);
+		igra.setNivo(0);
 		igra.setCompleted(false);
-		quicksave << "bumbar\n-1\n";
-		
+		quicksave << "bumbar\n0\n";
+		//nared se za lestvico k bo
 	}
 	else {
 		cout << "Error: delete save" << endl;

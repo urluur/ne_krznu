@@ -5,7 +5,7 @@ GameManager::GameManager() {
     SDL_PollEvent(&event);
     konecLevela = false;
     completed = false;
-    trenutniNivo = -1;
+    trenutniNivo = 0;
 }
 
 //inicializiranje sdl okna
@@ -96,7 +96,7 @@ void GameManager::setCompleted(bool resnica) {
     ofstream quicksave;
     quicksave.open("quicksave.txt");
     if (quicksave.is_open()) {
-        quicksave << "bumbar\n-1\n";
+        quicksave << "bumbar\n0\n";
     }
     else {
         cout << "Error: setting complete" << endl;

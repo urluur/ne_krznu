@@ -12,16 +12,13 @@ void overworld(GameManager& igra) {
     Image img_zastavica_fullscreen;
 
     short x = 90, y = 160; //pozicija na ladji
-    //loadanje savefila
-    branjeShranjenega(igra);
+
     short level_clear=igra.getNivo();
 
     img_overworld.ini(igra, "common/img/overworld.png");
     img_overworld.display(igra.okno.ren);
 
     if (level_clear != 0) {
-        level_clear = igra.getNivo();
-
         for (;;) { // skip travel
             premakniNaXY(igra, x, y, 180, 160, img_overworld, img_player, level_clear);
             if (level_clear == 1) { break; }
