@@ -1,4 +1,4 @@
-#include "function_definitions.h"
+#include "includes.h"
 
 void GameManager::level(short& nivo) {
     trenutniNivo = nivo + 1;
@@ -48,6 +48,6 @@ void GameManager::level(short& nivo) {
         cout << "Koncal si " << ++nivo << " nivo!" << endl;
     }
     else {
-        zasilnoShranjevanje(*this);
+        zasilnoShranjevanje();
     }
 }

@@ -1,30 +1,26 @@
-#include "function_definitions.h"
-
+#include "includes.h"
 #undef main
-using namespace std;
 
-void nastavitve(GameManager &igra);
+void nastavitve(GameManager& igra);
 void vec(GameManager& igra);
 void overworld(GameManager& igra);
 
 int main() {
     GameManager igra;
 
-    { //problem solver
-        bool problemi = igra.init();
-        if (problemi) {
-            cerr << "Problemi pri inicializaciji!" << endl;
-            return EXIT_FAILURE;
-        }
+    bool problemi = igra.init();
+    if (problemi) {
+        cerr << "Problemi pri inicializaciji!" << endl;
+        return EXIT_FAILURE;
     }
 
     // debug faster
     igra.sound.toggle(); //samo za testing
-    branjeShranjenega(igra);
 
+    igra.branjeShranjenega();
     SDL_Event event;
     SDL_PollEvent(&event);
-    short pozicija_cursorja = 1;
+    short cur_pos = 1;
     bool izhod_switch = false;
     Image main;
     Image cursor;
@@ -33,33 +29,33 @@ int main() {
     while (!igra.keys[SDL_SCANCODE_ESCAPE] && event.type != SDL_QUIT) {
         SDL_PollEvent(&event);
         SDL_RenderClear(igra.okno.ren);
-        if (igra.isCompleted()) {
+        if (igra.isCompleted())
             main.ini(igra, "common/img/main_completed.png");
-        }
-        else {
+        else
             main.ini(igra, "common/img/main.png");
-        }
+
         main.display(igra.okno.ren);
         
         if (igra.keys[SDL_SCANCODE_UP]) {
             igra.sound.cursorMove();
-            if (pozicija_cursorja == 1) {
-                pozicija_cursorja = 4;
-            }
-            else { pozicija_cursorja--; }
+            if (cur_pos == 1)
+                cur_pos = 4;
+            else
+                cur_pos--;
         }
         else if (igra.keys[SDL_SCANCODE_DOWN]) {
             igra.sound.cursorMove();
-            if (pozicija_cursorja == 4) { pozicija_cursorja = 1; }
-            else { pozicija_cursorja++;}
+            if (cur_pos == 4)
+                cur_pos = 1;
+            else
+                cur_pos++;
         }
-        switch (pozicija_cursorja) {
+        switch (cur_pos) {
         case 1:
             cursor.init(igra, "common/img/cursor.png", 20, 120, 98, 49);
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.zacni();
-                SDL_RenderClear(igra.okno.ren);
                 overworld(igra);
             }
             break;
@@ -68,9 +64,6 @@ int main() {
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.vec();
-                SDL_Delay(10);
-                SDL_RenderClear(igra.okno.ren);
-
                 vec(igra);
             }
             break;
@@ -79,10 +72,8 @@ int main() {
             cursor.display(igra.okno.ren);
             if (igra.keys[SDL_SCANCODE_RETURN]) {
                 igra.sound.nastavitve();
-                SDL_Delay(10);
-                SDL_RenderClear(igra.okno.ren);
                 nastavitve(igra);
-                pozicija_cursorja = 1;
+                cur_pos = 1;
             }
             break;
         case 4:
@@ -96,11 +87,11 @@ int main() {
         }
         SDL_RenderPresent(igra.okno.ren);
         SDL_Delay(80);
-        if (izhod_switch) {
+        if (izhod_switch)
             break;
-        }
+        SDL_Delay(10);
     }
-    //igra.sound.nasvidenje(); //greet
+    igra.sound.nasvidenje();
 
     // cleanup
     igra.cleanup();

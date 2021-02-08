@@ -13,14 +13,11 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
-#include "SoundManager.h"
 #include "GameManager.h"
 #include "igralec.h"
-#include "Text.h"
 #include "Image.h"
+#include "SoundManager.h"
+#include "Text.h"
+#include "WindowManager.h"
 
-void zasilnoShranjevanje(class GameManager& igra);
-void branjeShranjenega(class GameManager& igra);
-void branjeLestvice(GameManager& igra);
-void shranjevanjeLestvice(GameManager& igra);
-void deleteSave(GameManager& igra);
+using namespace std;

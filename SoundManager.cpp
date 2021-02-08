@@ -1,14 +1,12 @@
 #include "SoundManager.h"
-using namespace std;
+
 SoundManager::SoundManager() {
     played = false;
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
         cout << "Mixer error: " << Mix_GetError() << endl;
-    }
     bgm = Mix_LoadMUS("common/sounds/soundtrack.wav");
-    if (!Mix_PlayingMusic()) {
+    if (!Mix_PlayingMusic())
         Mix_PlayMusic(bgm, -1);
-    }
     mute = 0;
 }
 
@@ -105,10 +103,9 @@ void SoundManager::soundAnimacija(int animSt) {
             played = PlaySound(TEXT("common/sounds/animacija7.wav"), NULL, SND_SYNC);
             break;
         default:
-            cout << "Error: sound animSt" << endl;
+            cerr << "Error: sound animSt" << endl;
         }
 }
-
 
 SoundManager::~SoundManager() {
     bgm = nullptr;

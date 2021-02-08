@@ -1,9 +1,6 @@
 #include "main_menu.h"
 using namespace std;
 
-void branjeShranjenega(class GameManager& igra);
-void zasilnoShranjevanje(class GameManager& igra);
-
 void overworld(GameManager& igra) {
     SDL_RenderClear(igra.okno.ren);
     bool stay = true;
@@ -38,7 +35,7 @@ void overworld(GameManager& igra) {
             if (level_clear == 5) { break; }
             premakniNaXY(igra, x, y, 425, 30, img_overworld, img_player, level_clear);
         }
-        cout << "Nalagam na" << igra.getNivo()+1 << ". nivo." << endl;
+        cout << "Nalagam " << igra.getNivo()+1 << ". nivo." << endl;
     }
 
     while (stay) {
@@ -59,8 +56,6 @@ void overworld(GameManager& igra) {
 
             premakniNaXY(igra, x, y, 180, 160, img_overworld, img_player, 0);
             igra.haltEnter(level_clear); // prej ko se zacne prvi level in smo zravn hiske 
-
-            cout << "Prvi nivo" << endl;
             igra.level(level_clear);
             break;
         case 1:
@@ -70,7 +65,6 @@ void overworld(GameManager& igra) {
             premakniNaXY(igra, x, y, 165, 350, img_overworld, img_player, level_clear);
             igra.haltEnter(level_clear); // stojimo pred 2. levelom
 
-            cout << "Drugi nivo" << endl;
             igra.level(level_clear);
             break;
         case 2:
@@ -82,7 +76,6 @@ void overworld(GameManager& igra) {
             premakniNaXY(igra, x, y, 350, 450, img_overworld, img_player, level_clear);
             igra.haltEnter(level_clear); //stojimo na 3. levelu
 
-            cout << "Tretji nivo" << endl;
             igra.level(level_clear);
             break;
         case 3:
@@ -91,7 +84,6 @@ void overworld(GameManager& igra) {
             animacija(igra, 4);
             premakniNaXY(igra, x, y, 460, 240, img_overworld, img_player, level_clear);
             igra.haltEnter(level_clear); //stojimo na 4. levelu
-            cout << "Cetrti nivo" << endl;
             igra.level(level_clear);
             premakniNaXY(igra, x, y, 420, 150, img_overworld, img_player, level_clear); //testing d se pokaze
             igra.haltEnter(level_clear);
@@ -101,7 +93,6 @@ void overworld(GameManager& igra) {
             premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player, level_clear);
             igra.haltEnter(level_clear);
             animacija(igra, 6);
-            cout << "Peti nivo" << endl;
             igra.level(level_clear);
             break;
         case 5:
@@ -119,24 +110,24 @@ void overworld(GameManager& igra) {
             narisiFarmeAliDosezke(igra, level_clear);
             SDL_RenderPresent(igra.okno.ren);
 
-            //prikaz rekordov
+            //shranjevanje rekordov
             SDL_Delay(3000);
             stay = false;
             igra.setCompleted(true);
             break;
         default:
-            cout << "Error: level_clear" << endl;
+            cerr << "Error: level_clear" << endl;
         }
         SDL_RenderPresent(igra.okno.ren);
 
         if ((igra.keys[SDL_SCANCODE_ESCAPE] || igra.event.type == SDL_QUIT)) {
             stay=false;
-            zasilnoShranjevanje(igra);
+            igra.zasilnoShranjevanje();
         } //to rab bit klicano v haltenter in premakninaxy, also nared cist posebno funkcijo
         //za previrjanje esc in sdlquit
     }
     SDL_RenderClear(igra.okno.ren);
-    //shranjevanje recordov
+    //prikazovanje recordov
 }
 
 void animacija(GameManager& igra, int stAnim) {
@@ -161,20 +152,17 @@ void animacija(GameManager& igra, int stAnim) {
     SDL_PollEvent(&igra.event);
     Image img_enter;
     short blink = 0;
-    cout << "Animacija caka na enter" << endl;
     img_enter.ini(igra, "common/img/pressreturn.png");
     while (!igra.keys[SDL_SCANCODE_RETURN]) {
         SDL_PollEvent(&igra.event);
-        if (blink < 100) {
+        if (blink < 100)
             img_enter.display(igra.okno.ren);
-        }
         else if (blink < 150) {
             SDL_RenderClear(igra.okno.ren);
             odzadje.display(igra.okno.ren);
         }
-        else {
+        else
             blink = 0;
-        }
         blink++;
         SDL_RenderPresent(igra.okno.ren);
         SDL_Delay(10);
@@ -224,15 +212,11 @@ void narisiFarmeAliDosezke(GameManager& igra, short nivo) {
     Image hisa[5];
     unsigned short x[5] = { 210, 100, 320, 460, 450 };
     unsigned short y[5] = { 160, 425, 420, 215, 100 };
-    for (int i = 0; i < 5; i++) {
-        if (i < nivo) {
+    for (int i = 0; i < 5; i++)
+        if (i < nivo)
             hisa[i].init(igra, "common/img/iglu.png", x[i], y[i], 66, 61);
-        }
-        else {
+        else
             hisa[i].init(igra, "common/img/farma.png", x[i], y[i], 66, 61);
-        }
-    }
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++)
         hisa[i].display(igra.okno.ren);
-    }
 }

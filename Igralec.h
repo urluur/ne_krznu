@@ -13,5 +13,4 @@ public:
 	string getName();
 	void coutName();
 	Igralec();
-	~Igralec();
 };

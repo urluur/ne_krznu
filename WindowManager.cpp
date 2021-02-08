@@ -3,14 +3,12 @@
 WindowManager::WindowManager() {
 	window = NULL;
 	surface = NULL;
-	image = NULL;
 	ren = nullptr;
 
 }
 WindowManager::~WindowManager() {
 	window = NULL;
 	surface = NULL;
-	image = NULL;
 	ren = nullptr;
 }
 short WindowManager::returnWindowWidth() {
@@ -42,7 +40,7 @@ void WindowManager::toggleScaler() {
 		cout << "1 (original)";
 		break;
 	default:
-		cout << "Error: toggleScaler" << endl;
+		cerr << "Error: toggleScaler" << endl;
 	}
 	cout << endl;
 }
@@ -59,7 +57,7 @@ int WindowManager::scaleCal(int stevilo) {
 	case 100:
 		return stevilo * 1.7;
 	default:
-		cout << "Error: scaleCal: " << scaler << endl;
+		cerr << "Error: scaleCal: " << scaler << endl;
 	}
 }
 short WindowManager::vrniScaler() {

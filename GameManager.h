@@ -1,15 +1,10 @@
 #pragma once
-#include "function_definitions.h"
+#include "includes.h"
 #include "WindowManager.h"
 #include "SoundManager.h"
 #include "Igralec.h"
-#include <iostream>
-#include <string>
-#include <SDL_image.h>
 #include "SDL_ttf.h"
 #include "Image.h"
-
-using namespace std;
 
 struct koordinati {
 	unsigned short x, y;
@@ -43,9 +38,14 @@ public:
 	short getNivo();
 	void setNivo(short lvl);
 	void preveriEsc(short& nivo);
+	void zasilnoShranjevanje();
+	void branjeShranjenega();
+	void branjeLestvice();
+	void shranjevanjeLestvice();
+	void deleteSave();
 	void cleanup();
+
 private:
-	//bom pol spremenu na private
 	bool konecLevela;
 	bool completed; // zato da se spremeni main menu na koncu zgodbe
 	short trenutniNivo;

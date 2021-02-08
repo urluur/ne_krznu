@@ -3,6 +3,8 @@
 #include <iostream>
 #include <MMSystem.h>
 #include <SDL_mixer.h>
+using namespace std;
+
 class SoundManager
 {
 private:
