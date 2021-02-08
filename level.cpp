@@ -2,7 +2,8 @@
 
 void GameManager::level(short& nivo) {
     trenutniNivo = nivo + 1;
-    cout << igralec.getName() << " zacenja " << trenutniNivo << " level" << endl;
+    igralec.coutName();
+    cout << " zacenja " << trenutniNivo << " level" << endl;
 
     //nared strukturo z usemi slikami??
 

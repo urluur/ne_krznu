@@ -5,11 +5,13 @@ void zasilnoShranjevanje(class GameManager& igra) {
 	ofstream quicksave;
 	quicksave.open("quicksave.txt");
 	if (quicksave.is_open()) {
-		quicksave << igra.igralec.getName() << "\n" << to_string(igra.getNivo()) << "\n";
-		cout << "Opazam da si koncal/a " << to_string(igra.getNivo()) << " nivo in se klices " << igra.igralec.getName() << endl;
+		quicksave << igra.igralec.getName() << "\n" << igra.getNivo() << "\n";
+		cout << "Opazam da si koncal/a " << igra.getNivo() << " nivo in se klices ";
+		igra.igralec.coutName();
+		cout << endl;
 	}
 	else {
-		cout << "Error: quicksave" << endl;
+		cerr << "Error: quicksave" << endl;
 		igra.cleanup();
 		exit(1);
 	}
@@ -29,10 +31,11 @@ void branjeShranjenega(class GameManager& igra) {
 	short tempLvl;
 	string tempName;
 	save >> tempName >> tempLvl;
-	cout << tempName << " je tempname" << endl; //tuki neki ne dela
 	igra.setNivo(tempLvl);
 	igra.igralec.setName(tempName);
-	cout << "Opazam da si koncal/a " << to_string(igra.getNivo()) << " nivo in se klices " << igra.igralec.getName() << endl;
+	cout << "Opazam da si koncal/a " << igra.getNivo() << " nivo in se klices ";
+	igra.igralec.coutName();
+	cout << endl;
 }
 
 void branjeLestvice(GameManager& igra) {
@@ -47,7 +50,7 @@ void shranjevanjeLestvice(GameManager& igra) {
 		//shrani sortirano
 	}
 	else {
-		cout << "Error: load save" << endl;
+		cerr << "Error: load save" << endl;
 		igra.cleanup();
 		exit(1);
 	}
@@ -66,7 +69,7 @@ void deleteSave(GameManager& igra) {
 		//nared se za lestvico k bo
 	}
 	else {
-		cout << "Error: delete save" << endl;
+		cerr << "Error: delete save" << endl;
 		igra.cleanup();
 		exit(1);
 	}
@@ -78,7 +81,7 @@ void deleteSave(GameManager& igra) {
 		lestvica << "\n";
 	}
 	else {
-		cout << "Error: delete leaderboard" << endl;
+		cerr << "Error: delete leaderboard" << endl;
 		igra.cleanup();
 		exit(1);
 	}

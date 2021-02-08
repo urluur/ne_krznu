@@ -13,6 +13,7 @@ int main() {
     { //problem solver
         bool problemi = igra.init();
         if (problemi) {
+            cerr << "Problemi pri inicializaciji!" << endl;
             return EXIT_FAILURE;
         }
     }

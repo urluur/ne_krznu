@@ -24,11 +24,11 @@ int GameManager::init() {
     }
     okno.ren = SDL_CreateRenderer(okno.window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (okno.ren == nullptr) {
-        std::cout << "Could not create ren! SDL error" << SDL_GetError() << std::endl;
+        std::cerr << "Could not create ren! SDL error" << SDL_GetError() << std::endl;
         return EXIT_FAILURE;
     }
     if (TTF_Init()) {
-        std::cout << "TTF_Init Error: " << TTF_GetError() << std::endl;
+        std::cerr << "TTF_Init Error: " << TTF_GetError() << std::endl;
         return EXIT_FAILURE;
     }
     okno.surface = SDL_GetWindowSurface(okno.window);
@@ -99,7 +99,7 @@ void GameManager::setCompleted(bool resnica) {
         quicksave << "bumbar\n0\n";
     }
     else {
-        cout << "Error: setting complete" << endl;
+        cerr << "Error: setting complete" << endl;
         cleanup();
         exit(1);
     }
@@ -120,7 +120,7 @@ void GameManager::preveriEsc(short& nivo) {
         setNivo(nivo);
         zasilnoShranjevanje(*this);
         cleanup();
-        exit(1);
+        exit(0);
     }
 }
 

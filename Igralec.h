@@ -11,6 +11,7 @@ public:
 	void setName();
 	void setName(std::string);
 	string getName();
+	void coutName();
 	Igralec();
 	~Igralec();
 };
