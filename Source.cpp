@@ -91,7 +91,7 @@ int main() {
             break;
         SDL_Delay(10);
     }
-    igra.sound.nasvidenje();
+    //igra.sound.nasvidenje();
 
     // cleanup
     igra.cleanup();
