@@ -12,6 +12,7 @@
 #include <cstring>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include <vector>
 
 #include "GameManager.h"
 #include "igralec.h"

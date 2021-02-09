@@ -42,23 +42,9 @@ void GameManager::pripraviVse() {
     SDL_PollEvent(&event);
     konecLevela = false;
 
-    stNaspr[0] = 3;
-    stNaspr[1] = 5;
-    stNaspr[2] = 7;
-    stNaspr[3] = 10;
-    stNaspr[4] = 1;
-
-    stAktiv[0] = 3;
-    stAktiv[1] = 5;
-    stAktiv[2] = 7;
-    stAktiv[3] = 10;
-    stAktiv[4] = 1;
-
-    stTjuln[0] = 3;
-    stTjuln[1] = 5;
-    stTjuln[2] = 7;
-    stTjuln[3] = 10;
-    stTjuln[4] = 1;
+    stNaspr[0] = 4; stNaspr[1] = 3; stNaspr[2] = 2; stNaspr[3] = 1; stNaspr[4] = 0;
+    stAktiv[0] = 3; stAktiv[1] = 5; stAktiv[2] = 7; stAktiv[3] = 10; stAktiv[4] = 1;
+    stTjuln[0] = 5; stTjuln[1] = 10; stTjuln[2] = 15; stTjuln[3] = 20; stTjuln[4] = 0;
     //dodaj da pride prek argumenta se struktura
     //postauljanje usega na pravo zacetno mesto
     //nared strukturo z usemi
@@ -70,15 +56,17 @@ void GameManager::updateMap() {
     SDL_RenderPresent(okno.ren);
 }
 
-
 void GameManager::haltEnter(short nivo) {
-    Image img_enter(okno.ren, "common/img/pressreturn.png", 0, 0, okno.scaleCal(okno.returnWindowWidth()), okno.scaleCal(okno.returnWindowHeight()));
+    Image img_enter; //(okno.ren, "common/img/pressreturn.png", 0, 0, okno.scaleCal(okno.returnWindowWidth()), okno.scaleCal(okno.returnWindowHeight()));
+    img_enter.ini(*this, "common/img/pressreturn.png");
     SDL_Delay(200);
     img_enter.display(okno.ren);
     SDL_RenderPresent(okno.ren);
     SDL_PollEvent(&event);
-    while (!keys[SDL_SCANCODE_RETURN])
+    while (!keys[SDL_SCANCODE_RETURN]) {
+        SDL_Delay(15);
         preveriEsc(nivo);
+    }
 }
 
 bool GameManager::isCompleted() {

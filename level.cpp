@@ -38,16 +38,13 @@ void GameManager::level(short& nivo) {
         //*/
 
         updateMap();
-        if ((stTjuln[trenutniNivo - 1] == 0 && nivo < 5) || (trenutniNivo == 5 && stNaspr[trenutniNivo - 1] == 0)) {
+        if ((stTjuln[trenutniNivo - 1] == 0 && nivo < 5) || (trenutniNivo == 5 && stNaspr[trenutniNivo - 1] == 0))
             konecLevela = true; //cilj nase igre
-        }
         SDL_PollEvent(&event);
     }
 
-    if (konecLevela) {
+    if (konecLevela)
         cout << "Koncal si " << ++nivo << " nivo!" << endl;
-    }
-    else {
+    else
         zasilnoShranjevanje();
-    }
 }

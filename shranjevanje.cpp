@@ -8,13 +8,13 @@ void GameManager::zasilnoShranjevanje() {
 		cout << "Zabelezeno da si koncal/a " << getNivo() << " nivo in se klices ";
 		igralec.coutName();
 		cout << endl;
+		datoteka.close();
 	}
 	else {
 		cerr << "Error: quicksave" << endl;
 		cleanup();
 		exit(1);
 	}
-	datoteka.close();
 }
 
 void GameManager::branjeShranjenega() {
@@ -48,13 +48,13 @@ void GameManager::shranjevanjeLestvice() {
 	lestvica.open("top.txt");
 	if (lestvica.is_open()) {
 		//shrani sortirano
+		lestvica.close();
 	}
 	else {
 		cerr << "Error: save file" << endl;
 		cleanup();
 		exit(1);
 	}
-	lestvica.close();
 }
 
 void GameManager::deleteSave() {

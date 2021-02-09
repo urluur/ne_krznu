@@ -41,7 +41,7 @@ void SoundManager::izhod() {
 }
 void SoundManager::nastavitve() {
     if (mute == 0)
-        played = PlaySound(TEXT("common/sounds/nastavitve.wav"), NULL, SND_SYNC);
+        played = PlaySound(TEXT("common/sounds/nastavitve.wav"), NULL, SND_ASYNC);
 }
 void SoundManager::nasvidenje() {
     if (mute == 0)
@@ -49,7 +49,7 @@ void SoundManager::nasvidenje() {
 }
 void SoundManager::nazaj() {
     if (mute == 0)
-        played = PlaySound(TEXT("common/sounds/nazaj.wav"), NULL, SND_SYNC);
+        played = PlaySound(TEXT("common/sounds/nazaj.wav"), NULL, SND_ASYNC);
 }
 void SoundManager::spremeni_ime() {
     if (mute == 0)
@@ -60,11 +60,11 @@ void SoundManager::spremeni_zvok() {
 }
 void SoundManager::vec() {
     if (mute == 0)
-        played = PlaySound(TEXT("common/sounds/vec.wav"), NULL, SND_SYNC);
+        played = PlaySound(TEXT("common/sounds/vec.wav"), NULL, SND_ASYNC);
 }
 void SoundManager::zacni() {
     if (mute == 0)
-        played = PlaySound(TEXT("common/sounds/zacni.wav"), NULL, SND_SYNC);
+        played = PlaySound(TEXT("common/sounds/zacni.wav"), NULL, SND_ASYNC);
 }
 void SoundManager::lestvica() {
     if (mute == 0)
