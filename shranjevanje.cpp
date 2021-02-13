@@ -19,7 +19,7 @@ void GameManager::zasilnoShranjevanje() {
 
 void GameManager::branjeShranjenega() {
 	cout << "Loading..." << endl;
-	
+
 	ifstream datoteka;
 	datoteka.open("quicksave.txt");
 	if (datoteka.fail()) {

@@ -4,7 +4,6 @@ WindowManager::WindowManager() {
 	window = NULL;
 	surface = NULL;
 	ren = nullptr;
-
 }
 WindowManager::~WindowManager() {
 	window = NULL;
