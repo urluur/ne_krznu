@@ -79,6 +79,7 @@ bool GameManager::isCompleted() {
 
 void GameManager::setCompleted(bool resnica) {
     completed = resnica;
+    setNivo(0);
     ofstream quicksave;
     quicksave.open("quicksave.txt");
     if (quicksave.is_open())
