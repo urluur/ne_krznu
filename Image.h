@@ -12,6 +12,7 @@ public:
 	// kot to, pa samo spremeni "unsigned short" na "unsigned int" in smo reseni se za ksno tisocletje
 	void ini(class GameManager& igra, const char* filePath);
 	void display(SDL_Renderer* ren);
+	SDL_Surface returnSurface() { return *image_surface; }
 	~Image();
 private:
 	SDL_Surface* image_surface = nullptr;

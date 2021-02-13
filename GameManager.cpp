@@ -34,6 +34,10 @@ int GameManager::init() {
         printf("IMG_Init Error: %s\n", IMG_GetError());
         return EXIT_FAILURE;
     }
+
+    Image ikona(okno.ren, "common/img/ikona.png", 0,0,29,29);
+    SDL_Surface icon = ikona.returnSurface();
+    SDL_SetWindowIcon(okno.window, &icon);
     srand((unsigned int)time(NULL));
     return EXIT_SUCCESS;
 }
