@@ -45,7 +45,7 @@ void GameManager::branjeLestvice() {
 void GameManager::shranjevanjeLestvice() {
 	cout << "Shranjujem tvoje rezultate..." << endl;
 	ofstream lestvica;
-	lestvica.open("top.txt");
+	lestvica.open("lestvica.txt");
 	if (lestvica.is_open()) {
 		//shrani sortirano
 		lestvica.close();
