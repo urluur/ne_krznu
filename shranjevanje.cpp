@@ -19,7 +19,7 @@ void GameManager::zasilnoShranjevanje() {
 
 void GameManager::branjeShranjenega() {
 	cout << "Loading..." << endl;
-	
+
 	ifstream datoteka;
 	datoteka.open("quicksave.txt");
 	if (datoteka.fail()) {
@@ -45,7 +45,7 @@ void GameManager::branjeLestvice() {
 void GameManager::shranjevanjeLestvice() {
 	cout << "Shranjujem tvoje rezultate..." << endl;
 	ofstream lestvica;
-	lestvica.open("top.txt");
+	lestvica.open("lestvica.txt");
 	if (lestvica.is_open()) {
 		//shrani sortirano
 		lestvica.close();

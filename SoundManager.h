@@ -9,26 +9,25 @@ class SoundManager
 {
 private:
 	Mix_Music* bgm;
-    bool mute;
-    bool played;
+	bool mute;
+	bool played;
 public:
 	SoundManager();
-    void toggle();
-    void oof();
-    void cursorMove();
-    void dimenzije();
-    void izhod();
-    void nastavitve();
-    void nasvidenje();
-    void nazaj();
-    void spremeni_ime();
-    void spremeni_zvok();
-    void vec();
-    void zacni();
-    void lestvica();
-    void izvorna();
-    void izbris();
-    void soundAnimacija(int animSt);
-    ~SoundManager();
+	void toggle();
+	void oof();
+	void cursorMove();
+	void dimenzije();
+	void izhod();
+	void nastavitve();
+	void nasvidenje();
+	void nazaj();
+	void spremeni_ime();
+	void spremeni_zvok();
+	void vec();
+	void zacni();
+	void lestvica();
+	void izvorna();
+	void izbris();
+	void soundAnimacija(int animSt);
+	~SoundManager();
 };
-
