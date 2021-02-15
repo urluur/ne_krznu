@@ -16,26 +16,26 @@ void overworld(GameManager& igra) {
 	img_overworld.display(igra.okno.ren);
 
 	if (level_clear != 0) {
+		cout << "Nalagam " << igra.getNivo() + 1 << ". nivo." << endl;
 		for (;;) { // skip travel
 			premakniNaXY(igra, x, y, 180, 160, img_overworld, img_player, level_clear);
-			if (level_clear == 1) { break; }
+			if (level_clear == 1) break;
 			premakniNaXY(igra, x, y, 90, 250, img_overworld, img_player, level_clear);
 			premakniNaXY(igra, x, y, 165, 350, img_overworld, img_player, level_clear);
-			if (level_clear == 2) { break; }
+			if (level_clear == 2) break;
 			premakniNaXY(igra, x, y, 200, 450, img_overworld, img_player, level_clear);
 			premakniNaXY(igra, x, y, 275, 500, img_overworld, img_player, level_clear);
 			premakniNaXY(igra, x, y, 325, 500, img_overworld, img_player, level_clear);
 			premakniNaXY(igra, x, y, 350, 450, img_overworld, img_player, level_clear);
-			if (level_clear == 3) { break; }
+			if (level_clear == 3) break;
 			premakniNaXY(igra, x, y, 445, 320, img_overworld, img_player, level_clear);
 			premakniNaXY(igra, x, y, 460, 240, img_overworld, img_player, level_clear);
 			premakniNaXY(igra, x, y, 420, 150, img_overworld, img_player, level_clear);
-			if (level_clear == 4) { break; }
+			if (level_clear == 4) break;
 			premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player, level_clear);
-			if (level_clear == 5) { break; }
+			if (level_clear == 5) break;
 			premakniNaXY(igra, x, y, 425, 30, img_overworld, img_player, level_clear);
 		}
-		cout << "Nalagam " << igra.getNivo() + 1 << ". nivo." << endl;
 	}
 
 	while (stay) {
@@ -54,7 +54,7 @@ void overworld(GameManager& igra) {
 			igra.haltEnter(level_clear); // takoj ko odpremo in je na ladji
 			animacija(igra, 1);
 
-			premakniNaXY(igra, x, y, 180, 160, img_overworld, img_player, 0);
+			premakniNaXY(igra, x, y, 180, 160, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); // prej ko se zacne prvi level in smo zravn hiske
 			igra.level(level_clear);
 			break;

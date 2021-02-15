@@ -73,10 +73,6 @@ void GameManager::haltEnter(short nivo) {
 	}
 }
 
-bool GameManager::isCompleted() {
-	return completed;
-}
-
 void GameManager::setCompleted(bool resnica) {
 	completed = resnica;
 	setNivo(0);
@@ -90,14 +86,6 @@ void GameManager::setCompleted(bool resnica) {
 		exit(1);
 	}
 	quicksave.close();
-}
-
-short GameManager::getNivo() {
-	return trenutniNivo;
-}
-
-void GameManager::setNivo(short lvl) {
-	trenutniNivo = lvl;
 }
 
 void GameManager::preveriEsc(short& nivo) {

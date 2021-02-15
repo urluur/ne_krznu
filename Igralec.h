@@ -6,11 +6,11 @@ using namespace std;
 class Igralec
 {
 private:
-	string ime = "bumbar";
+	string ime;
 public:
 	void setName();
 	void setName(std::string);
-	string getName();
+	string getName() { return ime; }
 	void coutName();
-	Igralec();
+	Igralec() { ime = "bumbar"; }
 };

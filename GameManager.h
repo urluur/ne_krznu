@@ -33,10 +33,10 @@ public:
 	void pripraviVse();
 	void haltEnter(short nivo);
 	void updateMap();
-	bool isCompleted();
+	bool isCompleted() { return completed; }
 	void setCompleted(bool resnica);
-	short getNivo();
-	void setNivo(short lvl);
+	short getNivo() { return trenutniNivo; }
+	void setNivo(short lvl) { trenutniNivo = lvl; }
 	void preveriEsc(short& nivo);
 	void zasilnoShranjevanje();
 	void branjeShranjenega();

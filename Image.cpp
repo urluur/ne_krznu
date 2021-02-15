@@ -29,21 +29,15 @@ void Image::init(GameManager& igra, const char* filePath, unsigned short x, unsi
 	}
 
 	image_surface = IMG_Load(filePath);
-
 	image_texture = SDL_CreateTextureFromSurface(igra.okno.ren, image_surface);
 
 	flipped = (w <= 0) ? true : false;
-
 	w = (w <= 0) ? w *= -1 : w *= 1;
 
 	rect.x = igra.okno.scaleCal(x);
 	rect.y = igra.okno.scaleCal(y);
 	rect.w = igra.okno.scaleCal(w);
 	rect.h = igra.okno.scaleCal(h);
-}
-
-void Image::ini(GameManager& igra, const char* filePath) {
-	init(igra, filePath, 0, 0, 720, 640);
 }
 
 void Image::display(SDL_Renderer* ren) {
