@@ -1,5 +1,22 @@
 #include "GameManager.h"
 
+void GameManager::pripraviVse() {
+	SDL_PollEvent(&event);
+	konecLevela = false;
+
+	stNaspr[0] = 4; stNaspr[1] = 3; stNaspr[2] = 2; stNaspr[3] = 1; stNaspr[4] = 0;
+	stAktiv[0] = 3; stAktiv[1] = 5; stAktiv[2] = 7; stAktiv[3] = 10; stAktiv[4] = 1;
+	stTjuln[0] = 5; stTjuln[1] = 10; stTjuln[2] = 15; stTjuln[3] = 20; stTjuln[4] = 0;
+	
+	//nared vektorje za nasprotnike aktiviste in tjulne
+}
+
+void GameManager::updateMap() {
+	//(slike).display(okno.ren); //for cez use vectorje ubistvu
+	SDL_RenderPresent(okno.ren);
+	okno.omejiFrame();
+}
+
 GameManager::GameManager() {
 	SDL_PollEvent(&event);
 	konecLevela = false;
@@ -40,25 +57,6 @@ int GameManager::init() {
 	SDL_SetWindowIcon(okno.window, &icon);
 	srand((unsigned int)time(NULL));
 	return EXIT_SUCCESS;
-}
-
-void GameManager::pripraviVse() {
-	SDL_PollEvent(&event);
-	konecLevela = false;
-
-	stNaspr[0] = 4; stNaspr[1] = 3; stNaspr[2] = 2; stNaspr[3] = 1; stNaspr[4] = 0;
-	stAktiv[0] = 3; stAktiv[1] = 5; stAktiv[2] = 7; stAktiv[3] = 10; stAktiv[4] = 1;
-	stTjuln[0] = 5; stTjuln[1] = 10; stTjuln[2] = 15; stTjuln[3] = 20; stTjuln[4] = 0;
-	//dodaj da pride prek argumenta se struktura
-	//postauljanje usega na pravo zacetno mesto
-	//nared strukturo z usemi
-	//inicializiri use slike u strukturi
-}
-
-void GameManager::updateMap() {
-	//(slike).display(okno.ren); //for cez use vectorje ubistvu
-	SDL_RenderPresent(okno.ren);
-	okno.omejiFrame();
 }
 
 void GameManager::haltEnter(short nivo) {

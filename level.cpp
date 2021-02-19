@@ -29,7 +29,6 @@ void GameManager::level(short& nivo) {
         // im stuck ne vem kko bi zaceu delat actual game :/ i guess bom najprej naredu use backgrounde
 
 
-
         //* za provo dok ni levela tuki
         if (nivo < 5)
             stTjuln[trenutniNivo - 1]--;

@@ -6,20 +6,6 @@
 #include "SDL_ttf.h"
 #include "Image.h"
 
-struct koordinati {
-	unsigned short x, y;
-	unsigned short spawn_x, spawn_y;
-};
-struct tjulen {
-	koordinati kje;
-};
-struct aktivist {
-	koordinati kje;
-};
-struct nasprotnik {
-	koordinati kje;
-};
-
 class GameManager {
 public:
 	WindowManager okno;
