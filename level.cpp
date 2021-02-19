@@ -22,6 +22,7 @@ void GameManager::level(short& nivo) {
 
     //main game loop
     while (!(keys[SDL_SCANCODE_ESCAPE] || event.type == SDL_QUIT) && !konecLevela) {
+        okno.stejFrame();
         SDL_RenderClear(okno.ren);
         odzadje.display(okno.ren);
 

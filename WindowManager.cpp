@@ -4,18 +4,22 @@ WindowManager::WindowManager() {
 	window = NULL;
 	surface = NULL;
 	ren = nullptr;
+	frameStart = 0;
+	frameTime = 0;
 }
+
 WindowManager::~WindowManager() {
 	window = NULL;
 	surface = NULL;
 	ren = nullptr;
 }
-short WindowManager::returnWindowWidth() {
-	return Window_width;
+
+void WindowManager::omejiFrame() {
+	frameTime = SDL_GetTicks() - frameStart;
+	if (frameDelay > frameTime)
+		SDL_Delay(frameDelay - frameTime);
 }
-short WindowManager::returnWindowHeight() {
-	return Window_height;
-}
+
 void WindowManager::toggleScaler() {
 	switch (scaler) {
 	case 1:
@@ -43,6 +47,7 @@ void WindowManager::toggleScaler() {
 	}
 	cout << endl;
 }
+
 int WindowManager::scaleCal(int stevilo) {
 	switch (scaler) {
 	case 1:
@@ -58,7 +63,4 @@ int WindowManager::scaleCal(int stevilo) {
 	default:
 		cerr << "Error: scaleCal: " << scaler << endl;
 	}
-}
-short WindowManager::vrniScaler() {
-	return scaler;
 }

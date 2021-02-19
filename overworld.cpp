@@ -39,14 +39,13 @@ void overworld(GameManager& igra) {
 	}
 
 	while (stay) {
-		SDL_Delay(100);
 		SDL_PollEvent(&igra.event);
 		SDL_RenderClear(igra.okno.ren);
 		img_overworld.ini(igra, "common/img/overworld.png");
 		img_overworld.display(igra.okno.ren);
 		narisiFarmeAliDosezke(igra, level_clear);
 		SDL_RenderPresent(igra.okno.ren);
-
+		igra.okno.omejiFrame();
 		switch (level_clear) {
 		case 0:
 			img_player.init(igra, "common/img/player.png", 55, 160, 29, 64);
@@ -153,7 +152,9 @@ void animacija(GameManager& igra, int stAnim) {
 	Image img_enter;
 	short blink = 0;
 	img_enter.ini(igra, "common/img/pressreturn.png");
-	while (!igra.keys[SDL_SCANCODE_RETURN]) {
+	bool halt = true;
+	while (halt) {
+		igra.okno.stejFrame();
 		SDL_PollEvent(&igra.event);
 		if (blink < 100)
 			img_enter.display(igra.okno.ren);
@@ -165,13 +166,19 @@ void animacija(GameManager& igra, int stAnim) {
 			blink = 0;
 		blink++;
 		SDL_RenderPresent(igra.okno.ren);
-		SDL_Delay(10);
+		igra.okno.omejiFrame();
+		if (igra.keys[SDL_SCANCODE_RETURN]) {
+			while (igra.keys[SDL_SCANCODE_RETURN])
+				SDL_PollEvent(&igra.event);
+			halt = false;
+		}
 	}
 }
 
 void premakniNaXY(GameManager& igra, short& mov_x, short& mov_y, short to_x, short to_y, Image& img_overworld, Image& img_player, short nivo) {
 	short i = 0;
 	while (true) {
+		igra.okno.stejFrame();
 		igra.preveriEsc(nivo);
 		if (mov_x != to_x) {
 			if (mov_x < to_x) mov_x++;
@@ -203,8 +210,8 @@ void premakniNaXY(GameManager& igra, short& mov_x, short& mov_y, short to_x, sho
 		narisiFarmeAliDosezke(igra, nivo);
 		img_player.display(igra.okno.ren);
 		SDL_RenderPresent(igra.okno.ren);
-		SDL_Delay(10);
 		i += 1;
+		igra.okno.omejiFrame();
 	}
 }
 

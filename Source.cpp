@@ -27,6 +27,7 @@ int main() {
 
 	//main menu loop
 	while (!igra.keys[SDL_SCANCODE_ESCAPE] && event.type != SDL_QUIT) {
+		igra.okno.stejFrame();
 		SDL_PollEvent(&event);
 		SDL_RenderClear(igra.okno.ren);
 		if (igra.isCompleted())
@@ -37,6 +38,7 @@ int main() {
 		main.display(igra.okno.ren);
 
 		if (igra.keys[SDL_SCANCODE_UP]) {
+			while (igra.keys[SDL_SCANCODE_UP]) { SDL_PollEvent(&event); }
 			igra.sound.cursorMove();
 			if (cur_pos == 1)
 				cur_pos = 4;
@@ -44,17 +46,20 @@ int main() {
 				cur_pos--;
 		}
 		else if (igra.keys[SDL_SCANCODE_DOWN]) {
+			while (igra.keys[SDL_SCANCODE_DOWN]) { SDL_PollEvent(&event); }
 			igra.sound.cursorMove();
 			if (cur_pos == 4)
 				cur_pos = 1;
 			else
 				cur_pos++;
 		}
+
 		switch (cur_pos) {
 		case 1:
 			cursor.init(igra, "common/img/cursor.png", 20, 120, 98, 49);
 			cursor.display(igra.okno.ren);
 			if (igra.keys[SDL_SCANCODE_RETURN]) {
+				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&event); }
 				igra.sound.zacni();
 				overworld(igra);
 			}
@@ -63,6 +68,7 @@ int main() {
 			cursor.init(igra, "common/img/cursor.png", 20, 180, 98, 49);
 			cursor.display(igra.okno.ren);
 			if (igra.keys[SDL_SCANCODE_RETURN]) {
+				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&event); }
 				igra.sound.vec();
 				vec(igra);
 			}
@@ -71,6 +77,7 @@ int main() {
 			cursor.init(igra, "common/img/cursor.png", 20, 240, 98, 49);
 			cursor.display(igra.okno.ren);
 			if (igra.keys[SDL_SCANCODE_RETURN]) {
+				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&event); }
 				igra.sound.nastavitve();
 				nastavitve(igra);
 				cur_pos = 1;
@@ -78,6 +85,7 @@ int main() {
 			break;
 		case 4:
 			if (igra.keys[SDL_SCANCODE_RETURN]) {
+				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&event); }
 				igra.sound.izhod();
 				izhod_switch = true;
 			}
@@ -86,10 +94,9 @@ int main() {
 			break;
 		}
 		SDL_RenderPresent(igra.okno.ren);
-		SDL_Delay(80);
 		if (izhod_switch)
 			break;
-		SDL_Delay(10);
+		igra.okno.omejiFrame();
 	}
 	//igra.sound.nasvidenje();
 

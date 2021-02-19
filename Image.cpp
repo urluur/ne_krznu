@@ -1,6 +1,12 @@
 #include "Image.h"
 
-Image::Image() {}
+Image::Image() {
+	rect.x = 0;
+	rect.y = 0;
+	rect.w = 0;
+	rect.h = 0;
+	flipped = false;
+}
 
 Image::Image(SDL_Renderer* ren, const char* filePath, unsigned short x, unsigned short y, unsigned short w, unsigned short h) {
 	if (image_texture != nullptr && image_surface != nullptr) {

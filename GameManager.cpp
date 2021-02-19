@@ -56,19 +56,18 @@ void GameManager::pripraviVse() {
 }
 
 void GameManager::updateMap() {
-	//(slike).display(okno.ren);
+	//(slike).display(okno.ren); //for cez use vectorje ubistvu
 	SDL_RenderPresent(okno.ren);
+	okno.omejiFrame();
 }
 
 void GameManager::haltEnter(short nivo) {
 	Image img_enter; //(okno.ren, "common/img/pressreturn.png", 0, 0, okno.scaleCal(okno.returnWindowWidth()), okno.scaleCal(okno.returnWindowHeight()));
 	img_enter.ini(*this, "common/img/pressreturn.png");
-	SDL_Delay(200);
 	img_enter.display(okno.ren);
 	SDL_RenderPresent(okno.ren);
 	SDL_PollEvent(&event);
 	while (!keys[SDL_SCANCODE_RETURN]) {
-		SDL_Delay(15);
 		preveriEsc(nivo);
 	}
 }
@@ -91,6 +90,7 @@ void GameManager::setCompleted(bool resnica) {
 void GameManager::preveriEsc(short& nivo) {
 	SDL_PollEvent(&event);
 	if ((keys[SDL_SCANCODE_ESCAPE] || event.type == SDL_QUIT)) {
+		while (keys[SDL_SCANCODE_ESCAPE]) { SDL_PollEvent(&event); }
 		setNivo(nivo);
 		zasilnoShranjevanje();
 		cleanup();
