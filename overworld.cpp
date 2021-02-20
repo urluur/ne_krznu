@@ -8,7 +8,7 @@ void overworld(GameManager& igra) {
 	Image img_player;
 	Image img_zastavica_fullscreen;
 
-	short x = 90, y = 160; //pozicija na ladji
+	short x = 300, y = 170; //pozicija na ladji
 
 	short level_clear = igra.getNivo();
 
@@ -18,23 +18,22 @@ void overworld(GameManager& igra) {
 	if (level_clear != 0) {
 		cout << "Nalagam " << igra.getNivo() + 1 << ". nivo." << endl;
 		for (;;) { // skip travel
-			premakniNaXY(igra, x, y, 180, 160, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 440, 190, img_overworld, img_player, level_clear);
 			if (level_clear == 1) break;
-			premakniNaXY(igra, x, y, 90, 250, img_overworld, img_player, level_clear);
-			premakniNaXY(igra, x, y, 165, 350, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 335, 310, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 410, 395, img_overworld, img_player, level_clear);
 			if (level_clear == 2) break;
-			premakniNaXY(igra, x, y, 200, 450, img_overworld, img_player, level_clear);
-			premakniNaXY(igra, x, y, 275, 500, img_overworld, img_player, level_clear);
-			premakniNaXY(igra, x, y, 325, 500, img_overworld, img_player, level_clear);
-			premakniNaXY(igra, x, y, 350, 450, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 460, 530, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 560, 570, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 620, 520, img_overworld, img_player, level_clear);
 			if (level_clear == 3) break;
-			premakniNaXY(igra, x, y, 445, 320, img_overworld, img_player, level_clear);
-			premakniNaXY(igra, x, y, 460, 240, img_overworld, img_player, level_clear);
-			premakniNaXY(igra, x, y, 420, 150, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 725, 365, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 750, 280, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 710, 220, img_overworld, img_player, level_clear);
 			if (level_clear == 4) break;
-			premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 705, 125, img_overworld, img_player, level_clear);
 			if (level_clear == 5) break;
-			premakniNaXY(igra, x, y, 425, 30, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 710, 20, img_overworld, img_player, level_clear);
 		}
 	}
 
@@ -48,55 +47,54 @@ void overworld(GameManager& igra) {
 		igra.okno.omejiFrame();
 		switch (level_clear) {
 		case 0:
-			img_player.init(igra, "common/img/player.png", 55, 160, 29, 64);
+			img_player.init(igra, "common/img/player.png", x, y, 29, 64);
 			img_player.display(igra.okno.ren);
 			igra.haltEnter(level_clear); // takoj ko odpremo in je na ladji
 			animacija(igra, 1);
 
-			premakniNaXY(igra, x, y, 180, 160, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 440, 190, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); // prej ko se zacne prvi level in smo zravn hiske
 			igra.level(level_clear);
 			break;
 		case 1:
-			premakniNaXY(igra, x, y, 90, 250, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 335, 310, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); // stojimo pred mostom
 			animacija(igra, 2);
-			premakniNaXY(igra, x, y, 165, 350, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 410, 395, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); // stojimo pred 2. levelom
 
 			igra.level(level_clear);
 			break;
 		case 2:
-			premakniNaXY(igra, x, y, 200, 450, img_overworld, img_player, level_clear);
-			premakniNaXY(igra, x, y, 275, 500, img_overworld, img_player, level_clear);
-			premakniNaXY(igra, x, y, 325, 500, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 460, 530, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 560, 570, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); //stojimo na kotu
 			animacija(igra, 3);
-			premakniNaXY(igra, x, y, 350, 450, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 620, 520, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); //stojimo na 3. levelu
 
 			igra.level(level_clear);
 			break;
 		case 3:
-			premakniNaXY(igra, x, y, 445, 320, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 725, 365, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); // stojimo na lojtri
 			animacija(igra, 4);
-			premakniNaXY(igra, x, y, 460, 240, img_overworld, img_player, level_clear);
+			premakniNaXY(igra, x, y, 750, 280, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); //stojimo na 4. levelu
 			igra.level(level_clear);
-			premakniNaXY(igra, x, y, 420, 150, img_overworld, img_player, level_clear); //testing d se pokaze
-			igra.haltEnter(level_clear);
+			premakniNaXY(igra, x, y, 710, 220, img_overworld, img_player, level_clear);
+			igra.haltEnter(level_clear); // na strik
 			break;
 		case 4:
 			animacija(igra, 5);
-			premakniNaXY(igra, x, y, 420, 100, img_overworld, img_player, level_clear);
-			igra.haltEnter(level_clear);
+			premakniNaXY(igra, x, y, 705, 125, img_overworld, img_player, level_clear);
+			igra.haltEnter(level_clear); // na 5 level
 			animacija(igra, 6);
 			igra.level(level_clear);
 			break;
 		case 5:
-			premakniNaXY(igra, x, y, 425, 30, img_overworld, img_player, level_clear);
-			igra.haltEnter(level_clear);
+			premakniNaXY(igra, x, y, 710, 20, img_overworld, img_player, level_clear);
+			igra.haltEnter(level_clear); // na koncu
 
 			cout << "Zmaga!" << endl;
 			animacija(igra, 7);
@@ -217,8 +215,9 @@ void premakniNaXY(GameManager& igra, short& mov_x, short& mov_y, short to_x, sho
 
 void narisiFarmeAliDosezke(GameManager& igra, short nivo) {
 	Image hisa[5];
-	unsigned short x[5] = { 210, 100, 320, 460, 450 };
-	unsigned short y[5] = { 160, 425, 420, 215, 100 };
+	int premikx = 250, premiky = 25;
+	unsigned short x[5] = { 470, 340, 580, 750, 730 };
+	unsigned short y[5] = { 180, 490, 480, 240, 125 };
 	for (int i = 0; i < 5; i++)
 		if (i < nivo)
 			hisa[i].init(igra, "common/img/iglu.png", x[i], y[i], 66, 61);

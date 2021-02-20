@@ -53,6 +53,12 @@ void Image::display(SDL_Renderer* ren) {
 		SDL_RenderCopyEx(ren, image_texture, NULL, &rect, 0, NULL, SDL_FLIP_HORIZONTAL);
 }
 
+void Image::ini(class GameManager& igra, const char* filePath) {
+	unsigned short w = igra.okno.returnWindowWidth();
+	unsigned short h = igra.okno.returnWindowHeight();
+	init(igra, filePath, 0, 0, w, h);
+}
+
 Image::~Image() {
 	SDL_FreeSurface(image_surface);
 	SDL_DestroyTexture(image_texture);

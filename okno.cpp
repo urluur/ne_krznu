@@ -59,7 +59,7 @@ int WindowManager::scaleCal(int stevilo) {
 	case 5:
 		return stevilo * 0.5;
 	case 100:
-		return stevilo * 1.7;
+		return stevilo * 1.5;
 	default:
 		cerr << "Error: scaleCal: " << scaler << endl;
 	}
