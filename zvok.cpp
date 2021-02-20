@@ -1,4 +1,4 @@
-#include "SoundManager.h"
+#include "zvok.h"
 
 SoundManager::SoundManager() {
 	played = false;

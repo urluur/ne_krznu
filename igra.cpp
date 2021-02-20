@@ -1,4 +1,4 @@
-#include "GameManager.h"
+#include "igra.h"
 
 void GameManager::pripraviVse() {
 	SDL_PollEvent(&event);

@@ -14,11 +14,11 @@
 #include <SDL_ttf.h>
 #include <vector>
 
-#include "GameManager.h"
+#include "igra.h"
 #include "igralec.h"
-#include "Image.h"
-#include "SoundManager.h"
-#include "Text.h"
-#include "WindowManager.h"
+#include "slika.h"
+#include "zvok.h"
+#include "tekst.h"
+#include "okno.h"
 
 using namespace std;

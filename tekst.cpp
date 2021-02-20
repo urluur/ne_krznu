@@ -1,4 +1,4 @@
-#include "Text.h"
+#include "tekst.h"
 
 Text::Text(SDL_Renderer* ren, const std::string& font_path, int font_size, const std::string& message_text, const SDL_Color& colour) {
 	SDL_QueryTexture(text_texture, NULL, NULL, &text_rect.w, &text_rect.h);

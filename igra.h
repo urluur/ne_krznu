@@ -1,10 +1,10 @@
 #pragma once
 #include "includes.h"
-#include "WindowManager.h"
-#include "SoundManager.h"
-#include "Igralec.h"
+#include "okno.h"
+#include "zvok.h"
+#include "igralec.h"
 #include "SDL_ttf.h"
-#include "Image.h"
+#include "slika.h"
 
 class GameManager {
 public:

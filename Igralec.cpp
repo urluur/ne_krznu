@@ -1,4 +1,4 @@
-#include "Igralec.h"
+#include "igralec.h"
 
 void space2underscore(std::string& text) {
 	for (std::string::iterator it = text.begin(); it != text.end(); ++it)

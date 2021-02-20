@@ -1,4 +1,4 @@
-#include "WindowManager.h"
+#include "okno.h"
 
 WindowManager::WindowManager() {
 	window = NULL;

@@ -1,4 +1,4 @@
-#include "Image.h"
+#include "slika.h"
 
 Image::Image() {
 	rect.x = 0;

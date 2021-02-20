@@ -1,4 +1,4 @@
-#include "main_menu.h"
+#include "menu.h"
 using namespace std;
 
 void nastavitve(GameManager& igra) {

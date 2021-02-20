@@ -149,28 +149,28 @@ SDL2main.lib;Winmm.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDe
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="igra.cpp" />
     <ClCompile Include="Igralec.cpp" />
-    <ClCompile Include="Image.cpp" />
+    <ClCompile Include="slika.cpp" />
     <ClCompile Include="level.cpp" />
     <ClCompile Include="shranjevanje.cpp" />
-    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="zvok.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="main_menu.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="overworld.cpp" />
-    <ClCompile Include="Text.cpp" />
-    <ClCompile Include="WindowManager.cpp" />
+    <ClCompile Include="tekst.cpp" />
+    <ClCompile Include="okno.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
-    <ClInclude Include="GameManager.h" />
-    <ClInclude Include="main_menu.h" />
-    <ClInclude Include="Igralec.h" />
-    <ClInclude Include="Image.h" />
+    <ClInclude Include="igra.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="igralec.h" />
+    <ClInclude Include="slika.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="SoundManager.h" />
-    <ClInclude Include="Text.h" />
-    <ClInclude Include="WindowManager.h" />
+    <ClInclude Include="zvok.h" />
+    <ClInclude Include="tekst.h" />
+    <ClInclude Include="okno.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ne_krznu.rc" />
