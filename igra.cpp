@@ -18,6 +18,7 @@ void GameManager::updateMap() {
 }
 
 GameManager::GameManager() {
+	joystick = nullptr;
 	SDL_PollEvent(&event);
 	konecLevela = false;
 	completed = false;
@@ -55,6 +56,17 @@ int GameManager::init() {
 	Image ikona(okno.ren, "common/img/ikona.png", 0, 0, 29, 29);
 	SDL_Surface icon = ikona.returnSurface();
 	SDL_SetWindowIcon(okno.window, &icon);
+
+	int numJoystick = SDL_NumJoysticks();
+	printf("%i joysticks were found.\n\n", SDL_NumJoysticks());
+	printf("The names of the joysticks are:\n");
+	for (int i = 0; i < SDL_NumJoysticks(); i++)
+		std::cout << "	" << SDL_JoystickNameForIndex(i) << std::endl;
+	if (numJoystick > 0) {
+		SDL_JoystickEventState(SDL_ENABLE);
+		joystick = SDL_JoystickOpen(0);
+	}
+
 	srand((unsigned int)time(NULL));
 	return EXIT_SUCCESS;
 }
@@ -98,5 +110,25 @@ void GameManager::preveriEsc(short& nivo) {
 
 void GameManager::cleanup() {
 	SDL_DestroyWindow(okno.window);
+	if (joystick != nullptr) SDL_JoystickClose(joystick);
 	SDL_Quit();
+}
+
+bool GameManager::checkQuit() {
+	return (keys[SDL_SCANCODE_ESCAPE] || event.type == SDL_QUIT);
+}
+bool GameManager::checkEnter() {
+	return (keys[SDL_SCANCODE_RETURN]);
+}
+bool GameManager::checkUp() {
+	return (keys[SDL_SCANCODE_UP] || event.jhat.value == 1);
+}
+bool GameManager::checkDown() {
+	return (keys[SDL_SCANCODE_DOWN] || event.jhat.value == 4);
+}
+bool GameManager::checkLeft() {
+	return (keys[SDL_SCANCODE_LEFT] || event.jhat.value == 8);
+}
+bool GameManager::checkRight() {
+	return (keys[SDL_SCANCODE_UP] || event.jhat.value == 2);
 }

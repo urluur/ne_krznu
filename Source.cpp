@@ -18,17 +18,16 @@ int main() {
 	igra.sound.toggle(); //samo za testing
 
 	igra.branjeShranjenega();
-	SDL_Event event;
-	SDL_PollEvent(&event);
+	SDL_PollEvent(&igra.event);
 	short cur_pos = 1;
 	bool izhod_switch = false;
 	Image main;
 	Image cursor;
 
 	//main menu loop
-	while (!igra.keys[SDL_SCANCODE_ESCAPE] && event.type != SDL_QUIT) {
+	while (!igra.keys[SDL_SCANCODE_ESCAPE] && igra.event.type != SDL_QUIT) {
 		igra.okno.stejFrame();
-		SDL_PollEvent(&event);
+		SDL_PollEvent(&igra.event);
 		SDL_RenderClear(igra.okno.ren);
 		if (igra.isCompleted())
 			main.ini(igra, "common/img/main_completed.png");
@@ -37,16 +36,16 @@ int main() {
 
 		main.display(igra.okno.ren);
 
-		if (igra.keys[SDL_SCANCODE_UP]) {
-			while (igra.keys[SDL_SCANCODE_UP]) { SDL_PollEvent(&event); }
+		if (igra.checkUp()) {
+			while (igra.checkUp()) { SDL_PollEvent(&igra.event); }
 			igra.sound.cursorMove();
 			if (cur_pos == 1)
 				cur_pos = 4;
 			else
 				cur_pos--;
 		}
-		else if (igra.keys[SDL_SCANCODE_DOWN]) {
-			while (igra.keys[SDL_SCANCODE_DOWN]) { SDL_PollEvent(&event); }
+		else if (igra.checkDown()) {
+			while (igra.checkDown()) { SDL_PollEvent(&igra.event); }
 			igra.sound.cursorMove();
 			if (cur_pos == 4)
 				cur_pos = 1;
@@ -58,8 +57,8 @@ int main() {
 		case 1:
 			cursor.init(igra, "common/img/cursor.png", 20, 120, 98, 49);
 			cursor.display(igra.okno.ren);
-			if (igra.keys[SDL_SCANCODE_RETURN]) {
-				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&event); }
+			if (igra.checkEnter()) {
+				while (igra.checkEnter()) { SDL_PollEvent(&igra.event); }
 				igra.sound.zacni();
 				overworld(igra);
 			}
@@ -67,8 +66,8 @@ int main() {
 		case 2:
 			cursor.init(igra, "common/img/cursor.png", 20, 180, 98, 49);
 			cursor.display(igra.okno.ren);
-			if (igra.keys[SDL_SCANCODE_RETURN]) {
-				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&event); }
+			if (igra.checkEnter()) {
+				while (igra.checkEnter()) { SDL_PollEvent(&igra.event); }
 				igra.sound.vec();
 				vec(igra);
 			}
@@ -76,16 +75,16 @@ int main() {
 		case 3:
 			cursor.init(igra, "common/img/cursor.png", 20, 240, 98, 49);
 			cursor.display(igra.okno.ren);
-			if (igra.keys[SDL_SCANCODE_RETURN]) {
-				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&event); }
+			if (igra.checkEnter()) {
+				while (igra.checkEnter()) { SDL_PollEvent(&igra.event); }
 				igra.sound.nastavitve();
 				nastavitve(igra);
 				cur_pos = 1;
 			}
 			break;
 		case 4:
-			if (igra.keys[SDL_SCANCODE_RETURN]) {
-				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&event); }
+			if (igra.checkEnter()) {
+				while (igra.checkEnter()) { SDL_PollEvent(&igra.event); }
 				igra.sound.izhod();
 				izhod_switch = true;
 			}

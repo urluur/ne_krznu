@@ -12,6 +12,7 @@ public:
 	SoundManager sound;
 	SDL_Event event;
 	Igralec igralec;
+	SDL_Joystick* joystick;
 	GameManager();
 	int init();
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
@@ -30,7 +31,12 @@ public:
 	void shranjevanjeLestvice();
 	void deleteSave();
 	void cleanup();
-
+	bool checkQuit();
+	bool checkEnter();
+	bool checkUp();
+	bool checkDown();
+	bool checkLeft();
+	bool checkRight();
 private:
 	bool konecLevela;
 	bool completed; // zato da se spremeni main menu na koncu zgodbe
