@@ -17,6 +17,13 @@ int main() {
 	// debug faster
 	igra.sound.toggle(); //samo za testing
 
+	/* to je sam za testiranje levela
+	for (short i = 0; i < 5;) {
+		igra.level(i);
+	}
+	//*/
+
+	//* ok tuki je overworld in use to
 	igra.branjeShranjenega();
 	SDL_PollEvent(&igra.event);
 	short cur_pos = 1;
@@ -98,7 +105,7 @@ int main() {
 		igra.okno.omejiFrame();
 	}
 	//igra.sound.nasvidenje();
-
+	//*/
 	// cleanup
 	igra.cleanup();
 	return EXIT_SUCCESS;

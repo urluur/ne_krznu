@@ -2,7 +2,18 @@
 
 void GameManager::pripraviVse() {
 	SDL_PollEvent(&event);
-	konecLevela = false;
+	konecLevela = false, adios = false;
+	
+	jaz.push_back(new Image);
+	jaz.push_back(new Image);
+
+	short spawnPos[2][5] = {
+	{200, 70,  30, 310, 150},  // x
+	{ 20,  0, 530, 560, 555}}; // y
+	igralec.setX(spawnPos[0][trenutniNivo - 1]);
+	igralec.setY(spawnPos[1][trenutniNivo - 1]);
+	jaz.at(0)->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo-1], spawnPos[1][trenutniNivo-1], 58, 128);
+	jaz.at(1)->init(*this, "common/img/player_noge.png", spawnPos[0][trenutniNivo-1], spawnPos[1][trenutniNivo-1], 58, 128);
 
 	stNaspr[0] = 4; stNaspr[1] = 3; stNaspr[2] = 2; stNaspr[3] = 1; stNaspr[4] = 0;
 	stAktiv[0] = 3; stAktiv[1] = 5; stAktiv[2] = 7; stAktiv[3] = 10; stAktiv[4] = 1;
@@ -13,6 +24,7 @@ void GameManager::pripraviVse() {
 
 void GameManager::updateMap() {
 	//(slike).display(okno.ren); //for cez use vectorje ubistvu
+	jaz.at(0)->display(okno.ren);
 	SDL_RenderPresent(okno.ren);
 	okno.omejiFrame();
 }
@@ -21,6 +33,7 @@ GameManager::GameManager() {
 	joystick = nullptr;
 	SDL_PollEvent(&event);
 	konecLevela = false;
+	adios = false;
 	completed = false;
 	trenutniNivo = 0;
 }
@@ -131,4 +144,39 @@ bool GameManager::checkLeft() {
 }
 bool GameManager::checkRight() {
 	return (keys[SDL_SCANCODE_UP] || event.jhat.value == 2);
+}
+void GameManager::handleEvents() {
+	while (SDL_PollEvent(&event)) {
+		switch (event.type) {
+		case SDL_QUIT:
+			adios = true;
+			break;
+		case SDL_KEYDOWN:
+			if (event.key.keysym.sym == SDLK_UP)
+				w = true;
+			if (event.key.keysym.sym == SDLK_DOWN)
+				s = true;
+			if (event.key.keysym.sym == SDLK_LEFT)
+				a = true;
+			if (event.key.keysym.sym == SDLK_RIGHT)
+				d = true;
+			if (event.key.keysym.sym == SDLK_END)
+				konecLevela = true;
+			break;
+		case SDL_KEYUP:
+			if (event.key.keysym.sym == SDLK_UP)
+				w = false;
+			if (event.key.keysym.sym == SDLK_DOWN)
+				s = false;
+			if (event.key.keysym.sym == SDLK_LEFT)
+				a = false;
+			if (event.key.keysym.sym == SDLK_RIGHT)
+				d = false;
+			break;
+		}
+	}
+	if (w) igralec.setY(igralec.getY() - hitrost);
+	if (a) igralec.setX(igralec.getX() - hitrost);
+	if (s) igralec.setY(igralec.getY() + hitrost);
+	if (d) igralec.setX(igralec.getX() + hitrost);
 }
