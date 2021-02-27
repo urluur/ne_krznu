@@ -16,6 +16,6 @@ public:
 	Igralec() { ime = "bumbar"; }
 	unsigned short getX() { return x; }
 	unsigned short getY() { return y; }
-	void setX(unsigned short notr) { x = notr; }
-	void setY(unsigned short notr) { y = notr; }
+	void setX(unsigned short notr) { x = (notr < 1222 && notr > 0) ? notr:x; }
+	void setY(unsigned short notr) { y = (notr < 592 && notr > 0) ? notr:y; }
 };

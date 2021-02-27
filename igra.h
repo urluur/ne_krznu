@@ -47,5 +47,5 @@ private:
 	short stAktiv[5] = { 4, 3, 2, 1, 0 };
 	short stNaspr[5] = { 3, 5, 7, 10, 1 };
 	short stTjuln[5] = { 5, 10, 15, 20, 0 };
-	short hitrost = 5;
+	short hitrost = 4;
 };
