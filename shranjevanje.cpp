@@ -4,8 +4,14 @@ void GameManager::zasilnoShranjevanje() {
 	ofstream datoteka;
 	datoteka.open("quicksave.txt");
 	if (datoteka.is_open()) {
-		datoteka << igralec.getName() << "\n" << getNivo() << "\n";
-		cout << "Zabelezeno da si koncal/a " << getNivo() << " nivo in se klices ";
+		if (konecLevela || getNivo() == 0) {
+			datoteka << igralec.getName() << "\n" << getNivo() << "\n";
+			cout << "Zabelezeno da si koncal/a " << getNivo() << " nivo in se klices ";
+		}
+		else {
+			datoteka << igralec.getName() << "\n" << getNivo()-1 << "\n";
+			cout << "Zabelezeno da si koncal/a " << getNivo()-1 << " nivo in se klices ";
+		}
 		igralec.coutName();
 		cout << endl;
 		datoteka.close();
