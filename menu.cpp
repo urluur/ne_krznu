@@ -1,6 +1,8 @@
 #include "menu.h"
 using namespace std;
 
+//optimiziri menu.cpp tko ku je Source.cpp !
+
 void nastavitve(GameManager& igra) {
 	bool stay = true;
 	short cur_pos = 1;

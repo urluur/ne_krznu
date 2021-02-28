@@ -91,7 +91,9 @@ void GameManager::haltEnter(short nivo) {
 	SDL_RenderPresent(okno.ren);
 	SDL_PollEvent(&event);
 	while (!keys[SDL_SCANCODE_RETURN]) {
+		okno.stejFrame();
 		preveriEsc(nivo);
+		okno.omejiFrame();
 	}
 }
 
@@ -122,6 +124,7 @@ void GameManager::preveriEsc(short& nivo) {
 }
 
 void GameManager::cleanup() {
+	jaz.clear();
 	SDL_DestroyWindow(okno.window);
 	if (joystick != nullptr) SDL_JoystickClose(joystick);
 	SDL_Quit();

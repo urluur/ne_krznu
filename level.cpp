@@ -6,8 +6,6 @@ void GameManager::level(short& nivo) {
     igralec.coutName();
     cout << " zacenja " << trenutniNivo << " level" << endl;
 
-    //nared strukturo z usemi slikami??
-
     pripraviVse();
 
     //pripravi odzadje
