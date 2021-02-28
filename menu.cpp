@@ -52,6 +52,7 @@ void nastavitve(GameManager& igra) {
 					SDL_SetWindowFullscreen(igra.okno.window, SDL_WINDOW_FULLSCREEN_DESKTOP);
 				else
 					SDL_SetWindowFullscreen(igra.okno.window, 0);
+				SDL_SetWindowPosition(igra.okno.window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 			}
 			break;
 		case 2:
