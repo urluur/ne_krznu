@@ -18,7 +18,7 @@ void nastavitve(GameManager& igra) {
 		if (igra.keys[SDL_SCANCODE_UP])
 		{
 			while (igra.keys[SDL_SCANCODE_UP]) { SDL_PollEvent(&igra.event); }
-			igra.sound.cursorMove();
+			igra.sound.predvajaj("common/sounds/cur_mov.wav");
 			if (cur_pos == 1)
 				cur_pos = 4;
 			else
@@ -27,7 +27,7 @@ void nastavitve(GameManager& igra) {
 		else if (igra.keys[SDL_SCANCODE_DOWN])
 		{
 			while (igra.keys[SDL_SCANCODE_DOWN]) { SDL_PollEvent(&igra.event); }
-			igra.sound.cursorMove();
+			igra.sound.predvajaj("common/sounds/cur_mov.wav");
 			if (cur_pos == 4)
 				cur_pos = 1;
 			else
@@ -44,7 +44,7 @@ void nastavitve(GameManager& igra) {
 			cursor.display(igra.okno.ren);
 			if (igra.keys[SDL_SCANCODE_RETURN]) {
 				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&igra.event); }
-				igra.sound.dimenzije();
+				igra.sound.predvajaj("common/sounds/dimenzije.wav");
 				cout << "spreminjam velikost okna na ";
 				igra.okno.toggleScaler();
 				SDL_SetWindowSize(igra.okno.window, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
@@ -60,7 +60,7 @@ void nastavitve(GameManager& igra) {
 			cursor.display(igra.okno.ren);
 			if (igra.keys[SDL_SCANCODE_RETURN]) {
 				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&igra.event); }
-				igra.sound.spremeni_ime();
+				igra.sound.predvajaj("common/sounds/spremeni_ime.wav");
 				igra.igralec.setName();
 			}
 			break;
@@ -69,18 +69,17 @@ void nastavitve(GameManager& igra) {
 			cursor.display(igra.okno.ren);
 			if (igra.keys[SDL_SCANCODE_RETURN]) {
 				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&igra.event); }
-				igra.sound.spremeni_zvok();
+				igra.sound.predvajaj("common/sounds/spremeni_zvok.wav");
 				igra.sound.toggle();
 				SDL_Delay(50);
 			}
-
 			break;
 		case 4:
 			cursor.init(igra, "common/img/cursor.png", 20, 510, 98, 49);
 			cursor.display(igra.okno.ren);
 			if (igra.keys[SDL_SCANCODE_RETURN]) {
 				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&igra.event); }
-				igra.sound.nazaj();
+				igra.sound.predvajaj("common/sounds/nazaj.wav");
 				stay = false;
 			}
 			break;
@@ -90,7 +89,6 @@ void nastavitve(GameManager& igra) {
 		SDL_PollEvent(&igra.event);
 		igra.okno.omejiFrame();
 	}
-	//igra.sound.oof();
 }
 void vec(GameManager& igra) {
 	bool stay = true;
@@ -107,7 +105,7 @@ void vec(GameManager& igra) {
 		img_vec.display(igra.okno.ren);
 		if (igra.keys[SDL_SCANCODE_UP]) {
 			while (igra.keys[SDL_SCANCODE_UP]) { SDL_PollEvent(&igra.event); }
-			igra.sound.cursorMove();
+			igra.sound.predvajaj("common/sounds/cur_mov.wav");
 			if (cur_pos == 1)
 				cur_pos = 4;
 			else
@@ -115,7 +113,7 @@ void vec(GameManager& igra) {
 		}
 		else if (igra.keys[SDL_SCANCODE_DOWN]) {
 			while (igra.keys[SDL_SCANCODE_DOWN]) { SDL_PollEvent(&igra.event); }
-			igra.sound.cursorMove();
+			igra.sound.predvajaj("common/sounds/cur_mov.wav");
 			if (cur_pos == 4)
 				cur_pos = 1;
 			else
@@ -132,7 +130,7 @@ void vec(GameManager& igra) {
 			cursor.display(igra.okno.ren);
 			if (igra.keys[SDL_SCANCODE_RETURN]) {
 				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&igra.event); }
-				igra.sound.lestvica();
+				igra.sound.predvajaj("common/sounds/lestvica.wav");
 				igra.branjeLestvice();
 			}
 			break;
@@ -142,7 +140,7 @@ void vec(GameManager& igra) {
 			cursor.display(igra.okno.ren);
 			if (igra.keys[SDL_SCANCODE_RETURN]) {
 				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&igra.event); }
-				igra.sound.izvorna();
+				igra.sound.predvajaj("common/sounds/izvorna.wav");
 				system("start https://github.com/urluur/ne_krznu");
 			}
 			break;
@@ -151,7 +149,7 @@ void vec(GameManager& igra) {
 			cursor.display(igra.okno.ren);
 			if (igra.keys[SDL_SCANCODE_RETURN]) {
 				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&igra.event); }
-				igra.sound.izbris();
+				igra.sound.predvajaj("common/sounds/izbris.wav");
 				igra.deleteSave();
 			}
 			break;
@@ -160,7 +158,7 @@ void vec(GameManager& igra) {
 			cursor.display(igra.okno.ren);
 			if (igra.keys[SDL_SCANCODE_RETURN]) {
 				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&igra.event); }
-				igra.sound.nazaj();
+				igra.sound.predvajaj("common/sounds/nazaj.wav");
 				stay = false;
 			}
 			break;
@@ -170,5 +168,4 @@ void vec(GameManager& igra) {
 		SDL_PollEvent(&igra.event);
 		igra.okno.omejiFrame();
 	}
-	//igra.sound.oof();
 }

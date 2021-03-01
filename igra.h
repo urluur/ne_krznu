@@ -17,15 +17,15 @@ public:
 	int init();
 	void handleEvents();
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
-	void level(short& nivo);
+	void level(short&);
 	void pripraviVse();
-	void haltEnter(short nivo);
+	void haltEnter(short);
 	void updateMap();
 	bool isCompleted() { return completed; }
 	void setCompleted(bool resnica);
 	short getNivo() { return trenutniNivo; }
 	void setNivo(short lvl) { trenutniNivo = lvl; }
-	void preveriEsc(short& nivo);
+	void preveriEsc(short&);
 	void zasilnoShranjevanje();
 	void branjeShranjenega();
 	void branjeLestvice();

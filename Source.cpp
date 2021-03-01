@@ -41,7 +41,7 @@ int main() {
 
 		if (igra.checkUp()) {
 			while (igra.checkUp()) { SDL_PollEvent(&igra.event); }
-			igra.sound.cursorMove();
+			igra.sound.predvajaj("common/sounds/cur_mov.wav");
 			if (cur_pos == 1)
 				cur_pos = 4;
 			else
@@ -50,7 +50,7 @@ int main() {
 		}
 		else if (igra.checkDown()) {
 			while (igra.checkDown()) { SDL_PollEvent(&igra.event); }
-			igra.sound.cursorMove();
+			igra.sound.predvajaj("common/sounds/cur_mov.wav");
 			if (cur_pos == 4)
 				cur_pos = 1;
 			else
@@ -66,7 +66,7 @@ int main() {
 			break;
 		igra.okno.omejiFrame();
 	}
-	//igra.sound.nasvidenje();
+	//igra.sound.predvajaj("common/sounds/nasvidenje.wav");
 	//*/
 	
 	igra.cleanup();
@@ -104,20 +104,20 @@ void nadaljuj(GameManager& igra, short& cur_pos, bool& izhod_switch) {
 	while (igra.checkEnter()) { SDL_PollEvent(&igra.event); }
 	switch (cur_pos) {
 	case 1:
-		igra.sound.zacni();
+		igra.sound.predvajaj("common/sounds/zacni.wav");
 		overworld(igra);
 		break;
 	case 2:
-		igra.sound.vec();
+		igra.sound.predvajaj("common/sounds/vec.wav");
 		vec(igra);
 		break;
 	case 3:
-		igra.sound.nastavitve();
+		igra.sound.predvajaj("common/sounds/nastavitve.wav");
 		nastavitve(igra);
 		cur_pos = 1;
 		break;
 	case 4:
-		igra.sound.izhod();
+		igra.sound.predvajaj("common/sounds/izhod.wav");
 		izhod_switch = true;
 		break;
 	}

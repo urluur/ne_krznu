@@ -25,6 +25,6 @@ public:
 	short returnWindowHeight() { return Window_height; }
 	void toggleScaler();
 	short vrniScaler() { return scaler; }
-	int scaleCal(int stevilo);
+	int scaleCal(int);
 	~WindowManager();
 };
