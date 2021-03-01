@@ -1,18 +1,20 @@
 #pragma once
-#include <windows.h>
+//#include <windows.h>
 #include <iostream>
-#include <MMSystem.h>
+//#include <MMSystem.h>
 #include <SDL_mixer.h>
 using namespace std;
 
 class SoundManager
 {
 private:
-	Mix_Music* bgm;
+	Mix_Music* bgm = nullptr;
+	Mix_Chunk* efekt = nullptr;
 	bool mute;
 	bool played;
 public:
 	SoundManager();
+	void predvajaj(const char*);
 	void toggle();
 	void oof();
 	void cursorMove();

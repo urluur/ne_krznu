@@ -2,7 +2,7 @@
 
 SoundManager::SoundManager() {
 	played = false;
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 		cout << "Mixer error: " << Mix_GetError() << endl;
 	bgm = Mix_LoadMUS("common/sounds/soundtrack.wav");
 	if (!Mix_PlayingMusic())
@@ -23,90 +23,88 @@ void SoundManager::toggle() {
 	}
 }
 void SoundManager::cursorMove() {
-	if (mute == 0)
-		played = PlaySound(TEXT("common/sounds/cur_mov.wav"), NULL, SND_ASYNC);
+	predvajaj("common/sounds/cur_mov.wav");
 }
 void SoundManager::oof() {
-	if (mute == 0)
-		played = PlaySound(TEXT("common/sounds/oof.wav"), NULL, SND_SYNC);
+	predvajaj("common/sounds/oof.wav");
 }
 void SoundManager::dimenzije() {
-	if (mute == 0)
-		played = PlaySound(TEXT("common/sounds/dimenzije.wav"), NULL, SND_ASYNC);
+	predvajaj("common/sounds/dimenzije.wav");
 }
 void SoundManager::izhod() {
-	if (mute == 0)
-		played = PlaySound(TEXT("common/sounds/izhod.wav"), NULL, SND_SYNC);
+	predvajaj("common/sounds/izhod.wav");
 }
 void SoundManager::nastavitve() {
-	if (mute == 0)
-		played = PlaySound(TEXT("common/sounds/nastavitve.wav"), NULL, SND_ASYNC);
+	predvajaj("common/sounds/nastavitve.wav");
 }
 void SoundManager::nasvidenje() {
-	if (mute == 0)
-		played = PlaySound(TEXT("common/sounds/nasvidenje.wav"), NULL, SND_SYNC);
+	predvajaj("common/sounds/nasvidenje.wav");
 }
 void SoundManager::nazaj() {
-	if (mute == 0)
-		played = PlaySound(TEXT("common/sounds/nazaj.wav"), NULL, SND_ASYNC);
+	predvajaj("common/sounds/nazaj.wav");
 }
 void SoundManager::spremeni_ime() {
-	if (mute == 0)
-		played = PlaySound(TEXT("common/sounds/spremeni_ime.wav"), NULL, SND_ASYNC);
+	predvajaj("common/sounds/spremeni_ime.wav");
 }
 void SoundManager::spremeni_zvok() {
-	played = PlaySound(TEXT("common/sounds/spremeni_zvok.wav"), NULL, SND_ASYNC);
+	predvajaj("common/sounds/spremeni_zvok.wav");
 }
 void SoundManager::vec() {
-	if (mute == 0)
-		played = PlaySound(TEXT("common/sounds/vec.wav"), NULL, SND_ASYNC);
+	predvajaj("common/sounds/vec.wav");
 }
 void SoundManager::zacni() {
-	if (mute == 0)
-		played = PlaySound(TEXT("common/sounds/zacni.wav"), NULL, SND_ASYNC);
+	predvajaj("common/sounds/zacni.wav");
 }
 void SoundManager::lestvica() {
-	if (mute == 0)
-		played = PlaySound(TEXT("common/sounds/lestvica.wav"), NULL, SND_ASYNC);
+	predvajaj("common/sounds/lestvica.wav");
 }
 void SoundManager::izvorna() {
-	if (mute == 0)
-		played = PlaySound(TEXT("common/sounds/izvorna.wav"), NULL, SND_ASYNC);
+	predvajaj("common/sounds/izvorna.wav");
 }
 void SoundManager::izbris() {
-	if (mute == 0)
-		played = PlaySound(TEXT("common/sounds/izbris.wav"), NULL, SND_ASYNC);
+	predvajaj("common/sounds/izbris.wav");
 }
 void SoundManager::soundAnimacija(int animSt) {
 	if (mute == 0)
 		switch (animSt) {
 		case 1:
-			played = PlaySound(TEXT("common/sounds/animacija1.wav"), NULL, SND_SYNC);
+			predvajaj("common/sounds/animacija1.wav");
 			break;
 		case 2:
-			played = PlaySound(TEXT("common/sounds/animacija2.wav"), NULL, SND_SYNC);
+			predvajaj("common/sounds/animacija2.wav");
 			break;
 		case 3:
-			played = PlaySound(TEXT("common/sounds/animacija3.wav"), NULL, SND_SYNC);
+			predvajaj("common/sounds/animacija3.wav");
 			break;
 		case 4:
-			played = PlaySound(TEXT("common/sounds/animacija4.wav"), NULL, SND_SYNC);
+			predvajaj("common/sounds/animacija4.wav");
 			break;
 		case 5:
-			played = PlaySound(TEXT("common/sounds/animacija5.wav"), NULL, SND_SYNC);
+			predvajaj("common/sounds/animacija5.wav");
 			break;
 		case 6:
-			played = PlaySound(TEXT("common/sounds/animacija6.wav"), NULL, SND_SYNC);
+			predvajaj("common/sounds/animacija6.wav");
 			break;
 		case 7:
-			played = PlaySound(TEXT("common/sounds/animacija7.wav"), NULL, SND_SYNC);
+			predvajaj("common/sounds/animacija7.wav");
 			break;
 		default:
 			cerr << "Error: sound animSt" << endl;
 		}
 }
 
+void SoundManager::predvajaj(const char* path) {
+	if (mute == 0) {
+		Mix_HaltChannel(-1);
+		efekt = Mix_LoadWAV(path);
+		Mix_PlayChannel(-1, efekt, 0);
+	}
+}
+
 SoundManager::~SoundManager() {
+	Mix_FreeChunk(efekt);
 	bgm = nullptr;
+	efekt = nullptr;
+	Mix_CloseAudio();
 	Mix_Quit();
 }

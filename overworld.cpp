@@ -171,6 +171,7 @@ void animacija(GameManager& igra, int stAnim) {
 			halt = false;
 		}
 	}
+	Mix_HaltChannel(-1);
 }
 
 void premakniNaXY(GameManager& igra, short& mov_x, short& mov_y, short to_x, short to_y, Image& img_overworld, Image& img_player, short nivo) {
