@@ -68,7 +68,8 @@ void overworld(GameManager& igra) {
 			igra.level(level_clear);
 			break;
 		case 2:
-			premakniNaXY(igra, x, y, 460, 530, img_overworld, img_player, level_clear);
+			x = 560;
+			y = 570;
 			premakniNaXY(igra, x, y, 560, 570, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); //stojimo na kotu
 			animacija(igra, 3);

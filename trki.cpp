@@ -22,6 +22,13 @@ void GameManager::trkiOkolje() {
             semNaIzhodniLokaciji = false;
         break;
     case 2:
+        if (isPlayerCollidingAt(0, 460, 130, 120)) {
+            cout << "sm na farmi" << endl;
+        }
+        if (isPlayerCollidingAt(1270, 520, 10, 200))
+            semNaIzhodniLokaciji = true;
+        else
+            semNaIzhodniLokaciji = false;
         break;
     case 3:
         break;
