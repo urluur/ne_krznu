@@ -38,6 +38,7 @@ public:
 	bool checkDown();
 	bool checkLeft();
 	bool checkRight();
+	bool isPlayerCollidingAt(const short, const short, const short, const short);
 private:
 	vector <class Image*> jaz;
 	bool konecLevela, adios;
@@ -47,5 +48,5 @@ private:
 	short stAktiv[5] = { 4, 3, 2, 1, 0 };
 	short stNaspr[5] = { 3, 5, 7, 10, 1 };
 	short stTjuln[5] = { 5, 10, 15, 20, 0 };
-	short hitrost = 4;
+	short hitrost = 2;
 };

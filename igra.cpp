@@ -7,7 +7,7 @@ void GameManager::pripraviVse() {
 	jaz.push_back(new Image);
 	jaz.push_back(new Image);
 
-	short spawnPos[2][5] = {
+	const short spawnPos[2][5] = {
 	{200, 70,  30, 310, 150},  // x
 	{ 20,  0, 530, 560, 555}}; // y
 	igralec.setX(spawnPos[0][trenutniNivo - 1]);
@@ -15,9 +15,9 @@ void GameManager::pripraviVse() {
 	jaz.at(0)->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo-1], spawnPos[1][trenutniNivo-1], 58, 128);
 	jaz.at(1)->init(*this, "common/img/player_noge.png", spawnPos[0][trenutniNivo-1], spawnPos[1][trenutniNivo-1], 58, 128);
 
-	stNaspr[0] = 4; stNaspr[1] = 3; stNaspr[2] = 2; stNaspr[3] = 1; stNaspr[4] = 0;
-	stAktiv[0] = 3; stAktiv[1] = 5; stAktiv[2] = 7; stAktiv[3] = 10; stAktiv[4] = 1;
-	stTjuln[0] = 5; stTjuln[1] = 10; stTjuln[2] = 15; stTjuln[3] = 20; stTjuln[4] = 0;
+	stAktiv[0] = 4; stAktiv[1] = 3; stAktiv[2] = 2; stAktiv[3] = 1; stAktiv[4] = 0;
+	stNaspr[0] = 3; stNaspr[1] = 5; stNaspr[2] = 7; stNaspr[3] = 10; stNaspr[4] = 1;
+	stTjuln[0] = 5; stTjuln[1] = 10; stTjuln[2] = 15; stTjuln[3] = 10; stTjuln[4] = 0;
 	
 	//nared vektorje za nasprotnike aktiviste in tjulne
 }
@@ -182,4 +182,14 @@ void GameManager::handleEvents() {
 	if (a) igralec.setX(igralec.getX() - hitrost);
 	if (s) igralec.setY(igralec.getY() + hitrost);
 	if (d) igralec.setX(igralec.getX() + hitrost);
+}
+
+bool GameManager::isPlayerCollidingAt(const short x, const short y, const short w, const short h) {
+	if (igralec.getX() < x + w &&
+		igralec.getX() + igralec.getW() > x &&
+		igralec.getY() < y + h &&
+		igralec.getY() + igralec.getH() > y)
+		return true;
+	else
+		return false;
 }

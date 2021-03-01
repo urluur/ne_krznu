@@ -47,7 +47,7 @@ void overworld(GameManager& igra) {
 		igra.okno.omejiFrame();
 		switch (level_clear) {
 		case 0:
-			img_player.init(igra, "common/img/player.png", x, y, 29, 64);
+			img_player.init(igra, "common/img/player.png", x, y, igra.igralec.getW(), igra.igralec.getH());
 			img_player.display(igra.okno.ren);
 			igra.haltEnter(level_clear); // takoj ko odpremo in je na ladji
 			animacija(igra, 1);
@@ -100,7 +100,7 @@ void overworld(GameManager& igra) {
 			animacija(igra, 7);
 			img_overworld.ini(igra, "common/img/overworld.png");
 			img_overworld.display(igra.okno.ren);
-			img_player.init(igra, "common/img/player.png", x, y, 29, 64);
+			img_player.init(igra, "common/img/player.png", x, y, igra.igralec.getW(), igra.igralec.getH());
 			img_player.display(igra.okno.ren);
 			img_zastavica_fullscreen.ini(igra, "common/img/zastavica_fullscreen.png");
 			img_zastavica_fullscreen.display(igra.okno.ren);
@@ -191,7 +191,7 @@ void premakniNaXY(GameManager& igra, short& mov_x, short& mov_y, short to_x, sho
 			SDL_RenderClear(igra.okno.ren);
 			img_overworld.display(igra.okno.ren);
 			narisiFarmeAliDosezke(igra, nivo);
-			img_player.init(igra, "common/img/player_event.png", mov_x, mov_y, 29, 64);
+			img_player.init(igra, "common/img/player_event.png", mov_x, mov_y, igra.igralec.getW(), igra.igralec.getH());
 			img_player.display(igra.okno.ren);
 			SDL_RenderPresent(igra.okno.ren);
 			break;
@@ -201,11 +201,11 @@ void premakniNaXY(GameManager& igra, short& mov_x, short& mov_y, short to_x, sho
 		img_overworld.display(igra.okno.ren);
 
 		if (i < 10)
-			img_player.init(igra, "common/img/player.png", mov_x, mov_y, 29, 64);
+			img_player.init(igra, "common/img/player.png", mov_x, mov_y, igra.igralec.getW(), igra.igralec.getH());
 		else if (i > 20)
 			i = 0;
 		else
-			img_player.init(igra, "common/img/player_noge.png", mov_x, mov_y, 29, 64);
+			img_player.init(igra, "common/img/player_noge.png", mov_x, mov_y, igra.igralec.getW(), igra.igralec.getH());
 		narisiFarmeAliDosezke(igra, nivo);
 		img_player.display(igra.okno.ren);
 		SDL_RenderPresent(igra.okno.ren);

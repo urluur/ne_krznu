@@ -19,28 +19,62 @@ void GameManager::level(short& nivo) {
     odzadje.ini(*this, path);
     delete[] path;
 
+    cout << "Se " << stTjuln[trenutniNivo - 1] << " tjulnov!" << endl;
+    cout << "Se " << stNaspr[trenutniNivo - 1] << " nasprotnikov!" << endl << endl;
     //main game loop
     while (!keys[SDL_SCANCODE_ESCAPE] && !konecLevela && !adios) {
         okno.stejFrame();
         handleEvents();
         
+        //* realn game objective
+        if ((stTjuln[trenutniNivo - 1] == 0 && nivo < 5) || (trenutniNivo == 5 && stNaspr[trenutniNivo - 1] == 0)) {
+            konecLevela = true; //cilj nase igre
+        }
+        //*/
+        
         SDL_RenderClear(okno.ren);
         odzadje.display(okno.ren);
-        jaz.at(0)->init(*this, "common/img/player.png",igralec.getX(), igralec.getY(), 58, 128);
+        jaz.at(0)->init(*this, "common/img/player.png",igralec.getX(), igralec.getY(), igralec.getW(), igralec.getH());
 
-        /* za provo dok ni levela tuki
-        if (keys[SDL_SCANCODE_SPACE]) //nivo < 5
-            stTjuln[trenutniNivo - 1]--;
-        else
-            stNaspr[trenutniNivo - 1]--;
+        switch (trenutniNivo) {
+        case 1:
+            if (isPlayerCollidingAt(1110, 10, 170, 150)) {
+                cout << "yo whassup, delam" << endl;
+            }
+            else if (isPlayerCollidingAt(160, 660, 125, 60)) {
+                konecLevela = true;
+            }
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        default:
+            cerr << "Error: collision check" << trenutniNivo << endl;
+        }
+
+        //* za provo dok ni levela tuki
+        if (keys[SDL_SCANCODE_SPACE]) {
+            if (nivo < 5) {
+                stTjuln[trenutniNivo - 1]--;
+                cout << "Se " << stTjuln[trenutniNivo - 1] << " tjulnov!" << endl;
+                cout << "Se " << stNaspr[trenutniNivo - 1] << " nasprotnikov!" << endl << endl;
+            }
+            else {
+                stNaspr[trenutniNivo - 1]--;
+                cout << "Se " << stTjuln[trenutniNivo - 1] << " tjulnov!" << endl;
+                cout << "Se " << stNaspr[trenutniNivo - 1] << " nasprotnikov!" << endl << endl;
+            }
+            SDL_Delay(100);
+        }
         //*/
 
 
         updateMap();
-        //* realn game objective
-        if ((stTjuln[trenutniNivo - 1] == 0 && nivo < 5) || (trenutniNivo == 5 && stNaspr[trenutniNivo - 1] == 0))
-            konecLevela = true; //cilj nase igre
-        //*/
     }
 
     if (konecLevela)
