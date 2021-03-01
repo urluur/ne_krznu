@@ -64,19 +64,19 @@ void overworld(GameManager& igra) {
 			animacija(igra, 2);
 			premakniNaXY(igra, x, y, 410, 395, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); // stojimo pred 2. levelom
-
 			igra.level(level_clear);
-			break;
-		case 2:
 			x = 560;
 			y = 570;
+			break;
+		case 2:
 			premakniNaXY(igra, x, y, 560, 570, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); //stojimo na kotu
 			animacija(igra, 3);
 			premakniNaXY(igra, x, y, 620, 520, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); //stojimo na 3. levelu
-
 			igra.level(level_clear);
+			x = 725;
+			y = 365;
 			break;
 		case 3:
 			premakniNaXY(igra, x, y, 725, 365, img_overworld, img_player, level_clear);
@@ -87,6 +87,8 @@ void overworld(GameManager& igra) {
 			igra.level(level_clear);
 			premakniNaXY(igra, x, y, 710, 220, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); // na strik
+			//x = 705;
+			//y = 125;
 			break;
 		case 4:
 			animacija(igra, 5);
@@ -94,6 +96,8 @@ void overworld(GameManager& igra) {
 			igra.haltEnter(level_clear); // na 5 level
 			animacija(igra, 6);
 			igra.level(level_clear);
+			//x = 710;
+			//y = 20;
 			break;
 		case 5:
 			premakniNaXY(igra, x, y, 710, 20, img_overworld, img_player, level_clear);

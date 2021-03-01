@@ -10,8 +10,8 @@ void GameManager::pripraviVse() {
 	jaz.push_back(new Image);
 
 	const short spawnPos[2][5] = {
-	{200, 70,  30, 310, 150},  // x
-	{ 20,  0, 530, 560, 555}}; // y
+	{200, 70,  30, 320, 150},  // x
+	{ 20,  0, 530, 650, 600}}; // y
 	igralec.setX(spawnPos[0][trenutniNivo - 1]);
 	igralec.setY(spawnPos[1][trenutniNivo - 1]);
 	jaz.at(0)->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo-1], spawnPos[1][trenutniNivo-1], 58, 128);
