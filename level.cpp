@@ -26,11 +26,10 @@ void GameManager::level(short& nivo) {
         okno.stejFrame();
         handleEvents();
         
-        //* realn game objective
-        if ((stTjuln[trenutniNivo - 1] == 0 && nivo < 5) || (trenutniNivo == 5 && stNaspr[trenutniNivo - 1] == 0)) {
-            konecLevela = true; //cilj nase igre
-        }
-        //*/
+        //realn game objective
+        if(semNaIzhodniLokaciji)
+            if ((stTjuln[trenutniNivo - 1] == 0 && nivo < 5) || (trenutniNivo == 5 && stNaspr[trenutniNivo - 1] == 0))
+                konecLevela = true; //cilj nase igre
         
         SDL_RenderClear(okno.ren);
         odzadje.display(okno.ren);
@@ -39,11 +38,12 @@ void GameManager::level(short& nivo) {
         switch (trenutniNivo) {
         case 1:
             if (isPlayerCollidingAt(1110, 10, 170, 150)) {
-                cout << "yo whassup, delam" << endl;
+                cout << "sm na farmi" << endl;
             }
-            else if (isPlayerCollidingAt(160, 660, 125, 60)) {
-                konecLevela = true;
-            }
+            if(isPlayerCollidingAt(160, 660, 125, 60))
+                semNaIzhodniLokaciji = true;
+            else
+                semNaIzhodniLokaciji = false;
             break;
         case 2:
             break;
@@ -60,12 +60,14 @@ void GameManager::level(short& nivo) {
         //* za provo dok ni levela tuki
         if (keys[SDL_SCANCODE_SPACE]) {
             if (nivo < 5) {
-                stTjuln[trenutniNivo - 1]--;
+                if(stTjuln[trenutniNivo - 1] > 0)
+                    stTjuln[trenutniNivo - 1]--;
                 cout << "Se " << stTjuln[trenutniNivo - 1] << " tjulnov!" << endl;
                 cout << "Se " << stNaspr[trenutniNivo - 1] << " nasprotnikov!" << endl << endl;
             }
             else {
-                stNaspr[trenutniNivo - 1]--;
+                if (stNaspr[trenutniNivo - 1] > 0)
+                    stNaspr[trenutniNivo - 1]--;
                 cout << "Se " << stTjuln[trenutniNivo - 1] << " tjulnov!" << endl;
                 cout << "Se " << stNaspr[trenutniNivo - 1] << " nasprotnikov!" << endl << endl;
             }

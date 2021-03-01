@@ -55,6 +55,8 @@ void overworld(GameManager& igra) {
 			premakniNaXY(igra, x, y, 440, 190, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); // prej ko se zacne prvi level in smo zravn hiske
 			igra.level(level_clear);
+			x = 335;
+			y = 310;
 			break;
 		case 1:
 			premakniNaXY(igra, x, y, 335, 310, img_overworld, img_player, level_clear);

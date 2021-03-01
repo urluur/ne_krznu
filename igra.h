@@ -41,7 +41,7 @@ public:
 	bool isPlayerCollidingAt(const short, const short, const short, const short);
 private:
 	vector <class Image*> jaz;
-	bool konecLevela, adios;
+	bool konecLevela, adios, semNaIzhodniLokaciji;
 	bool w = false, a = false, s = false, d = false;
 	bool completed; // zato da se spremeni main menu na koncu zgodbe
 	short trenutniNivo;

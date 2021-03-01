@@ -2,7 +2,7 @@
 
 void GameManager::pripraviVse() {
 	SDL_PollEvent(&event);
-	konecLevela = false, adios = false;
+	konecLevela = false, adios = false, semNaIzhodniLokaciji = false;
 	
 	jaz.push_back(new Image);
 	jaz.push_back(new Image);
@@ -35,6 +35,7 @@ GameManager::GameManager() {
 	konecLevela = false;
 	adios = false;
 	completed = false;
+	semNaIzhodniLokaciji = false;
 	trenutniNivo = 0;
 }
 
