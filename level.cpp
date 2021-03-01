@@ -35,27 +35,7 @@ void GameManager::level(short& nivo) {
         odzadje.display(okno.ren);
         jaz.at(0)->init(*this, "common/img/player.png",igralec.getX(), igralec.getY(), igralec.getW(), igralec.getH());
 
-        switch (trenutniNivo) {
-        case 1:
-            if (isPlayerCollidingAt(1110, 10, 170, 150)) {
-                cout << "sm na farmi" << endl;
-            }
-            if(isPlayerCollidingAt(160, 660, 125, 60))
-                semNaIzhodniLokaciji = true;
-            else
-                semNaIzhodniLokaciji = false;
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        case 5:
-            break;
-        default:
-            cerr << "Error: collision check" << trenutniNivo << endl;
-        }
+        trkiOkolje();
 
         //* za provo dok ni levela tuki
         if (keys[SDL_SCANCODE_SPACE]) {

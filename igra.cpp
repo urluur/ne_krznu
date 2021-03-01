@@ -2,7 +2,9 @@
 
 void GameManager::pripraviVse() {
 	SDL_PollEvent(&event);
-	konecLevela = false, adios = false, semNaIzhodniLokaciji = false;
+	konecLevela = false; adios = false;
+	semNaIzhodniLokaciji = false;
+	w = false; a = false; s = false; d = false;
 	
 	jaz.push_back(new Image);
 	jaz.push_back(new Image);
@@ -183,14 +185,4 @@ void GameManager::handleEvents() {
 	if (a) igralec.setX(igralec.getX() - hitrost);
 	if (s) igralec.setY(igralec.getY() + hitrost);
 	if (d) igralec.setX(igralec.getX() + hitrost);
-}
-
-bool GameManager::isPlayerCollidingAt(const short x, const short y, const short w, const short h) {
-	if (igralec.getX() < x + w &&
-		igralec.getX() + igralec.getW() > x &&
-		igralec.getY() < y + h &&
-		igralec.getY() + igralec.getH() > y)
-		return true;
-	else
-		return false;
 }

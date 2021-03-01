@@ -38,7 +38,8 @@ public:
 	bool checkDown();
 	bool checkLeft();
 	bool checkRight();
-	bool isPlayerCollidingAt(const short, const short, const short, const short);
+	bool isPlayerCollidingAt(short, short, short, short);
+	void trkiOkolje();
 private:
 	vector <class Image*> jaz;
 	bool konecLevela, adios, semNaIzhodniLokaciji;
