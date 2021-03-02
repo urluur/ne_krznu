@@ -3,7 +3,7 @@
 void GameManager::racuniStamino() {
 	if (staminadown || stamina < 100) {
 		if (stamina > 0 && staminadown && !fillingStamina) {
-			hitrost = 4;
+			hitrost = 3;
 			--stamina;
 			initNavadnaStamina();
 		}

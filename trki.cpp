@@ -1,5 +1,15 @@
 #include "igra.h"
 
+bool GameManager::univerzalniTrk(short x1, short y1, short w1, short h1, short x2, short y2, short w2, short h2) {
+    if (x2 < x1 + w1 &&
+        x2 + w2 > x1 &&
+        y2 < y1 + h1 &&
+        y2 + h2 > y1)
+        return true;
+    else
+        return false;
+}
+
 bool GameManager::isPlayerCollidingAt(short x, short y, short w, short h) {
 	if (igralec.getX() < x + w &&
 		igralec.getX() + igralec.getW() > x &&
