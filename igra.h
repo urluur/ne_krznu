@@ -40,7 +40,6 @@ public:
 	bool checkLeft();
 	bool checkRight();
 	bool isPlayerCollidingAt(short, short, short, short);
-	bool univerzalniTrk(short, short, short, short, short, short, short, short);
 	void initNavadnaStamina();
 	void initRisingStamina();
 	void trkiOkolje();

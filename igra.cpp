@@ -25,8 +25,8 @@ void GameManager::pripraviVse() {
 	
 	for (int i = 0; i < stNaspr[trenutniNivo - 1]; i++) {
 		enemy.push_back(new komoucar);
-		enemy.at(i)->initImg(*this, "common/img/boss.png", 500, 500); //nule spremen na lokacije odvisne od levela
-		enemy.at(i)->zrcuniRandomDestinacijo();
+		enemy.at(i)->initImg(*this, "common/img/boss.png",
+			0, 0, enemy.at(i)->getW(), enemy.at(i)->getH());
 	}
 	//nared vektorje za nasprotnike aktiviste in tjulne
 }
@@ -146,15 +146,6 @@ void GameManager::cleanup() {
 		delete stamina_wheel;
 		stamina_wheel = nullptr;
 	}
-	for (unsigned int i = 0; i < jaz.size(); ++i) {
-		delete jaz.at(i);
-	}
-	for (unsigned int i = 0; i < enemy.size(); ++i) {
-		delete enemy.at(i);
-	}
-	enemy.clear();
-	jaz.clear();
-	// zbris vektor od nasprotnika
 	jaz.clear();
 	SDL_DestroyWindow(okno.window);
 	if (joystick != nullptr) SDL_JoystickClose(joystick);
