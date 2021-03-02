@@ -42,12 +42,12 @@ public:
 	void trkiOkolje();
 private:
 	vector <class Image*> jaz;
-	bool konecLevela, adios, semNaIzhodniLokaciji;
+	class Image* stamina_wheel;
+	bool konecLevela, adios, semNaIzhodniLokaciji, staminadown, fillingStamina;
 	bool w = false, a = false, s = false, d = false;
 	bool completed; // zato da se spremeni main menu na koncu zgodbe
-	short trenutniNivo;
 	short stAktiv[5] = { 4, 3, 2, 1, 0 };
 	short stNaspr[5] = { 3, 5, 7, 10, 1 };
 	short stTjuln[5] = { 5, 10, 15, 20, 0 };
-	short hitrost = 2;
+	short hitrost, stamina, trenutniNivo;
 };

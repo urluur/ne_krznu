@@ -4,10 +4,12 @@ void GameManager::pripraviVse() {
 	SDL_PollEvent(&event);
 	konecLevela = false; adios = false;
 	semNaIzhodniLokaciji = false;
+	staminadown = false; fillingStamina = false;
 	w = false; a = false; s = false; d = false;
 	
-	jaz.push_back(new Image);
-	jaz.push_back(new Image);
+	for (int i = 0; i < 2; ++i) {
+		jaz.push_back(new Image);
+	}
 
 	const short spawnPos[2][5] = {
 	{200, 70,  30, 320, 150},  // x
@@ -25,7 +27,7 @@ void GameManager::pripraviVse() {
 }
 
 void GameManager::updateMap() {
-	//(slike).display(okno.ren); //for cez use vectorje ubistvu
+	//for cez use vectorje ubistvu
 	jaz.at(0)->display(okno.ren);
 	SDL_RenderPresent(okno.ren);
 	okno.omejiFrame();
@@ -33,11 +35,16 @@ void GameManager::updateMap() {
 
 GameManager::GameManager() {
 	joystick = nullptr;
+	stamina_wheel = new Image;
 	SDL_PollEvent(&event);
 	konecLevela = false;
 	adios = false;
 	completed = false;
 	semNaIzhodniLokaciji = false;
+	fillingStamina = false;
+	staminadown = false;
+	stamina = 100;
+	hitrost = 2;
 	trenutniNivo = 0;
 }
 
@@ -127,6 +134,10 @@ void GameManager::preveriEsc(short& nivo) {
 }
 
 void GameManager::cleanup() {
+	if (stamina_wheel != nullptr) {
+		delete stamina_wheel;
+		stamina_wheel = nullptr;
+	}
 	jaz.clear();
 	SDL_DestroyWindow(okno.window);
 	if (joystick != nullptr) SDL_JoystickClose(joystick);
@@ -158,29 +169,53 @@ void GameManager::handleEvents() {
 			adios = true;
 			break;
 		case SDL_KEYDOWN:
-			if (event.key.keysym.sym == SDLK_UP)
+			if (event.key.keysym.sym == SDLK_UP || event.key.keysym.sym == SDLK_w)
 				w = true;
-			if (event.key.keysym.sym == SDLK_DOWN)
+			if (event.key.keysym.sym == SDLK_DOWN || event.key.keysym.sym == SDLK_s)
 				s = true;
-			if (event.key.keysym.sym == SDLK_LEFT)
+			if (event.key.keysym.sym == SDLK_LEFT || event.key.keysym.sym == SDLK_a)
 				a = true;
-			if (event.key.keysym.sym == SDLK_RIGHT)
+			if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_d)
 				d = true;
 			if (event.key.keysym.sym == SDLK_END)
 				konecLevela = true;
+			if (event.key.keysym.sym == SDLK_LCTRL || event.key.keysym.sym == SDLK_RCTRL)
+				staminadown = true;
+			trkiOkolje();
 			break;
 		case SDL_KEYUP:
-			if (event.key.keysym.sym == SDLK_UP)
+			if (event.key.keysym.sym == SDLK_UP || event.key.keysym.sym == SDLK_w)
 				w = false;
-			if (event.key.keysym.sym == SDLK_DOWN)
+			if (event.key.keysym.sym == SDLK_DOWN || event.key.keysym.sym == SDLK_s)
 				s = false;
-			if (event.key.keysym.sym == SDLK_LEFT)
+			if (event.key.keysym.sym == SDLK_LEFT || event.key.keysym.sym == SDLK_a)
 				a = false;
-			if (event.key.keysym.sym == SDLK_RIGHT)
+			if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_d)
 				d = false;
+			if (event.key.keysym.sym == SDLK_LCTRL || event.key.keysym.sym == SDLK_RCTRL)
+				staminadown = false;
 			break;
 		}
 	}
+
+	if (staminadown || stamina < 100) {
+		if (stamina > 0 && staminadown && !fillingStamina) {
+			hitrost = 4;
+			cout << "stamina: " << --stamina << endl;
+		}
+		else if (stamina == 0 && staminadown) {
+			hitrost = 2;
+			fillingStamina = true;
+		}
+		else if (!staminadown) {
+			hitrost = 2;
+			if (stamina == 99) {
+				fillingStamina = false;
+			}
+			cout << "stamina: " << ++stamina << endl;
+		}
+	}
+
 	if (w) igralec.setY(igralec.getY() - hitrost);
 	if (a) igralec.setX(igralec.getX() - hitrost);
 	if (s) igralec.setY(igralec.getY() + hitrost);

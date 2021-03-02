@@ -17,6 +17,7 @@ void GameManager::level(short& nivo) {
     std::copy(pathFragment.begin(), pathFragment.end(), path);
     path[pathFragment.size()] = '\0';
     odzadje.ini(*this, path);
+    odzadje.display(okno.ren);
     delete[] path;
 
     cout << "Se " << stTjuln[trenutniNivo - 1] << " tjulnov!" << endl;
@@ -28,28 +29,27 @@ void GameManager::level(short& nivo) {
         
         //realn game objective
         if(semNaIzhodniLokaciji)
-            if ((stTjuln[trenutniNivo - 1] == 0 && nivo < 5) || (trenutniNivo == 5 && stNaspr[trenutniNivo - 1] == 0))
+            if ((stTjuln[nivo] == 0 && trenutniNivo < 5) || (trenutniNivo == 5 && stNaspr[nivo] == 0))
                 konecLevela = true; //cilj nase igre
         
         SDL_RenderClear(okno.ren);
         odzadje.display(okno.ren);
         jaz.at(0)->init(*this, "common/img/player.png",igralec.getX(), igralec.getY(), igralec.getW(), igralec.getH());
 
-        trkiOkolje();
 
         //* za provo dok ni levela tuki
         if (keys[SDL_SCANCODE_SPACE]) {
-            if (nivo < 5) {
-                if(stTjuln[trenutniNivo - 1] > 0)
-                    stTjuln[trenutniNivo - 1]--;
-                cout << "Se " << stTjuln[trenutniNivo - 1] << " tjulnov!" << endl;
-                cout << "Se " << stNaspr[trenutniNivo - 1] << " nasprotnikov!" << endl << endl;
+            if (trenutniNivo < 5) {
+                if(stTjuln[nivo] > 0)
+                    stTjuln[nivo]--;
+                cout << "Se " << stTjuln[nivo] << " tjulnov!" << endl;
+                cout << "Se " << stNaspr[nivo] << " nasprotnikov!" << endl << endl;
             }
             else {
-                if (stNaspr[trenutniNivo - 1] > 0)
-                    stNaspr[trenutniNivo - 1]--;
-                cout << "Se " << stTjuln[trenutniNivo - 1] << " tjulnov!" << endl;
-                cout << "Se " << stNaspr[trenutniNivo - 1] << " nasprotnikov!" << endl << endl;
+                if (stNaspr[nivo] > 0)
+                    stNaspr[nivo]--;
+                cout << "Se " << stTjuln[nivo] << " tjulnov!" << endl;
+                cout << "Se " << stNaspr[nivo] << " nasprotnikov!" << endl << endl;
             }
             SDL_Delay(100);
         }
