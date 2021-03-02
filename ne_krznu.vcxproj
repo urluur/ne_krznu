@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClCompile Include="igra.cpp" />
     <ClCompile Include="Igralec.cpp" />
+    <ClCompile Include="komoucar.cpp" />
     <ClCompile Include="slika.cpp" />
     <ClCompile Include="level.cpp" />
     <ClCompile Include="shranjevanje.cpp" />
@@ -167,6 +168,7 @@
   <ItemGroup>
     <ClInclude Include="includes.h" />
     <ClInclude Include="igra.h" />
+    <ClInclude Include="komoucar.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="igralec.h" />
     <ClInclude Include="slika.h" />

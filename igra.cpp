@@ -23,12 +23,20 @@ void GameManager::pripraviVse() {
 	stNaspr[0] = 3; stNaspr[1] = 5; stNaspr[2] = 7; stNaspr[3] = 10; stNaspr[4] = 1;
 	stTjuln[0] = 5; stTjuln[1] = 10; stTjuln[2] = 15; stTjuln[3] = 10; stTjuln[4] = 0;
 	
+	for (int i = 0; i < stNaspr[trenutniNivo - 1]; i++) {
+		enemy.push_back(new komoucar);
+		enemy.at(i)->initImg(*this, "common/img/boss.png",
+			0, 0, enemy.at(i)->getW(), enemy.at(i)->getH());
+	}
 	//nared vektorje za nasprotnike aktiviste in tjulne
 }
 
 void GameManager::updateMap() {
 	//for cez use vectorje ubistvu
 	jaz.at(0)->display(okno.ren);
+	for (int i = 0; i < stNaspr[trenutniNivo - 1]; i++) { //spremen na douzino vektorja
+		enemy.at(i)->display(*this);
+	}
 	SDL_RenderPresent(okno.ren);
 	okno.omejiFrame();
 }

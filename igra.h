@@ -5,6 +5,7 @@
 #include "igralec.h"
 #include "SDL_ttf.h"
 #include "slika.h"
+#include "komoucar.h"
 
 class GameManager {
 public:
@@ -45,6 +46,7 @@ public:
 	void racuniStamino();
 private:
 	vector <class Image*> jaz;
+	vector <class komoucar*> enemy;
 	class Image* stamina_wheel;
 	bool konecLevela, adios, semNaIzhodniLokaciji, staminadown, fillingStamina;
 	bool w = false, a = false, s = false, d = false;
