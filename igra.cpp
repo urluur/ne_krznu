@@ -198,23 +198,7 @@ void GameManager::handleEvents() {
 		}
 	}
 
-	if (staminadown || stamina < 100) {
-		if (stamina > 0 && staminadown && !fillingStamina) {
-			hitrost = 4;
-			cout << "stamina: " << --stamina << endl;
-		}
-		else if (stamina == 0 && staminadown) {
-			hitrost = 2;
-			fillingStamina = true;
-		}
-		else if (!staminadown) {
-			hitrost = 2;
-			if (stamina == 99) {
-				fillingStamina = false;
-			}
-			cout << "stamina: " << ++stamina << endl;
-		}
-	}
+	racuniStamino();
 
 	if (w) igralec.setY(igralec.getY() - hitrost);
 	if (a) igralec.setX(igralec.getX() - hitrost);

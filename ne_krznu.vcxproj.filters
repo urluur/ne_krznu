@@ -51,6 +51,9 @@
     <ClCompile Include="trki.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="stamina.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h">

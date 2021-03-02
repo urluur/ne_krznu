@@ -39,7 +39,10 @@ public:
 	bool checkLeft();
 	bool checkRight();
 	bool isPlayerCollidingAt(short, short, short, short);
+	void initNavadnaStamina();
+	void initRisingStamina();
 	void trkiOkolje();
+	void racuniStamino();
 private:
 	vector <class Image*> jaz;
 	class Image* stamina_wheel;

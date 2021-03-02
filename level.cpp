@@ -25,6 +25,8 @@ void GameManager::level(short& nivo) {
     //main game loop
     while (!keys[SDL_SCANCODE_ESCAPE] && !konecLevela && !adios) {
         okno.stejFrame();
+        SDL_RenderClear(okno.ren);
+        odzadje.display(okno.ren);
         handleEvents();
         
         //realn game objective
@@ -32,8 +34,6 @@ void GameManager::level(short& nivo) {
             if ((stTjuln[nivo] == 0 && trenutniNivo < 5) || (trenutniNivo == 5 && stNaspr[nivo] == 0))
                 konecLevela = true; //cilj nase igre
         
-        SDL_RenderClear(okno.ren);
-        odzadje.display(okno.ren);
         jaz.at(0)->init(*this, "common/img/player.png",igralec.getX(), igralec.getY(), igralec.getW(), igralec.getH());
 
 
