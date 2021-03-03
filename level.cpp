@@ -40,8 +40,17 @@ void GameManager::level(short& nivo) {
             if (enemy.at(i)->sprehodNaRandomDestinacijo()) {
                 enemy.at(i)->zrcuniRandomDestinacijo();
             }
-            else
+            else {
+                //if () {//previr okrog sebe
+
+
+                    //previr ce se dotika
+                    if (isPlayerCollidingAt(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH())) {
+                        cout << "smrt" << endl;
+                    }
+                //}
                 enemy.at(i)->updateImg(*this);
+            }
         }
 
 
@@ -59,7 +68,6 @@ void GameManager::level(short& nivo) {
                 cout << "Se " << stTjuln[nivo] << " tjulnov!" << endl;
                 cout << "Se " << stNaspr[nivo] << " nasprotnikov!" << endl << endl;
             }
-            SDL_Delay(100);
         }
         //*/
 

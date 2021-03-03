@@ -14,6 +14,8 @@ public:
 	SDL_Event event;
 	Igralec igralec;
 	SDL_Joystick* joystick;
+	bool adios = false;
+	bool getAdios() { return adios; }
 	GameManager();
 	int init();
 	void handleEvents();
@@ -49,7 +51,7 @@ private:
 	vector <class Image*> jaz;
 	vector <class komoucar*> enemy;
 	class Image* stamina_wheel;
-	bool konecLevela, adios, semNaIzhodniLokaciji, staminadown, fillingStamina;
+	bool konecLevela, semNaIzhodniLokaciji, staminadown, fillingStamina;
 	bool w = false, a = false, s = false, d = false;
 	bool completed; // zato da se spremeni main menu na koncu zgodbe
 	short stAktiv[5] = { 4, 3, 2, 1, 0 };
