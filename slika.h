@@ -6,10 +6,8 @@
 class Image {
 public:
 	Image();
-	Image(SDL_Renderer*, const char*, unsigned short, unsigned short, unsigned short, unsigned short);
-	void init(class GameManager&, const char*, unsigned short, unsigned short, unsigned short, unsigned short);
-	// unsigned short sliko lahko raztegne celo do resolucije ~64K.. ce bojo meli monitorji vec piksov
-	// kot to, pa samo spremeni "unsigned short" na "unsigned int" in smo reseni se za ksno tisocletje
+	Image(SDL_Renderer*, const char*, short, short, short, short);
+	void init(class GameManager&, const char*, short, short, short, short);
 	void ini(class GameManager&, const char*);
 	void display(SDL_Renderer*);
 	SDL_Surface returnSurface() { return *image_surface; }

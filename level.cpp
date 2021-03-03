@@ -40,15 +40,21 @@ void GameManager::level(short& nivo) {
             if (enemy.at(i)->sprehodNaRandomDestinacijo()) {
                 enemy.at(i)->zrcuniRandomDestinacijo();
             }
-            else {
-                //if () {//previr okrog sebe
-
-
-                    //previr ce se dotika
+            else {//ta if spodi se ni popoln
+                if (isPlayerCollidingAt(enemy.at(i)->getX()-100, enemy.at(i)->getY()-100, enemy.at(i)->getW()+200, enemy.at(i)->getH()+200)) {//previr okrog sebe
+                    enemy.at(i)->setDest(igralec.getX(), igralec.getY());
+                    //enemy.at(i)->rage();
                     if (isPlayerCollidingAt(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH())) {
                         cout << "smrt" << endl;
+                        //adios = true;
+                        //tocke rab resetirat pa to
                     }
-                //}
+                }
+                /*
+                else {
+                    enemy.at(i)->chill();
+                }
+                //*/
                 enemy.at(i)->updateImg(*this);
             }
         }
@@ -74,6 +80,8 @@ void GameManager::level(short& nivo) {
 
         updateMap();
     }
+
+    cleanupVectors();
 
     if (konecLevela)
         std::cout << "Koncal si " << ++nivo << " nivo!" << endl;

@@ -141,11 +141,7 @@ void GameManager::preveriEsc(short& nivo) {
 	}
 }
 
-void GameManager::cleanup() {
-	if (stamina_wheel != nullptr) {
-		delete stamina_wheel;
-		stamina_wheel = nullptr;
-	}
+void GameManager::cleanupVectors() {
 	for (unsigned int i = 0; i < jaz.size(); ++i) {
 		delete jaz.at(i);
 	}
@@ -154,6 +150,15 @@ void GameManager::cleanup() {
 	}
 	enemy.clear();
 	jaz.clear();
+}
+
+void GameManager::cleanup() {
+	if (stamina_wheel != nullptr) {
+		delete stamina_wheel;
+		stamina_wheel = nullptr;
+	}
+	
+	cleanupVectors();
 	// zbris vektor od nasprotnika
 	jaz.clear();
 	SDL_DestroyWindow(okno.window);
@@ -196,7 +201,7 @@ void GameManager::handleEvents() {
 				d = true;
 			if (event.key.keysym.sym == SDLK_END)
 				konecLevela = true;
-			if (event.key.keysym.sym == SDLK_LCTRL || event.key.keysym.sym == SDLK_RCTRL)
+			if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
 				staminadown = true;
 			trkiOkolje();
 			break;
@@ -209,7 +214,7 @@ void GameManager::handleEvents() {
 				a = false;
 			if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_d)
 				d = false;
-			if (event.key.keysym.sym == SDLK_LCTRL || event.key.keysym.sym == SDLK_RCTRL)
+			if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
 				staminadown = false;
 			break;
 		}

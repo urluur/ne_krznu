@@ -224,8 +224,8 @@ void premakniNaXY(GameManager& igra, short& mov_x, short& mov_y, short to_x, sho
 void narisiFarmeAliDosezke(GameManager& igra, short nivo) {
 	Image hisa[5];
 	int premikx = 250, premiky = 25;
-	unsigned short x[5] = { 470, 340, 580, 750, 730 };
-	unsigned short y[5] = { 180, 490, 480, 240, 125 };
+	short x[5] = { 470, 340, 580, 750, 730 };
+	short y[5] = { 180, 490, 480, 240, 125 };
 	for (int i = 0; i < 5; i++)
 		if (i < nivo)
 			hisa[i].init(igra, "common/img/iglu.png", x[i], y[i], 66, 61);

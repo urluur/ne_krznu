@@ -14,7 +14,7 @@ komoucar::~komoucar() {
 	}
 }
 void komoucar::initImg(GameManager& igra, const char* path,
-	unsigned short iks, unsigned short ipsilon)
+	short iks, short ipsilon)
 {
 	x = iks;
 	y = ipsilon;
@@ -28,8 +28,8 @@ void komoucar::display(GameManager& igra) {
 	img->display(igra.okno.ren);
 }
 void komoucar::zrcuniRandomDestinacijo() {
-	unsigned short ax = 0, bx = 1280-w;
-	unsigned short ay = 0, by = 720-h;
+	short ax = 0, bx = 1280-w;
+	short ay = 0, by = 720-h;
 	dest_x = rand() % (bx - ax) + ax;
 	dest_y = rand() % (by - ay) + ay;
 }
@@ -44,4 +44,8 @@ bool komoucar::sprehodNaRandomDestinacijo() {
 			(y < dest_y) ? y+=hitrost : y-=hitrost;
 		return false;
 	}
+}
+void komoucar::setDest(short iks, short ipsilon) {
+	dest_x = iks;
+	dest_y = ipsilon;
 }

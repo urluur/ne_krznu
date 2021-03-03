@@ -47,6 +47,7 @@ public:
 	void initRisingStamina();
 	void trkiOkolje();
 	void racuniStamino();
+	void cleanupVectors();
 private:
 	vector <class Image*> jaz;
 	vector <class komoucar*> enemy;
