@@ -9,8 +9,8 @@ void GameManager::zasilnoShranjevanje() {
 			cout << "Zabelezeno da si koncal/a " << getNivo() << " nivo in se klices ";
 		}
 		else {
-			datoteka << igralec.getName() << "\n" << getNivo()-1 << "\n";
-			cout << "Zabelezeno da si koncal/a " << getNivo()-1 << " nivo in se klices ";
+			datoteka << igralec.getName() << "\n" << getNivo() - 1 << "\n";
+			cout << "Zabelezeno da si koncal/a " << getNivo() - 1 << " nivo in se klices ";
 		}
 		igralec.coutName();
 		cout << endl;

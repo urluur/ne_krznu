@@ -8,7 +8,7 @@ class Igralec
 private:
 	string ime;
 	short x, y;
-	const short w=29, h=64;
+	const short w = 29, h = 64;
 public:
 	void setName();
 	string getName() { return ime; }
@@ -17,8 +17,8 @@ public:
 	Igralec() { ime = "bumbar"; }
 	short getX() { return x; }
 	short getY() { return y; }
-	void setX(short notr) { x = (notr < (1280 - getW()) && notr > 0) ? notr:x; }
-	void setY(short notr) { y = (notr < (720 - getH()) && notr > 0) ? notr:y; }
+	void setX(short notr) { x = (notr < (1280 - getW()) && notr > 0) ? notr : x; }
+	void setY(short notr) { y = (notr < (720 - getH()) && notr > 0) ? notr : y; }
 	short getW() { return w; }
 	short getH() { return h; }
 };

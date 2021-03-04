@@ -68,7 +68,7 @@ int main() {
 	}
 	//igra.sound.predvajaj("common/sounds/nasvidenje.wav");
 	//*/
-	
+
 	igra.cleanup();
 	return EXIT_SUCCESS;
 }

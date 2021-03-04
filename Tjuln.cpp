@@ -17,7 +17,6 @@ Tjuln::~Tjuln() {
 void Tjuln::display(class GameManager& igra) {
 	img->display(igra.okno.ren);
 }
-void Tjuln::initImg(GameManager& igra, const char* path)
-{
+void Tjuln::initImg(GameManager& igra, const char* path) {
 	img->init(igra, path, x, y, w, h);
 }

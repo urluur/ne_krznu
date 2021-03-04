@@ -57,7 +57,7 @@
     <ClCompile Include="komoucar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tjuln.cpp">
+    <ClCompile Include="tjuln.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

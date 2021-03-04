@@ -51,16 +51,17 @@ void WindowManager::toggleScaler() {
 int WindowManager::scaleCal(int stevilo) {
 	switch (scaler) {
 	case 1:
-		return stevilo * 1;
+		return int(stevilo * 1);
 	case 12:
-		return stevilo * 1.2;
+		return int(stevilo * 1.2);
 	case 15:
-		return stevilo * 1.5;
+		return int(stevilo * 1.5);
 	case 5:
-		return stevilo * 0.5;
+		return int(stevilo * 0.5);
 	case 100:
-		return stevilo * 1.5;
+		return int(stevilo * 1.5);
 	default:
 		cerr << "Error: scaleCal: " << scaler << endl;
+		return 0;
 	}
 }

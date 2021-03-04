@@ -27,7 +27,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_05F2129249A84426AF61EB3AFD8F20FA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0CD2AC65312D42BA97721405A798880E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_10AA77255A9D498EBE9B99BA10390D58"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1486FB32410545D3978A37EB6828CC2B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -111,6 +129,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_37B86C9F0229479EB9A75B44E50E204F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3A803F852D304E97B4852C142778E3AD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -124,6 +148,12 @@
         "Entry"
         {
         "MsmKey" = "8:_42B482F4902F4D8F90D22EC5F890C692"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_468FD2D4AB264809B9B1FECC165781C5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -255,6 +285,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A6935719A07A483FAD054C4370A349E0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A7F127852A7A4CADB5B2FA7FA93BFC11"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -286,6 +322,12 @@
         "Entry"
         {
         "MsmKey" = "8:_AB7487D1EAAB4818907BC0C160A14E90"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AC368C0387984970A90840ACA85A27AA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -333,6 +375,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C5439599DDD94191AAB295317ED578BA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C733E7074C6D4C51A9488585C4FA3755"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -363,6 +411,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_CD01C1C7220544F990896175DF2D7B5D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE393EF6AF2340D983E301920D32A23B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CF582FD6BB014268A13F20C7E47F0993"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -370,6 +430,12 @@
         "Entry"
         {
         "MsmKey" = "8:_CF79F24B179740E89153AB9EF3EA887E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D191DF637D73493EAD5D333FC1ADA768"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -417,6 +483,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DEE33D79510E46F69639F60595BB394E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E02DCB4178DA44248018B985D6DFEA5B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -424,6 +496,12 @@
         "Entry"
         {
         "MsmKey" = "8:_E1781AFD1ACC4586BE51CB5DA72F97F6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E26E340C5FF8435ABEDBF75D0F2BF0BF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -441,7 +519,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E7577CE0BDE84FA5845B3FA8A437AD56"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E8081342F50447DFA4571F2B901F5707"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E8CF10431CF440A187AE78EBB393B22A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -459,7 +549,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_EA838E40BCB14B5D84B14C0D1310B6D8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_EAB067AFC3674368B955442A6A11E099"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EB04C029450D45849EE52B2D9ACBBD1F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -472,6 +574,12 @@
         "Entry"
         {
         "MsmKey" = "8:_EE0249B3B8F048B28DD6FD998ED3AC40"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F4CB1273D29F4A058ACCC7A732FC75FB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -490,6 +598,12 @@
         "Entry"
         {
         "MsmKey" = "8:_FE20D147F325449199FFDB07D2ECF222"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FEA24C0611F5447CB9FE70EDC29AE123"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -620,12 +734,72 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_05F2129249A84426AF61EB3AFD8F20FA"
+            {
+            "SourcePath" = "8:..\\common\\img\\tjuln.png"
+            "TargetName" = "8:tjuln.png"
+            "Tag" = "8:"
+            "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0CD2AC65312D42BA97721405A798880E"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\up5.png"
+            "TargetName" = "8:up5.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_10AA77255A9D498EBE9B99BA10390D58"
             {
             "SourcePath" = "8:..\\common\\img\\boss.png"
             "TargetName" = "8:boss.png"
             "Tag" = "8:"
             "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1486FB32410545D3978A37EB6828CC2B"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\2.png"
+            "TargetName" = "8:2.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -880,6 +1054,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_37B86C9F0229479EB9A75B44E50E204F"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\up7.png"
+            "TargetName" = "8:up7.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3A803F852D304E97B4852C142778E3AD"
             {
             "SourcePath" = "8:..\\common\\sounds\\oof.wav"
@@ -926,6 +1120,26 @@
             "TargetName" = "8:ikona.ico"
             "Tag" = "8:"
             "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_468FD2D4AB264809B9B1FECC165781C5"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\3.png"
+            "TargetName" = "8:3.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1360,6 +1574,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A6935719A07A483FAD054C4370A349E0"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\8.png"
+            "TargetName" = "8:8.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A7F127852A7A4CADB5B2FA7FA93BFC11"
             {
             "SourcePath" = "8:..\\lib\\x86\\SDL2_image.lib"
@@ -1466,6 +1700,26 @@
             "TargetName" = "8:spremeni_ime.wav"
             "Tag" = "8:"
             "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AC368C0387984970A90840ACA85A27AA"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\up4.png"
+            "TargetName" = "8:up4.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1620,6 +1874,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C5439599DDD94191AAB295317ED578BA"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\up1.png"
+            "TargetName" = "8:up1.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C733E7074C6D4C51A9488585C4FA3755"
             {
             "SourcePath" = "8:..\\common\\sounds\\animacija7.wav"
@@ -1720,6 +1994,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CD01C1C7220544F990896175DF2D7B5D"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\0.png"
+            "TargetName" = "8:0.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CE393EF6AF2340D983E301920D32A23B"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\4.png"
+            "TargetName" = "8:4.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CF582FD6BB014268A13F20C7E47F0993"
             {
             "SourcePath" = "8:..\\common\\img\\iglu.png"
@@ -1746,6 +2060,26 @@
             "TargetName" = "8:SDL2main.lib"
             "Tag" = "8:"
             "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D191DF637D73493EAD5D333FC1ADA768"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\6.png"
+            "TargetName" = "8:6.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1900,6 +2234,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DEE33D79510E46F69639F60595BB394E"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\7.png"
+            "TargetName" = "8:7.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E02DCB4178DA44248018B985D6DFEA5B"
             {
             "SourcePath" = "8:..\\common\\img\\odzadje4.png"
@@ -1926,6 +2280,26 @@
             "TargetName" = "8:libpng16-16.dll"
             "Tag" = "8:"
             "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E26E340C5FF8435ABEDBF75D0F2BF0BF"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\1.png"
+            "TargetName" = "8:1.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1980,12 +2354,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E7577CE0BDE84FA5845B3FA8A437AD56"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\up3.png"
+            "TargetName" = "8:up3.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E8081342F50447DFA4571F2B901F5707"
             {
             "SourcePath" = "8:..\\lib\\x86\\libopus-0.dll"
             "TargetName" = "8:libopus-0.dll"
             "Tag" = "8:"
             "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E8CF10431CF440A187AE78EBB393B22A"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\up6.png"
+            "TargetName" = "8:up6.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2040,12 +2454,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EA838E40BCB14B5D84B14C0D1310B6D8"
+            {
+            "SourcePath" = "8:..\\common\\img\\nasprotnik_noge.png"
+            "TargetName" = "8:nasprotnik_noge.png"
+            "Tag" = "8:"
+            "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EAB067AFC3674368B955442A6A11E099"
             {
             "SourcePath" = "8:..\\common\\sounds\\animacija2.wav"
             "TargetName" = "8:animacija2.wav"
             "Tag" = "8:"
             "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EB04C029450D45849EE52B2D9ACBBD1F"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\up2.png"
+            "TargetName" = "8:up2.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2086,6 +2540,26 @@
             "TargetName" = "8:animacija1.wav"
             "Tag" = "8:"
             "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F4CB1273D29F4A058ACCC7A732FC75FB"
+            {
+            "SourcePath" = "8:..\\common\\img\\nasprotnik.png"
+            "TargetName" = "8:nasprotnik.png"
+            "Tag" = "8:"
+            "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2146,6 +2620,26 @@
             "TargetName" = "8:overworld.png"
             "Tag" = "8:"
             "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FEA24C0611F5447CB9FE70EDC29AE123"
+            {
+            "SourcePath" = "8:..\\common\\img\\stamina_wheel\\5.png"
+            "TargetName" = "8:5.png"
+            "Tag" = "8:"
+            "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2227,6 +2721,17 @@
                             "Property" = "8:_43A318212DFF4B51A0934AC4EBBE4AD5"
                                 "Folders"
                                 {
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_34B22CE7476749909E4F7AF185984EE7"
+                                    {
+                                    "Name" = "8:stamina_wheel"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_75DEE51ED8D04C3B89168845154E0730"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -2250,7 +2755,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:NE krznu"
         "ProductCode" = "8:{7874E0B3-A7FC-49CC-9451-50CC1EE98C02}"
-        "PackageCode" = "8:{3EBE2DBA-AA87-4827-A640-9ED79B68DBF9}"
+        "PackageCode" = "8:{F5681AB8-96DE-47E7-9C11-B06D5EBC2AA2}"
         "UpgradeCode" = "8:{14D90C8E-4D50-4030-8EB1-D338308AF44C}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"

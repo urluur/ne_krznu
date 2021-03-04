@@ -3,7 +3,7 @@
 #include "igra.h"
 class Tjuln {
 private:
-	short x=0, y=0;
+	short x = 0, y = 0;
 	const short w = 63, h = 42; // odvisno od slike
 	class Image* img = nullptr;
 	bool jeNaFarmi;
@@ -19,4 +19,3 @@ public:
 	void initImg(class GameManager&, const char*);
 	void display(class GameManager&);
 };
-

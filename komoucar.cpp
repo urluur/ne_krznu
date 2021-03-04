@@ -28,8 +28,8 @@ void komoucar::display(GameManager& igra) {
 	img->display(igra.okno.ren);
 }
 void komoucar::zrcuniRandomDestinacijo() {
-	short ax = 0, bx = 1280-w;
-	short ay = 0, by = 720-h;
+	short ax = 0, bx = 1280 - w;
+	short ay = 0, by = 720 - h;
 	dest_x = rand() % (bx - ax) + ax;
 	dest_y = rand() % (by - ay) + ay;
 }
@@ -38,10 +38,10 @@ bool komoucar::sprehodNaRandomDestinacijo() {
 		return true;
 	}
 	else {
-		if(x != dest_x)
-			(x < dest_x) ? x+=hitrost : x-=hitrost;
-		if(y != dest_y)
-			(y < dest_y) ? y+=hitrost : y-=hitrost;
+		if (x != dest_x)
+			(x < dest_x) ? x += hitrost : x -= hitrost;
+		if (y != dest_y)
+			(y < dest_y) ? y += hitrost : y -= hitrost;
 		return false;
 	}
 }

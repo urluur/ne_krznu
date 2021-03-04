@@ -6,20 +6,20 @@ void GameManager::pripraviVse() {
 	semNaIzhodniLokaciji = false;
 	staminadown = false; fillingStamina = false;
 	w = false; a = false; s = false; d = false;
-	
+
 	jaz = new Image;
 
 	const short spawnPos[2][5] = {
-	{200, 70,  30, 320, 150},  // x
-	{ 20,  0, 530, 650, 600}}; // y
+	{200, 70,  30, 320, 150},   // x
+	{ 20,  0, 530, 650, 600} }; // y
 	igralec.setX(spawnPos[0][trenutniNivo - 1]);
 	igralec.setY(spawnPos[1][trenutniNivo - 1]);
-	jaz->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo-1], spawnPos[1][trenutniNivo-1], 58, 128);
+	jaz->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo - 1], spawnPos[1][trenutniNivo - 1], 58, 128);
 
 	stAktiv[0] = 4; stAktiv[1] = 3; stAktiv[2] = 2; stAktiv[3] = 1; stAktiv[4] = 0;
 	stNaspr[0] = 3; stNaspr[1] = 5; stNaspr[2] = 7; stNaspr[3] = 10; stNaspr[4] = 1;
 	stTjuln[0] = 5; stTjuln[1] = 10; stTjuln[2] = 15; stTjuln[3] = 10; stTjuln[4] = 0;
-	
+
 	for (int i = 0; i < stNaspr[trenutniNivo - 1]; i++) {
 		enemy.push_back(new komoucar);
 		enemy.at(i)->initImg(*this, "common/img/nasprotnik.png", 500, 500); // te stevile so spawnpoint
@@ -48,6 +48,7 @@ void GameManager::updateMap() {
 
 GameManager::GameManager() {
 	joystick = nullptr;
+	jaz = nullptr;
 	stamina_wheel = new Image;
 	SDL_PollEvent(&event);
 	konecLevela = false;
@@ -147,7 +148,10 @@ void GameManager::preveriEsc(short& nivo) {
 }
 
 void GameManager::cleanupVectors() {
-	delete jaz;
+	if (jaz != nullptr) {
+		delete jaz;
+		jaz = nullptr;
+	}
 	if (!enemy.empty()) {
 		for (unsigned int i = 0; i < enemy.size(); ++i) {
 			delete enemy.at(i);
@@ -167,7 +171,6 @@ void GameManager::cleanup() {
 		delete stamina_wheel;
 		stamina_wheel = nullptr;
 	}
-	
 	cleanupVectors();
 	// zbris vektor od nasprotnika
 	jaz = nullptr;
