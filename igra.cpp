@@ -7,17 +7,14 @@ void GameManager::pripraviVse() {
 	staminadown = false; fillingStamina = false;
 	w = false; a = false; s = false; d = false;
 	
-	for (int i = 0; i < 2; ++i) {
-		jaz.push_back(new Image);
-	}
+	jaz = new Image;
 
 	const short spawnPos[2][5] = {
 	{200, 70,  30, 320, 150},  // x
 	{ 20,  0, 530, 650, 600}}; // y
 	igralec.setX(spawnPos[0][trenutniNivo - 1]);
 	igralec.setY(spawnPos[1][trenutniNivo - 1]);
-	jaz.at(0)->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo-1], spawnPos[1][trenutniNivo-1], 58, 128);
-	jaz.at(1)->init(*this, "common/img/player_noge.png", spawnPos[0][trenutniNivo-1], spawnPos[1][trenutniNivo-1], 58, 128);
+	jaz->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo-1], spawnPos[1][trenutniNivo-1], 58, 128);
 
 	stAktiv[0] = 4; stAktiv[1] = 3; stAktiv[2] = 2; stAktiv[3] = 1; stAktiv[4] = 0;
 	stNaspr[0] = 3; stNaspr[1] = 5; stNaspr[2] = 7; stNaspr[3] = 10; stNaspr[4] = 1;
@@ -25,17 +22,25 @@ void GameManager::pripraviVse() {
 	
 	for (int i = 0; i < stNaspr[trenutniNivo - 1]; i++) {
 		enemy.push_back(new komoucar);
-		enemy.at(i)->initImg(*this, "common/img/nasprotnik.png", 500, 500); //nule spremen na lokacije odvisne od levela
+		enemy.at(i)->initImg(*this, "common/img/nasprotnik.png", 500, 500); // te stevile so spawnpoint
 		enemy.at(i)->zrcuniRandomDestinacijo();
+	}
+
+	for (int i = 0; i < stTjuln[trenutniNivo - 1]; i++) {
+		tjulni.push_back(new Tjuln);
+		tjulni.at(i)->initImg(*this, "common/img/tjuln.png");
 	}
 	//nared vektorje za nasprotnike aktiviste in tjulne
 }
 
 void GameManager::updateMap() {
 	//for cez use vectorje ubistvu
-	jaz.at(0)->display(okno.ren);
+	jaz->display(okno.ren);
 	for (int i = 0; i < stNaspr[trenutniNivo - 1]; i++) { //spremen na douzino vektorja
 		enemy.at(i)->display(*this);
+	}
+	for (int i = 0; i < stTjuln[trenutniNivo - 1]; i++) { //spremen na douzino vektorja
+		tjulni.at(i)->display(*this);
 	}
 	SDL_RenderPresent(okno.ren);
 	okno.omejiFrame();
@@ -142,14 +147,19 @@ void GameManager::preveriEsc(short& nivo) {
 }
 
 void GameManager::cleanupVectors() {
-	for (unsigned int i = 0; i < jaz.size(); ++i) {
-		delete jaz.at(i);
+	delete jaz;
+	if (!enemy.empty()) {
+		for (unsigned int i = 0; i < enemy.size(); ++i) {
+			delete enemy.at(i);
+		}
+		enemy.clear();
 	}
-	for (unsigned int i = 0; i < enemy.size(); ++i) {
-		delete enemy.at(i);
+	if (!tjulni.empty()) {
+		for (unsigned int i = 0; i < tjulni.size(); ++i) {
+			delete tjulni.at(i);
+		}
+		tjulni.clear();
 	}
-	enemy.clear();
-	jaz.clear();
 }
 
 void GameManager::cleanup() {
@@ -160,7 +170,7 @@ void GameManager::cleanup() {
 	
 	cleanupVectors();
 	// zbris vektor od nasprotnika
-	jaz.clear();
+	jaz = nullptr;
 	SDL_DestroyWindow(okno.window);
 	if (joystick != nullptr) SDL_JoystickClose(joystick);
 	SDL_Quit();

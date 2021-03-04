@@ -6,6 +6,7 @@
 #include "SDL_ttf.h"
 #include "slika.h"
 #include "komoucar.h"
+#include "Tjuln.h"
 
 class GameManager {
 public:
@@ -46,11 +47,14 @@ public:
 	void initNavadnaStamina();
 	void initRisingStamina();
 	void trkiOkolje();
+	void trkiMiTjulni();
+	void trkiEnemyTjulni();
 	void racuniStamino();
 	void cleanupVectors();
 private:
-	vector <class Image*> jaz;
+	class Image* jaz;
 	vector <class komoucar*> enemy;
+	vector <class Tjuln*> tjulni;
 	class Image* stamina_wheel;
 	bool konecLevela, semNaIzhodniLokaciji, staminadown, fillingStamina;
 	bool w = false, a = false, s = false, d = false;

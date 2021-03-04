@@ -57,6 +57,9 @@
     <ClCompile Include="komoucar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Tjuln.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h">
@@ -87,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="komoucar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tjuln.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

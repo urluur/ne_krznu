@@ -34,7 +34,7 @@ void GameManager::level(short& nivo) {
             if ((stTjuln[nivo] == 0 && trenutniNivo < 5) || (trenutniNivo == 5 && stNaspr[nivo] == 0))
                 konecLevela = true; //cilj nase igre
         
-        jaz.at(0)->init(*this, "common/img/player.png",igralec.getX(), igralec.getY(), igralec.getW(), igralec.getH());
+        jaz->init(*this, "common/img/player.png",igralec.getX(), igralec.getY(), igralec.getW(), igralec.getH());
         
         for (unsigned int i = 0; i < enemy.size(); ++i) {
             if (enemy.at(i)->sprehodNaRandomDestinacijo()) {

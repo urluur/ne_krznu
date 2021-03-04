@@ -21,6 +21,8 @@ bool GameManager::isPlayerCollidingAt(short x, short y, short w, short h) {
 }
 
 void GameManager::trkiOkolje() {
+    trkiMiTjulni();
+
     switch (trenutniNivo) {
     case 1:
         if (isPlayerCollidingAt(1110, 10, 170, 150)) {
@@ -72,5 +74,17 @@ void GameManager::trkiOkolje() {
         break;
     default:
         cerr << "Error: collision check" << trenutniNivo << endl;
+    }
+}
+
+void GameManager::trkiMiTjulni() {
+    unsigned int i = 0;
+    for (; i < tjulni.size(); ++i) {
+        if (isPlayerCollidingAt(tjulni.at(i)->getX(), tjulni.at(i)->getY(), tjulni.at(i)->getW(), tjulni.at(i)->getH())) {
+            cout << "Hvala lepa, rešil si me!!!" << endl;
+            tjulni.erase(tjulni.begin()+i);
+            stTjuln[trenutniNivo-1]--;
+            break;
+        }
     }
 }

@@ -1,8 +1,7 @@
 #pragma once
 #include "slika.h"
 #include "igra.h"
-class komoucar
-{
+class komoucar {
 private:
 	short x, y, dest_x = 0, dest_y = 0;
 	short hitrost;

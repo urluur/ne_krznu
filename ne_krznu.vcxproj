@@ -157,6 +157,7 @@
     <ClCompile Include="level.cpp" />
     <ClCompile Include="shranjevanje.cpp" />
     <ClCompile Include="stamina.cpp" />
+    <ClCompile Include="Tjuln.cpp" />
     <ClCompile Include="trki.cpp" />
     <ClCompile Include="zvok.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="igralec.h" />
     <ClInclude Include="slika.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="tjuln.h" />
     <ClInclude Include="zvok.h" />
     <ClInclude Include="tekst.h" />
     <ClInclude Include="okno.h" />
