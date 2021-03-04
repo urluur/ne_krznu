@@ -46,7 +46,7 @@ void GameManager::level(short& nivo) {
 					//enemy.at(i)->rage();
 					if (isPlayerCollidingAt(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH())) {
 						cout << "smrt" << endl;
-						//adios = true;
+						adios = true;
 						//tocke rab resetirat pa to
 					}
 				}
