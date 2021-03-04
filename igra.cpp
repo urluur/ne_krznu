@@ -25,7 +25,7 @@ void GameManager::pripraviVse() {
 	
 	for (int i = 0; i < stNaspr[trenutniNivo - 1]; i++) {
 		enemy.push_back(new komoucar);
-		enemy.at(i)->initImg(*this, "common/img/boss.png", 500, 500); //nule spremen na lokacije odvisne od levela
+		enemy.at(i)->initImg(*this, "common/img/nasprotnik.png", 500, 500); //nule spremen na lokacije odvisne od levela
 		enemy.at(i)->zrcuniRandomDestinacijo();
 	}
 	//nared vektorje za nasprotnike aktiviste in tjulne
