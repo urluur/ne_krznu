@@ -74,6 +74,7 @@ void GameManager::level(short& nivo) {
 										stTjulnFarma += 1;
 										//updati neko tabelo (k je se ni) k pove kolk tjulnou je na farmi
 										if (!tjulni.empty()) {
+											delete tjulni.at(t);
 											tjulni.erase(tjulni.begin() + t);
 										}
 										stTjuln[trenutniNivo - 1]--;

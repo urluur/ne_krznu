@@ -53,6 +53,7 @@ void GameManager::updateMap() {
 }
 
 GameManager::GameManager() {
+	stTjulnFarma = 0;
 	joystick = nullptr;
 	jaz = nullptr;
 	stamina_wheel = new Image;
@@ -163,12 +164,14 @@ void GameManager::cleanupVectors() {
 			delete enemy.at(i);
 		}
 		enemy.clear();
+		enemy.shrink_to_fit();
 	}
 	if (!tjulni.empty()) {
 		for (unsigned int i = 0; i < tjulni.size(); ++i) {
 			delete tjulni.at(i);
 		}
 		tjulni.clear();
+		tjulni.shrink_to_fit();
 	}
 }
 

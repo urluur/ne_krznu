@@ -82,6 +82,7 @@ void GameManager::trkiMiTjulni() {
 	for (; i < tjulni.size(); ++i) {
 		if (isPlayerCollidingAt(tjulni.at(i)->getX(), tjulni.at(i)->getY(), tjulni.at(i)->getW(), tjulni.at(i)->getH())) {
 			cout << "Hvala lepa, resil si me!!!\n";
+			delete tjulni.at(i);
 			tjulni.erase(tjulni.begin() + i);
 			stTjuln[trenutniNivo - 1]--;
 			break;
