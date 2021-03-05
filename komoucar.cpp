@@ -39,7 +39,7 @@ void komoucar::zrcuniRandomDestinacijo() {
 	dest_y = rand() % (by - ay) + ay;
 }
 bool komoucar::sprehodNaRandomDestinacijo() {
-	if (x == dest_x && y == dest_y) {
+	if (ManhattanDistance(x, y, dest_x, dest_y) < 10) {
 		return true;
 	}
 	else {

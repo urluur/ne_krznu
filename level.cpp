@@ -39,13 +39,14 @@ void GameManager::level(short& nivo) {
 		for (unsigned int i = 0; i < enemy.size(); ++i) {
 			if (enemy.at(i)->sprehodNaRandomDestinacijo()) {
 				enemy.at(i)->zrcuniRandomDestinacijo();
-				
 			}
 			else {//ta if spodi se ni popoln
 				if (isPlayerCollidingAt(enemy.at(i)->getX() - 100, enemy.at(i)->getY() - 100, enemy.at(i)->getW() + 200, enemy.at(i)->getH() + 200)) {//previr okrog sebe
 					enemy.at(i)->setDest(igralec.getX(), igralec.getY());
 					enemy.at(i)->nosim = -1;
-					//enemy.at(i)->rage();
+					if (rageMode) {
+						enemy.at(i)->rage();
+					}
 					if (isPlayerCollidingAt(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH())) {
 						printf("smrt\n");
 						adios = true;
@@ -54,7 +55,7 @@ void GameManager::level(short& nivo) {
 				}
 				else {
 					for (unsigned int t = 0; t < tjulni.size(); ++t) {
-						if((tjulni.at(t)->nosilec == -1 && enemy.at(i)->nosim == -1) || tjulni.at(t)->nosilec == i) {
+						if ((tjulni.at(t)->nosilec == -1 && enemy.at(i)->nosim == -1) || tjulni.at(t)->nosilec == i) {
 							if (univerzalniTrk(enemy.at(i)->getX() - 100, enemy.at(i)->getY() - 100, enemy.at(i)->getW() + 200, enemy.at(i)->getH() + 200,
 								tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH()) && enemy.at(i)->nosim == -1)
 							{
@@ -62,12 +63,12 @@ void GameManager::level(short& nivo) {
 								if (univerzalniTrk(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH(),
 									tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH()) && enemy.at(i)->nosim == -1)
 								{
-									tjulni.at(t)->setX(enemy.at(i)->getX()+t);
-									tjulni.at(t)->setY(enemy.at(i)->getY()+t);
+									tjulni.at(t)->setX(enemy.at(i)->getX() + t);
+									tjulni.at(t)->setY(enemy.at(i)->getY() + t);
 									tjulni.at(t)->nosilec = i;
 									tjulni.at(t)->updateImg(*this);
-									enemy.at(i)->setDest(0, 0); //spawn farme
-									if (univerzalniTrk(0, 0, 10, 10, //same here
+									enemy.at(i)->setDest(farmPos[0][trenutniNivo - 1], farmPos[1][trenutniNivo - 1]); //spawn farme
+									if (univerzalniTrk(farmPos[0][trenutniNivo - 1], farmPos[1][trenutniNivo - 1], 20, 20, //same here
 										tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH()))
 									{
 										printf("Joj ne, zaprt sem v farmi!!!\n");
@@ -82,8 +83,8 @@ void GameManager::level(short& nivo) {
 									}
 								}
 							}
-							/*
-							else {
+							//*
+							else if (rageMode) {
 								enemy.at(i)->chill();
 							}
 							//*/
@@ -95,7 +96,7 @@ void GameManager::level(short& nivo) {
 		}
 
 		//* za provo dok ni levela tuki
-		if (keys[SDL_SCANCODE_SPACE] && trenutniNivo==5) {
+		if (keys[SDL_SCANCODE_SPACE] && trenutniNivo == 5) {
 			if (stTjuln[nivo] > 0)
 				--stTjuln[nivo];
 			printf("Se %d tjulnov!\n", stTjuln[trenutniNivo - 1]);

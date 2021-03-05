@@ -24,10 +24,10 @@ void GameManager::pripraviVse() {
 	for (int i = 0; i < stNaspr[trenutniNivo - 1]; ++i) {
 		enemy.push_back(new komoucar);
 		if (trenutniNivo < 5) {
-			enemy.at(i)->initImg(*this, "common/img/nasprotnik.png", 500, 500); // te stevile so spawnpoint
+			enemy.at(i)->initImg(*this, "common/img/nasprotnik.png", farmPos[0][trenutniNivo - 1], farmPos[1][trenutniNivo - 1]);
 		}
 		else {
-			enemy.at(i)->initImg(*this, "common/img/boss.png", 500, 500); // te stevile so spawnpoint
+			enemy.at(i)->initImg(*this, "common/img/boss.png", farmPos[0][trenutniNivo - 1], farmPos[1][trenutniNivo - 1]);
 		}
 		enemy.at(i)->zrcuniRandomDestinacijo();
 	}
@@ -67,6 +67,9 @@ GameManager::GameManager() {
 	stamina = 100;
 	hitrost = 2;
 	trenutniNivo = 0;
+	stAktiv[0] = 2; stAktiv[1] = 2; stAktiv[2] = 1; stAktiv[3] = 1; stAktiv[4] = 0;
+	stNaspr[0] = 2; stNaspr[1] = 3; stNaspr[2] = 4; stNaspr[3] = 5; stNaspr[4] = 1;
+	stTjuln[0] = 4; stTjuln[1] = 6; stTjuln[2] = 8; stTjuln[3] = 6; stTjuln[4] = 0;
 }
 
 int GameManager::init() {
@@ -100,7 +103,7 @@ int GameManager::init() {
 	Image ikona(okno.ren, "common/img/ikona.png", 0, 0, 29, 29);
 	SDL_Surface icon = ikona.returnSurface();
 	SDL_SetWindowIcon(okno.window, &icon);
-
+	/* lenartov nacin za kontroller
 	int numJoystick = SDL_NumJoysticks();
 	printf("%i joysticks were found.\n\n", SDL_NumJoysticks());
 	printf("The names of the joysticks are:\n");
@@ -110,6 +113,7 @@ int GameManager::init() {
 		SDL_JoystickEventState(SDL_ENABLE);
 		joystick = SDL_JoystickOpen(0);
 	}
+	*/
 
 	srand((unsigned int)time(NULL));
 	return EXIT_SUCCESS;
@@ -141,17 +145,6 @@ void GameManager::setCompleted(bool resnica) {
 		exit(1);
 	}
 	quicksave.close();
-}
-
-void GameManager::preveriEsc(short& nivo) {
-	SDL_PollEvent(&event);
-	if ((keys[SDL_SCANCODE_ESCAPE] || event.type == SDL_QUIT)) {
-		while (keys[SDL_SCANCODE_ESCAPE]) { SDL_PollEvent(&event); }
-		setNivo(nivo);
-		zasilnoShranjevanje();
-		cleanup();
-		exit(0);
-	}
 }
 
 void GameManager::cleanupVectors() {
@@ -186,66 +179,4 @@ void GameManager::cleanup() {
 	SDL_DestroyWindow(okno.window);
 	if (joystick != nullptr) SDL_JoystickClose(joystick);
 	SDL_Quit();
-}
-
-bool GameManager::checkQuit() {
-	return (keys[SDL_SCANCODE_ESCAPE] || event.type == SDL_QUIT);
-}
-bool GameManager::checkEnter() {
-	return (keys[SDL_SCANCODE_RETURN]);
-}
-bool GameManager::checkUp() {
-	return (keys[SDL_SCANCODE_UP]/* || event.jhat.value == 1*/);
-}
-bool GameManager::checkDown() {
-	return (keys[SDL_SCANCODE_DOWN]/* || event.jhat.value == 4*/);
-}
-bool GameManager::checkLeft() {
-	return (keys[SDL_SCANCODE_LEFT]/* || event.jhat.value == 8*/);
-}
-bool GameManager::checkRight() {
-	return (keys[SDL_SCANCODE_UP]/* || event.jhat.value == 2*/);
-}
-void GameManager::handleEvents() {
-	while (SDL_PollEvent(&event)) {
-		switch (event.type) {
-		case SDL_QUIT:
-			adios = true;
-			break;
-		case SDL_KEYDOWN:
-			if (event.key.keysym.sym == SDLK_UP || event.key.keysym.sym == SDLK_w)
-				w = true;
-			if (event.key.keysym.sym == SDLK_DOWN || event.key.keysym.sym == SDLK_s)
-				s = true;
-			if (event.key.keysym.sym == SDLK_LEFT || event.key.keysym.sym == SDLK_a)
-				a = true;
-			if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_d)
-				d = true;
-			if (event.key.keysym.sym == SDLK_END)
-				konecLevela = true;
-			if ((event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT) && (w || a || s || d))
-				staminadown = true;
-			trkiOkolje();
-			break;
-		case SDL_KEYUP:
-			if (event.key.keysym.sym == SDLK_UP || event.key.keysym.sym == SDLK_w)
-				w = false;
-			if (event.key.keysym.sym == SDLK_DOWN || event.key.keysym.sym == SDLK_s)
-				s = false;
-			if (event.key.keysym.sym == SDLK_LEFT || event.key.keysym.sym == SDLK_a)
-				a = false;
-			if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_d)
-				d = false;
-			if ((event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT) || !(w || a || s || d))
-				staminadown = false;
-			break;
-		}
-	}
-
-	racuniStamino();
-
-	if (w) igralec.setY(igralec.getY() - hitrost);
-	if (a) igralec.setX(igralec.getX() - hitrost);
-	if (s) igralec.setY(igralec.getY() + hitrost);
-	if (d) igralec.setX(igralec.getX() + hitrost);
 }

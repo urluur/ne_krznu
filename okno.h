@@ -10,9 +10,8 @@ private:
 	Uint32 frameStart;
 	int frameTime;
 
-	short Window_width = 1280;
-	short Window_height = 720;
-	short scaler = 1;
+	const short Window_width = 1280, Window_height = 720;
+	short scaler = 12; // default je 1, fulscreen je 100
 public:
 	SDL_Renderer* ren;
 	SDL_Window* window;

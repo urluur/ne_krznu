@@ -10,12 +10,13 @@ bool aliSmoNovIgralec(GameManager&);
 
 int main() {
 	GameManager igra;
-	
-	/* to je za release
-	if (aliSmoNovIgralec(igra)) {
-		igra.igralec.setName();
+	bool dev = false; // zbris to za final ver
+
+	if (!dev) {
+		if (aliSmoNovIgralec(igra)) {
+			igra.igralec.setName();
+		}
 	}
-	//*/
 
 	bool problemi = igra.init();
 	if (problemi) {
@@ -23,8 +24,9 @@ int main() {
 		return EXIT_FAILURE;
 	}
 
-	// debug faster
-	//igra.sound.toggle();
+	if (dev) {
+		igra.sound.toggle();
+	}
 
 	/* to je sam za testiranje levela
 	for (short i = 0; i < 5;) {

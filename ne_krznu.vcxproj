@@ -158,6 +158,7 @@
     <ClCompile Include="level.cpp" />
     <ClCompile Include="shranjevanje.cpp" />
     <ClCompile Include="stamina.cpp" />
+    <ClCompile Include="tipkovnica.cpp" />
     <ClCompile Include="tjuln.cpp" />
     <ClCompile Include="trki.cpp" />
     <ClCompile Include="zvok.cpp" />

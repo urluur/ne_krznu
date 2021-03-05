@@ -59,10 +59,15 @@ private:
 	vector <class Tjuln*> tjulni;
 	class Image* stamina_wheel;
 	bool konecLevela, semNaIzhodniLokaciji, staminadown, fillingStamina;
+	bool rageMode = false; //rageMode je v alfa testingu
 	bool w = false, a = false, s = false, d = false;
 	bool completed; // zato da se spremeni main menu na koncu zgodbe
-	short stAktiv[5] = { 4, 3, 2, 1, 0 };
-	short stNaspr[5] = { 3, 5, 7, 10, 1 };
-	short stTjuln[5] = { 5, 10, 15, 20, 0 };
+	short stAktiv[5], stNaspr[5], stTjuln[5];
 	short hitrost, stamina, stTjulnFarma;
+	const short farmPos[2][5] = {
+		{1150, 60, 140, 1000, 1030},
+		{100, 510, 400, 440, 60} };
+	const short exitPos[2][5] = {
+		{160, 1270, 230, 160, 150},
+		{20, 520, 5, 5, 600} };
 };

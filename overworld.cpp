@@ -69,7 +69,7 @@ void overworld(GameManager& igra) {
 			premakniNaXY(igra, x, y, 335, 310, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); // stojimo pred mostom
 			animacija(igra, 2);
-			do{
+			do {
 				premakniNaXY(igra, x, y, 410, 395, img_overworld, img_player, level_clear);
 				igra.haltEnter(level_clear); // stojimo pred 2. levelom
 				igra.level(level_clear);
@@ -81,7 +81,7 @@ void overworld(GameManager& igra) {
 			premakniNaXY(igra, x, y, 560, 570, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); //stojimo na kotu
 			animacija(igra, 3);
-			do{
+			do {
 				premakniNaXY(igra, x, y, 620, 520, img_overworld, img_player, level_clear);
 				igra.haltEnter(level_clear); //stojimo na 3. levelu
 				igra.level(level_clear);
@@ -93,7 +93,7 @@ void overworld(GameManager& igra) {
 			premakniNaXY(igra, x, y, 725, 365, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); // stojimo na lojtri
 			animacija(igra, 4);
-			do{
+			do {
 				premakniNaXY(igra, x, y, 750, 280, img_overworld, img_player, level_clear);
 				igra.haltEnter(level_clear); //stojimo na 4. levelu
 				igra.level(level_clear);
@@ -105,7 +105,7 @@ void overworld(GameManager& igra) {
 			break;
 		case 4:
 			animacija(igra, 5);
-			do{
+			do {
 				premakniNaXY(igra, x, y, 705, 125, img_overworld, img_player, level_clear);
 				igra.haltEnter(level_clear); // na 5 level
 				animacija(igra, 6);
