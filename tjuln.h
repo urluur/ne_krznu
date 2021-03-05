@@ -6,8 +6,8 @@ private:
 	short x = 0, y = 0;
 	const short w = 63, h = 42; // odvisno od slike
 	class Image* img = nullptr;
-	bool jeNaFarmi;
 public:
+	short nosilec = -1;
 	Tjuln();
 	~Tjuln();
 	short getX() { return x; }
@@ -18,4 +18,5 @@ public:
 	void setY(short notr) { y = notr; }
 	void initImg(class GameManager&, const char*);
 	void display(class GameManager&);
+	void updateImg(GameManager&);
 };

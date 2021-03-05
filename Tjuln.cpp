@@ -4,9 +4,7 @@ Tjuln::Tjuln() {
 	short ay = 0, by = 720 - h;
 	x = rand() % (bx - ax) + ax;
 	y = rand() % (by - ay) + ay;
-
 	img = new Image;
-	jeNaFarmi = false;
 }
 Tjuln::~Tjuln() {
 	if (img != nullptr) {
@@ -19,4 +17,8 @@ void Tjuln::display(class GameManager& igra) {
 }
 void Tjuln::initImg(GameManager& igra, const char* path) {
 	img->init(igra, path, x, y, w, h);
+}
+void Tjuln::updateImg(GameManager& igra)
+{
+	img->init(igra, "common/img/tjuln.png", x, y, w, h);
 }

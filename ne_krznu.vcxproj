@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="farma.cpp" />
     <ClCompile Include="igra.cpp" />
     <ClCompile Include="Igralec.cpp" />
     <ClCompile Include="komoucar.cpp" />

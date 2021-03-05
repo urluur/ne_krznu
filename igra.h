@@ -16,12 +16,14 @@ public:
 	Igralec igralec;
 	SDL_Joystick* joystick;
 	bool adios = false;
+	short trenutniNivo;
 	bool getAdios() { return adios; }
 	GameManager();
 	int init();
 	void handleEvents();
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
 	void level(short&);
+	void farma();
 	void pripraviVse();
 	void haltEnter(short);
 	void updateMap();
@@ -62,5 +64,5 @@ private:
 	short stAktiv[5] = { 4, 3, 2, 1, 0 };
 	short stNaspr[5] = { 3, 5, 7, 10, 1 };
 	short stTjuln[5] = { 5, 10, 15, 20, 0 };
-	short hitrost, stamina, trenutniNivo;
+	short hitrost, stamina, stTjulnFarma;
 };

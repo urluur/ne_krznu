@@ -6,6 +6,7 @@ void GameManager::pripraviVse() {
 	semNaIzhodniLokaciji = false;
 	staminadown = false; fillingStamina = false;
 	w = false; a = false; s = false; d = false;
+	stTjulnFarma = 0;
 
 	jaz = new Image;
 
@@ -16,13 +17,18 @@ void GameManager::pripraviVse() {
 	igralec.setY(spawnPos[1][trenutniNivo - 1]);
 	jaz->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo - 1], spawnPos[1][trenutniNivo - 1], 58, 128);
 
-	stAktiv[0] = 4; stAktiv[1] = 3; stAktiv[2] = 2; stAktiv[3] = 1; stAktiv[4] = 0;
-	stNaspr[0] = 3; stNaspr[1] = 5; stNaspr[2] = 7; stNaspr[3] = 10; stNaspr[4] = 1;
-	stTjuln[0] = 5; stTjuln[1] = 10; stTjuln[2] = 15; stTjuln[3] = 10; stTjuln[4] = 0;
+	stAktiv[0] = 2; stAktiv[1] = 2; stAktiv[2] = 1; stAktiv[3] = 1; stAktiv[4] = 0;
+	stNaspr[0] = 2; stNaspr[1] = 3; stNaspr[2] = 4; stNaspr[3] = 5; stNaspr[4] = 1;
+	stTjuln[0] = 4; stTjuln[1] = 6; stTjuln[2] = 8; stTjuln[3] = 6; stTjuln[4] = 0;
 
 	for (int i = 0; i < stNaspr[trenutniNivo - 1]; i++) {
 		enemy.push_back(new komoucar);
-		enemy.at(i)->initImg(*this, "common/img/nasprotnik.png", 500, 500); // te stevile so spawnpoint
+		if (trenutniNivo < 5) {
+			enemy.at(i)->initImg(*this, "common/img/nasprotnik.png", 500, 500); // te stevile so spawnpoint
+		}
+		else {
+			enemy.at(i)->initImg(*this, "common/img/boss.png", 500, 500); // te stevile so spawnpoint
+		}
 		enemy.at(i)->zrcuniRandomDestinacijo();
 	}
 

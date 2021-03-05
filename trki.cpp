@@ -26,7 +26,7 @@ void GameManager::trkiOkolje() {
 	switch (trenutniNivo) {
 	case 1:
 		if (isPlayerCollidingAt(1110, 10, 170, 150)) {
-			cout << "sm na farmi" << endl;
+			farma();
 		}
 		if (isPlayerCollidingAt(160, 660, 125, 60))
 			semNaIzhodniLokaciji = true;
@@ -35,7 +35,7 @@ void GameManager::trkiOkolje() {
 		break;
 	case 2:
 		if (isPlayerCollidingAt(0, 460, 130, 120)) {
-			cout << "sm na farmi" << endl;
+			farma();
 		}
 		if (isPlayerCollidingAt(1270, 520, 10, 200))
 			semNaIzhodniLokaciji = true;
@@ -44,7 +44,7 @@ void GameManager::trkiOkolje() {
 		break;
 	case 3:
 		if (isPlayerCollidingAt(90, 350, 130, 120)) {
-			cout << "sm na farmi" << endl;
+			farma();
 		}
 		if (isPlayerCollidingAt(230, 0, 70, 60))
 			semNaIzhodniLokaciji = true;
@@ -53,10 +53,10 @@ void GameManager::trkiOkolje() {
 		break;
 	case 4:
 		if (isPlayerCollidingAt(990, 350, 190, 150)) {
-			cout << "sm na farmi" << endl;
+			farma();
 		}
 		if (isPlayerCollidingAt(1130, 600, 30, 40)) {
-			cout << "sm na kolomiti" << endl;
+			cout << "sm na kolomiti\n";
 		}
 		if (isPlayerCollidingAt(160, 0, 10, 75))
 			semNaIzhodniLokaciji = true;
@@ -65,7 +65,7 @@ void GameManager::trkiOkolje() {
 		break;
 	case 5:
 		if (isPlayerCollidingAt(1030, 60, 190, 120)) {
-			cout << "sm na farmi" << endl;
+			farma();
 		}
 		if (isPlayerCollidingAt(0, 0, 1280, 40))
 			semNaIzhodniLokaciji = true;
@@ -81,7 +81,7 @@ void GameManager::trkiMiTjulni() {
 	unsigned int i = 0;
 	for (; i < tjulni.size(); ++i) {
 		if (isPlayerCollidingAt(tjulni.at(i)->getX(), tjulni.at(i)->getY(), tjulni.at(i)->getW(), tjulni.at(i)->getH())) {
-			cout << "Hvala lepa, resil si me!!!" << endl;
+			cout << "Hvala lepa, resil si me!!!\n";
 			tjulni.erase(tjulni.begin() + i);
 			stTjuln[trenutniNivo - 1]--;
 			break;

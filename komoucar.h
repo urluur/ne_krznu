@@ -8,6 +8,7 @@ private:
 	const short w = 29, h = 64;
 	class Image* img = nullptr;
 public:
+	short nosim = -1;
 	komoucar();
 	~komoucar();
 	short getX() { return x; }

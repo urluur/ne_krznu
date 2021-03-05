@@ -22,7 +22,12 @@ void komoucar::initImg(GameManager& igra, const char* path,
 }
 void komoucar::updateImg(GameManager& igra)
 {
-	img->init(igra, "common/img/nasprotnik.png", x, y, w, h);
+	if (igra.trenutniNivo < 5) {
+		img->init(igra, "common/img/nasprotnik.png", x, y, w, h);
+	}
+	else {
+		img->init(igra, "common/img/boss.png", x, y, w, h);
+	}
 }
 void komoucar::display(GameManager& igra) {
 	img->display(igra.okno.ren);
