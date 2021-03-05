@@ -77,7 +77,7 @@ void GameManager::level(short& nivo) {
 											delete tjulni.at(t);
 											tjulni.erase(tjulni.begin() + t);
 										}
-										stTjuln[trenutniNivo - 1]--;
+										--stTjuln[trenutniNivo - 1];
 										enemy.at(i)->nosim = -1;
 									}
 								}
@@ -98,13 +98,13 @@ void GameManager::level(short& nivo) {
 		if (keys[SDL_SCANCODE_SPACE]) {
 			if (trenutniNivo < 5) {
 				if (stTjuln[nivo] > 0)
-					stTjuln[nivo]--;
+					--stTjuln[nivo];
 				cout << "Se " << stTjuln[nivo] << " tjulnov!\n";
 				cout << "Se " << stNaspr[nivo] << " nasprotnikov!\n\n";
 			}
 			else {
 				if (stNaspr[nivo] > 0)
-					stNaspr[nivo]--;
+					--stNaspr[nivo];
 				cout << "Se " << stTjuln[nivo] << " tjulnov!\n";
 				cout << "Se " << stNaspr[nivo] << " nasprotnikov!\n\n";
 			}

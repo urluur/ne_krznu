@@ -6,9 +6,16 @@ void vec(GameManager&);
 void overworld(GameManager&);
 void narisi(GameManager&, short&, Image&, Image&);
 void nadaljuj(GameManager&, short&, bool&);
+bool aliSmoNovIgralec(GameManager&);
 
 int main() {
 	GameManager igra;
+	
+	/* to je za release
+	if (aliSmoNovIgralec(igra)) {
+		igra.igralec.setName();
+	}
+	//*/
 
 	bool problemi = igra.init();
 	if (problemi) {
@@ -17,7 +24,7 @@ int main() {
 	}
 
 	// debug faster
-	igra.sound.toggle(); //samo za testing
+	igra.sound.toggle();
 
 	/* to je sam za testiranje levela
 	for (short i = 0; i < 5;) {
@@ -45,7 +52,7 @@ int main() {
 			if (cur_pos == 1)
 				cur_pos = 4;
 			else
-				cur_pos--;
+				--cur_pos;
 			narisi(igra, cur_pos, cursor, main);
 		}
 		else if (igra.checkDown()) {
@@ -54,7 +61,7 @@ int main() {
 			if (cur_pos == 4)
 				cur_pos = 1;
 			else
-				cur_pos++;
+				++cur_pos;
 			narisi(igra, cur_pos, cursor, main);
 		}
 		else if (igra.checkEnter()) {
@@ -120,5 +127,17 @@ void nadaljuj(GameManager& igra, short& cur_pos, bool& izhod_switch) {
 		igra.sound.predvajaj("common/sounds/izhod.wav");
 		izhod_switch = true;
 		break;
+	}
+}
+
+bool aliSmoNovIgralec(GameManager& igra) {
+	string tempName;
+	short tempLvl;
+	igra.branjeShranjenega(tempName, tempLvl);
+	if ((tempName == "bumbar" && tempLvl == 0)) {
+		return true;
+	}
+	else {
+		return false;
 	}
 }

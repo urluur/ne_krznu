@@ -10,13 +10,20 @@ void Igralec::setName() {
 	cout << "Vpisi svoje ime, ";
 	coutName();
 	cout << endl;
-	getline(cin, ime);
+	do {
+		getline(cin, ime);
+	} while (ime == "");
 	space2underscore(ime);
 }
 
 void Igralec::setName(string s) {
 	space2underscore(s);
-	ime = s;
+	if (s == "") {
+		ime = "bumbar";
+	}
+	else {
+		ime = s;
+	}
 }
 
 void Igralec::coutName() {

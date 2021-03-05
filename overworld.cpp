@@ -179,7 +179,7 @@ void animacija(GameManager& igra, int stAnim) {
 		}
 		else
 			blink = 0;
-		blink++;
+		++blink;
 		SDL_RenderPresent(igra.okno.ren);
 		igra.okno.omejiFrame();
 		if (igra.keys[SDL_SCANCODE_RETURN]) {
@@ -197,12 +197,12 @@ void premakniNaXY(GameManager& igra, short& mov_x, short& mov_y, short to_x, sho
 		igra.okno.stejFrame();
 		igra.preveriEsc(nivo);
 		if (mov_x != to_x) {
-			if (mov_x < to_x) mov_x++;
-			else mov_x--;
+			if (mov_x < to_x) ++mov_x;
+			else --mov_x;
 		}
 		if (mov_y != to_y) {
-			if (mov_y < to_y) mov_y++;
-			else mov_y--;
+			if (mov_y < to_y) ++mov_y;
+			else --mov_y;
 		}
 		if (mov_x == to_x && mov_y == to_y) {
 			SDL_RenderClear(igra.okno.ren);
@@ -236,11 +236,11 @@ void narisiFarmeAliDosezke(GameManager& igra, short nivo) {
 	int premikx = 250, premiky = 25;
 	short x[5] = { 470, 340, 580, 750, 730 };
 	short y[5] = { 180, 490, 480, 240, 125 };
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 5; ++i)
 		if (i < nivo)
 			hisa[i].init(igra, "common/img/iglu.png", x[i], y[i], 66, 61);
 		else
 			hisa[i].init(igra, "common/img/farma.png", x[i], y[i], 66, 61);
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 5; ++i)
 		hisa[i].display(igra.okno.ren);
 }

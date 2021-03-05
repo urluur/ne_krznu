@@ -84,7 +84,7 @@ void GameManager::trkiMiTjulni() {
 			cout << "Hvala lepa, resil si me!!!\n";
 			delete tjulni.at(i);
 			tjulni.erase(tjulni.begin() + i);
-			stTjuln[trenutniNivo - 1]--;
+			--stTjuln[trenutniNivo - 1];
 			break;
 		}
 	}

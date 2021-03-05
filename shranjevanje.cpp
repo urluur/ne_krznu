@@ -24,8 +24,6 @@ void GameManager::zasilnoShranjevanje() {
 }
 
 void GameManager::branjeShranjenega() {
-	cout << "Loading..." << endl;
-
 	ifstream datoteka;
 	datoteka.open("quicksave.txt");
 	if (datoteka.fail()) {
@@ -36,12 +34,25 @@ void GameManager::branjeShranjenega() {
 	short tempLvl;
 	string tempName;
 	datoteka >> tempName >> tempLvl;
-	setNivo(tempLvl);
-	igralec.setName(tempName);
-	system("cls");
-	cout << "Zabelezeno je, da si koncal/a " << getNivo() << " nivo in se klices ";
-	igralec.coutName();
-	cout << endl;
+	if (!(tempName == "bumbar" && tempLvl == 0)) {
+		setNivo(tempLvl);
+		igralec.setName(tempName);
+		system("cls");
+		cout << "Zabelezeno je, da si koncal/a " << getNivo() << " nivo in se klices ";
+		igralec.coutName();
+		cout << endl;
+	}
+}
+
+void GameManager::branjeShranjenega(string& mainString, short& mainShort) {
+	ifstream datoteka;
+	datoteka.open("quicksave.txt");
+	if (datoteka.fail()) {
+		cerr << "Error: reading quicksave" << endl;
+		cleanup();
+		exit(1);
+	}
+	datoteka >> mainString >> mainShort;
 }
 
 void GameManager::branjeLestvice() {

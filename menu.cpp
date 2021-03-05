@@ -8,8 +8,7 @@ void nastavitve(GameManager& igra) {
 	short cur_pos = 1;
 	Image img_nastavitve;
 	Image cursor;
-	while (stay)
-	{
+	while (stay) {
 		igra.okno.stejFrame();
 		SDL_RenderClear(igra.okno.ren);
 		img_nastavitve.ini(igra, "common/img/nastavitve.png");
@@ -22,7 +21,7 @@ void nastavitve(GameManager& igra) {
 			if (cur_pos == 1)
 				cur_pos = 4;
 			else
-				cur_pos--;
+				--cur_pos;
 		}
 		else if (igra.keys[SDL_SCANCODE_DOWN])
 		{
@@ -31,7 +30,7 @@ void nastavitve(GameManager& igra) {
 			if (cur_pos == 4)
 				cur_pos = 1;
 			else
-				cur_pos++;
+				++cur_pos;
 		}
 		else if (igra.keys[SDL_SCANCODE_ESCAPE]) {
 			while (igra.keys[SDL_SCANCODE_ESCAPE]) { SDL_PollEvent(&igra.event); }
@@ -109,7 +108,7 @@ void vec(GameManager& igra) {
 			if (cur_pos == 1)
 				cur_pos = 4;
 			else
-				cur_pos--;
+				--cur_pos;
 		}
 		else if (igra.keys[SDL_SCANCODE_DOWN]) {
 			while (igra.keys[SDL_SCANCODE_DOWN]) { SDL_PollEvent(&igra.event); }
@@ -117,7 +116,7 @@ void vec(GameManager& igra) {
 			if (cur_pos == 4)
 				cur_pos = 1;
 			else
-				cur_pos++;
+				++cur_pos;
 		}
 		else if (igra.keys[SDL_SCANCODE_ESCAPE]) {
 			stay = false;

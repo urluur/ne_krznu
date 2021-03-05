@@ -34,6 +34,7 @@ public:
 	void preveriEsc(short&);
 	void zasilnoShranjevanje();
 	void branjeShranjenega();
+	void branjeShranjenega(string&, short&);
 	void branjeLestvice();
 	void shranjevanjeLestvice();
 	void deleteSave();

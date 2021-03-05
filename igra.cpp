@@ -12,16 +12,16 @@ void GameManager::pripraviVse() {
 
 	const short spawnPos[2][5] = {
 	{200, 70,  30, 320, 150},   // x
-	{ 20,  0, 530, 650, 600} }; // y
+	{ 20,  5, 530, 650, 600} }; // y
 	igralec.setX(spawnPos[0][trenutniNivo - 1]);
 	igralec.setY(spawnPos[1][trenutniNivo - 1]);
-	jaz->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo - 1], spawnPos[1][trenutniNivo - 1], 58, 128);
+	jaz->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo - 1], spawnPos[1][trenutniNivo - 1], igralec.getW(), igralec.getH());
 
 	stAktiv[0] = 2; stAktiv[1] = 2; stAktiv[2] = 1; stAktiv[3] = 1; stAktiv[4] = 0;
 	stNaspr[0] = 2; stNaspr[1] = 3; stNaspr[2] = 4; stNaspr[3] = 5; stNaspr[4] = 1;
 	stTjuln[0] = 4; stTjuln[1] = 6; stTjuln[2] = 8; stTjuln[3] = 6; stTjuln[4] = 0;
 
-	for (int i = 0; i < stNaspr[trenutniNivo - 1]; i++) {
+	for (int i = 0; i < stNaspr[trenutniNivo - 1]; ++i) {
 		enemy.push_back(new komoucar);
 		if (trenutniNivo < 5) {
 			enemy.at(i)->initImg(*this, "common/img/nasprotnik.png", 500, 500); // te stevile so spawnpoint
@@ -32,7 +32,7 @@ void GameManager::pripraviVse() {
 		enemy.at(i)->zrcuniRandomDestinacijo();
 	}
 
-	for (int i = 0; i < stTjuln[trenutniNivo - 1]; i++) {
+	for (int i = 0; i < stTjuln[trenutniNivo - 1]; ++i) {
 		tjulni.push_back(new Tjuln);
 		tjulni.at(i)->initImg(*this, "common/img/tjuln.png");
 	}
@@ -42,10 +42,10 @@ void GameManager::pripraviVse() {
 void GameManager::updateMap() {
 	//for cez use vectorje ubistvu
 	jaz->display(okno.ren);
-	for (int i = 0; i < stNaspr[trenutniNivo - 1]; i++) { //spremen na douzino vektorja
+	for (int i = 0; i < stNaspr[trenutniNivo - 1]; ++i) { //spremen na douzino vektorja
 		enemy.at(i)->display(*this);
 	}
-	for (int i = 0; i < stTjuln[trenutniNivo - 1]; i++) { //spremen na douzino vektorja
+	for (int i = 0; i < stTjuln[trenutniNivo - 1]; ++i) { //spremen na douzino vektorja
 		tjulni.at(i)->display(*this);
 	}
 	SDL_RenderPresent(okno.ren);
@@ -104,7 +104,7 @@ int GameManager::init() {
 	int numJoystick = SDL_NumJoysticks();
 	printf("%i joysticks were found.\n\n", SDL_NumJoysticks());
 	printf("The names of the joysticks are:\n");
-	for (int i = 0; i < SDL_NumJoysticks(); i++)
+	for (int i = 0; i < SDL_NumJoysticks(); ++i)
 		std::cout << "	" << SDL_JoystickNameForIndex(i) << std::endl;
 	if (numJoystick > 0) {
 		SDL_JoystickEventState(SDL_ENABLE);
@@ -195,16 +195,16 @@ bool GameManager::checkEnter() {
 	return (keys[SDL_SCANCODE_RETURN]);
 }
 bool GameManager::checkUp() {
-	return (keys[SDL_SCANCODE_UP] || event.jhat.value == 1);
+	return (keys[SDL_SCANCODE_UP]/* || event.jhat.value == 1*/);
 }
 bool GameManager::checkDown() {
-	return (keys[SDL_SCANCODE_DOWN] || event.jhat.value == 4);
+	return (keys[SDL_SCANCODE_DOWN]/* || event.jhat.value == 4*/);
 }
 bool GameManager::checkLeft() {
-	return (keys[SDL_SCANCODE_LEFT] || event.jhat.value == 8);
+	return (keys[SDL_SCANCODE_LEFT]/* || event.jhat.value == 8*/);
 }
 bool GameManager::checkRight() {
-	return (keys[SDL_SCANCODE_UP] || event.jhat.value == 2);
+	return (keys[SDL_SCANCODE_UP]/* || event.jhat.value == 2*/);
 }
 void GameManager::handleEvents() {
 	while (SDL_PollEvent(&event)) {
