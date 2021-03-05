@@ -7,9 +7,9 @@ void space2underscore(std::string& text) {
 }
 
 void Igralec::setName() {
-	cout << "Vpisi svoje ime, ";
+	printf("Vpisi svoje ime, ");
 	coutName();
-	cout << endl;
+	printf("\n");
 	do {
 		getline(cin, ime);
 	} while (ime == "");

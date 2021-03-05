@@ -24,7 +24,7 @@ int main() {
 	}
 
 	// debug faster
-	igra.sound.toggle();
+	//igra.sound.toggle();
 
 	/* to je sam za testiranje levela
 	for (short i = 0; i < 5;) {

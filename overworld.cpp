@@ -16,7 +16,12 @@ void overworld(GameManager& igra) {
 	img_overworld.display(igra.okno.ren);
 
 	if (level_clear != 0) {
-		cout << "Nalagam " << igra.getNivo() + 1 << ". nivo.\n";
+		if (igra.getNivo() == 5) {
+			printf("Nalagam srecen konec :)\n");
+		}
+		else {
+			printf("Nalagam %d. nivo.\n", igra.getNivo() + 1);
+		}
 		for (;;) { // skip travel
 			premakniNaXY(igra, x, y, 440, 190, img_overworld, img_player, level_clear);
 			if (level_clear == 1) break;
@@ -32,7 +37,7 @@ void overworld(GameManager& igra) {
 			premakniNaXY(igra, x, y, 710, 220, img_overworld, img_player, level_clear);
 			if (level_clear == 4) break;
 			premakniNaXY(igra, x, y, 705, 125, img_overworld, img_player, level_clear);
-			if (level_clear == 5) break;
+			if (level_clear >= 5) break;
 			premakniNaXY(igra, x, y, 710, 20, img_overworld, img_player, level_clear);
 		}
 	}
@@ -113,7 +118,7 @@ void overworld(GameManager& igra) {
 			premakniNaXY(igra, x, y, 710, 20, img_overworld, img_player, level_clear);
 			igra.haltEnter(level_clear); // na koncu
 
-			cout << "Zmaga!\n";
+			printf("Zmaga!\n");
 			animacija(igra, 7);
 			img_overworld.ini(igra, "common/img/overworld.png");
 			img_overworld.display(igra.okno.ren);

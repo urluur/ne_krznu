@@ -56,7 +56,7 @@ void GameManager::trkiOkolje() {
 			farma();
 		}
 		if (isPlayerCollidingAt(1130, 600, 30, 40)) {
-			cout << "sm na kolomiti\n";
+			printf("sm na kolomiti\n");
 		}
 		if (isPlayerCollidingAt(160, 0, 10, 75))
 			semNaIzhodniLokaciji = true;
@@ -81,7 +81,7 @@ void GameManager::trkiMiTjulni() {
 	unsigned int i = 0;
 	for (; i < tjulni.size(); ++i) {
 		if (isPlayerCollidingAt(tjulni.at(i)->getX(), tjulni.at(i)->getY(), tjulni.at(i)->getW(), tjulni.at(i)->getH())) {
-			cout << "Hvala lepa, resil si me!!!\n";
+			printf("Hvala lepa, resil si me!!!\n");
 			delete tjulni.at(i);
 			tjulni.erase(tjulni.begin() + i);
 			--stTjuln[trenutniNivo - 1];

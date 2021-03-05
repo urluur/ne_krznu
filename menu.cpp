@@ -44,7 +44,7 @@ void nastavitve(GameManager& igra) {
 			if (igra.keys[SDL_SCANCODE_RETURN]) {
 				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&igra.event); }
 				igra.sound.predvajaj("common/sounds/dimenzije.wav");
-				cout << "spreminjam velikost okna na ";
+				printf("spreminjam velikost okna na ");
 				igra.okno.toggleScaler();
 				SDL_SetWindowSize(igra.okno.window, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
 				if (igra.okno.vrniScaler() == 100)

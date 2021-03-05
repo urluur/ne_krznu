@@ -4,16 +4,15 @@ void GameManager::zasilnoShranjevanje() {
 	ofstream datoteka;
 	datoteka.open("quicksave.txt");
 	if (datoteka.is_open()) {
-		if (konecLevela || getNivo() == 0) {
-			datoteka << igralec.getName() << "\n" << getNivo() << "\n";
-			cout << "Zabelezeno da si koncal/a " << getNivo() << " nivo in se klices ";
+		if (getNivo() > 5) {
+			datoteka << igralec.getName() << "\n" << 5 << "\n";
 		}
 		else {
-			datoteka << igralec.getName() << "\n" << getNivo() - 1 << "\n";
-			cout << "Zabelezeno da si koncal/a " << getNivo() - 1 << " nivo in se klices ";
+			datoteka << igralec.getName() << "\n" << getNivo() << "\n";
 		}
+		printf("Zabelezeno da si koncal/a %d nivo in se klices ", getNivo());
 		igralec.coutName();
-		cout << endl;
+		printf("\n");
 		datoteka.close();
 	}
 	else {
@@ -38,9 +37,9 @@ void GameManager::branjeShranjenega() {
 		setNivo(tempLvl);
 		igralec.setName(tempName);
 		system("cls");
-		cout << "Zabelezeno je, da si koncal/a " << getNivo() << " nivo in se klices ";
+		printf("Zabelezeno je, da si koncal/a %d nivo in se klices ", getNivo());
 		igralec.coutName();
-		cout << endl;
+		printf("\n");
 	}
 }
 
@@ -56,11 +55,11 @@ void GameManager::branjeShranjenega(string& mainString, short& mainShort) {
 }
 
 void GameManager::branjeLestvice() {
-	cout << "Berem lestvico..." << endl;
+	printf("Berem lestvico...\n");
 }
 
 void GameManager::shranjevanjeLestvice() {
-	cout << "Shranjujem tvoje rezultate..." << endl;
+	printf("Shranjujem tvoje rezultate...\n");
 	ofstream lestvica;
 	lestvica.open("lestvica.txt");
 	if (lestvica.is_open()) {
@@ -100,5 +99,5 @@ void GameManager::deleteSave() {
 		exit(1);
 	}
 	datoteka.close();
-	cout << "Zbrisano." << endl;
+	printf("Zbrisano.\n");
 }

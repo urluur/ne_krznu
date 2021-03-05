@@ -24,28 +24,28 @@ void WindowManager::toggleScaler() {
 	switch (scaler) {
 	case 1:
 		scaler = 12;
-		cout << "1,2";
+		printf("1,2");
 		break;
 	case 12:
 		scaler = 15;
-		cout << "1,5";
+		printf("1,5");
 		break;
 	case 15:
 		scaler = 100;
-		cout << "fullscreen";
+		printf("fullscreen");
 		break;
 	case 100:
 		scaler = 5;
-		cout << "0,5";
+		printf("0,5");
 		break;
 	case 5:
 		scaler = 1;
-		cout << "1 (original)";
+		printf("1 (original)");
 		break;
 	default:
 		cerr << "Error: toggleScaler" << endl;
 	}
-	cout << endl;
+	printf("\n");
 }
 
 int WindowManager::scaleCal(int stevilo) {

@@ -4,7 +4,7 @@ using namespace std;
 void GameManager::level(short& nivo) {
 	trenutniNivo = nivo + 1;
 	igralec.coutName();
-	cout << " zacenja " << trenutniNivo << " level\n";
+	printf(" zacenja %d nivo.\n", trenutniNivo);
 
 	pripraviVse();
 
@@ -20,8 +20,8 @@ void GameManager::level(short& nivo) {
 	odzadje.display(okno.ren);
 	delete[] path;
 
-	cout << "Se " << stTjuln[trenutniNivo - 1] << " tjulnov!\n";
-	cout << "Se " << stNaspr[trenutniNivo - 1] << " nasprotnikov!\n\n";
+	printf("Se %d tjulnov!\n", stTjuln[trenutniNivo - 1]);
+	printf("Se %d nasprotnikov!\n\n", stNaspr[trenutniNivo - 1]);
 	//main game loop
 	while (!keys[SDL_SCANCODE_ESCAPE] && !konecLevela && !adios) {
 		okno.stejFrame();
@@ -47,7 +47,7 @@ void GameManager::level(short& nivo) {
 					enemy.at(i)->nosim = -1;
 					//enemy.at(i)->rage();
 					if (isPlayerCollidingAt(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH())) {
-						cout << "smrt\n\n";
+						printf("smrt\n");
 						adios = true;
 						//tocke rab resetirat pa to
 					}
@@ -70,8 +70,8 @@ void GameManager::level(short& nivo) {
 									if (univerzalniTrk(0, 0, 10, 10, //same here
 										tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH()))
 									{
-										cout << "Joj ne, na zaprt sem v farmi!!!\n";
-										stTjulnFarma += 1;
+										printf("Joj ne, zaprt sem v farmi!!!\n");
+										++stTjulnFarma;
 										//updati neko tabelo (k je se ni) k pove kolk tjulnou je na farmi
 										if (!tjulni.empty()) {
 											delete tjulni.at(t);
@@ -95,28 +95,31 @@ void GameManager::level(short& nivo) {
 		}
 
 		//* za provo dok ni levela tuki
-		if (keys[SDL_SCANCODE_SPACE]) {
-			if (trenutniNivo < 5) {
-				if (stTjuln[nivo] > 0)
-					--stTjuln[nivo];
-				cout << "Se " << stTjuln[nivo] << " tjulnov!\n";
-				cout << "Se " << stNaspr[nivo] << " nasprotnikov!\n\n";
+		if (keys[SDL_SCANCODE_SPACE] && trenutniNivo==5) {
+			if (stTjuln[nivo] > 0)
+				--stTjuln[nivo];
+			printf("Se %d tjulnov!\n", stTjuln[trenutniNivo - 1]);
+			printf("Se %d nasprotnikov!\n\n", stNaspr[trenutniNivo - 1]);
+			if (stNaspr[nivo] > 0) {
+				--stNaspr[nivo];
+				if (!enemy.empty()) {
+					for (unsigned int i = 0; i < enemy.size(); ++i) {
+						delete enemy.at(i);
+					}
+					enemy.clear();
+					enemy.shrink_to_fit();
+				}
 			}
-			else {
-				if (stNaspr[nivo] > 0)
-					--stNaspr[nivo];
-				cout << "Se " << stTjuln[nivo] << " tjulnov!\n";
-				cout << "Se " << stNaspr[nivo] << " nasprotnikov!\n\n";
-			}
+			printf("Se %d tjulnov!\n", stTjuln[trenutniNivo - 1]);
+			printf("Se %d nasprotnikov!\n\n", stNaspr[trenutniNivo - 1]);
 		}
 		//*/
 		updateMap();
 	}
-
 	cleanupVectors();
 
 	if (konecLevela)
-		std::cout << "Koncal si " << ++nivo << " nivo!\n";
+		printf("Koncal si %d nivo!\n", ++nivo);
 	else if (adios)
 		zasilnoShranjevanje();
 }

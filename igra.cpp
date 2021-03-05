@@ -223,7 +223,7 @@ void GameManager::handleEvents() {
 				d = true;
 			if (event.key.keysym.sym == SDLK_END)
 				konecLevela = true;
-			if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
+			if ((event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT) && (w || a || s || d))
 				staminadown = true;
 			trkiOkolje();
 			break;
@@ -236,7 +236,7 @@ void GameManager::handleEvents() {
 				a = false;
 			if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_d)
 				d = false;
-			if (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)
+			if ((event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT) || !(w || a || s || d))
 				staminadown = false;
 			break;
 		}

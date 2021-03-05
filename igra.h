@@ -51,7 +51,6 @@ public:
 	void initRisingStamina();
 	void trkiOkolje();
 	void trkiMiTjulni();
-	void trkiEnemyTjulni();
 	void racuniStamino();
 	void cleanupVectors();
 private:

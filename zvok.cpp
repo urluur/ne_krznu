@@ -13,11 +13,11 @@ SoundManager::SoundManager() {
 void SoundManager::toggle() {
 	if (!mute) {
 		Mix_PauseMusic();
-		std::cout << "Glasba se je ustavila ..\n";
+		printf("Glasba se je ustavila ..\n");
 	}
 	else {
 		Mix_ResumeMusic();
-		std::cout << "Glasba se nadaljuje..\n";
+		printf("Glasba se nadaljuje..\n");
 	}
 	mute = !mute;
 }
