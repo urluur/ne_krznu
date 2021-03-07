@@ -28,6 +28,8 @@ void Text::display(int x, int y, SDL_Renderer* ren) const {
 }
 
 void Text::update(SDL_Renderer* ren, const std::string& message_text, const SDL_Color& colour) {
+	SDL_FreeSurface(text_surface);
+	SDL_DestroyTexture(text_texture);
 	text_surface = TTF_RenderText_Solid(font, message_text.c_str(), colour);
 	if (!text_surface)
 		std::cerr << "Failed to create text surface: " << TTF_GetError() << std::endl;

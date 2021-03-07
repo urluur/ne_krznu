@@ -24,10 +24,10 @@ void GameManager::pripraviVse() {
 	for (int i = 0; i < stNaspr[trenutniNivo - 1]; ++i) {
 		enemy.push_back(new komoucar);
 		if (trenutniNivo < 5) {
-			enemy.at(i)->initImg(*this, "common/img/nasprotnik.png", farmPos[0][trenutniNivo - 1], farmPos[1][trenutniNivo - 1]);
+			enemy.at(i)->initImg(*this, "common/img/nasprotnik.png", farmPos[0][trenutniNivo - 1] - i * 10, farmPos[1][trenutniNivo - 1] - i * 10);
 		}
 		else {
-			enemy.at(i)->initImg(*this, "common/img/boss.png", farmPos[0][trenutniNivo - 1], farmPos[1][trenutniNivo - 1]);
+			enemy.at(i)->initImg(*this, "common/img/boss.png", farmPos[0][trenutniNivo - 1] - i * 10, farmPos[1][trenutniNivo - 1] - i * 10);
 		}
 		enemy.at(i)->zrcuniRandomDestinacijo();
 	}
@@ -85,7 +85,7 @@ int GameManager::init() {
 		cerr << "SDL Create Window, Error: " << SDL_GetError() << endl;
 		return EXIT_FAILURE;
 	}
-	okno.ren = SDL_CreateRenderer(okno.window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	okno.ren = SDL_CreateRenderer(okno.window, -1, SDL_RENDERER_ACCELERATED);
 	if (okno.ren == nullptr) {
 		cerr << "Could not create ren! SDL error" << SDL_GetError() << endl;
 		return EXIT_FAILURE;

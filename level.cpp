@@ -24,8 +24,6 @@ void GameManager::level(short& nivo) {
 	Text pisava_tjulniNaPolju(okno.ren, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", okno.scaleCal(24), "polje: 0", { 0, 0, 0, 255 });
 	string polje = "polje: ", farma = "farma: ";
 
-	printf("Se %d tjulnov!\n", stTjuln[trenutniNivo - 1]);
-	printf("Se %d nasprotnikov!\n\n", stNaspr[trenutniNivo - 1]);
 	//main game loop
 	while (!keys[SDL_SCANCODE_ESCAPE] && !konecLevela && !adios) {
 		okno.stejFrame();
@@ -48,7 +46,6 @@ void GameManager::level(short& nivo) {
 		else {
 			jaz->init(*this, "common/img/player.png", igralec.getX(), igralec.getY(), igralec.getW(), igralec.getH());
 			++stevecNoge;
-
 		}
 
 		for (unsigned int i = 0; i < enemy.size(); ++i) {
@@ -114,8 +111,6 @@ void GameManager::level(short& nivo) {
 		if (keys[SDL_SCANCODE_SPACE] && trenutniNivo == 5) {
 			if (stTjuln[nivo] > 0)
 				--stTjuln[nivo];
-			printf("Se %d tjulnov!\n", stTjuln[trenutniNivo - 1]);
-			printf("Se %d nasprotnikov!\n\n", stNaspr[trenutniNivo - 1]);
 			if (stNaspr[nivo] > 0) {
 				--stNaspr[nivo];
 				if (!enemy.empty()) {
@@ -126,17 +121,15 @@ void GameManager::level(short& nivo) {
 					enemy.shrink_to_fit();
 				}
 			}
-			printf("Se %d tjulnov!\n", stTjuln[trenutniNivo - 1]);
-			printf("Se %d nasprotnikov!\n\n", stNaspr[trenutniNivo - 1]);
 		}
 		//*/
 
 		pisava_tjulniNaFarmi.update(okno.ren, farma + to_string(stTjulnFarma), { 0, 0, 0, 255 });
 		pisava_tjulniNaPolju.update(okno.ren, polje + to_string(stTjuln[trenutniNivo - 1]), { 0, 0, 0, 255 });
 
-
 		pisava_tjulniNaFarmi.display(okno.scaleCal(56), okno.scaleCal(680), okno.ren);
 		pisava_tjulniNaPolju.display(okno.scaleCal(56), okno.scaleCal(700), okno.ren);
+
 		updateMap();
 	}
 	cleanupVectors();
