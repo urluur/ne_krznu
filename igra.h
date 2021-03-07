@@ -6,7 +6,8 @@
 #include "SDL_ttf.h"
 #include "slika.h"
 #include "komoucar.h"
-#include "Tjuln.h"
+#include "tjuln.h"
+#include "tekst.h"
 
 class GameManager {
 public:
@@ -70,4 +71,5 @@ private:
 	const short exitPos[2][5] = {
 		{160, 1270, 230, 160, 150},
 		{20, 520, 5, 5, 600} };
+	short stevecNoge = 0;
 };

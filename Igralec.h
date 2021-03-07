@@ -9,6 +9,7 @@ private:
 	string ime;
 	short x, y;
 	const short w = 29, h = 64;
+	bool sepremikam = false;
 public:
 	void setName();
 	string getName() { return ime; }
@@ -21,4 +22,6 @@ public:
 	void setY(short notr) { y = (notr < (720 - getH()) && notr > 0) ? notr : y; }
 	short getW() { return w; }
 	short getH() { return h; }
+	void sepremika(bool resnica) { sepremikam = resnica; }
+	bool sepremika() { return sepremikam; }
 };

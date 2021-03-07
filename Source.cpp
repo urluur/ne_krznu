@@ -10,7 +10,7 @@ bool aliSmoNovIgralec(GameManager&);
 
 int main() {
 	GameManager igra;
-	bool dev = false; // zbris to za final ver
+	bool dev = true; // zbris to za final ver
 
 	if (!dev) {
 		if (aliSmoNovIgralec(igra)) {

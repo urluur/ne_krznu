@@ -49,6 +49,7 @@ void GameManager::handleEvents() {
 			if ((event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT) && (w || a || s || d))
 				staminadown = true;
 			trkiOkolje();
+			igralec.sepremika(true);
 			break;
 		case SDL_KEYUP:
 			if (event.key.keysym.sym == SDLK_UP || event.key.keysym.sym == SDLK_w)
@@ -61,6 +62,7 @@ void GameManager::handleEvents() {
 				d = false;
 			if ((event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT) || !(w || a || s || d))
 				staminadown = false;
+			igralec.sepremika(false);
 			break;
 		}
 	}

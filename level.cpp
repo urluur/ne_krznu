@@ -20,6 +20,10 @@ void GameManager::level(short& nivo) {
 	odzadje.display(okno.ren);
 	delete[] path;
 
+	Text pisava_tjulniNaFarmi(okno.ren, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", okno.scaleCal(24), "farma: 0", { 0, 0, 0, 255 });
+	Text pisava_tjulniNaPolju(okno.ren, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", okno.scaleCal(24), "polje: 0", { 0, 0, 0, 255 });
+	string polje = "polje: ", farma = "farma: ";
+
 	printf("Se %d tjulnov!\n", stTjuln[trenutniNivo - 1]);
 	printf("Se %d nasprotnikov!\n\n", stNaspr[trenutniNivo - 1]);
 	//main game loop
@@ -34,7 +38,18 @@ void GameManager::level(short& nivo) {
 			if ((stTjuln[nivo] == 0 && stTjulnFarma == 0 && trenutniNivo < 5) || (trenutniNivo == 5 && stNaspr[nivo] == 0))
 				konecLevela = true; //cilj nase igre
 
-		jaz->init(*this, "common/img/player.png", igralec.getX(), igralec.getY(), igralec.getW(), igralec.getH());
+		if (igralec.sepremika() && stevecNoge > 10) {
+			if (stevecNoge > 20) {
+				stevecNoge = 0;
+			}
+			jaz->init(*this, "common/img/player_noge.png", igralec.getX(), igralec.getY(), igralec.getW(), igralec.getH());
+			++stevecNoge;
+		}
+		else {
+			jaz->init(*this, "common/img/player.png", igralec.getX(), igralec.getY(), igralec.getW(), igralec.getH());
+			++stevecNoge;
+
+		}
 
 		for (unsigned int i = 0; i < enemy.size(); ++i) {
 			if (enemy.at(i)->sprehodNaRandomDestinacijo()) {
@@ -115,6 +130,13 @@ void GameManager::level(short& nivo) {
 			printf("Se %d nasprotnikov!\n\n", stNaspr[trenutniNivo - 1]);
 		}
 		//*/
+
+		pisava_tjulniNaFarmi.update(okno.ren, farma + to_string(stTjulnFarma), { 0, 0, 0, 255 });
+		pisava_tjulniNaPolju.update(okno.ren, polje + to_string(stTjuln[trenutniNivo - 1]), { 0, 0, 0, 255 });
+
+
+		pisava_tjulniNaFarmi.display(okno.scaleCal(56), okno.scaleCal(680), okno.ren);
+		pisava_tjulniNaPolju.display(okno.scaleCal(56), okno.scaleCal(700), okno.ren);
 		updateMap();
 	}
 	cleanupVectors();

@@ -22,8 +22,8 @@ void GameManager::racuniStamino() {
 			else
 				initNavadnaStamina();
 		}
-		stamina_wheel->display(okno.ren);
 	}
+	stamina_wheel->display(okno.ren);
 }
 
 void GameManager::initNavadnaStamina() {
