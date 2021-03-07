@@ -153,7 +153,7 @@ void overworld(GameManager& igra) { // klice se iz glavnega menija -> zacni
 		}
 	}
 	SDL_RenderClear(igra.okno.ren);
-	if(igra.isCompleted){
+	if(igra.isCompleted()){
 		// naredi: prikazovanje lestvice najboljsih
 	}
 }

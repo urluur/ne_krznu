@@ -333,6 +333,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_AD0DE0CE6B7240E1BA8DA674EF88AD36"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_AF37F9A73D794AFABAB36F4726FC9505"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1734,6 +1740,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AD0DE0CE6B7240E1BA8DA674EF88AD36"
+            {
+            "SourcePath" = "8:..\\common\\pisave\\8-bit-operator\\8bitOperatorPlus8-Regular.ttf"
+            "TargetName" = "8:8bitOperatorPlus8-Regular.ttf"
+            "Tag" = "8:"
+            "Folder" = "8:_614686596AC147A7A77A749421342695"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AF37F9A73D794AFABAB36F4726FC9505"
             {
             "SourcePath" = "8:..\\common\\sounds\\izvorna.wav"
@@ -2710,6 +2736,28 @@
                             "Property" = "8:_4F72222A5DC24F54A2721D216C6E5BA4"
                                 "Folders"
                                 {
+                                }
+                            }
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_E62CF8F331F04F328D7DB7B8B7BCD3BE"
+                            {
+                            "Name" = "8:pisave"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_B1E585A3E538450D901D27144088A84C"
+                                "Folders"
+                                {
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_614686596AC147A7A77A749421342695"
+                                    {
+                                    "Name" = "8:8-bit-operator"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_64D667B090254B65932F597C61699C1E"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
                                 }
                             }
                             "{9EF0B969-E518-4E46-987F-47570745A589}:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"

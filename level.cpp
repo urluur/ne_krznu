@@ -51,70 +51,7 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 		}
 
 		// obdelamo obnasanje vseh nasprotnikov (torej trki z nami in tjulni..)
-		for (unsigned int i = 0; i < enemy.size(); ++i) { // zanka se ponovi za vsakega nasprotnika posebej
-			if (enemy.at(i)->sprehodNaRandomDestinacijo()) { // ce je nasprotnik na svojem cilju, gre na drugo naklucno lokacijo
-				enemy.at(i)->zrcuniRandomDestinacijo();
-			}
-			else { // nasprotnik je na poti do svoje destinacije
-				// nasprotnik previri, ce je v radiju okoli njega igralec
-				if (isPlayerCollidingAt(enemy.at(i)->getX() - 100, enemy.at(i)->getY() - 100, enemy.at(i)->getW() + 200, enemy.at(i)->getH() + 200)) {
-					enemy.at(i)->setDest(igralec.getX(), igralec.getY()); // nasprotnikov cilj se spremeni na igralceve koordinate
-					tjulni.at(enemy.at(i)->nosim)->nosilec = -1; // dovoli, da ga nosi tudi kateri drug nasprotnik
-					enemy.at(i)->nosim = -1; // ce nasprotnik nosi tjulna ga spusti na tla
-					if (rageMode) { // (ne v testingu) nasprotnik postane hitrejsi ko lovi igralca
-						enemy.at(i)->rage();
-					}
-					// ce se nasprotnik dotakne igralca
-					if (isPlayerCollidingAt(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH())) {
-						printf("smrt\n");
-						adios = true; // igrlec more ponoviti nivo od zacetka
-
-						// naredi: izbrisi tocke pridobljene v tem nivoju
-					}
-				}
-				else { // nasprotnikova prioriteta je izgnati nezazelenega igralca iz njegovega teritorija, zato preveri tjulne okoli sebe, le ce ne vidi igralca
-					for (unsigned int t = 0; t < tjulni.size(); ++t) { // preveri vse tjulne okoli sebe
-						// preverimo in nadaljujemo ce smo praznih rok in je tjuln na tleh, ali pa ce mi nosimo tocno tega tjulna
-						if ((tjulni.at(t)->nosilec == -1 && enemy.at(i)->nosim == -1) || tjulni.at(t)->nosilec == i) {
-							// preverimo ali je ta tjulen v nasem vidnem polju
-							if (univerzalniTrk(enemy.at(i)->getX() - 100, enemy.at(i)->getY() - 100, enemy.at(i)->getW() + 200, enemy.at(i)->getH() + 200,
-								tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH()) && enemy.at(i)->nosim == -1)
-							{
-								enemy.at(i)->setDest(tjulni.at(t)->getX(), tjulni.at(t)->getY()); // nova cilj nasprotnika je tjulen
-								// naredi: odpravi bug ko en nasprotnik lahko nosi vec tjulnov namesto samo enega
-								if (univerzalniTrk(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH(),
-									tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH()) && enemy.at(i)->nosim == -1)
-								{
-									tjulni.at(t)->setX(enemy.at(i)->getX() + t);
-									tjulni.at(t)->setY(enemy.at(i)->getY() + t);
-									tjulni.at(t)->nosilec = i;
-									tjulni.at(t)->updateImg(*this);
-									enemy.at(i)->setDest(farmPos[0][trenutniNivo - 1], farmPos[1][trenutniNivo - 1]); //spawn farme
-									if (univerzalniTrk(farmPos[0][trenutniNivo - 1], farmPos[1][trenutniNivo - 1], 20, 20, //same here
-										tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH()))
-									{
-										printf("Joj ne, zaprt sem v farmi!!!\n");
-										++stTjulnFarma;
-										if (!tjulni.empty()) {
-											delete tjulni.at(t);
-											tjulni.erase(tjulni.begin() + t);
-										}
-										--stTjuln[trenutniNivo - 1];
-										enemy.at(i)->nosim = -1;
-									}
-								}
-							}
-							//* testiram da se nasprotnk upocasni ko ne vidi igralca
-							else if (rageMode) {
-								enemy.at(i)->chill();
-							}
-							//*/
-						}
-					}
-				}
-				enemy.at(i)->updateImg(*this); // prikazemo nasorotnike
-			}
-		}
+		obnasanjeNaPolju();
 
 		//* testiram.. dokler ni petni nivo dokoncan moramo glavnega nasprotnika ubiti z presledkom
 		if (keys[SDL_SCANCODE_SPACE] && trenutniNivo == 5) {
@@ -148,4 +85,96 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 		printf("Koncal si %d nivo!\n", ++nivo);
 	else if (adios)
 		zasilnoShranjevanje();
+}
+
+void GameManager::obnasanjeNaPolju() {
+	for (unsigned int i = 0; i < enemy.size(); ++i) { // zanka se ponovi za vsakega nasprotnika posebej
+		if (enemy.at(i)->sprehodNaRandomDestinacijo()) { // ce je nasprotnik na svojem cilju, gre na drugo naklucno lokacijo
+			enemy.at(i)->zrcuniRandomDestinacijo();
+		}
+		else { // nasprotnik je na poti do svoje destinacije
+			// nasprotnik previri, ce je v radiju okoli njega igralec
+			if (isPlayerCollidingAt(enemy.at(i)->getX() - 100, enemy.at(i)->getY() - 100, enemy.at(i)->getW() + 200, enemy.at(i)->getH() + 200)) {
+				enemy.at(i)->setDest(igralec.getX(), igralec.getY()); // nasprotnikov cilj se spremeni na igralceve koordinate
+				if (enemy.at(i)->nosim != -1) {
+					if (enemy.at(i)->nosim <= tjulni.size()) {
+						tjulni.at(enemy.at(i)->nosim)->nosilec = -1; // dovoli, da ga nosi tudi kateri drug nasprotnik
+					}
+					enemy.at(i)->nosim = -1; // ce nasprotnik nosi tjulna ga spusti na tla
+				}
+				if (rageMode) { // (ne v testingu) nasprotnik postane hitrejsi ko lovi igralca
+					enemy.at(i)->rage();
+				}
+				// ce se nasprotnik dotakne igralca
+				if (isPlayerCollidingAt(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH())) {
+					printf("smrt\n");
+					adios = true; // igrlec more ponoviti nivo od zacetka
+
+					// naredi: izbrisi tocke pridobljene v tem nivoju
+				}
+			}
+			else { // nasprotnikova prioriteta je izgnati nezazelenega igralca iz njegovega teritorija, zato preveri tjulne okoli sebe, le ce ne vidi igralca
+				for (unsigned int t = 0; t < tjulni.size(); ++t) { // preveri vse tjulne okoli sebe
+					// preverimo in nadaljujemo ce smo praznih rok in je tjuln na tleh, ali pa ce mi nosimo tocno tega tjulna
+					if ((tjulni.at(t)->nosilec == -1 && enemy.at(i)->nosim == -1) || tjulni.at(t)->nosilec == i) {
+						// preverimo ali je ta tjulen v nasem vidnem polju
+						if (univerzalniTrk(enemy.at(i)->getX() - 100, enemy.at(i)->getY() - 100, enemy.at(i)->getW() + 200, enemy.at(i)->getH() + 200,
+							tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH())
+							&& (tjulni.at(t)->nosilec == -1 || tjulni.at(t)->nosilec == i))
+						{
+							enemy.at(i)->setDest(tjulni.at(t)->getX(), tjulni.at(t)->getY()); // nov cilj nasprotnika je tjulen
+							// ko se tjulen in nasprotnik dotakneta
+							if (univerzalniTrk(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH(),
+								tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH())
+								&& ((enemy.at(i)->nosim == -1 && tjulni.at(t)->nosilec == -1) // tjulen in nasprotnik morata biti oba prosta
+								|| (enemy.at(i)->nosim == t && tjulni.at(t)->nosilec == i))) // ali pa par (en se drzita drugega)
+							{
+								// tjulna premaknemo na nasprotnikov hrbet
+								tjulni.at(t)->setX(enemy.at(i)->getX() + t);
+								tjulni.at(t)->setY(enemy.at(i)->getY() + t);
+								
+								// nasprotnika in njegovega tjulna dolocimo kot par
+								tjulni.at(t)->nosilec = i;
+								enemy.at(i)->nosim = t;
+
+								// tjulnova pozicija se spremeni na zaslonu
+								tjulni.at(t)->updateImg(*this);
+
+								// nasprotnikov naslednji cilj je farma
+								enemy.at(i)->setDest(farmPos[0][trenutniNivo - 1], farmPos[1][trenutniNivo - 1]);
+
+								// ko se tjulen dotakne farme ga ni v polju ampak je v farmi
+								if (univerzalniTrk(farmPos[0][trenutniNivo - 1], farmPos[1][trenutniNivo - 1], 20, 20,
+									tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH()))
+								{
+									printf("Joj ne, zaprt sem v farmi!!!\n");
+									++stTjulnFarma;
+									if (!tjulni.empty()) {
+										// ko sta dva v paru in en tjulen izgine iz polja (vectotja), rabimo spremeniti pare, ki so imeli vecji indeks tjulna od zbrisanega
+										for (unsigned int popravi_nasprotnike = 0; popravi_nasprotnike < enemy.size(); ++popravi_nasprotnike) {
+											if (enemy.at(popravi_nasprotnike)->nosim > t) {
+												--enemy.at(popravi_nasprotnike)->nosim;
+											}
+										}
+
+										//tjulna izbrisemo
+										delete tjulni.at(t);
+										tjulni.erase(tjulni.begin() + t);
+									}
+									--stTjuln[trenutniNivo - 1]; // na polju je en tjulen manj
+									enemy.at(i)->nosim = -1; // nasprotnik ima proste roke
+								}
+							}
+						}
+						//* testiram da se nasprotnk upocasni ko ne vidi igralca
+						else if (rageMode) {
+							enemy.at(i)->chill();
+						}
+						//*/
+					}
+				}
+			}
+			enemy.at(i)->updateImg(*this); // prikazemo nasorotnike
+		}
+	}
 }

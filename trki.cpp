@@ -83,6 +83,13 @@ void GameManager::trkiMiTjulni() {
 	for (unsigned int i = 0; i < tjulni.size(); ++i) {
 		if (isPlayerCollidingAt(tjulni.at(i)->getX(), tjulni.at(i)->getY(), tjulni.at(i)->getW(), tjulni.at(i)->getH())) {
 			printf("Hvala lepa, resil si me!!!\n");
+			/*
+			*/
+			for (unsigned int popravi_nasprotnike = 0; popravi_nasprotnike < enemy.size(); ++popravi_nasprotnike) {
+				if (enemy.at(popravi_nasprotnike)->nosim > i && enemy.at(popravi_nasprotnike)->nosim != -1) {
+					--enemy.at(popravi_nasprotnike)->nosim;
+				}
+			}
 			delete tjulni.at(i);
 			tjulni.erase(tjulni.begin() + i);
 			--stTjuln[trenutniNivo - 1];

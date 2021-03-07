@@ -24,6 +24,7 @@ public:
 	void handleEvents();
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
 	void level(short&);
+	void obnasanjeNaPolju();
 	void farma();
 	void pripraviVse();
 	void haltEnter(short);
