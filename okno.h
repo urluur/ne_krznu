@@ -10,6 +10,7 @@ private:
 	Uint32 frameStart;
 	int frameTime;
 
+	// ne spreminjaj Window_width in Window_height ker dolocata "platno" igre, ne pa velikost okna
 	const short Window_width = 1280, Window_height = 720;
 	short scaler = 12; // default je 1, fulscreen je 100
 public:

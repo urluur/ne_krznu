@@ -1,6 +1,6 @@
 #include "okno.h"
 
-WindowManager::WindowManager() {
+WindowManager::WindowManager() { // konstruktor inicializira spremenljivke
 	window = NULL;
 	surface = NULL;
 	ren = nullptr;
@@ -8,19 +8,21 @@ WindowManager::WindowManager() {
 	frameTime = 0;
 }
 
-WindowManager::~WindowManager() {
+WindowManager::~WindowManager() { // klice se ko se unici objekt "igra"
 	window = NULL;
 	surface = NULL;
 	ren = nullptr;
 }
 
-void WindowManager::omejiFrame() {
+void WindowManager::omejiFrame() { // klice se na koncu vsake glavne zanke
+	// program zaustavi za toliko casa, da se zanka izvede 60x na sekundo
 	frameTime = SDL_GetTicks() - frameStart;
 	if (frameDelay > frameTime)
 		SDL_Delay(frameDelay - frameTime);
 }
 
-void WindowManager::toggleScaler() {
+void WindowManager::toggleScaler() { // klice se v nastavitvah, ko spremenimo dimenzije
+	// spremeni mnozitelj stvari na zaslonu, da so vse pravilno prikazane
 	switch (scaler) {
 	case 1:
 		scaler = 12;
@@ -48,7 +50,8 @@ void WindowManager::toggleScaler() {
 	printf("\n");
 }
 
-int WindowManager::scaleCal(int stevilo) {
+int WindowManager::scaleCal(int stevilo) { // klice se pri postavljanju argumentov v druge funkcije
+	// stevilko oz. spremenljivko mnozi z mnoziteljem, da se stvari prikazejo na pravem mestu na zaslonu
 	switch (scaler) {
 	case 1:
 		return int(stevilo * 1);
@@ -59,7 +62,7 @@ int WindowManager::scaleCal(int stevilo) {
 	case 5:
 		return int(stevilo * 0.5);
 	case 100:
-		return int(stevilo * 1.5);
+		return int(stevilo * 1.5); // naredi: support za zaslone ki niso 1080p
 	default:
 		cerr << "Error: scaleCal: " << scaler << endl;
 		return 0;

@@ -15,7 +15,7 @@ public:
 	SoundManager sound;
 	SDL_Event event;
 	Igralec igralec;
-	SDL_Joystick* joystick;
+	//SDL_Joystick* joystick;//(testiram)
 	bool adios = false;
 	short trenutniNivo;
 	bool getAdios() { return adios; }
@@ -60,7 +60,7 @@ private:
 	vector <class Tjuln*> tjulni;
 	class Image* stamina_wheel;
 	bool konecLevela, semNaIzhodniLokaciji, staminadown, fillingStamina;
-	bool rageMode = false; //rageMode je v alfa testingu
+	bool rageMode = false; //rageMode je v alfa testingu (spremeni na true za ZELO tezko igro)
 	bool w = false, a = false, s = false, d = false;
 	bool completed; // zato da se spremeni main menu na koncu zgodbe
 	short stAktiv[5], stNaspr[5], stTjuln[5];

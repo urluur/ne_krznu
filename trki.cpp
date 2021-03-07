@@ -1,28 +1,29 @@
 #include "igra.h"
 
+// preveri ce se dva kvadrata prekrivata
 bool GameManager::univerzalniTrk(short x1, short y1, short w1, short h1, short x2, short y2, short w2, short h2) {
-	if (x2 < x1 + w1 &&
-		x2 + w2 > x1 &&
-		y2 < y1 + h1 &&
-		y2 + h2 > y1)
+	if (x2 < x1 + w1 && x2 + w2 > x1 && y2 < y1 + h1 && y2 + h2 > y1) {
 		return true;
-	else
+	}
+	else {
 		return false;
+	}
 }
 
+// preveri ali se kvadrat prekriva z igralcem
 bool GameManager::isPlayerCollidingAt(short x, short y, short w, short h) {
-	if (igralec.getX() < x + w &&
-		igralec.getX() + igralec.getW() > x &&
-		igralec.getY() < y + h &&
-		igralec.getY() + igralec.getH() > y)
+	if (igralec.getX() < x + w && igralec.getX() + igralec.getW() > x && igralec.getY() < y + h && igralec.getY() + igralec.getH() > y) {
 		return true;
-	else
+	}
+	else {
 		return false;
+	}
 }
 
-void GameManager::trkiOkolje() {
-	trkiMiTjulni();
+void GameManager::trkiOkolje() { // se klice ko se premikamo
+	trkiMiTjulni(); // preverimo ali se igalec dotika tjulnov
 
+	// preverimo se ostale nepremikajoce kvadrate (npr. farme in izhodne lokacije), ki so odvisne od nivvoja
 	switch (trenutniNivo) {
 	case 1:
 		if (isPlayerCollidingAt(1110, 10, 170, 150)) {
@@ -77,9 +78,9 @@ void GameManager::trkiOkolje() {
 	}
 }
 
+// preveri ali se igralec dotika tjulnov
 void GameManager::trkiMiTjulni() {
-	unsigned int i = 0;
-	for (; i < tjulni.size(); ++i) {
+	for (unsigned int i = 0; i < tjulni.size(); ++i) {
 		if (isPlayerCollidingAt(tjulni.at(i)->getX(), tjulni.at(i)->getY(), tjulni.at(i)->getW(), tjulni.at(i)->getH())) {
 			printf("Hvala lepa, resil si me!!!\n");
 			delete tjulni.at(i);

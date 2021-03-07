@@ -9,87 +9,100 @@ void nadaljuj(GameManager&, short&, bool&);
 bool aliSmoNovIgralec(GameManager&);
 
 int main() {
+	// ustvarimo objekt igra, vecina potrebnega je ze pripravljenega
 	GameManager igra;
-	bool dev = true; // zbris to za final ver
 
-	if (!dev) {
-		if (aliSmoNovIgralec(igra)) {
-			igra.igralec.setName();
-		}
+	// ce je igralec nov bo vpisal svoje ime
+	if (aliSmoNovIgralec(igra)) {
+		igra.igralec.setName();
 	}
 
+	// nastavi se SDL
 	bool problemi = igra.init();
 	if (problemi) {
 		cerr << "Problemi pri inicializaciji!" << endl;
 		return EXIT_FAILURE;
 	}
 
-	if (dev) {
-		igra.sound.toggle();
-	}
-
-	/* to je sam za testiranje levela
-	for (short i = 0; i < 5;) {
-		igra.level(i);
-	}
-	//*/
-
-	//* ok tuki je overworld in use to
+	// shranjeni podatki se prekopirajo v glavne spremenjlivke
 	igra.branjeShranjenega();
-	SDL_PollEvent(&igra.event);
-	short cur_pos = 1;
-	bool izhod_switch = false;
-	Image main;
+
+	SDL_PollEvent(&igra.event); // osvezivo stanje pritinjenih tipk
+	
+	// kazalec nastavimo na prvo mesto
 	Image cursor;
+	short cur_pos = 1;
+
+	// ustvarimo sliko menija in meni narisemo na zaslon
+	Image main;
 	narisi(igra, cur_pos, cursor, main);
 
-	//main menu loop
+	bool izhod_switch = false;
+	//glavna zanka menija
 	while (!igra.keys[SDL_SCANCODE_ESCAPE] && igra.event.type != SDL_QUIT) {
-		igra.okno.stejFrame();
-		SDL_PollEvent(&igra.event);
+		igra.okno.stejFrame(); // oznacimo zacetek zanke, da lahko na koncu zanke omejimo osvezevanje zaslona
+		SDL_PollEvent(&igra.event); // osvezivo stanje pritinjenih tipk
 
+		// preverimo ce so bile pritisnjene tipke gor dol start ali enter
 		if (igra.checkUp()) {
-			while (igra.checkUp()) { SDL_PollEvent(&igra.event); }
+			while (igra.checkUp()) { // ko tipko pritisnemo caka da jo spustimo
+				SDL_PollEvent(&igra.event);
+			}
+			// predvaja zvok kazalca
 			igra.sound.predvajaj("common/sounds/cur_mov.wav");
-			if (cur_pos == 1)
+			// premakne kazalec na zeljeno mesto
+			if (cur_pos == 1) {
 				cur_pos = 4;
-			else
+			}
+			else {
 				--cur_pos;
+			}
 			narisi(igra, cur_pos, cursor, main);
 		}
 		else if (igra.checkDown()) {
-			while (igra.checkDown()) { SDL_PollEvent(&igra.event); }
+			while (igra.checkDown()) { // ko tipko pritisnemo caka da jo spustimo
+				SDL_PollEvent(&igra.event);
+			}
+			// predvaja zvok kazalca
 			igra.sound.predvajaj("common/sounds/cur_mov.wav");
-			if (cur_pos == 4)
+			// premakne kazalec na zeljeno mesto
+			if (cur_pos == 4) {
 				cur_pos = 1;
-			else
+			}
+			else {
 				++cur_pos;
+			}
 			narisi(igra, cur_pos, cursor, main);
 		}
 		else if (igra.checkEnter()) {
-			nadaljuj(igra, cur_pos, izhod_switch);
+			nadaljuj(igra, cur_pos, izhod_switch); // nadaljuje program v drugi funkciji
 			narisi(igra, cur_pos, cursor, main);
 		}
 
-		if (izhod_switch)
+		if (izhod_switch) {
 			break;
-		igra.okno.omejiFrame();
+		}
+		igra.okno.omejiFrame(); // omejimo hitrost prikaza
 	}
-	//igra.sound.predvajaj("common/sounds/nasvidenje.wav");
-	//*/
 
+	// vse se izbrise in zapustimo program
 	igra.cleanup();
 	return EXIT_SUCCESS;
 }
 
+//klicemo ko zelimo menu narisati na zaslon
 void narisi(GameManager& igra, short& cur_pos, Image& cursor, Image& main) {
-	SDL_RenderClear(igra.okno.ren);
+	SDL_RenderClear(igra.okno.ren); // resetiramo renderer
 
-	if (igra.isCompleted())
+	// ce igro zacnes se ti narise zalosten zacetek, ce si igro koncal pa srecen konec
+	if (igra.isCompleted()) {
 		main.ini(igra, "common/img/main_completed.png");
-	else
+	}
+	else {
 		main.ini(igra, "common/img/main.png");
+	}
 
+	// narisemo kazalec na dolocenih koordinatih na zaslonu, odvisno od pozicije
 	main.display(igra.okno.ren);
 	switch (cur_pos) {
 	case 1:
@@ -105,37 +118,44 @@ void narisi(GameManager& igra, short& cur_pos, Image& cursor, Image& main) {
 		cursor.init(igra, "common/img/cursor.png", 20, 320, 98, 49);
 		break;
 	}
-	cursor.display(igra.okno.ren);
-	SDL_RenderPresent(igra.okno.ren);
+	cursor.display(igra.okno.ren); // kazalec se bo pokazal
+	SDL_RenderPresent(igra.okno.ren); // na oknu se prikaze spremenjeno stanje
 }
 
+// klicemo ko zelimo potrditi izbrano z kazalcem in nadaljevati v funkcijo oz. izhod
 void nadaljuj(GameManager& igra, short& cur_pos, bool& izhod_switch) {
-	while (igra.checkEnter()) { SDL_PollEvent(&igra.event); }
-	switch (cur_pos) {
+	while (igra.checkEnter()) { // dokler drzimo na tipko nas ne pusti naprej
+		SDL_PollEvent(&igra.event);
+	}
+	switch (cur_pos) { // predvajamo zvok in naredimo zeljeno stvar
 	case 1:
 		igra.sound.predvajaj("common/sounds/zacni.wav");
-		overworld(igra);
+		overworld(igra); // zacnemo igro
 		break;
 	case 2:
 		igra.sound.predvajaj("common/sounds/vec.wav");
-		vec(igra);
+		vec(igra); // gremo v meni "vec"
+		cur_pos = 1;
 		break;
 	case 3:
 		igra.sound.predvajaj("common/sounds/nastavitve.wav");
-		nastavitve(igra);
+		nastavitve(igra); // gremo v nastavitve
 		cur_pos = 1;
 		break;
 	case 4:
 		igra.sound.predvajaj("common/sounds/izhod.wav");
-		izhod_switch = true;
+		izhod_switch = true; // gremo iz glavne zanke menija
 		break;
 	}
 }
 
-bool aliSmoNovIgralec(GameManager& igra) {
+bool aliSmoNovIgralec(GameManager& igra) { // klice se na zacetku, da odlocimo ali je igralec nov
 	string tempName;
 	short tempLvl;
+	// beremo v dve zacasni spremenljivki
 	igra.branjeShranjenega(tempName, tempLvl);
+
+	// ce je prebrano enako privzetemu, domnevamo, da je igralec nov
 	if ((tempName == "bumbar" && tempLvl == 0)) {
 		return true;
 	}

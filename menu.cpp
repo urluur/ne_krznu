@@ -1,7 +1,7 @@
 #include "menu.h"
 using namespace std;
 
-//optimiziri menu.cpp tko ku je Source.cpp !
+// naredi: optimiziri menu.cpp tko ku je Source.cpp !
 
 void nastavitve(GameManager& igra) {
 	bool stay = true;

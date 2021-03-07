@@ -1,10 +1,12 @@
 #include "igra.h"
 
 void GameManager::farma() {
+	// ta funkcija je klicana ko se igralec dotakne farme
 	printf("sm na farmi\n");
 	if (stTjulnFarma > 0) {
-		//tuki se bo dogaju farma stuff (main farma loop)
+		// tu je prostor za dodatni "bonus nivo" resevanja tjulnov iz farme
 
+		// zaenkrat je samo dotik dovolj da resimo tjulna iz farme
 		printf("Hvala, resil si me z farme!!\n");
 		--stTjulnFarma;
 	}

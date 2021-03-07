@@ -1,32 +1,47 @@
 #include "igra.h"
 
-void GameManager::racuniStamino() {
+void GameManager::racuniStamino() { // klice se ob premikanju igralca po polju
+	// uzdrzljivost racunamo le ce tiscimo tipko shift ali ce je uzdrzljivost pod 100 (zato da jo lahko polnimo)
 	if (staminadown || stamina < 100) {
+		// tecemo in uzdrzljivost se nam manjsa
 		if (stamina > 0 && staminadown && !fillingStamina) {
 			hitrost = 3;
 			--stamina;
 			initNavadnaStamina();
 		}
+		
+		// utrudili smo se od teka
 		else if (stamina == 0 && staminadown) {
 			hitrost = 2;
-			fillingStamina = true;
+			fillingStamina = true; // uzdrzljivost se nam zacne zvisevati
 		}
+
+		// ne tecemo
 		else if (!staminadown) {
 			hitrost = 2;
-			if (stamina == 99) {
+			if (stamina >= 99) { // odpocili smo se od teka
 				fillingStamina = false;
 			}
-			++stamina;
-			if (fillingStamina)
+			else {
+				++stamina;
+			}
+
+			// dolocimo barvo in sliko uzdrzljivosti glede na to ali se polni ali prazni
+			if (fillingStamina) {
 				initRisingStamina();
-			else
+			}
+			else {
 				initNavadnaStamina();
+			}
 		}
 	}
+
+	// narisemo sliko uzdrzljivosti na zaslon
 	stamina_wheel->display(okno.ren);
 }
 
-void GameManager::initNavadnaStamina() {
+void GameManager::initNavadnaStamina() { // se klice ko se uzdrzljivot manjsa
+	// inicializiramo sliko uzdrzljivosti v spodnji levi kot, odvisko od koliko jo imamo
 	switch (stamina) {
 	case 100:
 	case 90:
@@ -60,7 +75,8 @@ void GameManager::initNavadnaStamina() {
 	}
 }
 
-void GameManager::initRisingStamina() {
+void GameManager::initRisingStamina() { // se klice ko se uzdrzljivost veca
+	// inicializiramo sliko uzdrzljivosti v spodnji levi kot, odvisko od koliko jo imamo
 	switch (stamina) {
 	case 100:
 		stamina_wheel->init(*this, "common/img/stamina_wheel/8.png", 5, 675, 40, 40);

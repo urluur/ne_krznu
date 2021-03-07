@@ -13,6 +13,7 @@ public:
 	~komoucar();
 	short getX() { return x; }
 	short getY() { return y; }
+	// setX in setY nastavita zeljeno pozicijo nasprotnika, ki ni zunaj okna
 	void setX(short notr) { x = (notr < (1280 - getW()) && notr > 0) ? notr : x; }
 	void setY(short notr) { y = (notr < (720 - getH()) && notr > 0) ? notr : y; }
 	void rage() { hitrost = 2; } //1.2 za ragemode
@@ -25,5 +26,6 @@ public:
 	void zrcuniRandomDestinacijo();
 	void setDest(short, short);
 	bool sprehodNaRandomDestinacijo();
-	inline short ManhattanDistance(short x1, short y1, short x2, short y2) { return (short)abs(x1 - x2) + (short)abs(y1 - y2); }
+	// ManhattanDistance vrne razdaljo med dvema koordinatama
+	inline short ManhattanDistance(short x1, short y1, short x2, short y2) { return short(abs(x1 - x2) + abs(y1 - y2)); }
 };

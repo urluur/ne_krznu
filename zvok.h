@@ -8,7 +8,6 @@ private:
 	Mix_Music* bgm = nullptr;
 	Mix_Chunk* efekt = nullptr;
 	bool mute;
-	bool played;
 public:
 	SoundManager();
 	void predvajaj(const char*);

@@ -1,12 +1,12 @@
 #include "includes.h"
 using namespace std;
 
-void GameManager::level(short& nivo) {
-	trenutniNivo = nivo + 1;
+void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funkcije overworld (pogleda na svet oz. nadzemlja)
+	trenutniNivo = nivo + 1; // nivo je zadnji koncani nivo
 	igralec.coutName();
 	printf(" zacenja %d nivo.\n", trenutniNivo);
 
-	pripraviVse();
+	pripraviVse(); // resetira spremenljivke, ustvari nasprotnike, tjulne...
 
 	//pripravi odzadje
 	Image odzadje;
@@ -20,24 +20,26 @@ void GameManager::level(short& nivo) {
 	odzadje.display(okno.ren);
 	delete[] path;
 
+	// povemo katero pisavo bomo uporabljani za ispis tjulnov na farmi in polju, velikost pisave (ki je odvisna od velikosti okna), dolzino izpisa in crno barvo
 	Text pisava_tjulniNaFarmi(okno.ren, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", okno.scaleCal(24), "farma: 0", { 0, 0, 0, 255 });
 	Text pisava_tjulniNaPolju(okno.ren, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", okno.scaleCal(24), "polje: 0", { 0, 0, 0, 255 });
 	string polje = "polje: ", farma = "farma: ";
 
-	//main game loop
+	// glavna zanka nivoja
 	while (!keys[SDL_SCANCODE_ESCAPE] && !konecLevela && !adios) {
-		okno.stejFrame();
-		SDL_RenderClear(okno.ren);
-		odzadje.display(okno.ren);
-		handleEvents();
+		okno.stejFrame(); // oznacimo zacetek zanke, da lahko na koncu zanke omejimo osvezevanje zaslona
+		SDL_RenderClear(okno.ren); // ponastavimo renderer
+		odzadje.display(okno.ren); // izrisemo odzadje
+		handleEvents(); // preverimo pritisnjene tipke, trke z okoljem, obdelamo igralcevo uzdrljivost in premikanje
 
-		//realn game objective
+		// ce poberes vse tjulne in si na doloceni izhodni lokaciji si opravil nivo
 		if (semNaIzhodniLokaciji)
 			if ((stTjuln[nivo] == 0 && stTjulnFarma == 0 && trenutniNivo < 5) || (trenutniNivo == 5 && stNaspr[nivo] == 0))
-				konecLevela = true; //cilj nase igre
+				konecLevela = true; // cilj nase igre
 
-		if (igralec.sepremika() && stevecNoge > 10) {
-			if (stevecNoge > 20) {
+		// igrlacevo sliko prikazemo na zaslon
+		if (igralec.sepremika() && stevecNoge > 10) { // ce se igralec premika, je hoja animirana
+			if (stevecNoge > 20) { // vsakih 10 slicic se igralcu spremeni slika nog
 				stevecNoge = 0;
 			}
 			jaz->init(*this, "common/img/player_noge.png", igralec.getX(), igralec.getY(), igralec.getW(), igralec.getH());
@@ -48,30 +50,38 @@ void GameManager::level(short& nivo) {
 			++stevecNoge;
 		}
 
-		for (unsigned int i = 0; i < enemy.size(); ++i) {
-			if (enemy.at(i)->sprehodNaRandomDestinacijo()) {
+		// obdelamo obnasanje vseh nasprotnikov (torej trki z nami in tjulni..)
+		for (unsigned int i = 0; i < enemy.size(); ++i) { // zanka se ponovi za vsakega nasprotnika posebej
+			if (enemy.at(i)->sprehodNaRandomDestinacijo()) { // ce je nasprotnik na svojem cilju, gre na drugo naklucno lokacijo
 				enemy.at(i)->zrcuniRandomDestinacijo();
 			}
-			else {//ta if spodi se ni popoln
-				if (isPlayerCollidingAt(enemy.at(i)->getX() - 100, enemy.at(i)->getY() - 100, enemy.at(i)->getW() + 200, enemy.at(i)->getH() + 200)) {//previr okrog sebe
-					enemy.at(i)->setDest(igralec.getX(), igralec.getY());
-					enemy.at(i)->nosim = -1;
-					if (rageMode) {
+			else { // nasprotnik je na poti do svoje destinacije
+				// nasprotnik previri, ce je v radiju okoli njega igralec
+				if (isPlayerCollidingAt(enemy.at(i)->getX() - 100, enemy.at(i)->getY() - 100, enemy.at(i)->getW() + 200, enemy.at(i)->getH() + 200)) {
+					enemy.at(i)->setDest(igralec.getX(), igralec.getY()); // nasprotnikov cilj se spremeni na igralceve koordinate
+					tjulni.at(enemy.at(i)->nosim)->nosilec = -1; // dovoli, da ga nosi tudi kateri drug nasprotnik
+					enemy.at(i)->nosim = -1; // ce nasprotnik nosi tjulna ga spusti na tla
+					if (rageMode) { // (ne v testingu) nasprotnik postane hitrejsi ko lovi igralca
 						enemy.at(i)->rage();
 					}
+					// ce se nasprotnik dotakne igralca
 					if (isPlayerCollidingAt(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH())) {
 						printf("smrt\n");
-						adios = true;
-						//tocke rab resetirat pa to
+						adios = true; // igrlec more ponoviti nivo od zacetka
+
+						// naredi: izbrisi tocke pridobljene v tem nivoju
 					}
 				}
-				else {
-					for (unsigned int t = 0; t < tjulni.size(); ++t) {
+				else { // nasprotnikova prioriteta je izgnati nezazelenega igralca iz njegovega teritorija, zato preveri tjulne okoli sebe, le ce ne vidi igralca
+					for (unsigned int t = 0; t < tjulni.size(); ++t) { // preveri vse tjulne okoli sebe
+						// preverimo in nadaljujemo ce smo praznih rok in je tjuln na tleh, ali pa ce mi nosimo tocno tega tjulna
 						if ((tjulni.at(t)->nosilec == -1 && enemy.at(i)->nosim == -1) || tjulni.at(t)->nosilec == i) {
+							// preverimo ali je ta tjulen v nasem vidnem polju
 							if (univerzalniTrk(enemy.at(i)->getX() - 100, enemy.at(i)->getY() - 100, enemy.at(i)->getW() + 200, enemy.at(i)->getH() + 200,
 								tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH()) && enemy.at(i)->nosim == -1)
 							{
-								enemy.at(i)->setDest(tjulni.at(t)->getX(), tjulni.at(t)->getY());
+								enemy.at(i)->setDest(tjulni.at(t)->getX(), tjulni.at(t)->getY()); // nova cilj nasprotnika je tjulen
+								// naredi: odpravi bug ko en nasprotnik lahko nosi vec tjulnov namesto samo enega
 								if (univerzalniTrk(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH(),
 									tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH()) && enemy.at(i)->nosim == -1)
 								{
@@ -85,7 +95,6 @@ void GameManager::level(short& nivo) {
 									{
 										printf("Joj ne, zaprt sem v farmi!!!\n");
 										++stTjulnFarma;
-										//updati neko tabelo (k je se ni) k pove kolk tjulnou je na farmi
 										if (!tjulni.empty()) {
 											delete tjulni.at(t);
 											tjulni.erase(tjulni.begin() + t);
@@ -95,7 +104,7 @@ void GameManager::level(short& nivo) {
 									}
 								}
 							}
-							//*
+							//* testiram da se nasprotnk upocasni ko ne vidi igralca
 							else if (rageMode) {
 								enemy.at(i)->chill();
 							}
@@ -103,11 +112,11 @@ void GameManager::level(short& nivo) {
 						}
 					}
 				}
-				enemy.at(i)->updateImg(*this);
+				enemy.at(i)->updateImg(*this); // prikazemo nasorotnike
 			}
 		}
 
-		//* za provo dok ni levela tuki
+		//* testiram.. dokler ni petni nivo dokoncan moramo glavnega nasprotnika ubiti z presledkom
 		if (keys[SDL_SCANCODE_SPACE] && trenutniNivo == 5) {
 			if (stTjuln[nivo] > 0)
 				--stTjuln[nivo];
@@ -123,17 +132,18 @@ void GameManager::level(short& nivo) {
 			}
 		}
 		//*/
-
+		// dolocimo izpisi tjulnov na farmi in na polju
 		pisava_tjulniNaFarmi.update(okno.ren, farma + to_string(stTjulnFarma), { 0, 0, 0, 255 });
 		pisava_tjulniNaPolju.update(okno.ren, polje + to_string(stTjuln[trenutniNivo - 1]), { 0, 0, 0, 255 });
-
+		// prikazemo tekst na zaslonu
 		pisava_tjulniNaFarmi.display(okno.scaleCal(56), okno.scaleCal(680), okno.ren);
 		pisava_tjulniNaPolju.display(okno.scaleCal(56), okno.scaleCal(700), okno.ren);
 
-		updateMap();
+		updateMap(); // slike izrisemo na zaslon, omenimo osvezevanje zaslona
 	}
-	cleanupVectors();
+	cleanupVectors(); // ko gremo iz nivoja izbrisemo dinamicni pomnilnik
 
+	// odvisno od tega ali je igralec koncal nivo, nivo zvecamo ali pa shranimo in zacnemo nivo znova
 	if (konecLevela)
 		printf("Koncal si %d nivo!\n", ++nivo);
 	else if (adios)

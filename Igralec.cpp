@@ -1,24 +1,24 @@
 #include "igralec.h"
 
-void space2underscore(std::string& text) {
+void space2underscore(std::string& text) { // se klice, ko zelimo presledke v imenu spremeniti na podcrtaje
 	for (std::string::iterator it = text.begin(); it != text.end(); ++it)
 		if (*it == ' ')
 			*it = '_';
 }
 
-void Igralec::setName() {
+void Igralec::setName() { // se klice, ko zelimo da uporabnik SAM vpise svoje ime
 	printf("Vpisi svoje ime, ");
 	coutName();
 	printf("\n");
 	do {
-		getline(cin, ime);
+		getline(cin, ime); // uporabnik lahko upise svoje ime tudi s presledkom
 	} while (ime == "");
-	space2underscore(ime);
+	space2underscore(ime); // presledki bodo spremenjeni v podcrtaje
 }
 
-void Igralec::setName(string s) {
-	space2underscore(s);
-	if (s == "") {
+void Igralec::setName(string s) { // se klice, ko zelimo uporabniku nastaviti doloceno ime
+	space2underscore(s); // presledke spremenimo v podcrtaje
+	if (s == "") { // da se izognemo semanticnim napakam je prednastavljeno ime igralca "bumbar"
 		ime = "bumbar";
 	}
 	else {
@@ -26,10 +26,10 @@ void Igralec::setName(string s) {
 	}
 }
 
-void Igralec::coutName() {
+void Igralec::coutName() { // se klice, ko v konzolo izpisemo ime brez podcrtajev
 	string ispis_imena = ime;
 	for (std::string::iterator it = ispis_imena.begin(); it != ispis_imena.end(); ++it)
 		if (*it == '_')
-			*it = ' ';
+			*it = ' '; // podcrtaji se spremenijo v presledke
 	cout << ispis_imena;
 }
