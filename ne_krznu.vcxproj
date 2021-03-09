@@ -169,14 +169,13 @@
     <ClCompile Include="okno.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Igralec.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="igra.h" />
-    <ClInclude Include="komoucar.h" />
     <ClInclude Include="menu.h" />
-    <ClInclude Include="igralec.h" />
     <ClInclude Include="slika.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="tjuln.h" />
+    <ClInclude Include="ZivoBitje.h" />
     <ClInclude Include="zvok.h" />
     <ClInclude Include="tekst.h" />
     <ClInclude Include="okno.h" />

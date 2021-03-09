@@ -77,9 +77,6 @@
     <ClInclude Include="zvok.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="igralec.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="slika.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -95,10 +92,10 @@
     <ClInclude Include="okno.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="komoucar.h">
+    <ClInclude Include="ZivoBitje.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tjuln.h">
+    <ClInclude Include="Igralec.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

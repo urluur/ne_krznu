@@ -13,7 +13,7 @@
 #include <vector>
 
 #include "igra.h"
-#include "igralec.h"
+#include "ZivoBitje.h"
 #include "slika.h"
 #include "zvok.h"
 #include "tekst.h"

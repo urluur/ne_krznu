@@ -2,11 +2,10 @@
 #include "includes.h"
 #include "okno.h"
 #include "zvok.h"
-#include "igralec.h"
 #include "SDL_ttf.h"
 #include "slika.h"
-#include "komoucar.h"
-#include "tjuln.h"
+#include "ZivoBitje.h"
+#include "igralec.h"
 #include "tekst.h"
 
 class GameManager {

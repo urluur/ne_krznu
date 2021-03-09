@@ -97,7 +97,7 @@ void GameManager::obnasanjeNaPolju() {
 			if (isPlayerCollidingAt(enemy.at(i)->getX() - 100, enemy.at(i)->getY() - 100, enemy.at(i)->getW() + 200, enemy.at(i)->getH() + 200)) {
 				enemy.at(i)->setDest(igralec.getX(), igralec.getY()); // nasprotnikov cilj se spremeni na igralceve koordinate
 				if (enemy.at(i)->nosim != -1) {
-					if (enemy.at(i)->nosim <= tjulni.size()) {
+					if (enemy.at(i)->nosim <= (int)tjulni.size() && enemy.at(i)->nosim >= 0) {
 						tjulni.at(enemy.at(i)->nosim)->nosilec = -1; // dovoli, da ga nosi tudi kateri drug nasprotnik
 					}
 					enemy.at(i)->nosim = -1; // ce nasprotnik nosi tjulna ga spusti na tla
@@ -152,7 +152,7 @@ void GameManager::obnasanjeNaPolju() {
 									if (!tjulni.empty()) {
 										// ko sta dva v paru in en tjulen izgine iz polja (vectotja), rabimo spremeniti pare, ki so imeli vecji indeks tjulna od zbrisanega
 										for (unsigned int popravi_nasprotnike = 0; popravi_nasprotnike < enemy.size(); ++popravi_nasprotnike) {
-											if (enemy.at(popravi_nasprotnike)->nosim > t) {
+											if (enemy.at(popravi_nasprotnike)->nosim > (int)t) {
 												--enemy.at(popravi_nasprotnike)->nosim;
 											}
 										}

@@ -1,8 +1,8 @@
-#include "komoucar.h"
+#include "ZivoBitje.h"
 komoucar::komoucar() { // konstruktor se klice za vsakega ustvarjenega nasprotnika
 	img = new Image;
-	x = 0;
-	y = 0;
+	x = 0; y = 0;
+	w = 29, h = 64;
 	hitrost = 1;
 	dest_x = 0;
 	dest_y = 0;

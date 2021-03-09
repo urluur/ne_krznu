@@ -1,5 +1,7 @@
-#include "Tjuln.h"
+#include "ZivoBitje.h"
 Tjuln::Tjuln() { // konstruktor klican veckrat na zacetku usakega nivoja
+	x = 0, y = 0;
+	w = 63, h = 42;
 	// nastavi nakljucno lokacijo, kjer se bo tjulen prikaze
 	short ax = 0, bx = 1280 - w;
 	short ay = 0, by = 720 - h;
