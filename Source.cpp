@@ -1,5 +1,4 @@
-#include "includes.h"
-#undef main
+#include "igra.h"
 
 void nastavitve(GameManager&);
 void vec(GameManager&);
@@ -8,7 +7,7 @@ void narisi(GameManager&, short&, Image&, Image&);
 void nadaljuj(GameManager&, short&, bool&);
 bool aliSmoNovIgralec(GameManager&);
 
-int main() {
+int main(int argv, char** args) {
 	// ustvarimo objekt igra, vecina potrebnega je ze pripravljenega
 	GameManager igra;
 

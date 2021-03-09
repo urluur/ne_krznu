@@ -1,4 +1,10 @@
-#include "igralec.h"
+#include "ZivoBitje.h"
+
+Igralec::Igralec() {
+	x = 0; y = 0;
+	//w = 29, h = 64;
+	ime = "bumbar";
+}
 
 void space2underscore(std::string& text) { // se klice, ko zelimo presledke v imenu spremeniti na podcrtaje
 	for (std::string::iterator it = text.begin(); it != text.end(); ++it)

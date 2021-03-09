@@ -14,7 +14,7 @@ public:
 	string getName() { return ime; }
 	void setName(string);
 	void coutName();
-	Igralec() { ime = "bumbar"; }
+	Igralec();
 	short getX() { return x; }
 	short getY() { return y; }
 	// setX in setY nastavita pozicijo igralca na zeljeno mesto, a le ce ta ni izven zaslona

@@ -1,5 +1,4 @@
-#include "includes.h"
-using namespace std;
+#include "igra.h"
 
 void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funkcije overworld (pogleda na svet oz. nadzemlja)
 	trenutniNivo = nivo + 1; // nivo je zadnji koncani nivo

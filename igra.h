@@ -1,19 +1,31 @@
 #pragma once
-#include "includes.h"
+#include <SDL.h>
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <ctime>
+#include <fstream>
+#include <SDL_mixer.h>
+#include <string>
+#include <cstring>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
+#include <vector>
+
 #include "okno.h"
 #include "zvok.h"
 #include "SDL_ttf.h"
 #include "slika.h"
 #include "ZivoBitje.h"
-#include "igralec.h"
 #include "tekst.h"
+#include "igralec.h"
 
 class GameManager {
 public:
 	WindowManager okno;
 	SoundManager sound;
-	SDL_Event event;
 	Igralec igralec;
+	SDL_Event event;
 	//SDL_Joystick* joystick;//(testiram)
 	bool adios = false;
 	short trenutniNivo;

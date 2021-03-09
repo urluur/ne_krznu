@@ -1,5 +1,5 @@
 #pragma once
-#include "includes.h"
+#include "igra.h"
 
 // v main_menu.cpp
 void vec(GameManager&);

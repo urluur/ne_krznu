@@ -169,9 +169,8 @@
     <ClCompile Include="okno.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Igralec.h" />
-    <ClInclude Include="includes.h" />
     <ClInclude Include="igra.h" />
+    <ClInclude Include="Igralec.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="slika.h" />
     <ClInclude Include="resource.h" />

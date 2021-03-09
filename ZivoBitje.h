@@ -1,8 +1,9 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "slika.h"
 #include "igra.h"
+
+using namespace std;
 
 class ZivoBitje {
 protected:

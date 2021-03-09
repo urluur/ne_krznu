@@ -1,4 +1,4 @@
-#include "includes.h"
+#include "igra.h"
 
 void GameManager::zasilnoShranjevanje() { // klicemo ko gremo iz igre preden jo dokoncamo
 	// trenutni napredek pisemo v datoteko quicksave
