@@ -173,3 +173,92 @@ void vec(GameManager& igra) {
 		igra.okno.omejiFrame();
 	}
 }
+
+void GameManager::pause() {
+	printf("pavza\n");
+	SDL_PollEvent(&event); // osvezivo stanje pritinjenih tipk
+
+	// kazalec nastavimo na prvo mesto
+	Image cursor;
+	short cur_pos = 1;
+
+	// ustvarimo sliko menija in meni narisemo na zaslon
+	Image main;
+	main.ini(*this, "common/img/pause.png");
+	main.display(okno.ren);
+
+	bool stay = true, refresh = true;
+	while (stay) {
+		okno.stejFrame();
+		if (refresh) { // menu se ozvezi, ce pritisnemo kaksno tipko
+			main.display(okno.ren);
+			switch (cur_pos) {
+			case 1:
+				cursor.init(*this, "common/img/cursor.png", 20, 80, 98, 49);
+				break;
+			case 2:
+				cursor.init(*this, "common/img/cursor.png", 20, 200, 98, 49);
+				break;
+			case 3:
+				cursor.init(*this, "common/img/cursor.png", 20, 300, 98, 49);
+				break;
+			}
+			cursor.display(okno.ren); // kazalec se bo pokazal
+			SDL_RenderPresent(okno.ren); // na oknu se prikaze spremenjeno stanje
+		}
+		while (SDL_PollEvent(&event)) {
+			// pogledamo kateri dogodki so se zgodili
+			switch (event.type) {
+			case SDL_QUIT: // ce je bil pritisnjen krizec
+				--trenutniNivo;
+				zasilnoShranjevanje();
+				cleanup();
+				exit(0);
+			case SDL_KEYDOWN: // ce je bila pritisnjena tipka na tipkovnici
+				refresh = true;
+				if (event.key.keysym.sym == SDLK_UP || event.key.keysym.sym == SDLK_w) {
+					// predvaja zvok kazalca
+					sound.predvajaj("common/sounds/cur_mov.wav");
+					// premakne kazalec na zeljeno mesto
+					if (cur_pos == 1) {
+						cur_pos = 3;
+					}
+					else {
+						--cur_pos;
+					}
+				}
+				else if (event.key.keysym.sym == SDLK_DOWN || event.key.keysym.sym == SDLK_s) {
+					// predvaja zvok kazalca
+					sound.predvajaj("common/sounds/cur_mov.wav");
+					// premakne kazalec na zeljeno mesto
+					if (cur_pos == 3) {
+						cur_pos = 1;
+					}
+					else {
+						++cur_pos;
+					}
+				}
+				else if (keys[SDL_SCANCODE_PAUSE]) {
+					stay = false;
+				}
+				else if (event.key.keysym.sym == SDLK_RETURN) {
+					switch (cur_pos) {
+					case 1:
+						stay = false;
+						break;
+					case 2:
+						--trenutniNivo;
+						zasilnoShranjevanje();
+					case 3:
+						cleanup();
+						exit(0);
+					}
+				}
+				break;
+			case SDL_KEYUP:
+				refresh = false;
+			}
+		}
+		okno.omejiFrame();
+	}
+}

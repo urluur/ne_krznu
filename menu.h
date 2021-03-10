@@ -1,7 +1,7 @@
 #pragma once
 #include "igra.h"
 
-// v main_menu.cpp
+// v menu.cpp
 void vec(GameManager&);
 void nastavitve(GameManager&);
 

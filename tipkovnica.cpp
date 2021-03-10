@@ -57,6 +57,8 @@ void GameManager::handleEvents() { // funkcija je klicana v glavni zanki nivoja
 				d = true;
 			if ((event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT) && (w || a || s || d))
 				staminadown = true;
+			if (keys[SDL_SCANCODE_PAUSE])
+				pause();
 			/* za testiranje nivojev lahko nivo preskocis s tipko "end"
 			if (event.key.keysym.sym == SDLK_END)
 				konecLevela = true;

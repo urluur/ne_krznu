@@ -297,6 +297,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9A44F778A3A84A8B8087FFDF0BE18559"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9B0511FEE91D4B45A8F5CCD5F06D5CA8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -699,7 +705,7 @@
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
-        "Compression" = "3:2"
+        "Compression" = "3:3"
         "SignOutput" = "11:FALSE"
         "CertificateFile" = "8:"
         "PrivateKeyFile" = "8:"
@@ -1646,6 +1652,26 @@
             {
             "SourcePath" = "8:..\\common\\img\\zastavica_fullscreen.png"
             "TargetName" = "8:zastavica_fullscreen.png"
+            "Tag" = "8:"
+            "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9A44F778A3A84A8B8087FFDF0BE18559"
+            {
+            "SourcePath" = "8:..\\common\\img\\pause.png"
+            "TargetName" = "8:pause.png"
             "Tag" = "8:"
             "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
             "Condition" = "8:"
@@ -2985,7 +3011,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:NE krznu"
         "ProductCode" = "8:{7874E0B3-A7FC-49CC-9451-50CC1EE98C02}"
-        "PackageCode" = "8:{6161BC23-3896-43A1-B494-4191D00278AC}"
+        "PackageCode" = "8:{834DE477-9F5E-4D9D-AB2C-3020167152F3}"
         "UpgradeCode" = "8:{14D90C8E-4D50-4030-8EB1-D338308AF44C}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"

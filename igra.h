@@ -66,6 +66,7 @@ public:
 	void trkiMiTjulni();
 	void racuniStamino();
 	void cleanupVectors();
+	void pause();
 private:
 	class Image* jaz;
 	vector <class komoucar*> enemy;
