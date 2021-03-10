@@ -62,7 +62,7 @@ void GameManager::handleEvents() { // funkcija je klicana v glavni zanki nivoja
 				konecLevela = true;
 			//*/
 			trkiOkolje(); // preveri trke med igralcem in nepremikajocimi zadevami
-			igralec.sepremika(true);
+			igralec.sepremika(true); // dovoli da se animirajo noge, ko se premikamo
 			break;
 		case SDL_KEYUP:
 			if (event.key.keysym.sym == SDLK_UP || event.key.keysym.sym == SDLK_w)
@@ -75,7 +75,6 @@ void GameManager::handleEvents() { // funkcija je klicana v glavni zanki nivoja
 				d = false;
 			if ((event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT) || !(w || a || s || d))
 				staminadown = false;
-			igralec.sepremika(false); // dovoli da se animirajo noge, ko se premikamo
 			break;
 		}
 	}
@@ -88,4 +87,5 @@ void GameManager::handleEvents() { // funkcija je klicana v glavni zanki nivoja
 	if (a) igralec.setX(igralec.getX() - hitrost);
 	if (s) igralec.setY(igralec.getY() + hitrost);
 	if (d) igralec.setX(igralec.getX() + hitrost);
+	if (!(w || a || s || d)) igralec.sepremika(false); // igralcu se ne premikajo noge, ko se ne premika
 }
