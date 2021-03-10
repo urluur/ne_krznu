@@ -92,6 +92,7 @@ void GameManager::trkiMiTjulni() {
 				aktivisti.at(popravi_aktiviste)->nosim = -1;
 			}
 
+			sound.predvajaj("common/sounds/yay.wav");
 			delete tjulni.at(i);
 			tjulni.erase(tjulni.begin() + i);
 			--stTjuln[trenutniNivo - 1];

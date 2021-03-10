@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_03D464C7327C4FDD820B4B8929F3FC33"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_03DEC8CEB14C4A4197D7555F48E6A7B9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -34,6 +40,12 @@
         "Entry"
         {
         "MsmKey" = "8:_0CD2AC65312D42BA97721405A798880E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0E0792B865A0421E979096CFE273E7E1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -58,6 +70,12 @@
         "Entry"
         {
         "MsmKey" = "8:_1740C80938FE4DC394E891783023150A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_179DC7D46CEE4271A0F89B7367438D2C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -94,6 +112,12 @@
         "Entry"
         {
         "MsmKey" = "8:_2B2D3FDBD78B43BEA4EA043A56B3B3D7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2C9CD527FA104137B0F5BEB25842B193"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -309,6 +333,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A8A63FC3569247989FDB4EAD9A37BA4B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A9366DD4CD754DCBABE7B7D23B726611"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -447,6 +477,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D266ABF1C7684103816EF9BCE6FE5853"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D781F45071C440AFBD55C97365DF210C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -478,6 +514,12 @@
         "Entry"
         {
         "MsmKey" = "8:_DD48C3C3DA7F46A6A449C521C5F054AE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DDE5EB859C344B88BAF548B9DE2A09D3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -720,6 +762,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_03D464C7327C4FDD820B4B8929F3FC33"
+            {
+            "SourcePath" = "8:..\\common\\sounds\\puk.wav"
+            "TargetName" = "8:puk.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_03DEC8CEB14C4A4197D7555F48E6A7B9"
             {
             "SourcePath" = "8:..\\common\\img\\animacija2.png"
@@ -780,6 +842,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0E0792B865A0421E979096CFE273E7E1"
+            {
+            "SourcePath" = "8:..\\common\\sounds\\krkh.wav"
+            "TargetName" = "8:krkh.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_10AA77255A9D498EBE9B99BA10390D58"
             {
             "SourcePath" = "8:..\\common\\img\\boss.png"
@@ -826,6 +908,26 @@
             "TargetName" = "8:pressreturn.png"
             "Tag" = "8:"
             "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_179DC7D46CEE4271A0F89B7367438D2C"
+            {
+            "SourcePath" = "8:..\\common\\sounds\\yay.wav"
+            "TargetName" = "8:yay.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -946,6 +1048,26 @@
             "TargetName" = "8:vec.png"
             "Tag" = "8:"
             "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2C9CD527FA104137B0F5BEB25842B193"
+            {
+            "SourcePath" = "8:..\\common\\sounds\\au.wav"
+            "TargetName" = "8:au.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1660,6 +1782,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A8A63FC3569247989FDB4EAD9A37BA4B"
+            {
+            "SourcePath" = "8:..\\common\\sounds\\fvt.wav"
+            "TargetName" = "8:fvt.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A9366DD4CD754DCBABE7B7D23B726611"
             {
             "SourcePath" = "8:..\\lib\\x86\\SDL2_image.dll"
@@ -2120,6 +2262,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D266ABF1C7684103816EF9BCE6FE5853"
+            {
+            "SourcePath" = "8:..\\common\\sounds\\oh.wav"
+            "TargetName" = "8:oh.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D781F45071C440AFBD55C97365DF210C"
             {
             "SourcePath" = "8:..\\common\\img\\animacija4.png"
@@ -2226,6 +2388,26 @@
             "TargetName" = "8:libFLAC-8.dll"
             "Tag" = "8:"
             "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DDE5EB859C344B88BAF548B9DE2A09D3"
+            {
+            "SourcePath" = "8:..\\common\\img\\aktivist.png"
+            "TargetName" = "8:aktivist.png"
+            "Tag" = "8:"
+            "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2803,7 +2985,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:NE krznu"
         "ProductCode" = "8:{7874E0B3-A7FC-49CC-9451-50CC1EE98C02}"
-        "PackageCode" = "8:{F5681AB8-96DE-47E7-9C11-B06D5EBC2AA2}"
+        "PackageCode" = "8:{6161BC23-3896-43A1-B494-4191D00278AC}"
         "UpgradeCode" = "8:{14D90C8E-4D50-4030-8EB1-D338308AF44C}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"

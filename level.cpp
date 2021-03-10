@@ -100,6 +100,7 @@ void GameManager::obnasanjeNaPolju() {
 						tjulni.at(enemy.at(i)->nosim)->nosilec = -1; // dovoli, da ga nosi tudi kateri drug nasprotnik
 					}
 					enemy.at(i)->nosim = -1; // ce nasprotnik nosi tjulna ga spusti na tla
+					sound.predvajaj("common/sounds/puk.wav");
 				}
 				if (rageMode) { // (ne v testingu) nasprotnik postane hitrejsi ko lovi igralca
 					enemy.at(i)->rage();
@@ -108,7 +109,8 @@ void GameManager::obnasanjeNaPolju() {
 				if (isPlayerCollidingAt(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH())) {
 					printf("smrt\n");
 					adios = true; // igrlec more ponoviti nivo od zacetka
-
+					sound.predvajaj("common/sounds/au.wav");
+					SDL_Delay(200);
 					// naredi: izbrisi tocke pridobljene v tem nivoju
 				}
 			}
@@ -131,6 +133,11 @@ void GameManager::obnasanjeNaPolju() {
 								// tjulna premaknemo na nasprotnikov hrbet
 								tjulni.at(t)->setX(enemy.at(i)->getX());
 								tjulni.at(t)->setY(enemy.at(i)->getY());
+
+								//predvajamo zvocni efekt ko pobere tjulna
+								if (enemy.at(i)->nosim == -1) {
+									sound.predvajaj("common/sounds/fvt.wav");
+								}
 
 								// nasprotnika in njegovega tjulna dolocimo kot par
 								tjulni.at(t)->nosilec = i;
@@ -161,6 +168,7 @@ void GameManager::obnasanjeNaPolju() {
 											}
 										}
 
+										sound.predvajaj("common/sounds/oh.wav");
 										//tjulna izbrisemo
 										delete tjulni.at(t);
 										tjulni.erase(tjulni.begin() + t);
@@ -219,6 +227,11 @@ void GameManager::obnasanjeNaPolju() {
 							tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH())
 							&& tjulni.at(t)->nosilec == -1)
 						{
+							//predvajamo zvocni efekt ko pobere tjulna
+							if (aktivisti.at(a)->nosim == -1) {
+								sound.predvajaj("common/sounds/fvt.wav");
+							}
+
 							aktivisti.at(a)->nosim = t; // aktivist pobere tjulna s tal
 							tjulni.at(t)->setX(aktivisti.at(a)->getX());
 							tjulni.at(t)->setY(aktivisti.at(a)->getY());

@@ -3,6 +3,7 @@
 void GameManager::farma() {
 	// ta funkcija je klicana ko se igralec dotakne farme
 	printf("sm na farmi\n");
+	sound.predvajaj("common/sounds/krkh.wav");
 	if (stTjulnFarma > 0) {
 		// tu je prostor za dodatni "bonus nivo" resevanja tjulnov iz farme
 
