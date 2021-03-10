@@ -129,9 +129,9 @@ void GameManager::obnasanjeNaPolju() {
 								|| (enemy.at(i)->nosim == t && tjulni.at(t)->nosilec == i))) // ali pa par (en se drzita drugega)
 							{
 								// tjulna premaknemo na nasprotnikov hrbet
-								tjulni.at(t)->setX(enemy.at(i)->getX() + t);
-								tjulni.at(t)->setY(enemy.at(i)->getY() + t);
-								
+								tjulni.at(t)->setX(enemy.at(i)->getX());
+								tjulni.at(t)->setY(enemy.at(i)->getY());
+
 								// nasprotnika in njegovega tjulna dolocimo kot par
 								tjulni.at(t)->nosilec = i;
 								enemy.at(i)->nosim = t;
@@ -151,8 +151,13 @@ void GameManager::obnasanjeNaPolju() {
 									if (!tjulni.empty()) {
 										// ko sta dva v paru in en tjulen izgine iz polja (vectotja), rabimo spremeniti pare, ki so imeli vecji indeks tjulna od zbrisanega
 										for (unsigned int popravi_nasprotnike = 0; popravi_nasprotnike < enemy.size(); ++popravi_nasprotnike) {
-											if (enemy.at(popravi_nasprotnike)->nosim > (int)t) {
+											if (enemy.at(popravi_nasprotnike)->nosim > (int)i && enemy.at(popravi_nasprotnike)->nosim != -1) {
 												--enemy.at(popravi_nasprotnike)->nosim;
+											}
+										}
+										for (unsigned int popravi_aktiviste = 0; popravi_aktiviste < aktivisti.size(); ++popravi_aktiviste) {
+											if (aktivisti.at(popravi_aktiviste)->nosim > (int)i && aktivisti.at(popravi_aktiviste)->nosim != -1) {
+												--aktivisti.at(popravi_aktiviste)->nosim;
 											}
 										}
 
@@ -173,7 +178,70 @@ void GameManager::obnasanjeNaPolju() {
 					}
 				}
 			}
-			enemy.at(i)->updateImg(*this); // prikazemo nasorotnike
+			
+			// osvezivo nasorotnikove koordinate slike
+			if (trenutniNivo < 5) {
+				enemy.at(i)->updateImg(*this, "common/img/nasprotnik.png");
+			}
+			else {
+				enemy.at(i)->updateImg(*this, "common/img/boss.png");
+			}
 		}
 	}
+	//*
+	bool prost_tjulen; // bomo uporabili za dolocanje ali je tjulen ki ga aktivist gleda ze na drugem aktivistovem hrbtu
+	for (unsigned int a = 0; a < aktivisti.size(); ++a) {
+		if (aktivisti.at(a)->sprehodNaRandomDestinacijo()) { // ce je aktivist na svojem cilju, gre na drugo naklucno lokacijo
+			aktivisti.at(a)->zrcuniRandomDestinacijo();
+		}
+		else { // aktivist je na poti do svoje destinacije
+			for (unsigned int t = 0; t < tjulni.size(); ++t) { // aktivist preveri vse tjulne okoli sebe
+				if ((tjulni.at(t)->nosilec == -1 && (aktivisti.at(a)->nosim == -1) || aktivisti.at(a)->nosim == t)) {
+
+					prost_tjulen = true;
+					for (unsigned int n = 0; n < aktivisti.size(); ++n) {
+						if (n == a) { // pregledamo vse aktiviste razen sebe
+							continue;
+						}
+						if (aktivisti.at(n)->nosim == t) { // preverimo ce katerikoli drug aktivist ze nosi tega tjulna
+							prost_tjulen = false;
+						}
+					}
+
+					// preverimo ali je ta tjulen v nasem vidnem polju
+					if (univerzalniTrk(aktivisti.at(a)->getX() - 200, aktivisti.at(a)->getY() - 200, aktivisti.at(a)->getW() + 400, aktivisti.at(a)->getH() + 400, // aktivisti so pocasni, a vidijo dalj od nasprotnikov
+						tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH()) && prost_tjulen)
+					{
+						aktivisti.at(a)->setDest(tjulni.at(t)->getX(), tjulni.at(t)->getY()); // aktivistov nov cilj je tjulen
+
+						// ko se tjulen in aktivist dotakneta
+						if (univerzalniTrk(aktivisti.at(a)->getX(), aktivisti.at(a)->getY(), aktivisti.at(a)->getW(), aktivisti.at(a)->getH(),
+							tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH())
+							&& tjulni.at(t)->nosilec == -1)
+						{
+							aktivisti.at(a)->nosim = t; // aktivist pobere tjulna s tal
+							tjulni.at(t)->setX(aktivisti.at(a)->getX());
+							tjulni.at(t)->setY(aktivisti.at(a)->getY());
+
+							// tukaj more tjulen->nosilec ostati -1, da lahko aktivistu nasprotnik pobere tjulna
+
+							// tjulnova pozicija se spremeni na zaslonu
+							tjulni.at(t)->updateImg(*this);
+
+							// aktivistov cilj se spremeni na igralca
+							aktivisti.at(a)->setDest(igralec.getX(), igralec.getY());
+							trkiMiTjulni();
+						}
+						else {
+							aktivisti.at(a)->nosim = -1; // tjulna aktivistu nekdo uzame
+						}
+					}
+				}
+			}
+		}
+
+		// osvezivo aktivisove koordinate slike
+		aktivisti.at(a)->updateImg(*this, "common/img/aktivist.png");
+	}
+	//*/
 }

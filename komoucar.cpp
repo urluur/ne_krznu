@@ -20,13 +20,8 @@ void komoucar::initImg(GameManager& igra, const char* path,
 	y = ipsilon;
 	img->init(igra, path, x, y, w, h);
 }
-void komoucar::updateImg(GameManager& igra) { // se klice ob posodobitvi nasprotnikove slike
-	if (igra.trenutniNivo < 5) {
-		img->init(igra, "common/img/nasprotnik.png", x, y, w, h); // rumen nasprotnik
-	}
-	else {
-		img->init(igra, "common/img/boss.png", x, y, w, h); // rdec nasprotnik
-	}
+void komoucar::updateImg(GameManager& igra, const char* path) { // se klice ob posodobitvi nasprotnikove slike
+	img->init(igra, path, x, y, w, h);
 }
 void komoucar::display(GameManager& igra) { // prikaze nasprotnika
 	img->display(igra.okno.ren);

@@ -88,6 +88,10 @@ void GameManager::trkiMiTjulni() {
 					--enemy.at(popravi_nasprotnike)->nosim;
 				}
 			}
+			for (unsigned int popravi_aktiviste = 0; popravi_aktiviste < aktivisti.size(); ++popravi_aktiviste) {
+				aktivisti.at(popravi_aktiviste)->nosim = -1;
+			}
+
 			delete tjulni.at(i);
 			tjulni.erase(tjulni.begin() + i);
 			--stTjuln[trenutniNivo - 1];

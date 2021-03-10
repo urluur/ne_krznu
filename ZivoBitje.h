@@ -29,7 +29,7 @@ public:
 	void rage() { hitrost = 2; } //1.2 za ragemode
 	void chill() { hitrost = 1; }
 	void initImg(class GameManager&, const char*, short, short);
-	void updateImg(class GameManager&);
+	void updateImg(class GameManager&, const char*);
 	void display(GameManager&);
 	void zrcuniRandomDestinacijo();
 	void setDest(short, short);

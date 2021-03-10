@@ -69,6 +69,7 @@ public:
 private:
 	class Image* jaz;
 	vector <class komoucar*> enemy;
+	vector <class komoucar*> aktivisti;
 	vector <class Tjuln*> tjulni;
 	class Image* stamina_wheel;
 	bool konecLevela, semNaIzhodniLokaciji, staminadown, fillingStamina;

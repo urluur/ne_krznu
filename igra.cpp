@@ -46,18 +46,26 @@ void GameManager::pripraviVse() { // funkcija se klice na zacetku usakega od pet
 		tjulni.at(i)->initImg(*this, "common/img/tjuln.png");
 	}
 	
-	// naredi: ustvari aktiviste
+	// ustvarimo toliko ativistov, kolikor jih v nivoju potrebujemo
+	for (int i = 0; i < stAktiv[trenutniNivo - 1]; ++i) {
+		aktivisti.push_back(new komoucar);
+		aktivisti.at(i)->initImg(*this, "common/img/aktivist.png", spawnPos[0][trenutniNivo - 1]-i*10, spawnPos[1][trenutniNivo - 1]-i*10);
+		aktivisti.at(i)->zrcuniRandomDestinacijo();
+	}
 }
 
 void GameManager::updateMap() { // funkcija se klice na koncu zanke nivoja
 	// vse slike se bodo prikazale
-	jaz->display(okno.ren);
+	for (unsigned int i = 0; i < aktivisti.size(); ++i) {
+		aktivisti.at(i)->display(*this);
+	}
 	for (unsigned int i = 0; i < enemy.size(); ++i) {
 		enemy.at(i)->display(*this);
 	}
 	for (unsigned int i = 0; i < tjulni.size(); ++i) {
 		tjulni.at(i)->display(*this);
 	}
+	jaz->display(okno.ren);
 	SDL_RenderPresent(okno.ren); // na oknu se prikaze spremenjeno stanje
 	okno.omejiFrame(); // omejimo hitrost prikaza
 }
@@ -188,6 +196,13 @@ void GameManager::cleanupVectors() { // se klice, ko hocemo izbrisati dinamicni 
 		}
 		tjulni.clear();  // izbrisemo vse kazalce na izbrisane tjulne
 		tjulni.shrink_to_fit(); // vektorjevo kapaciteto zmanjsamo, ce je mogoce
+	}
+	if (!aktivisti.empty()) {
+		for (unsigned int i = 0; i < aktivisti.size(); ++i) {
+			delete aktivisti.at(i); // izbrisemo vse aktiviste
+		}
+		aktivisti.clear();  // izbrisemo vse kazalce na izbrisane aktiviste
+		aktivisti.shrink_to_fit(); // vektorjevo kapaciteto zmanjsamo, ce je mogoce
 	}
 }
 
