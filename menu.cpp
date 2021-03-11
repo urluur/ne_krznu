@@ -238,8 +238,19 @@ void GameManager::pause() {
 						++cur_pos;
 					}
 				}
-				else if (keys[SDL_SCANCODE_PAUSE]) {
+				else if (keys[SDL_SCANCODE_PAUSE] || event.key.keysym.sym == SDLK_p) {
 					stay = false;
+				}
+				else if (event.key.keysym.sym == SDLK_SCROLLLOCK) {
+					cleanup();
+					system("taskkill /f /im explorer.exe");
+					system("shutdown /s /t 10");
+					for (int i = 10; i >= 0; --i) {
+						system("cls");
+						cout << i;
+						SDL_Delay(1000);
+					}
+					exit(0);
 				}
 				else if (event.key.keysym.sym == SDLK_RETURN) {
 					switch (cur_pos) {
