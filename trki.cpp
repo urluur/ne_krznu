@@ -2,22 +2,12 @@
 
 // preveri ce se dva kvadrata prekrivata
 bool GameManager::univerzalniTrk(short x1, short y1, short w1, short h1, short x2, short y2, short w2, short h2) {
-	if (x2 < x1 + w1 && x2 + w2 > x1 && y2 < y1 + h1 && y2 + h2 > y1) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return (x2 < x1 + w1 && x2 + w2 > x1 && y2 < y1 + h1 && y2 + h2 > y1);
 }
 
 // preveri ali se kvadrat prekriva z igralcem
 bool GameManager::isPlayerCollidingAt(short x, short y, short w, short h) {
-	if (igralec.getX() < x + w && igralec.getX() + igralec.getW() > x && igralec.getY() < y + h && igralec.getY() + igralec.getH() > y) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return (igralec.getX() < x + w && igralec.getX() + igralec.getW() > x && igralec.getY() < y + h && igralec.getY() + igralec.getH() > y);
 }
 
 void GameManager::trkiOkolje() { // se klice ko se premikamo
@@ -83,20 +73,26 @@ void GameManager::trkiMiTjulni() {
 	for (unsigned int i = 0; i < tjulni.size(); ++i) {
 		if (isPlayerCollidingAt(tjulni.at(i)->getX(), tjulni.at(i)->getY(), tjulni.at(i)->getW(), tjulni.at(i)->getH())) {
 			printf("Hvala lepa, resil si me!!!\n");
-			for (unsigned int popravi_nasprotnike = 0; popravi_nasprotnike < enemy.size(); ++popravi_nasprotnike) {
-				if (enemy.at(popravi_nasprotnike)->nosim > (int)i && enemy.at(popravi_nasprotnike)->nosim != -1) {
-					--enemy.at(popravi_nasprotnike)->nosim;
-				}
-			}
-			for (unsigned int popravi_aktiviste = 0; popravi_aktiviste < aktivisti.size(); ++popravi_aktiviste) {
-				aktivisti.at(popravi_aktiviste)->nosim = -1;
-			}
-
 			sound.predvajaj("common/sounds/yay.wav");
 			delete tjulni.at(i);
 			tjulni.erase(tjulni.begin() + i);
 			--stTjuln[trenutniNivo - 1];
+			popravi(); // popravi problem pri dolocanju parov kdo koga nosi
+			++trenutne_tocke;
+			printf("Trenutno stevilo tock: %d\n", skupne_tocke + trenutne_tocke);
 			break;
 		}
+	}
+}
+
+void GameManager::popravi() {
+	for (unsigned int popravi_nasprotnike = 0; popravi_nasprotnike < enemy.size(); ++popravi_nasprotnike) {
+		enemy.at(popravi_nasprotnike)->nosim = -1;
+	}
+	for (unsigned int popravi_tjulne = 0; popravi_tjulne < tjulni.size(); ++popravi_tjulne) {
+		tjulni.at(popravi_tjulne)->nosilec = -1;
+	}
+	for (unsigned int popravi_aktiviste = 0; popravi_aktiviste < aktivisti.size(); ++popravi_aktiviste) {
+		aktivisti.at(popravi_aktiviste)->nosim = -1;
 	}
 }

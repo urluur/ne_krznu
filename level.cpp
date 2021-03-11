@@ -80,8 +80,10 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 	cleanupVectors(); // ko gremo iz nivoja izbrisemo dinamicni pomnilnik
 
 	// odvisno od tega ali je igralec koncal nivo, nivo zvecamo ali pa shranimo in zacnemo nivo znova
-	if (konecLevela)
+	if (konecLevela) {
+		skupne_tocke += trenutne_tocke;
 		printf("Koncal si %d nivo!\n", ++nivo);
+	}
 	else if (adios)
 		zasilnoShranjevanje();
 }
@@ -118,7 +120,6 @@ void GameManager::obnasanjeNaPolju() {
 						cleanup();
 						exit(0);
 					}
-					// naredi: izbrisi tocke pridobljene v tem nivoju
 				}
 			}
 			else { // nasprotnikova prioriteta je izgnati nezazelenega igralca iz njegovega teritorija, zato preveri tjulne okoli sebe, le ce ne vidi igralca
@@ -163,17 +164,6 @@ void GameManager::obnasanjeNaPolju() {
 									printf("Joj ne, zaprt sem v farmi!!!\n");
 									++stTjulnFarma;
 									if (!tjulni.empty()) {
-										// ko sta dva v paru in en tjulen izgine iz polja (vectotja), rabimo spremeniti pare, ki so imeli vecji indeks tjulna od zbrisanega
-										for (unsigned int popravi_nasprotnike = 0; popravi_nasprotnike < enemy.size(); ++popravi_nasprotnike) {
-											if (enemy.at(popravi_nasprotnike)->nosim > (int)i && enemy.at(popravi_nasprotnike)->nosim != -1) {
-												--enemy.at(popravi_nasprotnike)->nosim;
-											}
-										}
-										for (unsigned int popravi_aktiviste = 0; popravi_aktiviste < aktivisti.size(); ++popravi_aktiviste) {
-											if (aktivisti.at(popravi_aktiviste)->nosim > (int)i && aktivisti.at(popravi_aktiviste)->nosim != -1) {
-												--aktivisti.at(popravi_aktiviste)->nosim;
-											}
-										}
 
 										sound.predvajaj("common/sounds/oh.wav");
 										//tjulna izbrisemo
@@ -182,6 +172,7 @@ void GameManager::obnasanjeNaPolju() {
 									}
 									--stTjuln[trenutniNivo - 1]; // na polju je en tjulen manj
 									enemy.at(i)->nosim = -1; // nasprotnik ima proste roke
+									popravi();
 								}
 							}
 						}

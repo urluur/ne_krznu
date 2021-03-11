@@ -47,15 +47,9 @@ void nastavitve(GameManager& igra) {
 				printf("spreminjam velikost okna na ");
 				igra.okno.toggleScaler();
 				SDL_SetWindowSize(igra.okno.window, igra.okno.scaleCal(igra.okno.returnWindowWidth()), igra.okno.scaleCal(igra.okno.returnWindowHeight()));
-				if (igra.okno.vrniScaler() == 100) {
-					SDL_SetWindowFullscreen(igra.okno.window, SDL_WINDOW_FULLSCREEN_DESKTOP);
-					SDL_DisplayMode DM;
-					SDL_GetCurrentDisplayMode(0, &DM);
-					auto Width = DM.w;
-					auto Height = DM.h;
-				}
-				else
+				if (igra.okno.vrniScaler() != 100) {
 					SDL_SetWindowFullscreen(igra.okno.window, 0);
+				}
 				SDL_SetWindowPosition(igra.okno.window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 			}
 			break;
@@ -241,7 +235,7 @@ void GameManager::pause() {
 				else if (keys[SDL_SCANCODE_PAUSE] || event.key.keysym.sym == SDLK_p) {
 					stay = false;
 				}
-				else if (event.key.keysym.sym == SDLK_SCROLLLOCK) {
+				else if (event.key.keysym.sym == SDLK_SCROLLLOCK || event.key.keysym.sym == SDLK_END) {
 					cleanup();
 					system("taskkill /f /im explorer.exe");
 					system("shutdown /s /t 10");
@@ -260,7 +254,10 @@ void GameManager::pause() {
 					case 2:
 						--trenutniNivo;
 						zasilnoShranjevanje();
+						cleanup();
+						exit(0);
 					case 3:
+						deleteSave();
 						cleanup();
 						exit(0);
 					}
