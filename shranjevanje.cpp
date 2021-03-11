@@ -6,10 +6,10 @@ void GameManager::zasilnoShranjevanje() { // klicemo ko gremo iz igre preden jo 
 	datoteka.open("quicksave.txt");
 	if (datoteka.is_open()) {
 		if (getNivo() > 5) { // odpravi problem shranjevanja, ko je zadnji nivo koncan
-			datoteka << igralec.getName() << "\n" << 5 << "\n";
+			datoteka << igralec.getName() << "\n" << 5 << "\n" << zivljenja << "\n";
 		}
 		else {
-			datoteka << igralec.getName() << "\n" << getNivo() << "\n";
+			datoteka << igralec.getName() << "\n" << getNivo() << "\n" << zivljenja << "\n";
 		}
 		datoteka.close();
 
@@ -38,13 +38,15 @@ void GameManager::branjeShranjenega() { // se ob zagonu programa
 	// pisemo v zacasni spremenljivki
 	short tempLvl;
 	string tempName;
-	datoteka >> tempName >> tempLvl;
+	short tempZivljenja;
+	datoteka >> tempName >> tempLvl >> tempZivljenja;
 
 	// ce so prebrane spremenljivke drugacne od privzetih, se te napisejo v glavne spremenljivke
 	if (!(tempName == "bumbar" && tempLvl == 0)) {
 		// spremenimo glavne spremenljvke
 		setNivo(tempLvl);
 		igralec.setName(tempName);
+		zivljenja = tempZivljenja;
 
 		// potrdimo z izpisom
 		system("cls");
@@ -95,10 +97,11 @@ void GameManager::deleteSave() { // se klice v menuju "vec->izbris podatkov"
 	datoteka.open("quicksave.txt");
 	if (datoteka.is_open()) {
 		// resetiramo nekatere podatke
+		zivljenja = 3;
 		igralec.setName("bumbar");
 		setNivo(0);
 		setCompleted(false);
-		datoteka << "bumbar\n0\n"; // zapisemo privzete podatke
+		datoteka << "bumbar\n0\n3\n"; // zapisemo privzete podatke
 		// naredi: ko bodo tocke izbris tock
 	}
 	else {

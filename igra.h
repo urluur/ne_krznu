@@ -78,7 +78,7 @@ private:
 	bool w = false, a = false, s = false, d = false;
 	bool completed; // zato da se spremeni main menu na koncu zgodbe
 	short stAktiv[5], stNaspr[5], stTjuln[5];
-	short hitrost, stamina, stTjulnFarma;
+	short hitrost, stamina, stTjulnFarma, zivljenja;
 	const short farmPos[2][5] = {
 		{1150, 60, 140, 1000, 1030},
 		{100, 510, 400, 440, 60} };

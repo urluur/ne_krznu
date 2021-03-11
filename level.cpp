@@ -111,6 +111,13 @@ void GameManager::obnasanjeNaPolju() {
 					adios = true; // igrlec more ponoviti nivo od zacetka
 					sound.predvajaj("common/sounds/au.wav");
 					SDL_Delay(200);
+					--zivljenja;
+					if (!zivljenja) {
+						deleteSave();
+						// naredi: you died zaslon
+						cleanup();
+						exit(0);
+					}
 					// naredi: izbrisi tocke pridobljene v tem nivoju
 				}
 			}

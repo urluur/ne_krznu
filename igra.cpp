@@ -88,6 +88,7 @@ GameManager::GameManager() { // konstruktor je klican le enkrat, zgolj ko se pro
 	stAktiv[0] = 2; stAktiv[1] = 2; stAktiv[2] = 1; stAktiv[3] = 1; stAktiv[4] = 0;
 	stNaspr[0] = 2; stNaspr[1] = 3; stNaspr[2] = 4; stNaspr[3] = 5; stNaspr[4] = 1;
 	stTjuln[0] = 4; stTjuln[1] = 6; stTjuln[2] = 8; stTjuln[3] = 6; stTjuln[4] = 0;
+	zivljenja = 3;
 	SDL_PollEvent(&event);
 }
 
