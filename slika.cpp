@@ -9,8 +9,10 @@ Image::Image() {
 }
 
 Image::Image(SDL_Renderer* ren, const char* filePath, short x, short y, short w, short h) {
-	if (image_texture != nullptr && image_surface != nullptr) {
+	if (image_surface != nullptr) {
 		SDL_FreeSurface(image_surface);
+	}
+	if (image_texture != nullptr) {
 		SDL_DestroyTexture(image_texture);
 	}
 
@@ -29,8 +31,10 @@ Image::Image(SDL_Renderer* ren, const char* filePath, short x, short y, short w,
 }
 
 void Image::init(GameManager& igra, const char* filePath, short x, short y, short w, short h) {
-	if (image_texture != nullptr && image_surface != nullptr) {
+	if (image_surface != nullptr) {
 		SDL_FreeSurface(image_surface);
+	}
+	if (image_texture != nullptr) {
 		SDL_DestroyTexture(image_texture);
 	}
 

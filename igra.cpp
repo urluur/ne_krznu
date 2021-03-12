@@ -191,22 +191,22 @@ void GameManager::cleanupVectors() { // se klice, ko hocemo izbrisati dinamicni 
 			delete enemy.at(i); // izbrisemo vse nasprotnike
 		}
 		enemy.clear(); // izbrisemo vse kazalce na izbrisane nasprotnike
-		enemy.shrink_to_fit(); // vektorjevo kapaciteto zmanjsamo, ce je mogoce
 	}
+	enemy.shrink_to_fit(); // vektorjevo kapaciteto zmanjsamo, ce je mogoce
 	if (!tjulni.empty()) {
 		for (unsigned int i = 0; i < tjulni.size(); ++i) {
 			delete tjulni.at(i); // izbrisemo vse tjulne
 		}
 		tjulni.clear();  // izbrisemo vse kazalce na izbrisane tjulne
-		tjulni.shrink_to_fit(); // vektorjevo kapaciteto zmanjsamo, ce je mogoce
 	}
+	tjulni.shrink_to_fit(); // vektorjevo kapaciteto zmanjsamo, ce je mogoce
 	if (!aktivisti.empty()) {
 		for (unsigned int i = 0; i < aktivisti.size(); ++i) {
 			delete aktivisti.at(i); // izbrisemo vse aktiviste
 		}
 		aktivisti.clear();  // izbrisemo vse kazalce na izbrisane aktiviste
-		aktivisti.shrink_to_fit(); // vektorjevo kapaciteto zmanjsamo, ce je mogoce
 	}
+	aktivisti.shrink_to_fit(); // vektorjevo kapaciteto zmanjsamo, ce je mogoce
 }
 
 void GameManager::cleanup() { // se klice ko zelimo popolnoma zapreti igro
