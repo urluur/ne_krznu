@@ -172,7 +172,7 @@ void GameManager::setCompleted(bool resnica) { // se klice, ko koncamo vseh 5 ni
 	ofstream quicksave;
 	quicksave.open("quicksave.txt");
 	if (quicksave.is_open())
-		quicksave << "bumbar\n0\n";
+		quicksave << "bumbar\n0\n3\n0\n";
 	else {
 		cerr << "Error: setting complete" << endl;
 		cleanup();
