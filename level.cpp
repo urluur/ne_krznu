@@ -1,4 +1,5 @@
 #include "igra.h"
+#include "menu.h"
 
 void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funkcije overworld (pogleda na svet oz. nadzemlja)
 	trenutniNivo = nivo + 1; // nivo je zadnji koncani nivo
@@ -116,7 +117,10 @@ void GameManager::obnasanjeNaPolju() {
 					--zivljenja;
 					if (!zivljenja) {
 						deleteSave();
-						// naredi: you died zaslon
+						if (Mix_PlayingMusic()) {
+							Mix_PauseMusic();
+						}
+						animacija(*this, -1);
 						cleanup();
 						exit(0);
 					}
