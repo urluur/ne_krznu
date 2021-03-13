@@ -10,6 +10,7 @@ void GameManager::pripraviVse() { // funkcija se klice na zacetku usakega od pet
 	w = false; a = false; s = false; d = false;
 	stTjulnFarma = 0; trenutne_tocke = 0;
 	jaz = new Image;
+	srcki = new Image; // bojim se da je tuki memory leak
 	
 	// pozicija na na kateri se igralec pokaze
 	const short spawnPos[2][5] = {
@@ -21,6 +22,9 @@ void GameManager::pripraviVse() { // funkcija se klice na zacetku usakega od pet
 	igralec.setX(spawnPos[0][trenutniNivo - 1]);
 	igralec.setY(spawnPos[1][trenutniNivo - 1]);
 	jaz->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo - 1], spawnPos[1][trenutniNivo - 1], igralec.getW(), igralec.getH());
+
+	// inicializiramo toliko srckov kolikor jih imamo
+	updateSrcki();
 
 	// stevilo aktivistov, nasprotnikov in tjulnov, ki jih bomo videli v nivoju
 	//           1.              2.              3.              4.             5. nivo
@@ -66,6 +70,7 @@ void GameManager::updateMap() { // funkcija se klice na koncu zanke nivoja
 		tjulni.at(i)->display(*this);
 	}
 	jaz->display(okno.ren);
+	srcki->display(okno.ren);
 	SDL_RenderPresent(okno.ren); // na oknu se prikaze spremenjeno stanje
 	okno.omejiFrame(); // omejimo hitrost prikaza
 }
@@ -75,6 +80,7 @@ GameManager::GameManager() { // konstruktor je klican le enkrat, zgolj ko se pro
 	stTjulnFarma = 0;
 	//joystick = nullptr; //(testiram)
 	jaz = nullptr;
+	srcki = nullptr;
 	stamina_wheel = new Image;
 	konecLevela = false;
 	adios = false;
@@ -186,6 +192,10 @@ void GameManager::cleanupVectors() { // se klice, ko hocemo izbrisati dinamicni 
 		delete jaz; // izbrisemo sliko igralca
 		jaz = nullptr;
 	}
+	if (srcki != nullptr) {
+		delete srcki; // izbrisemo sliko srckov
+		srcki = nullptr;
+	}
 	if (!enemy.empty()) { // brisemo
 		for (unsigned int i = 0; i < enemy.size(); ++i) {
 			delete enemy.at(i); // izbrisemo vse nasprotnike
@@ -221,4 +231,15 @@ void GameManager::cleanup() { // se klice ko zelimo popolnoma zapreti igro
 	if (joystick != nullptr) SDL_JoystickClose(joystick);
 	*/
 	SDL_Quit(); // izhod iz SDL
+}
+
+void GameManager::updateSrcki() {
+	string pathFragment = "common/img/srcki/srcki";
+	pathFragment += to_string(zivljenja);
+	pathFragment += ".png";
+	char* path = new char[pathFragment.size() + 1];
+	std::copy(pathFragment.begin(), pathFragment.end(), path);
+	path[pathFragment.size()] = '\0';
+	srcki->init(*this, path, 1080, 670, 200, 50);
+	delete[] path;
 }

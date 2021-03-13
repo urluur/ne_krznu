@@ -68,8 +68,9 @@ public:
 	void cleanupVectors();
 	void pause();
 	void popravi();
+	void updateSrcki();
 private:
-	class Image* jaz;
+	class Image* jaz, *srcki;
 	vector <class komoucar*> enemy;
 	vector <class komoucar*> aktivisti;
 	vector <class Tjuln*> tjulni;
