@@ -70,6 +70,11 @@ public:
 	void popravi();
 	void updateSrcki();
 	void boss();
+	void kepaOrReflect();
+	void vrziTjulna();
+	void udari();
+	void predvajiBOOM();
+	void brisiBossa();
 private:
 	class Image* jaz, *srcki;
 	vector <class komoucar*> enemy;

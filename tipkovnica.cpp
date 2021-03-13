@@ -59,6 +59,14 @@ void GameManager::handleEvents() { // funkcija je klicana v glavni zanki nivoja
 				staminadown = true;
 			if (keys[SDL_SCANCODE_PAUSE] || event.key.keysym.sym == SDLK_p)
 				pause();
+			if (trenutniNivo == 5) {
+				if (event.key.keysym.sym == SDLK_e)
+					kepaOrReflect();
+				if (event.key.keysym.sym == SDLK_f)
+					vrziTjulna();
+				if (event.key.keysym.sym == SDLK_q)
+					udari();
+			}
 			//* za testiranje nivojev lahko nivo preskocis s tipko "end"
 			if (event.key.keysym.sym == SDLK_END)
 				konecLevela = true;

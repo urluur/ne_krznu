@@ -93,6 +93,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_25209997B83A4564BBFC423725527810"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_25900B2DA07B40AC89E195B8FC7A4894"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -237,6 +243,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5F624146941F4688BA7874D108451612"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_61B8924CB5BB4121B8915F560FA0E6D9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -251,12 +263,6 @@
         {
         "MsmKey" = "8:_644EA55B227C4BD9B67F97BA5D045305"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6C88F1408879D0BC6A2369094BDB9319"
-        "OwnerKey" = "8:_1740C80938FE4DC394E891783023150A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -279,12 +285,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7CCBDB0EE80667B87E9A9457EF29976F"
-        "OwnerKey" = "8:_1740C80938FE4DC394E891783023150A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_7CE14B1994C545C9ABCE5CAAEC261496"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -299,12 +299,6 @@
         {
         "MsmKey" = "8:_8D87C1F466D84FAB8829DF7FB690A9CD"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9768CEF34A497D144D21931C8C06D756"
-        "OwnerKey" = "8:_1740C80938FE4DC394E891783023150A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -413,12 +407,6 @@
         {
         "MsmKey" = "8:_B4FE83D905EE416EA5C3496FA969E146"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BB03B3D494243202007AE4268D66C930"
-        "OwnerKey" = "8:_1740C80938FE4DC394E891783023150A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -669,6 +657,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F0C655DC4728490BA29B955C379BBFC3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F3F80117F89E48A2A0A417606D2D442F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F4CB1273D29F4A058ACCC7A732FC75FB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -682,6 +682,12 @@
         "Entry"
         {
         "MsmKey" = "8:_F6151A05BCAB4540AFA0AE916CC6C2AF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FC02A14FD0984E90AF0972A5B8E522A7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1008,6 +1014,26 @@
             {
             "SourcePath" = "8:..\\common\\sounds\\nazaj.wav"
             "TargetName" = "8:nazaj.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_25209997B83A4564BBFC423725527810"
+            {
+            "SourcePath" = "8:..\\common\\sounds\\3bap.wav"
+            "TargetName" = "8:3bap.wav"
             "Tag" = "8:"
             "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
             "Condition" = "8:"
@@ -1504,6 +1530,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5F624146941F4688BA7874D108451612"
+            {
+            "SourcePath" = "8:..\\common\\sounds\\1boom.wav"
+            "TargetName" = "8:1boom.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_61B8924CB5BB4121B8915F560FA0E6D9"
             {
             "SourcePath" = "8:..\\common\\sounds\\animacija6.wav"
@@ -1562,26 +1608,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6C88F1408879D0BC6A2369094BDB9319"
-            {
-            "SourcePath" = "8:SDL2_mixer.dll"
-            "TargetName" = "8:SDL2_mixer.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6CB3BD1A009742918EC9C626D0D75CE0"
@@ -1644,26 +1670,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7CCBDB0EE80667B87E9A9457EF29976F"
-            {
-            "SourcePath" = "8:SDL2_ttf.dll"
-            "TargetName" = "8:SDL2_ttf.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7CE14B1994C545C9ABCE5CAAEC261496"
             {
             "SourcePath" = "8:..\\common\\sounds\\animacija3.wav"
@@ -1722,26 +1728,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9768CEF34A497D144D21931C8C06D756"
-            {
-            "SourcePath" = "8:SDL2_image.dll"
-            "TargetName" = "8:SDL2_image.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_97B5C0481FF449D183C647C3C11AE6CE"
@@ -2102,26 +2088,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BB03B3D494243202007AE4268D66C930"
-            {
-            "SourcePath" = "8:SDL2.dll"
-            "TargetName" = "8:SDL2.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BD273277C37C4EF1B6BD02C72F8EC871"
@@ -2944,6 +2910,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F0C655DC4728490BA29B955C379BBFC3"
+            {
+            "SourcePath" = "8:..\\common\\sounds\\2bem.wav"
+            "TargetName" = "8:2bem.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F3F80117F89E48A2A0A417606D2D442F"
+            {
+            "SourcePath" = "8:..\\common\\sounds\\4badabapbum.wav"
+            "TargetName" = "8:4badabapbum.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F4CB1273D29F4A058ACCC7A732FC75FB"
             {
             "SourcePath" = "8:..\\common\\img\\nasprotnik.png"
@@ -2988,6 +2994,26 @@
             {
             "SourcePath" = "8:..\\common\\sounds\\animacija5.wav"
             "TargetName" = "8:animacija5.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FC02A14FD0984E90AF0972A5B8E522A7"
+            {
+            "SourcePath" = "8:..\\common\\sounds\\5paw_oh.wav"
+            "TargetName" = "8:5paw_oh.wav"
             "Tag" = "8:"
             "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
             "Condition" = "8:"

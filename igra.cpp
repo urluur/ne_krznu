@@ -176,6 +176,9 @@ void GameManager::haltEnter(short nivo) { // se klice, ko cakamo da igralec prit
 void GameManager::setCompleted(bool resnica) { // se klice, ko koncamo vseh 5 nivojev
 	completed = resnica; // ta spremenljivka bo nastavila drugacen zacetni zaslon (vesel konec)
 	setNivo(0);
+	trenutne_tocke = 0;
+	skupne_tocke = 0;
+	zivljenja = 3;
 
 	// glede na to da smo igro koncali se podatki resetirajo, da ob izhodu drug igralec lahko upise svoje ime
 	ofstream quicksave;
