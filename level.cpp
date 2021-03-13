@@ -20,6 +20,14 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 	odzadje.display(okno.ren);
 	delete[] path;
 
+	// v petem nivoju pripravimo nasprotnikovo zivljenje
+	Image boss_hp_out, boss_hp_in;
+	if (trenutniNivo == 5) {
+		boss_hp_in.init(*this, "common/img/red.png", 140, 10, 1000, 20);
+		boss_red_hp = &boss_hp_in;
+		boss_hp_out.init(*this, "common/img/hp.png", 140, 10, 1000, 20);
+	}
+
 	// povemo katero pisavo bomo uporabljani za ispis tjulnov na farmi in polju, velikost pisave (ki je odvisna od velikosti okna), dolzino izpisa in crno barvo
 	Text pisava_tjulniNaFarmi(okno.ren, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", okno.scaleCal(24), "farma: 0", { 0, 0, 0, 255 });
 	Text pisava_tjulniNaPolju(okno.ren, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", okno.scaleCal(24), "polje: 0", { 0, 0, 0, 255 });
@@ -53,29 +61,24 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 		// obdelamo obnasanje vseh nasprotnikov (torej trki z nami in tjulni..)
 		obnasanjeNaPolju();
 
-		//* testiram.. dokler ni petni nivo dokoncan moramo glavnega nasprotnika ubiti z presledkom
-		if (keys[SDL_SCANCODE_SPACE] && trenutniNivo == 5) {
-			if (stTjuln[nivo] > 0)
-				--stTjuln[nivo];
-			if (stNaspr[nivo] > 0) {
-				--stNaspr[nivo];
-				if (!enemy.empty()) {
-					for (unsigned int i = 0; i < enemy.size(); ++i) {
-						delete enemy.at(i);
-					}
-					enemy.clear();
-					enemy.shrink_to_fit();
-				}
+		if (trenutniNivo == 5) {
+			// glavni nasprotnik ima dodatne sposobnosti
+			boss();
+			if (boss_hp > 0) {
+				boss_hp_in.display(okno.ren);
+				boss_hp_out.display(okno.ren); // v petem nivoju ispisujemo nasprotnikovo zivljenje
 			}
 		}
-		//*/
+
 		// dolocimo izpisi tjulnov na farmi in na polju
 		pisava_tjulniNaFarmi.update(okno.ren, farma + to_string(stTjulnFarma), { 0, 0, 0, 255 });
-		pisava_tjulniNaPolju.update(okno.ren, polje + to_string(stTjuln[trenutniNivo - 1]), { 0, 0, 0, 255 });
+		if (trenutniNivo - 1 < 5) {
+			pisava_tjulniNaPolju.update(okno.ren, polje + to_string(stTjuln[trenutniNivo - 1]), { 0, 0, 0, 255 });
+		}
 		// prikazemo tekst na zaslonu
 		pisava_tjulniNaFarmi.display(okno.scaleCal(56), okno.scaleCal(680), okno.ren);
 		pisava_tjulniNaPolju.display(okno.scaleCal(56), okno.scaleCal(700), okno.ren);
-
+		
 		updateMap(); // slike izrisemo na zaslon, omenimo osvezevanje zaslona
 	}
 	cleanupVectors(); // ko gremo iz nivoja izbrisemo dinamicni pomnilnik

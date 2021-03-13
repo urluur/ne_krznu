@@ -69,6 +69,7 @@ public:
 	void pause();
 	void popravi();
 	void updateSrcki();
+	void boss();
 private:
 	class Image* jaz, *srcki;
 	vector <class komoucar*> enemy;
@@ -88,4 +89,6 @@ private:
 		{160, 1270, 230, 160, 150},
 		{20, 520, 5, 5, 600} };
 	short stevecNoge = 0;
+	short boss_hp;
+	class Image* boss_red_hp;
 };

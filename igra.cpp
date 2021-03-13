@@ -11,6 +11,7 @@ void GameManager::pripraviVse() { // funkcija se klice na zacetku usakega od pet
 	stTjulnFarma = 0; trenutne_tocke = 0;
 	jaz = new Image;
 	srcki = new Image; // bojim se da je tuki memory leak
+	boss_hp = 100;
 	
 	// pozicija na na kateri se igralec pokaze
 	const short spawnPos[2][5] = {
@@ -80,6 +81,7 @@ GameManager::GameManager() { // konstruktor je klican le enkrat, zgolj ko se pro
 	stTjulnFarma = 0;
 	//joystick = nullptr; //(testiram)
 	jaz = nullptr;
+	boss_red_hp = nullptr;
 	srcki = nullptr;
 	stamina_wheel = new Image;
 	konecLevela = false;
@@ -97,6 +99,7 @@ GameManager::GameManager() { // konstruktor je klican le enkrat, zgolj ko se pro
 	zivljenja = 3;
 	skupne_tocke = 0;
 	trenutne_tocke = 0;
+	boss_hp = 100;
 	SDL_PollEvent(&event);
 }
 
@@ -220,6 +223,7 @@ void GameManager::cleanupVectors() { // se klice, ko hocemo izbrisati dinamicni 
 }
 
 void GameManager::cleanup() { // se klice ko zelimo popolnoma zapreti igro
+	boss_red_hp = nullptr;
 	if (stamina_wheel != nullptr) {
 		delete stamina_wheel; // sliko igralcene uzdrzljivosti brisemo le enkrat, saj jo dinamicno dolocimo le enkrat
 		stamina_wheel = nullptr;
