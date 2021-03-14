@@ -46,4 +46,5 @@ public:
 	void initImg(class GameManager&, const char*);
 	void display(class GameManager&);
 	void updateImg(GameManager&);
+	void initAt(class GameManager&, const char*, short, short);
 };

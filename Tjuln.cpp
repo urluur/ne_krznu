@@ -24,3 +24,10 @@ void Tjuln::initImg(GameManager& igra, const char* path) { // inicializiramo sli
 void Tjuln::updateImg(GameManager& igra) { // sliko posodobimo in narisemo na novih koordinatih
 	img->init(igra, "common/img/tjuln.png", x, y, w, h);
 }
+void Tjuln::initAt(GameManager& igra, const char* path,
+	short iks, short ipsilon) // se klice da nastavimo sliko in zaceno pozicijo naprotnika
+{
+	x = iks;
+	y = ipsilon;
+	img->init(igra, path, x, y, w, h);
+}

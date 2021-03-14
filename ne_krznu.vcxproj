@@ -153,7 +153,7 @@
     <ClCompile Include="boss.cpp" />
     <ClCompile Include="farma.cpp" />
     <ClCompile Include="igra.cpp" />
-    <ClCompile Include="Igralec.cpp" />
+    <ClCompile Include="igralec.cpp" />
     <ClCompile Include="komoucar.cpp" />
     <ClCompile Include="slika.cpp" />
     <ClCompile Include="level.cpp" />
@@ -171,7 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="igra.h" />
-    <ClInclude Include="Igralec.h" />
+    <ClInclude Include="igralec.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="slika.h" />
     <ClInclude Include="resource.h" />

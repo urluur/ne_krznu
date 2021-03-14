@@ -70,17 +70,19 @@ void GameManager::trkiOkolje() { // se klice ko se premikamo
 
 // preveri ali se igralec dotika tjulnov
 void GameManager::trkiMiTjulni() {
-	for (unsigned int i = 0; i < tjulni.size(); ++i) {
-		if (isPlayerCollidingAt(tjulni.at(i)->getX(), tjulni.at(i)->getY(), tjulni.at(i)->getW(), tjulni.at(i)->getH())) {
-			printf("Hvala lepa, resil si me!!!\n");
-			sound.predvajaj("common/sounds/yay.wav");
-			delete tjulni.at(i);
-			tjulni.erase(tjulni.begin() + i);
-			--stTjuln[trenutniNivo - 1];
-			popravi(); // popravi problem pri dolocanju parov kdo koga nosi
-			++trenutne_tocke;
-			printf("Trenutno stevilo tock: %d\n", skupne_tocke + trenutne_tocke);
-			break;
+	if (trenutniNivo < 5) {
+		for (unsigned int i = 0; i < tjulni.size(); ++i) {
+			if (isPlayerCollidingAt(tjulni.at(i)->getX(), tjulni.at(i)->getY(), tjulni.at(i)->getW(), tjulni.at(i)->getH())) {
+				printf("Hvala lepa, resil si me!!!\n");
+				sound.predvajaj("common/sounds/yay.wav");
+				delete tjulni.at(i);
+				tjulni.erase(tjulni.begin() + i);
+				--stTjuln[trenutniNivo - 1];
+				popravi(); // popravi problem pri dolocanju parov kdo koga nosi
+				++trenutne_tocke;
+				printf("Trenutno stevilo tock: %d\n", skupne_tocke + trenutne_tocke);
+				break;
+			}
 		}
 	}
 }

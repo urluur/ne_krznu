@@ -18,7 +18,7 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Igralec.cpp">
+    <ClCompile Include="igralec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="overworld.cpp">
@@ -95,7 +95,7 @@
     <ClInclude Include="ZivoBitje.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Igralec.h">
+    <ClInclude Include="igralec.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -22,6 +22,10 @@ void GameManager::boss() {
 	}
 	//*/
 
+	// naredi: previr skoz use tjulne ce so se premaknli od zacetne pozicije za neki alpa ce se jih dotika nasprotnik
+	for (unsigned int i = 0; i < tjulni.size(); ++i) {
+		tjulni.at(i)->display(*this);
+	}
 }
 
 
@@ -31,6 +35,11 @@ void GameManager::kepaOrReflect() {
 
 void GameManager::vrziTjulna() {
 	printf("vrzi tjulna");
+	if (stTjuln[trenutniNivo - 1] == 0) {
+		tjulni.push_back(new Tjuln);
+		tjulni.at(0)->initAt(*this, "common/img/tjuln.png", igralec.getX(), igralec.getY());
+		++stTjuln[trenutniNivo - 1];
+	}
 }
 
 void GameManager::udari() {
@@ -53,7 +62,7 @@ void GameManager::udari() {
 
 void GameManager::predvajiBOOM() {
 	static short stevec = 1;
-	if (boss_hp <= 1) {
+	if (boss_hp <= 0) {
 		sound.predvajaj("common/sounds/5paw_oh.wav");
 	}
 	else {
