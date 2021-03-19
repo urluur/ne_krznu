@@ -28,7 +28,6 @@ void GameManager::boss() {
 	}
 }
 
-
 void GameManager::kepaOrReflect() {
 	printf("kepa or reflect");
 }
@@ -49,7 +48,7 @@ void GameManager::udari() {
 			if (stamina >= 99) {
 				stamina = 0;
 				if (boss_hp > 0) {
-					boss_hp-=10;
+					boss_hp -= 10;
 					boss_red_hp->init(*this, "common/img/red.png", 140, 10, boss_hp * 10, 20);
 				}
 				printf("BUM!");

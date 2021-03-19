@@ -27,7 +27,7 @@ int main(int argv, char** args) {
 	igra.branjeShranjenega();
 
 	SDL_PollEvent(&igra.event); // osvezivo stanje pritinjenih tipk
-	
+
 	// kazalec nastavimo na prvo mesto
 	Image cursor;
 	short cur_pos = 1;

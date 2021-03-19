@@ -63,6 +63,20 @@ void Image::ini(class GameManager& igra, const char* filePath) {
 	init(igra, filePath, 0, 0, w, h);
 }
 
+void Image::flip() {
+	if (!flipped) {
+		flipped = !flipped;
+		cout << "sm flipou na " << flipped << endl;
+	}
+}
+
+void Image::unFlip() {
+	if (flipped) {
+		flipped = !flipped;
+		cout << "sm flipou na " << flipped << endl;
+	}
+}
+
 Image::~Image() {
 	SDL_FreeSurface(image_surface);
 	SDL_DestroyTexture(image_texture);

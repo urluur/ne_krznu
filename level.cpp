@@ -78,7 +78,7 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 		// prikazemo tekst na zaslonu
 		pisava_tjulniNaFarmi.display(okno.scaleCal(56), okno.scaleCal(680), okno.ren);
 		pisava_tjulniNaPolju.display(okno.scaleCal(56), okno.scaleCal(700), okno.ren);
-		
+
 		updateMap(); // slike izrisemo na zaslon, omenimo osvezevanje zaslona
 	}
 	cleanupVectors(); // ko gremo iz nivoja izbrisemo dinamicni pomnilnik
@@ -99,7 +99,7 @@ void GameManager::obnasanjeNaPolju() {
 		}
 		else { // nasprotnik je na poti do svoje destinacije
 			// nasprotnik previri, ce je v radiju okoli njega igralec
-			if (isPlayerCollidingAt(enemy.at(i)->getX() - 100, enemy.at(i)->getY() - 100, enemy.at(i)->getW() + 200, enemy.at(i)->getH() + 200)) {
+			if (isPlayerCollidingAt(enemy.at(i)->getX() - 100, enemy.at(i)->getY() - 100, enemy.at(i)->getW() + 200, enemy.at(i)->getH() + 200) && trenutniNivo < 5) {
 				enemy.at(i)->setDest(igralec.getX(), igralec.getY()); // nasprotnikov cilj se spremeni na igralceve koordinate
 				if (enemy.at(i)->nosim != -1) {
 					if (enemy.at(i)->nosim <= (int)tjulni.size() && enemy.at(i)->nosim >= 0) {
@@ -112,24 +112,10 @@ void GameManager::obnasanjeNaPolju() {
 					enemy.at(i)->rage();
 				}
 				// ce se nasprotnik dotakne igralca
-				if (isPlayerCollidingAt(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH())) {
-					printf("smrt\n");
-					adios = true; // igrlec more ponoviti nivo od zacetka
-					sound.predvajaj("common/sounds/au.wav");
-					SDL_Delay(200);
-					--zivljenja;
-					if (!zivljenja) {
-						deleteSave();
-						if (Mix_PlayingMusic()) {
-							Mix_PauseMusic();
-						}
-						animacija(*this, -1);
-						cleanup();
-						exit(0);
-					}
-				}
+				preveriSmrt(i);
 			}
 			else { // nasprotnikova prioriteta je izgnati nezazelenega igralca iz njegovega teritorija, zato preveri tjulne okoli sebe, le ce ne vidi igralca
+				preveriSmrt(i);
 				for (unsigned int t = 0; t < tjulni.size(); ++t) { // preveri vse tjulne okoli sebe
 					// preverimo in nadaljujemo ce smo praznih rok in je tjuln na tleh, ali pa ce mi nosimo tocno tega tjulna
 					if ((tjulni.at(t)->nosilec == -1 && enemy.at(i)->nosim == -1) || tjulni.at(t)->nosilec == i) {
@@ -143,7 +129,7 @@ void GameManager::obnasanjeNaPolju() {
 							if (univerzalniTrk(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH(),
 								tjulni.at(t)->getX(), tjulni.at(t)->getY(), tjulni.at(t)->getW(), tjulni.at(t)->getH())
 								&& ((enemy.at(i)->nosim == -1 && tjulni.at(t)->nosilec == -1) // tjulen in nasprotnik morata biti oba prosta
-								|| (enemy.at(i)->nosim == t && tjulni.at(t)->nosilec == i))) // ali pa par (en se drzita drugega)
+									|| (enemy.at(i)->nosim == t && tjulni.at(t)->nosilec == i))) // ali pa par (en se drzita drugega)
 							{
 								// tjulna premaknemo na nasprotnikov hrbet
 								tjulni.at(t)->setX(enemy.at(i)->getX());
@@ -171,7 +157,6 @@ void GameManager::obnasanjeNaPolju() {
 									printf("Joj ne, zaprt sem v farmi!!!\n");
 									++stTjulnFarma;
 									if (!tjulni.empty()) {
-
 										sound.predvajaj("common/sounds/oh.wav");
 										//tjulna izbrisemo
 										delete tjulni.at(t);
@@ -190,8 +175,11 @@ void GameManager::obnasanjeNaPolju() {
 						//*/
 					}
 				}
+				if (isPlayerCollidingAt(enemy.at(i)->getX() - 100, enemy.at(i)->getY() - 100, enemy.at(i)->getW() + 200, enemy.at(i)->getH() + 200) && trenutniNivo == 5) {
+					enemy.at(i)->setDest(igralec.getX(), igralec.getY()); // nasprotnikov cilj se spremeni na igralceve koordinate
+				}
 			}
-			
+
 			// osvezivo nasorotnikove koordinate slike
 			if (trenutniNivo < 5) {
 				enemy.at(i)->updateImg(*this, "common/img/nasprotnik.png");
@@ -210,7 +198,6 @@ void GameManager::obnasanjeNaPolju() {
 		else { // aktivist je na poti do svoje destinacije
 			for (unsigned int t = 0; t < tjulni.size(); ++t) { // aktivist preveri vse tjulne okoli sebe
 				if ((tjulni.at(t)->nosilec == -1 && (aktivisti.at(a)->nosim == -1) || aktivisti.at(a)->nosim == t)) {
-
 					prost_tjulen = true;
 					for (unsigned int n = 0; n < aktivisti.size(); ++n) {
 						if (n == a) { // pregledamo vse aktiviste razen sebe
@@ -262,4 +249,23 @@ void GameManager::obnasanjeNaPolju() {
 		aktivisti.at(a)->updateImg(*this, "common/img/aktivist.png");
 	}
 	//*/
+}
+
+void GameManager::preveriSmrt(short i) {
+	if (isPlayerCollidingAt(enemy.at(i)->getX(), enemy.at(i)->getY(), enemy.at(i)->getW(), enemy.at(i)->getH())) {
+		printf("smrt\n");
+		adios = true; // igrlec more ponoviti nivo od zacetka
+		sound.predvajaj("common/sounds/au.wav");
+		SDL_Delay(200);
+		--zivljenja;
+		if (!zivljenja) {
+			deleteSave();
+			if (Mix_PlayingMusic()) {
+				Mix_PauseMusic();
+			}
+			animacija(*this, -1);
+			cleanup();
+			exit(0);
+		}
+	}
 }

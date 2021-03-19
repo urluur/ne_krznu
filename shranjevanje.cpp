@@ -54,7 +54,6 @@ void GameManager::branjeShranjenega() { // se ob zagonu programa
 		igralec.coutName();
 		printf("\n");
 	}
-
 }
 // se klice, ko beremo v dve doloceni spremenljivki in ne v glavni
 void GameManager::branjeShranjenega(string& mainString, short& mainShort) {

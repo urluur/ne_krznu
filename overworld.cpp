@@ -52,7 +52,7 @@ void overworld(GameManager& igra) { // klice se iz glavnega menija -> zacni
 	while (stay) {
 		SDL_PollEvent(&igra.event); // osvezimo stanje pritisnjenih gumbov
 		SDL_RenderClear(igra.okno.ren); // ponastavimo renderer
-		
+
 		// narisemo slike
 		img_overworld.ini(igra, "common/img/overworld.png");
 		img_overworld.display(igra.okno.ren);
@@ -153,7 +153,7 @@ void overworld(GameManager& igra) { // klice se iz glavnega menija -> zacni
 		}
 	}
 	SDL_RenderClear(igra.okno.ren);
-	if(igra.isCompleted()){
+	if (igra.isCompleted()) {
 		// naredi: prikazovanje lestvice najboljsih
 		// naredi: sound effect odvisno od tega kolk si dobr
 	}
@@ -161,7 +161,7 @@ void overworld(GameManager& igra) { // klice se iz glavnega menija -> zacni
 
 void animacija(GameManager& igra, int stAnim) { // se klice iz overworld-a, ko zelimo prikazati sliko in zvok iz zgodbe
 	SDL_RenderClear(igra.okno.ren); // resetiramo renderer
-	
+
 	// nastavimo odzadje
 	Image odzadje;
 	string pathFragment = "common/img/animacija";
@@ -219,13 +219,13 @@ void premakniNaXY(GameManager& igra, short& mov_x, short& mov_y, short to_x, sho
 	while (true) {
 		igra.okno.stejFrame();
 		igra.preveriEsc(nivo); // vsakic ko osvezimo sliko preverimo ali je pritisnjen esc, ki shrani igro
-		
+
 		// igralec se premakne proti svojemu cilju
 		if (mov_x != to_x) {
-			if (mov_x < to_x){
+			if (mov_x < to_x) {
 				++mov_x;
 			}
-			else{
+			else {
 				--mov_x;
 			}
 		}
@@ -261,7 +261,7 @@ void premakniNaXY(GameManager& igra, short& mov_x, short& mov_y, short to_x, sho
 		else {
 			img_player.init(igra, "common/img/player_noge.png", mov_x, mov_y, igra.igralec.getW(), igra.igralec.getH());
 		}
-		
+
 		// narise vse slike na zaslon
 		narisiFarmeAliDosezke(igra, nivo);
 		img_player.display(igra.okno.ren);
@@ -284,7 +284,7 @@ void narisiFarmeAliDosezke(GameManager& igra, short nivo) { // narise farme oz. 
 		}
 		else { // farma za nedokoncane nivoje
 			hisa[i].init(igra, "common/img/farma.png", x[i], y[i], 66, 61);
-		}	
+		}
 	}
 
 	// vse slike narisemo na zaslon

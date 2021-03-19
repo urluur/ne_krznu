@@ -9,7 +9,7 @@ void GameManager::racuniStamino() { // klice se ob premikanju igralca po polju
 			--stamina;
 			initNavadnaStamina();
 		}
-		
+
 		// utrudili smo se od teka
 		else if (stamina == 0 && staminadown) {
 			hitrost = 2;

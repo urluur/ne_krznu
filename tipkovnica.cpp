@@ -7,7 +7,7 @@ void GameManager::preveriEsc(short& nivo) {
 		while (keys[SDL_SCANCODE_ESCAPE]) { // dokler drzimo tipko ne gre naprej
 			SDL_PollEvent(&event);
 		}
-		
+
 		//shranimo napredek v datoteke
 		setNivo(nivo);
 		zasilnoShranjevanje();
@@ -51,10 +51,12 @@ void GameManager::handleEvents() { // funkcija je klicana v glavni zanki nivoja
 				w = true;
 			if (event.key.keysym.sym == SDLK_DOWN || event.key.keysym.sym == SDLK_s)
 				s = true;
-			if (event.key.keysym.sym == SDLK_LEFT || event.key.keysym.sym == SDLK_a)
+			if (event.key.keysym.sym == SDLK_LEFT || event.key.keysym.sym == SDLK_a) {
 				a = true;
-			if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_d)
+			}
+			if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_d) {
 				d = true;
+			}
 			if ((event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT) && (w || a || s || d))
 				staminadown = true;
 			if (keys[SDL_SCANCODE_PAUSE] || event.key.keysym.sym == SDLK_p)
@@ -79,10 +81,13 @@ void GameManager::handleEvents() { // funkcija je klicana v glavni zanki nivoja
 				w = false;
 			if (event.key.keysym.sym == SDLK_DOWN || event.key.keysym.sym == SDLK_s)
 				s = false;
-			if (event.key.keysym.sym == SDLK_LEFT || event.key.keysym.sym == SDLK_a)
+			if (event.key.keysym.sym == SDLK_LEFT || event.key.keysym.sym == SDLK_a) {
 				a = false;
-			if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_d)
+			}
+			if (event.key.keysym.sym == SDLK_RIGHT || event.key.keysym.sym == SDLK_d) {
 				d = false;
+			}
+
 			if ((event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT) || !(w || a || s || d))
 				staminadown = false;
 			break;
@@ -93,9 +98,19 @@ void GameManager::handleEvents() { // funkcija je klicana v glavni zanki nivoja
 	racuniStamino();
 
 	// premaknemo igralca za "hitrosz" pikslov v zeljeno smer
-	if (w) igralec.setY(igralec.getY() - hitrost);
-	if (a) igralec.setX(igralec.getX() - hitrost);
-	if (s) igralec.setY(igralec.getY() + hitrost);
-	if (d) igralec.setX(igralec.getX() + hitrost);
-	if (!(w || a || s || d)) igralec.sepremika(false); // igralcu se ne premikajo noge, ko se ne premika
+	if (w) {
+		igralec.setY(igralec.getY() - hitrost);
+	}
+	if (a) {
+		igralec.setX(igralec.getX() - hitrost);
+	}
+	if (s) {
+		igralec.setY(igralec.getY() + hitrost);
+	}
+	if (d) {
+		igralec.setX(igralec.getX() + hitrost);
+	}
+	if (!(w || a || s || d)) {
+		igralec.sepremika(false); // igralcu se ne premikajo noge, ko se ne premika
+	}
 }

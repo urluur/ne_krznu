@@ -12,14 +12,14 @@ void GameManager::pripraviVse() { // funkcija se klice na zacetku usakega od pet
 	jaz = new Image;
 	srcki = new Image; // bojim se da je tuki memory leak
 	boss_hp = 100;
-	
+
 	// pozicija na na kateri se igralec pokaze
 	const short spawnPos[2][5] = {
-	// 1.  2.   3.   4.   5. nivo
-	{200, 70,  30, 320, 150},   // x
-	{ 20,  5, 530, 650, 600} }; // y
+		// 1.  2.   3.   4.   5. nivo
+		{200, 70,  30, 320, 150},   // x
+		{ 20,  5, 530, 650, 600} }; // y
 
-	// igralca postavimo na zacetno mesto 
+		// igralca postavimo na zacetno mesto
 	igralec.setX(spawnPos[0][trenutniNivo - 1]);
 	igralec.setY(spawnPos[1][trenutniNivo - 1]);
 	jaz->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo - 1], spawnPos[1][trenutniNivo - 1], igralec.getW(), igralec.getH());
@@ -50,11 +50,11 @@ void GameManager::pripraviVse() { // funkcija se klice na zacetku usakega od pet
 		tjulni.push_back(new Tjuln);
 		tjulni.at(i)->initImg(*this, "common/img/tjuln.png");
 	}
-	
+
 	// ustvarimo toliko ativistov, kolikor jih v nivoju potrebujemo
 	for (int i = 0; i < stAktiv[trenutniNivo - 1]; ++i) {
 		aktivisti.push_back(new komoucar);
-		aktivisti.at(i)->initImg(*this, "common/img/aktivist.png", spawnPos[0][trenutniNivo - 1]-i*10, spawnPos[1][trenutniNivo - 1]-i*10);
+		aktivisti.at(i)->initImg(*this, "common/img/aktivist.png", spawnPos[0][trenutniNivo - 1] - i * 10, spawnPos[1][trenutniNivo - 1] - i * 10);
 		aktivisti.at(i)->zrcuniRandomDestinacijo();
 	}
 }
@@ -69,6 +69,12 @@ void GameManager::updateMap() { // funkcija se klice na koncu zanke nivoja
 	}
 	for (unsigned int i = 0; i < tjulni.size(); ++i) {
 		tjulni.at(i)->display(*this);
+	}
+	if (a) {
+		jaz->flip();
+	}
+	else {
+		jaz->unFlip();
 	}
 	jaz->display(okno.ren);
 	srcki->display(okno.ren);
@@ -105,7 +111,7 @@ GameManager::GameManager() { // konstruktor je klican le enkrat, zgolj ko se pro
 
 int GameManager::init() { // funkcija se klice le enkrat, ko se zazene SDL okno
 	 // SDL inicializacija
-	 if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		cerr << "SDL Init, Error: " << SDL_GetError() << endl;
 		return EXIT_FAILURE;
 	}
@@ -152,7 +158,7 @@ int GameManager::init() { // funkcija se klice le enkrat, ko se zazene SDL okno
 		joystick = SDL_JoystickOpen(0);
 	}
 	*/
-	
+
 	srand((unsigned int)time(NULL)); // poskrbi da generiramo nakljucna stevila
 	return EXIT_SUCCESS;
 }
