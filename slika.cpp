@@ -66,14 +66,12 @@ void Image::ini(class GameManager& igra, const char* filePath) {
 void Image::flip() {
 	if (!flipped) {
 		flipped = !flipped;
-		cout << "sm flipou na " << flipped << endl;
 	}
 }
 
 void Image::unFlip() {
 	if (flipped) {
 		flipped = !flipped;
-		cout << "sm flipou na " << flipped << endl;
 	}
 }
 

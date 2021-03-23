@@ -75,6 +75,7 @@ public:
 	void udari();
 	void predvajiBOOM();
 	void brisiBossa();
+	void preveriSmrt(short i);
 private:
 	class Image* jaz, *srcki;
 	vector <class komoucar*> enemy;

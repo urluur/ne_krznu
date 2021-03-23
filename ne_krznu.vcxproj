@@ -154,6 +154,7 @@
     <ClCompile Include="farma.cpp" />
     <ClCompile Include="igra.cpp" />
     <ClCompile Include="igralec.cpp" />
+    <ClCompile Include="kepa.cpp" />
     <ClCompile Include="komoucar.cpp" />
     <ClCompile Include="slika.cpp" />
     <ClCompile Include="level.cpp" />

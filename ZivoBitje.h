@@ -48,3 +48,10 @@ public:
 	void updateImg(GameManager&);
 	void initAt(class GameManager&, const char*, short, short);
 };
+
+class Kepa : public Tjuln {
+public:
+	short to_go, done;
+	Kepa();
+	~Kepa();
+};
