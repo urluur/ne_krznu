@@ -11,6 +11,10 @@ int main(int argv, char** args) {
 	// ustvarimo objekt igra, vecina potrebnega je ze pripravljenega
 	GameManager igra;
 
+	//*
+	igra.sound.toggle();
+	//*/
+
 	// ce je igralec nov bo vpisal svoje ime
 	if (aliSmoNovIgralec(igra)) {
 		igra.igralec.setName();

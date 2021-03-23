@@ -14,7 +14,7 @@ void GameManager::pripraviVse() { // funkcija se klice na zacetku usakega od pet
 	boss_hp = 100;
 
 	// pozicija na na kateri se igralec pokaze
-	const short spawnPos[2][5] = {
+	short spawnPos[2][5] = {
 		// 1.  2.   3.   4.   5. nivo
 		{200, 70,  30, 320, 150},   // x
 		{ 20,  5, 530, 650, 600} }; // y
