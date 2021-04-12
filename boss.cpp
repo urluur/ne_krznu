@@ -23,13 +23,17 @@ void GameManager::boss() {
 	//*/
 
 	// naredi: previr skoz use tjulne ce so se premaknli od zacetne pozicije za neki alpa ce se jih dotika nasprotnik
-	for (unsigned int i = 0; i < tjulni.size(); ++i) {
-		tjulni.at(i)->display(*this);
+	for (unsigned int i = 0; i < kepe.size(); ++i) {
+		if (!kepe.at(i)->move()) {
+			kepe.erase(kepe.begin()+i);
+		}
 	}
 }
 
 void GameManager::kepaOrReflect() {
-	printf("kepa or reflect");
+	if (kepe.size() < 3) {
+		kepe.push_back(new Kepa(*this));
+	}
 }
 
 void GameManager::vrziTjulna() {
@@ -51,7 +55,7 @@ void GameManager::udari() {
 					boss_hp -= 10;
 					boss_red_hp->init(*this, "common/img/red.png", 140, 10, boss_hp * 10, 20);
 				}
-				printf("BUM!");
+				printf("BUM!¸\ns");
 				predvajiBOOM();
 				brisiBossa();
 			}

@@ -11,7 +11,7 @@ int main(int argv, char** args) {
 	// ustvarimo objekt igra, vecina potrebnega je ze pripravljenega
 	GameManager igra;
 
-	//*
+	/*
 	igra.sound.toggle();
 	//*/
 

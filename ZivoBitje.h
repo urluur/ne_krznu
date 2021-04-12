@@ -16,6 +16,8 @@ public:
 	short getY() { return y; }
 	short getW() { return w; }
 	short getH() { return h; }
+	// ManhattanDistance vrne razdaljo med dvema koordinatama
+	inline short ManhattanDistance(short x1, short y1, short x2, short y2) { return short(abs(x1 - x2) + abs(y1 - y2)); }
 };
 
 class komoucar: public ZivoBitje {
@@ -34,8 +36,6 @@ public:
 	void zrcuniRandomDestinacijo();
 	void setDest(short, short);
 	bool sprehodNaRandomDestinacijo();
-	// ManhattanDistance vrne razdaljo med dvema koordinatama
-	inline short ManhattanDistance(short x1, short y1, short x2, short y2) { return short(abs(x1 - x2) + abs(y1 - y2)); }
 };
 
 class Tjuln: public ZivoBitje {
@@ -50,8 +50,14 @@ public:
 };
 
 class Kepa : public Tjuln {
-public:
+private:
 	short to_go, done;
-	Kepa();
+	GameManager* igra;
+	bool ww, a, s, d;
+	short hitrost;
+public:
+	Kepa(GameManager &);
 	~Kepa();
+	void startMoving();
+	bool move();
 };

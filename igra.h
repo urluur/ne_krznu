@@ -76,11 +76,13 @@ public:
 	void predvajiBOOM();
 	void brisiBossa();
 	void preveriSmrt(short i);
+	friend class Kepa;
 private:
 	class Image* jaz, *srcki;
 	vector <class komoucar*> enemy;
 	vector <class komoucar*> aktivisti;
 	vector <class Tjuln*> tjulni;
+	vector <class Kepa*> kepe;
 	class Image* stamina_wheel;
 	bool konecLevela, semNaIzhodniLokaciji, staminadown, fillingStamina;
 	bool rageMode = false; //rageMode je v alfa testingu (spremeni na true za ZELO tezko igro)

@@ -10,7 +10,7 @@ void GameManager::pripraviVse() { // funkcija se klice na zacetku usakega od pet
 	w = false; a = false; s = false; d = false;
 	stTjulnFarma = 0; trenutne_tocke = 0;
 	jaz = new Image;
-	srcki = new Image; // bojim se da je tuki memory leak
+	srcki = new Image;
 	boss_hp = 100;
 
 	// pozicija na na kateri se igralec pokaze
@@ -69,6 +69,9 @@ void GameManager::updateMap() { // funkcija se klice na koncu zanke nivoja
 	}
 	for (unsigned int i = 0; i < tjulni.size(); ++i) {
 		tjulni.at(i)->display(*this);
+	}
+	for (unsigned int i = 0; i < kepe.size(); ++i) {
+		kepe.at(i)->display(*this);
 	}
 	if (a) {
 		jaz->flip();
@@ -229,6 +232,14 @@ void GameManager::cleanupVectors() { // se klice, ko hocemo izbrisati dinamicni 
 		aktivisti.clear();  // izbrisemo vse kazalce na izbrisane aktiviste
 	}
 	aktivisti.shrink_to_fit(); // vektorjevo kapaciteto zmanjsamo, ce je mogoce
+	if (!kepe.empty()) {
+		for (unsigned int i = 0; i < kepe.size(); ++i) {
+			delete kepe.at(i); // izbrisemo vse aktiviste
+		}
+		kepe.clear();  // izbrisemo vse kazalce na izbrisane aktiviste
+	}
+	kepe.shrink_to_fit(); // vektorjevo kapaciteto zmanjsamo, ce je mogoce
+
 }
 
 void GameManager::cleanup() { // se klice ko zelimo popolnoma zapreti igro
