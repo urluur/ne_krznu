@@ -1,33 +1,30 @@
 #include "igra.h"
 
 void GameManager::boss() {
-	/* testiram.. dokler ni petni nivo dokoncan moramo glavnega nasprotnika ubiti z presledkom
-	if (keys[SDL_SCANCODE_SPACE]) {
-		if (boss_hp > 0) {
-			--boss_hp;
-			boss_red_hp->init(*this, "common/img/red.png", 140, 10, boss_hp * 10, 20);
-		}
-		else {
-			if (stNaspr[trenutniNivo - 1] > 0) {
-				--stNaspr[trenutniNivo - 1];
-			}
-			if (!enemy.empty()) {
-				for (unsigned int i = 0; i < enemy.size(); ++i) {
-					delete enemy.at(i);
+	for (unsigned int i = 0; i < kepe.size(); ++i) {
+		// preverimo ce smo zadeli nasprotnika
+		if (!enemy.empty()) {
+			if (univerzalniTrk(enemy.at(0)->getX(), enemy.at(0)->getY(), enemy.at(0)->getW(), enemy.at(0)->getH(),
+					kepe.at(i)->getX(), kepe.at(i)->getY(), kepe.at(i)->getW(), kepe.at(i)->getH())) {
+				delete kepe.at(i);
+				kepe.erase(kepe.begin() + i);
+				if (boss_hp > 0) {
+					boss_hp -= 3;
+					boss_red_hp->init(*this, "common/img/red.png", 140, 10, boss_hp * 10, 20);
 				}
-				enemy.clear();
+				predvajiBOOM();
+				brisiBossa();
 			}
-			enemy.shrink_to_fit();
 		}
 	}
-	//*/
-
-	// naredi: previr skoz use tjulne ce so se premaknli od zacetne pozicije za neki alpa ce se jih dotika nasprotnik
 	for (unsigned int i = 0; i < kepe.size(); ++i) {
+		// premaknemo kepo, ce je sla dovolj dalec jo zbrisemo
 		if (!kepe.at(i)->move()) {
 			kepe.erase(kepe.begin()+i);
 		}
 	}
+	
+	// naredi: previr skoz use tjulne ce so se premaknli od zacetne pozicije za neki alpa ce se jih dotika nasprotnik
 }
 
 void GameManager::kepaOrReflect() {
@@ -55,7 +52,6 @@ void GameManager::udari() {
 					boss_hp -= 10;
 					boss_red_hp->init(*this, "common/img/red.png", 140, 10, boss_hp * 10, 20);
 				}
-				printf("BUM!¸\ns");
 				predvajiBOOM();
 				brisiBossa();
 			}
@@ -91,7 +87,7 @@ void GameManager::predvajiBOOM() {
 }
 
 void GameManager::brisiBossa() {
-	if (boss_hp <= 1) {
+	if (boss_hp < 1) {
 		if (stNaspr[trenutniNivo - 1] > 0) {
 			--stNaspr[trenutniNivo - 1];
 		}

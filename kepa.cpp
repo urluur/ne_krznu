@@ -5,7 +5,7 @@ Kepa::Kepa(GameManager &pointerNaIgro) {
 	w = 30; h = 30;
 	to_go = 100;
 	done = 0;
-	hitrost = 5;
+	hitrost = 3;
 	nosilec = -1;
 	igra = &pointerNaIgro;
 	ww = igra->w; a = igra->a; s = igra->s; d = igra->d;

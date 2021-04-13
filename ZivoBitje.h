@@ -10,6 +10,7 @@ protected:
 	short x, y, w, h;
 	class Image* img = nullptr;
 public:
+	friend class GameManager; // to odpravi nepotrebne funkcije getX, getY, a ni se popravljeno v programu
 	void setX(short notr) { x = (notr < (1280 - getW()) && notr > 0) ? notr : x; }
 	void setY(short notr) { y = (notr < (720 - getH()) && notr > 0) ? notr : y; }
 	short getX() { return x; }

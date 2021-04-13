@@ -62,12 +62,12 @@ void GameManager::handleEvents() { // funkcija je klicana v glavni zanki nivoja
 			if (keys[SDL_SCANCODE_PAUSE] || event.key.keysym.sym == SDLK_p)
 				pause();
 			if (trenutniNivo == 5) {
-				if (event.key.keysym.sym == SDLK_e)
-					kepaOrReflect();
-				if (event.key.keysym.sym == SDLK_f)
-					vrziTjulna();
-				if (event.key.keysym.sym == SDLK_q)
+				if (event.key.keysym.sym == SDLK_q || event.key.keysym.sym == SDLK_COMMA)
 					udari();
+				if (event.key.keysym.sym == SDLK_e || event.key.keysym.sym == SDLK_PERIOD)
+					kepaOrReflect();
+				if (event.key.keysym.sym == SDLK_f || event.key.keysym.sym == SDLK_MINUS)
+					vrziTjulna();
 			}
 			//* za testiranje nivojev lahko nivo preskocis s tipko "end"
 			if (event.key.keysym.sym == SDLK_END)
