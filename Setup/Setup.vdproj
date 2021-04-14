@@ -93,6 +93,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1DEAB93410E040D798725B4AF557F261"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_25209997B83A4564BBFC423725527810"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -106,6 +112,12 @@
         "Entry"
         {
         "MsmKey" = "8:_269F99FA9ED947C0837252CCDF62A169"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_26B2C6BD93AE46E6AA9DD8896E9BCF8A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -280,6 +292,12 @@
         "Entry"
         {
         "MsmKey" = "8:_76A2163DB17B4F9988612F603953500E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_76F7909C07EF4A3495431D1E09D6846D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1030,6 +1048,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1DEAB93410E040D798725B4AF557F261"
+            {
+            "SourcePath" = "8:..\\common\\img\\kepa.png"
+            "TargetName" = "8:kepa.png"
+            "Tag" = "8:"
+            "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_25209997B83A4564BBFC423725527810"
             {
             "SourcePath" = "8:..\\common\\sounds\\3bap.wav"
@@ -1076,6 +1114,26 @@
             "TargetName" = "8:libfreetype-6.dll"
             "Tag" = "8:"
             "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_26B2C6BD93AE46E6AA9DD8896E9BCF8A"
+            {
+            "SourcePath" = "8:..\\common\\img\\red.png"
+            "TargetName" = "8:red.png"
+            "Tag" = "8:"
+            "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1656,6 +1714,26 @@
             "TargetName" = "8:nasvidenje.wav"
             "Tag" = "8:"
             "Folder" = "8:_DC736CFDD06F4EB4810B362FE050F5A7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_76F7909C07EF4A3495431D1E09D6846D"
+            {
+            "SourcePath" = "8:..\\common\\img\\hp.png"
+            "TargetName" = "8:hp.png"
+            "Tag" = "8:"
+            "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"

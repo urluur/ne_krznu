@@ -6,20 +6,24 @@ void GameManager::boss() {
 		if (!enemy.empty()) {
 			if (univerzalniTrk(enemy.at(0)->getX(), enemy.at(0)->getY(), enemy.at(0)->getW(), enemy.at(0)->getH(),
 					kepe.at(i)->getX(), kepe.at(i)->getY(), kepe.at(i)->getW(), kepe.at(i)->getH())) {
-				delete kepe.at(i);
-				kepe.erase(kepe.begin() + i);
-				if (boss_hp > 0) {
-					boss_hp -= 3;
-					boss_red_hp->init(*this, "common/img/red.png", 140, 10, boss_hp * 10, 20);
+				if (!kepe.at(i)->ignore_me) {
+					kepe.at(i)->ignore_me = true;
+					// nocemo, da od blizu zelo hitro mecemo kepe, a vseeno ni pravicno da so na zaslonu veliko casa
+					kepe.at(i)->to_go /= 2;
+					if (boss_hp > 0) {
+						boss_hp -= 3;
+						boss_red_hp->init(*this, "common/img/red.png", 140, 10, boss_hp * 10, 20);
+					}
+					predvajiBOOM();
+					brisiBossa();
 				}
-				predvajiBOOM();
-				brisiBossa();
 			}
 		}
 	}
 	for (unsigned int i = 0; i < kepe.size(); ++i) {
 		// premaknemo kepo, ce je sla dovolj dalec jo zbrisemo
 		if (!kepe.at(i)->move()) {
+			delete kepe.at(i);
 			kepe.erase(kepe.begin()+i);
 		}
 	}

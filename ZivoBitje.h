@@ -54,9 +54,10 @@ class Kepa : public Tjuln {
 private:
 	short to_go, done;
 	GameManager* igra;
-	bool ww, a, s, d;
+	bool ww, a, s, d, ignore_me;
 	short hitrost;
 public:
+	friend class GameManager;
 	Kepa(GameManager &);
 	~Kepa();
 	void startMoving();

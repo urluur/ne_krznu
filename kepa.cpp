@@ -1,14 +1,22 @@
 #include "ZivoBitje.h"
 
 Kepa::Kepa(GameManager &pointerNaIgro) {
-	x = 0; y = 0;
-	w = 30; h = 30;
+	x = 0;
+	y = 0;
+	w = 30;
+	h = 30;
+	
 	to_go = 100;
 	done = 0;
 	hitrost = 3;
 	nosilec = -1;
 	igra = &pointerNaIgro;
-	ww = igra->w; a = igra->a; s = igra->s; d = igra->d;
+	ignore_me = false;
+
+	ww = igra->w;
+	a = igra->a;
+	s = igra->s;
+	d = igra->d;
 	if (!(ww || a || s || d)) {
 		d = true; // s tem dolocimo smer premikanja kepe v desno, ce je igralec ne premika
 	}

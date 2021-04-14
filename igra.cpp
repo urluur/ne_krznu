@@ -234,9 +234,9 @@ void GameManager::cleanupVectors() { // se klice, ko hocemo izbrisati dinamicni 
 	aktivisti.shrink_to_fit(); // vektorjevo kapaciteto zmanjsamo, ce je mogoce
 	if (!kepe.empty()) {
 		for (unsigned int i = 0; i < kepe.size(); ++i) {
-			delete kepe.at(i); // izbrisemo vse aktiviste
+			delete kepe.at(i); // izbrisemo vse kepe
 		}
-		kepe.clear();  // izbrisemo vse kazalce na izbrisane aktiviste
+		kepe.clear();  // izbrisemo vse kazalce na izbrisane kepe
 	}
 	kepe.shrink_to_fit(); // vektorjevo kapaciteto zmanjsamo, ce je mogoce
 
