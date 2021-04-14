@@ -11,12 +11,14 @@ protected:
 	class Image* img = nullptr;
 public:
 	friend class GameManager; // to odpravi nepotrebne funkcije getX, getY, a ni se popravljeno v programu
-	void setX(short notr) { x = (notr < (1280 - getW()) && notr > 0) ? notr : x; }
-	void setY(short notr) { y = (notr < (720 - getH()) && notr > 0) ? notr : y; }
+	void setX(short notr) { x = (notr < (1280 - w) && notr > 0) ? notr : x; }
+	void setY(short notr) { y = (notr < (720 - h) && notr > 0) ? notr : y; }
+	/*
 	short getX() { return x; }
 	short getY() { return y; }
 	short getW() { return w; }
 	short getH() { return h; }
+	//*/
 	// ManhattanDistance vrne razdaljo med dvema koordinatama
 	inline short ManhattanDistance(short x1, short y1, short x2, short y2) { return short(abs(x1 - x2) + abs(y1 - y2)); }
 };
@@ -50,7 +52,7 @@ public:
 	void initAt(class GameManager&, const char*, short, short);
 };
 
-class Kepa : public Tjuln {
+class Kepa: public Tjuln {
 private:
 	short to_go, done;
 	GameManager* igra;
@@ -58,6 +60,7 @@ private:
 	short hitrost;
 public:
 	friend class GameManager;
+	friend class Igralec;
 	Kepa(GameManager &);
 	~Kepa();
 	void startMoving();

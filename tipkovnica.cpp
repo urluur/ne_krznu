@@ -99,16 +99,16 @@ void GameManager::handleEvents() { // funkcija je klicana v glavni zanki nivoja
 
 	// premaknemo igralca za "hitrosz" pikslov v zeljeno smer
 	if (w) {
-		igralec.setY(igralec.getY() - hitrost);
+		igralec.setY(igralec.y - hitrost);
 	}
 	if (a) {
-		igralec.setX(igralec.getX() - hitrost);
+		igralec.setX(igralec.x - hitrost);
 	}
 	if (s) {
-		igralec.setY(igralec.getY() + hitrost);
+		igralec.setY(igralec.y + hitrost);
 	}
 	if (d) {
-		igralec.setX(igralec.getX() + hitrost);
+		igralec.setX(igralec.x + hitrost);
 	}
 	if (!(w || a || s || d)) {
 		igralec.sepremika(false); // igralcu se ne premikajo noge, ko se ne premika

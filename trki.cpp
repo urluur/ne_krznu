@@ -7,7 +7,7 @@ bool GameManager::univerzalniTrk(short x1, short y1, short w1, short h1, short x
 
 // preveri ali se kvadrat prekriva z igralcem
 bool GameManager::isPlayerCollidingAt(short x, short y, short w, short h) {
-	return (igralec.getX() < x + w && igralec.getX() + igralec.getW() > x && igralec.getY() < y + h && igralec.getY() + igralec.getH() > y);
+	return (igralec.x < x + w && igralec.x + igralec.w > x && igralec.y < y + h && igralec.y + igralec.h > y);
 }
 
 void GameManager::trkiOkolje() { // se klice ko se premikamo
@@ -72,7 +72,7 @@ void GameManager::trkiOkolje() { // se klice ko se premikamo
 void GameManager::trkiMiTjulni() {
 	if (trenutniNivo < 5) {
 		for (unsigned int i = 0; i < tjulni.size(); ++i) {
-			if (isPlayerCollidingAt(tjulni.at(i)->getX(), tjulni.at(i)->getY(), tjulni.at(i)->getW(), tjulni.at(i)->getH())) {
+			if (isPlayerCollidingAt(tjulni.at(i)->x, tjulni.at(i)->y, tjulni.at(i)->w, tjulni.at(i)->h)) {
 				printf("Hvala lepa, resil si me!!!\n");
 				sound.predvajaj("common/sounds/yay.wav");
 				delete tjulni.at(i);

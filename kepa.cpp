@@ -34,8 +34,8 @@ Kepa::~Kepa() {
 }
 
 void Kepa::startMoving() {
-	x = igra->igralec.getX() + igra->igralec.getW();
-	y = igra->igralec.getY();
+	x = igra->igralec.x + igra->igralec.w;
+	y = igra->igralec.y;
 }
 
 bool Kepa::move() {

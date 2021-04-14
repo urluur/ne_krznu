@@ -4,8 +4,8 @@ void GameManager::boss() {
 	for (unsigned int i = 0; i < kepe.size(); ++i) {
 		// preverimo ce smo zadeli nasprotnika
 		if (!enemy.empty()) {
-			if (univerzalniTrk(enemy.at(0)->getX(), enemy.at(0)->getY(), enemy.at(0)->getW(), enemy.at(0)->getH(),
-					kepe.at(i)->getX(), kepe.at(i)->getY(), kepe.at(i)->getW(), kepe.at(i)->getH())) {
+			if (univerzalniTrk(enemy.at(0)->x, enemy.at(0)->y, enemy.at(0)->w, enemy.at(0)->h,
+					kepe.at(i)->x, kepe.at(i)->y, kepe.at(i)->w, kepe.at(i)->h)) {
 				if (!kepe.at(i)->ignore_me) {
 					kepe.at(i)->ignore_me = true;
 					// nocemo, da od blizu zelo hitro mecemo kepe, a vseeno ni pravicno da so na zaslonu veliko casa
@@ -41,7 +41,7 @@ void GameManager::vrziTjulna() {
 	printf("vrzi tjulna");
 	if (stTjuln[trenutniNivo - 1] == 0) {
 		tjulni.push_back(new Tjuln);
-		tjulni.at(0)->initAt(*this, "common/img/tjuln.png", igralec.getX(), igralec.getY());
+		tjulni.at(0)->initAt(*this, "common/img/tjuln.png", igralec.x, igralec.y);
 		++stTjuln[trenutniNivo - 1];
 	}
 }
@@ -49,7 +49,7 @@ void GameManager::vrziTjulna() {
 void GameManager::udari() {
 	// udarimo bossa
 	if (stNaspr[trenutniNivo - 1] > 0) {
-		if (isPlayerCollidingAt(enemy.at(0)->getX() - 50, enemy.at(0)->getY() - 50, enemy.at(0)->getW() + 100, enemy.at(0)->getH() + 100)) {
+		if (isPlayerCollidingAt(enemy.at(0)->x - 50, enemy.at(0)->y - 50, enemy.at(0)->w + 100, enemy.at(0)->h + 100)) {
 			if (stamina >= 99) {
 				stamina = 0;
 				if (boss_hp > 0) {

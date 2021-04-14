@@ -22,7 +22,7 @@ void GameManager::pripraviVse() { // funkcija se klice na zacetku usakega od pet
 		// igralca postavimo na zacetno mesto
 	igralec.setX(spawnPos[0][trenutniNivo - 1]);
 	igralec.setY(spawnPos[1][trenutniNivo - 1]);
-	jaz->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo - 1], spawnPos[1][trenutniNivo - 1], igralec.getW(), igralec.getH());
+	jaz->init(*this, "common/img/player.png", spawnPos[0][trenutniNivo - 1], spawnPos[1][trenutniNivo - 1], igralec.w, igralec.h);
 
 	// inicializiramo toliko srckov kolikor jih imamo
 	updateSrcki();

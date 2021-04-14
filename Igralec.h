@@ -10,6 +10,8 @@ private:
 	const short w = 29, h = 64;
 	bool sepremikam = false;
 public:
+	friend class GameManager;
+	friend class Kepa;
 	void setName();
 	string getName() { return ime; }
 	void setName(string);
@@ -18,8 +20,8 @@ public:
 	short getX() { return x; }
 	short getY() { return y; }
 	// setX in setY nastavita pozicijo igralca na zeljeno mesto, a le ce ta ni izven zaslona
-	void setX(short notr) { x = (notr < (1280 - getW()) && notr > 0) ? notr : x; }
-	void setY(short notr) { y = (notr < (720 - getH()) && notr > 0) ? notr : y; }
+	void setX(short notr) { x = (notr < (1280 - w) && notr > 0) ? notr : x; }
+	void setY(short notr) { y = (notr < (720 - h) && notr > 0) ? notr : y; }
 	short getW() { return w; }
 	short getH() { return h; }
 	void sepremika(bool resnica) { sepremikam = resnica; }
