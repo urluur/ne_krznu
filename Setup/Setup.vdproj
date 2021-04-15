@@ -99,6 +99,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1FBBC3FAF65C414DAA32C8EC8653292C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_25209997B83A4564BBFC423725527810"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -291,6 +297,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7405FB18FDE74FA0A91706702391F5BA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_76A2163DB17B4F9988612F603953500E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -454,6 +466,12 @@
         "Entry"
         {
         "MsmKey" = "8:_C5439599DDD94191AAB295317ED578BA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C69AA5AEC4B542FD8DBF536D3260FD56"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -670,6 +688,12 @@
         "Entry"
         {
         "MsmKey" = "8:_EE0249B3B8F048B28DD6FD998ED3AC40"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F0C04FEB47BE41148758072E76D91DD8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1054,6 +1078,26 @@
             "TargetName" = "8:kepa.png"
             "Tag" = "8:"
             "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1FBBC3FAF65C414DAA32C8EC8653292C"
+            {
+            "SourcePath" = "8:..\\common\\img\\srcki\\srcki2.png"
+            "TargetName" = "8:srcki2.png"
+            "Tag" = "8:"
+            "Folder" = "8:_C642E1AFD5184759B766B87B7CAC1BD1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1708,6 +1752,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7405FB18FDE74FA0A91706702391F5BA"
+            {
+            "SourcePath" = "8:..\\common\\img\\srcki\\srcki4.png"
+            "TargetName" = "8:srcki4.png"
+            "Tag" = "8:"
+            "Folder" = "8:_C642E1AFD5184759B766B87B7CAC1BD1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_76A2163DB17B4F9988612F603953500E"
             {
             "SourcePath" = "8:..\\common\\sounds\\nasvidenje.wav"
@@ -2254,6 +2318,26 @@
             "TargetName" = "8:up1.png"
             "Tag" = "8:"
             "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C69AA5AEC4B542FD8DBF536D3260FD56"
+            {
+            "SourcePath" = "8:..\\common\\img\\srcki\\srcki3.png"
+            "TargetName" = "8:srcki3.png"
+            "Tag" = "8:"
+            "Folder" = "8:_C642E1AFD5184759B766B87B7CAC1BD1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2988,6 +3072,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F0C04FEB47BE41148758072E76D91DD8"
+            {
+            "SourcePath" = "8:..\\common\\img\\srcki\\srcki1.png"
+            "TargetName" = "8:srcki1.png"
+            "Tag" = "8:"
+            "Folder" = "8:_C642E1AFD5184759B766B87B7CAC1BD1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F0C655DC4728490BA29B955C379BBFC3"
             {
             "SourcePath" = "8:..\\common\\sounds\\2bem.wav"
@@ -3244,6 +3348,17 @@
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
                                     "Property" = "8:_75DEE51ED8D04C3B89168845154E0730"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_C642E1AFD5184759B766B87B7CAC1BD1"
+                                    {
+                                    "Name" = "8:srcki"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_EE6B577C4D804228A44CF3A979EDA186"
                                         "Folders"
                                         {
                                         }

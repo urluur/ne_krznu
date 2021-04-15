@@ -93,7 +93,8 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 }
 
 void GameManager::obnasanjeNaPolju() {
-	for (unsigned int i = 0; i < enemy.size(); ++i) { // zanka se ponovi za vsakega nasprotnika posebej
+	// zanka se ponovi za vsakega nasprotnika posebej
+	for (unsigned int i = 0; i < enemy.size(); ++i) { 
 		if (enemy.at(i)->sprehodNaRandomDestinacijo()) { // ce je nasprotnik na svojem cilju, gre na drugo naklucno lokacijo
 			enemy.at(i)->zrcuniRandomDestinacijo();
 		}

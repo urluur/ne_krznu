@@ -32,13 +32,14 @@ void GameManager::boss() {
 }
 
 void GameManager::kepaOrReflect() {
+	// ustvarimo novo kepo
 	if (kepe.size() < 3) {
 		kepe.push_back(new Kepa(*this));
 	}
 }
 
 void GameManager::vrziTjulna() {
-	printf("vrzi tjulna");
+	printf("vrzi tjulna\n");
 	if (stTjuln[trenutniNivo - 1] == 0) {
 		tjulni.push_back(new Tjuln);
 		tjulni.at(0)->initAt(*this, "common/img/tjuln.png", igralec.x, igralec.y);

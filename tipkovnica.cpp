@@ -73,7 +73,6 @@ void GameManager::handleEvents() { // funkcija je klicana v glavni zanki nivoja
 			if (event.key.keysym.sym == SDLK_END)
 				konecLevela = true;
 			//*/
-			trkiOkolje(); // preveri trke med igralcem in nepremikajocimi zadevami
 			igralec.sepremika(true); // dovoli da se animirajo noge, ko se premikamo
 			break;
 		case SDL_KEYUP:
@@ -97,20 +96,23 @@ void GameManager::handleEvents() { // funkcija je klicana v glavni zanki nivoja
 	// polni ali prazni uzdrzljivost ter jo narise
 	racuniStamino();
 
-	// premaknemo igralca za "hitrosz" pikslov v zeljeno smer
-	if (w) {
-		igralec.setY(igralec.y - hitrost);
-	}
-	if (a) {
-		igralec.setX(igralec.x - hitrost);
-	}
-	if (s) {
-		igralec.setY(igralec.y + hitrost);
-	}
-	if (d) {
-		igralec.setX(igralec.x + hitrost);
-	}
 	if (!(w || a || s || d)) {
 		igralec.sepremika(false); // igralcu se ne premikajo noge, ko se ne premika
+	}
+	else {
+		// premaknemo igralca za "hitrosz" pikslov v zeljeno smer
+		if (w) {
+			igralec.setY(igralec.y - hitrost);
+		}
+		if (a) {
+			igralec.setX(igralec.x - hitrost);
+		}
+		if (s) {
+			igralec.setY(igralec.y + hitrost);
+		}
+		if (d) {
+			igralec.setX(igralec.x + hitrost);
+		}
+		trkiOkolje(); // preveri trke med igralcem in nepremikajocimi zadevami
 	}
 }
