@@ -169,6 +169,7 @@ void vec(GameManager& igra) {
 }
 
 void GameManager::pause() {
+	Casovnik::paused = true;
 	printf("pavza\n");
 	SDL_PollEvent(&event); // osvezivo stanje pritinjenih tipk
 
@@ -269,4 +270,5 @@ void GameManager::pause() {
 		}
 		okno.omejiFrame();
 	}
+	Casovnik::paused = false;
 }

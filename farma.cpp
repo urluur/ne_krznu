@@ -9,6 +9,6 @@ void GameManager::farma() {
 		// zaenkrat je samo dotik dovolj da resimo tjulna iz farme
 		printf("Hvala, resil si me z farme!!\n");
 		--stTjulnFarma;
-		++trenutne_tocke;
+		trenutne_tocke = trenutne_tocke + trenutniNivo;
 	}
 }

@@ -79,7 +79,7 @@ void GameManager::trkiMiTjulni() {
 				tjulni.erase(tjulni.begin() + i);
 				--stTjuln[trenutniNivo - 1];
 				popravi(); // popravi problem pri dolocanju parov kdo koga nosi
-				++trenutne_tocke;
+				trenutne_tocke = trenutne_tocke + (Casovnik::sekunde * trenutniNivo * zivljenja)/10;
 				printf("Trenutno stevilo tock: %d\n", skupne_tocke + trenutne_tocke);
 				break;
 			}

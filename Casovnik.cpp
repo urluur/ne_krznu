@@ -1,8 +1,14 @@
 #include "Casovnik.h"
 
+short Casovnik::milisekunde = 0;
+short Casovnik::sekunde = 0;
+bool Casovnik::paused = false;
+
 Casovnik::Casovnik() {
 	sekunde = 0;
 	milisekunde = 0;
+	p_okno = nullptr;
+	paused = false;
 }
 
 void Casovnik::setup(WindowManager& notr) {
@@ -10,11 +16,10 @@ void Casovnik::setup(WindowManager& notr) {
 }
 
 bool Casovnik::odstej() {
-	milisekunde += p_okno->frameTime + p_okno->frameDelay;
-	if (milisekunde > 1000) {
+	while (milisekunde >= 1000) {
 		--sekunde;
 		milisekunde -= 1000;
-		cout << sekunde << endl;
+		printf("%d\n", sekunde);
 	}
 	return sekunde < 0;
 }

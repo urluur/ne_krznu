@@ -17,8 +17,15 @@ WindowManager::~WindowManager() { // klice se ko se unici objekt "igra"
 void WindowManager::omejiFrame() { // klice se na koncu vsake glavne zanke
 	// program zaustavi za toliko casa, da se zanka izvede 60x na sekundo
 	frameTime = SDL_GetTicks() - frameStart;
-	if (frameDelay > frameTime)
+	if (!Casovnik::paused) {
+		Casovnik::milisekunde += frameTime;
+	}
+	if (frameDelay > frameTime) {
 		SDL_Delay(frameDelay - frameTime);
+		if (!Casovnik::paused) {
+			Casovnik::milisekunde += (frameDelay - frameTime);
+		}
+	}
 }
 
 void WindowManager::toggleScaler() { // klice se v nastavitvah, ko spremenimo dimenzije
