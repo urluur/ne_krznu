@@ -13,6 +13,10 @@ void GameManager::pripraviVse() { // funkcija se klice na zacetku usakega od pet
 	srcki = new Image;
 	boss_hp = 100;
 
+	// nastavimo timer primeren nivoju
+	short casovnik_na_nivo[5] = { 100, 80, 60, 50, 60 };
+	cajt.set(casovnik_na_nivo[trenutniNivo - 1]);
+
 	// pozicija na na kateri se igralec pokaze
 	short spawnPos[2][5] = {
 		// 1.  2.   3.   4.   5. nivo
@@ -110,6 +114,8 @@ GameManager::GameManager() { // konstruktor je klican le enkrat, zgolj ko se pro
 	trenutne_tocke = 0;
 	boss_hp = 100;
 	SDL_PollEvent(&event);
+
+	cajt.setup(okno);
 }
 
 int GameManager::init() { // funkcija se klice le enkrat, ko se zazene SDL okno

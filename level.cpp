@@ -39,7 +39,10 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 		SDL_RenderClear(okno.ren); // ponastavimo renderer
 		odzadje.display(okno.ren); // izrisemo odzadje
 		handleEvents(); // preverimo pritisnjene tipke, trke z okoljem, obdelamo igralcevo uzdrljivost in premikanje
-
+		if (cajt.odstej()) { // odsteje cas na casovniku
+			sound.predvajaj("common/sounds/au.wav");
+			adios = true;
+		}
 		// ce poberes vse tjulne in si na doloceni izhodni lokaciji si opravil nivo
 		if (semNaIzhodniLokaciji)
 			if ((stTjuln[nivo] == 0 && stTjulnFarma == 0 && trenutniNivo < 5) || (trenutniNivo == 5 && stNaspr[nivo] == 0))

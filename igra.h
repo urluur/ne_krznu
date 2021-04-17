@@ -26,6 +26,7 @@ public:
 	SoundManager sound;
 	Igralec igralec;
 	SDL_Event event;
+	Casovnik cajt;
 	//SDL_Joystick* joystick;//(testiram)
 	bool adios = false;
 	short trenutniNivo;

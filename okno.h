@@ -1,6 +1,7 @@
 #pragma once
 #include <sdl.h>
 #include <iostream>
+#include "Casovnik.h"
 using namespace std;
 
 class WindowManager {
@@ -17,6 +18,7 @@ public:
 	SDL_Renderer* ren;
 	SDL_Window* window;
 	SDL_Surface* surface;
+	friend class Casovnik;
 
 	WindowManager();
 	void stejFrame() { frameStart = SDL_GetTicks(); }
