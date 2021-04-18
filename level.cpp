@@ -3,8 +3,6 @@
 
 void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funkcije overworld (pogleda na svet oz. nadzemlja)
 	trenutniNivo = nivo + 1; // nivo je zadnji koncani nivo
-	igralec.coutName();
-	printf(" zacenja %d nivo.\n", trenutniNivo);
 
 	pripraviVse(); // resetira spremenljivke, ustvari nasprotnike, tjulne...
 
@@ -106,7 +104,7 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 	// odvisno od tega ali je igralec koncal nivo, nivo zvecamo ali pa shranimo in zacnemo nivo znova
 	if (konecLevela) {
 		skupne_tocke += trenutne_tocke;
-		printf("Koncal si %d nivo!\n", ++nivo);
+		++nivo;
 	}
 	else if (adios)
 		zasilnoShranjevanje();
@@ -175,7 +173,6 @@ void GameManager::obnasanjeNaPolju() {
 								if (univerzalniTrk(farmPos[0][trenutniNivo - 1], farmPos[1][trenutniNivo - 1], 20, 20,
 									tjulni.at(t)->x, tjulni.at(t)->y, tjulni.at(t)->w, tjulni.at(t)->h))
 								{
-									printf("Joj ne, zaprt sem v farmi!!!\n");
 									++stTjulnFarma;
 									if (!tjulni.empty()) {
 										sound.predvajaj("common/sounds/oh.wav");

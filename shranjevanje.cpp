@@ -55,6 +55,7 @@ void GameManager::branjeShranjenega() { // se ob zagonu programa
 		printf("\n");
 	}
 }
+
 // se klice, ko beremo v dve doloceni spremenljivki in ne v glavni
 void GameManager::branjeShranjenega(string& mainString, short& mainShort) {
 	// beremo iz quicksave datoteke
@@ -69,8 +70,8 @@ void GameManager::branjeShranjenega(string& mainString, short& mainShort) {
 	datoteka >> mainString >> mainShort;
 }
 
+// lestvoco beremo in shranimo v spremenljivke, pred shranjevanjem ko koncamo igro in vec->lestvica
 void GameManager::branjeLestvice() {
-	printf("Berem lestvico...\n");
 	ifstream lestvica;
 	lestvica.open("lestvica.txt");
 	if (lestvica.fail()) {
@@ -78,54 +79,70 @@ void GameManager::branjeLestvice() {
 	}
 	else {
 		for (int i = 0; i < 5; ++i) {
-			lestvica >> najboljsi[i] >> najbolse[i];
-			cout << i+1 << ". " << najboljsi[i] << " " << najbolse[i] << endl;
+			lestvica >> najboljsi[i] >> najbolse[i]; // imena in tocke shranimo v spremenljivke
+			cout << i+1 << ". " << najboljsi[i] << " " << najbolse[i] << endl; // izpis v konzoli
 		}
 		lestvica.close();
 	}
 }
 
-void GameManager::shranjevanjeLestvice() { // se ko koncamo vse nivoje
-	printf("Shranjujem tvoje rezultate...\n");
-	printf("Stara lestvica:\n");
+// klice se ko koncamo vse nivoje
+void GameManager::shranjevanjeLestvice() {
+	// posodobimo spremenljivke z podatki iz datoteke
 	branjeLestvice();
+
 	// pisemo v lestvica.txt
-	bool done = false;
+	bool done = false; // uporabimo za to, da se na lestvico vpisemo le enkrat
 	ofstream lestvica;
-	lestvica.open("lestvica2.txt", ios::app);
+	lestvica.open("lestvica2.txt", ios::app); // odpremo novo datoteko v nacinu pripenjanja besedila
 	if (lestvica.is_open()) {
+		// novi zacasni tabeli spremenljivk, v katere bomo prepisovali podatke, ter vrinili nas rekord
 		string tempStr[5];
 		int tempInt[5];
+
+		// indeks ki se premika po originalni tableli
 		int walk_og = 0;
-		for (int walk_new = 0; walk_new < 5; ++walk_new) {
-			if (skupne_tocke > najbolse[walk_og] && !done) {
-				if (najbolse[walk_og] == 0 && walk_og == 0) {
+
+		// prepisemo iz starih tabel v nove tabele
+		for (int walk_new = 0; walk_new < 5; ++walk_new) { // glavno nam je premikanje po novi tabeli zaradi vrinjanja
+			if (skupne_tocke > najbolse[walk_og] && !done) { // ce so nase tocke vecje od opazovanih v tabeli jih vrinemo
+				if (najbolse[walk_og] == 0 && walk_og == 0) { // ce je lestvica prazna se vedno vpisemo na prvo mesto
+					// svoje podazke vrinemo v novo tabelo
 					tempInt[walk_new] = skupne_tocke;
 					tempStr[walk_new] = igralec.getName();
+					
+					// podatki so vpisani lahko le enkrat
 					done = true;
+
+					// novo tabelo pripnemo v novo datoteko
 					lestvica << tempStr[walk_new] << " " << tempInt[walk_new] << endl;
+					
+					// vpisali smo se v prazno lestvico na prvem mestu, zato lahko ostala mesta v tabeli le prepisemo
 					continue;
 				}
+
+				// vpisali smo se na mesto ki ni prvo
 				tempInt[walk_new] = skupne_tocke;
 				tempStr[walk_new] = igralec.getName();
 				done = true;
-				--walk_og;
+				--walk_og; // ker nismo prvi in smo se vpisali, se ne premaknemo v stari tabeli, da ne izgubimo podatkov
 			}
 			else {
+				// samo prepisujemo iz stare tabele v novo
 				tempInt[walk_new] = najbolse[walk_og];
 				tempStr[walk_new] = najboljsi[walk_og];
 			}
-			++walk_og;
-			lestvica << tempStr[walk_new] << " " << tempInt[walk_new] << endl;
+			++walk_og; // premaknemo se na naslednji indeks v stari tabeli
+			lestvica << tempStr[walk_new] << " " << tempInt[walk_new] << endl; // novi datoteki dodamo podatke
 		}
 		lestvica.close();
-		remove("lestvica.txt");
-		bool problemi = rename("lestvica2.txt", "lestvica.txt");
+		remove("lestvica.txt"); // staro datoteko zbrisemo
+		bool problemi = rename("lestvica2.txt", "lestvica.txt"); // novo datoteko zamenjamo na mesto stare
 		if (problemi) {
 			cerr << "error: rename lestvica" << endl;
 		}
 		printf("\nNova lestvica:\n");
-		branjeLestvice();
+		branjeLestvice(); // posodobimo spremenljivke in izpisemo kot potrditev
 	}
 	else {
 		cerr << "Error: save file" << endl;
@@ -139,7 +156,8 @@ void GameManager::deleteLeaderboard() {
 	// pisemo v datoteko lestvica.txt
 	datoteka.open("lestvica.txt");
 	if (datoteka.is_open())
-		datoteka << "0 0\n0 0\n0 0\n0 0\n0 0\n"; // vse je zbrisano in zamenjano z prazno datoteko
+		// v lestvicozapisemo privzeto vsebino
+		datoteka << "[prosto] 0\n[prosto] 0\n[prosto] 0\n[prosto] 0\n[prosto] 0\n";
 	else {
 		cerr << "Error: delete leaderboard" << endl;
 		cleanup();
@@ -173,5 +191,4 @@ void GameManager::deleteOnlySave() {
 void GameManager::deleteSave() { // se klice v menuju "vec->izbris podatkov"
 	deleteLeaderboard();
 	deleteOnlySave();
-	printf("Zbrisano.\n");
 }

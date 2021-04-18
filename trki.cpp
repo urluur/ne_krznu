@@ -46,9 +46,11 @@ void GameManager::trkiOkolje() { // se klice ko se premikamo
 		if (isPlayerCollidingAt(990, 350, 190, 150)) {
 			farma();
 		}
+		/*
 		if (isPlayerCollidingAt(1130, 600, 30, 40)) {
-			printf("sm na kolomiti\n");
+			// smo na kolomiti
 		}
+		//*/
 		if (isPlayerCollidingAt(160, 0, 10, 75))
 			semNaIzhodniLokaciji = true;
 		else
@@ -73,14 +75,12 @@ void GameManager::trkiMiTjulni() {
 	if (trenutniNivo < 5) {
 		for (unsigned int i = 0; i < tjulni.size(); ++i) {
 			if (isPlayerCollidingAt(tjulni.at(i)->x, tjulni.at(i)->y, tjulni.at(i)->w, tjulni.at(i)->h)) {
-				printf("Hvala lepa, resil si me!!!\n");
 				sound.predvajaj("common/sounds/yay.wav");
 				delete tjulni.at(i);
 				tjulni.erase(tjulni.begin() + i);
 				--stTjuln[trenutniNivo - 1];
 				popravi(); // popravi problem pri dolocanju parov kdo koga nosi
 				trenutne_tocke = trenutne_tocke + (Casovnik::sekunde * trenutniNivo * zivljenja)/10;
-				printf("Trenutno stevilo tock: %d\n", skupne_tocke + trenutne_tocke);
 				break;
 			}
 		}

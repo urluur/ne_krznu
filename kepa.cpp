@@ -1,6 +1,7 @@
 #include "ZivoBitje.h"
 
 Kepa::Kepa(GameManager &pointerNaIgro) {
+	// nastavimo privzete spremenljivke
 	x = 0;
 	y = 0;
 	w = 30;
@@ -13,6 +14,7 @@ Kepa::Kepa(GameManager &pointerNaIgro) {
 	igra = &pointerNaIgro;
 	ignore_me = false;
 
+	// smer premikanja igralca je tudi smer premikanja kepe
 	ww = igra->w;
 	a = igra->a;
 	s = igra->s;
@@ -39,25 +41,26 @@ void Kepa::startMoving() {
 }
 
 bool Kepa::move() {
+	// kepa se premika dokler ne naredi zeljene razdalje
 	if (done <= to_go) {
-		if (ww) {
+		if (ww) { // premikanje gor
 			y -= hitrost;
 		}
-		if (a) {
+		if (a) { // premikanje levo
 			x -= hitrost;
 		}
-		if (s) {
+		if (s) { // premikanje dol
 			y += hitrost;
 		}
-		if (d) {
+		if (d) { // premikanje desno
 			x += hitrost;
 		}
 		++done;
 		img->init(*igra, "common/img/kepa.png", x, y, w, h);
 		img->display(igra->okno.ren);
-		return true;
+		return true; // kepa se more premikati se naprej
 	}
 	else {
-		return false;
+		return false; // kepa je na svoji destinaciji
 	}
 }

@@ -117,8 +117,6 @@ GameManager::GameManager() { // konstruktor je klican le enkrat, zgolj ko se pro
 	trenutne_tocke = 0;
 	boss_hp = 100;
 	SDL_PollEvent(&event);
-
-	cajt.setup(okno);
 }
 
 int GameManager::init() { // funkcija se klice le enkrat, ko se zazene SDL okno
