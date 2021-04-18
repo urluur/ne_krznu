@@ -255,10 +255,8 @@ void GameManager::pause() {
 					case 2:
 						--trenutniNivo;
 						zasilnoShranjevanje();
-						cleanup();
-						exit(0);
 					case 3:
-						deleteSave();
+						deleteOnlySave();
 						cleanup();
 						exit(0);
 					}

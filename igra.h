@@ -52,6 +52,8 @@ public:
 	void branjeLestvice();
 	void shranjevanjeLestvice();
 	void deleteSave();
+	void deleteOnlySave();
+	void deleteLeaderboard();
 	void cleanup();
 	bool checkQuit();
 	bool checkEnter();

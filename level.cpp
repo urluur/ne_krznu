@@ -31,7 +31,9 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 	// povemo katero pisavo bomo uporabljani za ispis tjulnov na farmi in polju, velikost pisave (ki je odvisna od velikosti okna), dolzino izpisa in crno barvo
 	Text pisava_tjulniNaFarmi(okno.ren, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", okno.scaleCal(24), "farma: 0", { 0, 0, 0, 255 });
 	Text pisava_tjulniNaPolju(okno.ren, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", okno.scaleCal(24), "polje: 0", { 0, 0, 0, 255 });
-	string polje = "polje: ", farma = "farma: ";
+	Text pisava_cas(okno.ren, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", okno.scaleCal(24), "cas: 00", { 0, 0, 0, 255 });
+	Text pisava_tocke(okno.ren, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", okno.scaleCal(24), "tocke: 000", { 0, 0, 0, 255 });
+	string polje = "polje: ", farma = "farma: ", cas = "cas: ", tocke = "tocke: ";
 
 	// glavna zanka nivoja
 	while (!keys[SDL_SCANCODE_ESCAPE] && !konecLevela && !adios) {
@@ -41,6 +43,7 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 		handleEvents(); // preverimo pritisnjene tipke, trke z okoljem, obdelamo igralcevo uzdrljivost in premikanje
 		if (cajt.odstej()) { // odsteje cas na casovniku
 			sound.predvajaj("common/sounds/au.wav");
+			--zivljenja;
 			adios = true;
 		}
 		// ce poberes vse tjulne in si na doloceni izhodni lokaciji si opravil nivo
@@ -78,7 +81,21 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 		if (trenutniNivo - 1 < 5) {
 			pisava_tjulniNaPolju.update(okno.ren, polje + to_string(stTjuln[trenutniNivo - 1]), { 0, 0, 0, 255 });
 		}
+		pisava_cas.update(okno.ren, cas + to_string(cajt.sekunde), { 0, 0, 0, 255 });
+		string dodatne_nule = "";
+		if (trenutne_tocke < 10) {
+			dodatne_nule = "00";
+		}
+		else if (trenutne_tocke < 100) {
+			dodatne_nule = "0";
+		}
+		else {
+			dodatne_nule = "";
+		}
+		pisava_tocke.update(okno.ren, tocke + dodatne_nule + to_string(trenutne_tocke), { 0, 0, 0, 255 });
 		// prikazemo tekst na zaslonu
+		pisava_cas.display(okno.scaleCal(56), okno.scaleCal(640), okno.ren);
+		pisava_tocke.display(okno.scaleCal(56), okno.scaleCal(660), okno.ren);
 		pisava_tjulniNaFarmi.display(okno.scaleCal(56), okno.scaleCal(680), okno.ren);
 		pisava_tjulniNaPolju.display(okno.scaleCal(56), okno.scaleCal(700), okno.ren);
 
@@ -263,7 +280,7 @@ void GameManager::preveriSmrt(short i) {
 		SDL_Delay(200);
 		--zivljenja;
 		if (!zivljenja) {
-			deleteSave();
+			deleteOnlySave();
 			if (Mix_PlayingMusic()) {
 				Mix_PauseMusic();
 			}

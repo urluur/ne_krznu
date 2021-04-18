@@ -120,8 +120,8 @@ void GameManager::shranjevanjeLestvice() { // se ko koncamo vse nivoje
 		}
 		lestvica.close();
 		remove("lestvica.txt");
-		bool ok = rename("lestvica2.txt", "lestvica.txt");
-		if (!ok) {
+		bool problemi = rename("lestvica2.txt", "lestvica.txt");
+		if (problemi) {
 			cerr << "error: rename lestvica" << endl;
 		}
 		printf("\nNova lestvica:\n");
@@ -134,26 +134,8 @@ void GameManager::shranjevanjeLestvice() { // se ko koncamo vse nivoje
 	}
 }
 
-void GameManager::deleteSave() { // se klice v menuju "vec->izbris podatkov"
-	// pisemo v datoteko quicksave.txt
+void GameManager::deleteLeaderboard() {
 	ofstream datoteka;
-	datoteka.open("quicksave.txt");
-	if (datoteka.is_open()) {
-		// resetiramo nekatere podatke
-		zivljenja = 3;
-		skupne_tocke = 0;
-		igralec.setName("bumbar");
-		setNivo(0);
-		setCompleted(false);
-		datoteka << "bumbar\n0\n3\n0\n"; // zapisemo privzete podatke
-		// naredi: ko bodo tocke izbris tock
-	}
-	else {
-		cerr << "Error: delete save" << endl;
-		cleanup();
-		exit(1);
-	}
-	datoteka.close();
 	// pisemo v datoteko lestvica.txt
 	datoteka.open("lestvica.txt");
 	if (datoteka.is_open())
@@ -164,5 +146,32 @@ void GameManager::deleteSave() { // se klice v menuju "vec->izbris podatkov"
 		exit(1);
 	}
 	datoteka.close();
+}
+
+void GameManager::deleteOnlySave() {
+	// pisemo v datoteko quicksave.txt
+	ofstream datoteka;
+	datoteka.open("quicksave.txt");
+	if (datoteka.is_open()) {
+		// resetiramo nekatere podatke
+		zivljenja = 3;
+		trenutne_tocke = 0;
+		skupne_tocke = 0;
+		igralec.setName("bumbar");
+		setNivo(0);
+		setCompleted(false);
+		datoteka << "bumbar\n0\n3\n0\n"; // zapisemo privzete podatke
+	}
+	else {
+		cerr << "Error: delete save" << endl;
+		cleanup();
+		exit(1);
+	}
+	datoteka.close();
+}
+
+void GameManager::deleteSave() { // se klice v menuju "vec->izbris podatkov"
+	deleteLeaderboard();
+	deleteOnlySave();
 	printf("Zbrisano.\n");
 }
