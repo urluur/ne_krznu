@@ -103,6 +103,9 @@ GameManager::GameManager() { // konstruktor je klican le enkrat, zgolj ko se pro
 	semNaIzhodniLokaciji = false;
 	fillingStamina = false;
 	staminadown = false;
+	for (int i = 0; i < 5; ++i) {
+		najboljsi[i] = "";
+	}
 	stamina = 100;
 	hitrost = 2;
 	trenutniNivo = 0;

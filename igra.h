@@ -84,6 +84,8 @@ private:
 	vector <class Tjuln*> tjulni;
 	vector <class Kepa*> kepe, slabe_kepe;
 	class Image* stamina_wheel;
+	string najboljsi[5];
+	int najbolse[5];
 	bool konecLevela, semNaIzhodniLokaciji, staminadown, fillingStamina;
 	bool rageMode = false; //rageMode je v alfa testingu (spremeni na true za ZELO tezko igro)
 	bool w = false, a = false, s = false, d = false;

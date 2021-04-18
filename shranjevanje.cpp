@@ -71,17 +71,61 @@ void GameManager::branjeShranjenega(string& mainString, short& mainShort) {
 
 void GameManager::branjeLestvice() {
 	printf("Berem lestvico...\n");
-	// dodaj: da prebere iz datoteke najboljsih top 5. zaenkrat se ni tockovanja, zato tudi lestvice ni
+	ifstream lestvica;
+	lestvica.open("lestvica.txt");
+	if (lestvica.fail()) {
+		cerr << "error: branje lestvice" << endl;
+	}
+	else {
+		for (int i = 0; i < 5; ++i) {
+			lestvica >> najboljsi[i] >> najbolse[i];
+			cout << i+1 << ". " << najboljsi[i] << " " << najbolse[i] << endl;
+		}
+		lestvica.close();
+	}
 }
 
-void GameManager::shranjevanjeLestvice() { // se klice v menuju "vec->lestvica" in ko koncamo vse nivoje
+void GameManager::shranjevanjeLestvice() { // se ko koncamo vse nivoje
 	printf("Shranjujem tvoje rezultate...\n");
+	printf("Stara lestvica:\n");
+	branjeLestvice();
 	// pisemo v lestvica.txt
+	bool done = false;
 	ofstream lestvica;
-	lestvica.open("lestvica.txt");
+	lestvica.open("lestvica2.txt", ios::app);
 	if (lestvica.is_open()) {
-		// naredi: shrani sortirano najboljse
+		string tempStr[5];
+		int tempInt[5];
+		int walk_og = 0;
+		for (int walk_new = 0; walk_new < 5; ++walk_new) {
+			if (skupne_tocke > najbolse[walk_og] && !done) {
+				if (najbolse[walk_og] == 0 && walk_og == 0) {
+					tempInt[walk_new] = skupne_tocke;
+					tempStr[walk_new] = igralec.getName();
+					done = true;
+					lestvica << tempStr[walk_new] << " " << tempInt[walk_new] << endl;
+					continue;
+				}
+				tempInt[walk_new] = skupne_tocke;
+				tempStr[walk_new] = igralec.getName();
+				done = true;
+				--walk_og;
+			}
+			else {
+				tempInt[walk_new] = najbolse[walk_og];
+				tempStr[walk_new] = najboljsi[walk_og];
+			}
+			++walk_og;
+			lestvica << tempStr[walk_new] << " " << tempInt[walk_new] << endl;
+		}
 		lestvica.close();
+		remove("lestvica.txt");
+		bool ok = rename("lestvica2.txt", "lestvica.txt");
+		if (!ok) {
+			cerr << "error: rename lestvica" << endl;
+		}
+		printf("\nNova lestvica:\n");
+		branjeLestvice();
 	}
 	else {
 		cerr << "Error: save file" << endl;
@@ -113,7 +157,7 @@ void GameManager::deleteSave() { // se klice v menuju "vec->izbris podatkov"
 	// pisemo v datoteko lestvica.txt
 	datoteka.open("lestvica.txt");
 	if (datoteka.is_open())
-		datoteka << "\n"; // vse je zbrisano in zamenjano z prazno datoteko
+		datoteka << "0 0\n0 0\n0 0\n0 0\n0 0\n"; // vse je zbrisano in zamenjano z prazno datoteko
 	else {
 		cerr << "Error: delete leaderboard" << endl;
 		cleanup();
