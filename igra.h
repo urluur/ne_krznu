@@ -80,6 +80,8 @@ public:
 	void brisiBossa();
 	void preveriSmrt(short i);
 	friend class Kepa;
+	friend void overworld(GameManager&);
+	friend void premakniNaXY(GameManager&, short&, short&, short, short, Image&, Image&, short);
 private:
 	class Image* jaz, *srcki;
 	vector <class komoucar*> enemy, aktivisti;

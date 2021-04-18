@@ -8,6 +8,8 @@ void nastavitve(GameManager& igra) {
 	short cur_pos = 1;
 	Image img_nastavitve;
 	Image cursor;
+	static bool done;
+	done = false;
 	while (stay) {
 		igra.okno.stejFrame();
 		SDL_RenderClear(igra.okno.ren);
@@ -22,6 +24,7 @@ void nastavitve(GameManager& igra) {
 				cur_pos = 4;
 			else
 				--cur_pos;
+			done = false;
 		}
 		else if (igra.keys[SDL_SCANCODE_DOWN])
 		{
@@ -31,10 +34,12 @@ void nastavitve(GameManager& igra) {
 				cur_pos = 1;
 			else
 				++cur_pos;
+			done = false;
 		}
 		else if (igra.keys[SDL_SCANCODE_ESCAPE]) {
 			while (igra.keys[SDL_SCANCODE_ESCAPE]) { SDL_PollEvent(&igra.event); }
 			stay = false;
+			done = false;
 		}
 
 		switch (cur_pos) {
@@ -86,6 +91,49 @@ void nastavitve(GameManager& igra) {
 		SDL_RenderPresent(igra.okno.ren);
 		SDL_PollEvent(&igra.event);
 		igra.okno.omejiFrame();
+
+		if (!done) {
+			system("cls");
+			printf("### NASTAVITVE ###\n");
+			for (int i = 1; i <= 4; ++i) {
+				if (cur_pos == i) {
+					printf("->");
+				}
+				else
+					printf("  ");
+				switch (i) {
+				case 1:
+					printf("Dimenzije     [velikost zaslona ");
+					switch (igra.okno.vrniScaler()) {
+					case 1:
+						printf("720p]");
+						break;
+					case 12:
+						printf("864p]");
+						break;
+					case 100:
+					case 15:
+						printf("1080p]");
+						break;
+					case 5:
+						printf("360p]");
+						break;
+					}
+					printf("\n");
+					break;
+				case 2:
+					printf("Spremeni ime  [igralca]\n");
+					break;
+				case 3:
+					printf("Spremeni zvok [odpri/zapri zvok]\n");
+					break;
+				case 4:
+					printf("Nazaj         [v glavni meni]\n");
+					break;
+				}
+			}
+			done = true;
+		}
 	}
 }
 void vec(GameManager& igra) {
@@ -94,6 +142,8 @@ void vec(GameManager& igra) {
 	Image img_vec;
 	Image cursor;
 	Image github(igra.okno.ren, "common/img/github.png", igra.okno.scaleCal(20), igra.okno.scaleCal(20), igra.okno.scaleCal(279), igra.okno.scaleCal(66));
+	static bool done;
+	done = false;
 	while (stay)
 	{
 		igra.okno.stejFrame();
@@ -108,6 +158,7 @@ void vec(GameManager& igra) {
 				cur_pos = 4;
 			else
 				--cur_pos;
+			done = false;
 		}
 		else if (igra.keys[SDL_SCANCODE_DOWN]) {
 			while (igra.keys[SDL_SCANCODE_DOWN]) { SDL_PollEvent(&igra.event); }
@@ -116,10 +167,12 @@ void vec(GameManager& igra) {
 				cur_pos = 1;
 			else
 				++cur_pos;
+			done = false;
 		}
 		else if (igra.keys[SDL_SCANCODE_ESCAPE]) {
 			stay = false;
 			while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&igra.event); }
+			done = false;
 		}
 
 		switch (cur_pos) {
@@ -162,6 +215,37 @@ void vec(GameManager& igra) {
 			break;
 		}
 
+		if (!done) {
+			system("cls");
+			printf("### VEC ###\n");
+			for (int i = 1; i <= 4; ++i) {
+				if (cur_pos == i) {
+					printf("->");
+				}
+				else
+					printf("  ");
+				switch (i) {
+				case 1:
+					printf("Lestvica        [najboljsih 5]\n");
+					break;
+				case 2:
+					printf("Izvorna koda    [kako je igra narejena]");
+					if (cur_pos == 2) {
+						printf(" github.com/urluur");
+					}
+					printf("\n");
+					break;
+				case 3:
+					printf("Izbris podatkov [ponastavi igro]\n");
+					break;
+				case 4:
+					printf("Nazaj           [v glavni meni]\n");
+					break;
+				}
+			}
+			done = true;
+		}
+
 		SDL_RenderPresent(igra.okno.ren);
 		SDL_PollEvent(&igra.event);
 		igra.okno.omejiFrame();
@@ -201,7 +285,9 @@ void GameManager::pause() {
 			cursor.display(okno.ren); // kazalec se bo pokazal
 			SDL_RenderPresent(okno.ren); // na oknu se prikaze spremenjeno stanje
 		}
+		static bool done;
 		while (SDL_PollEvent(&event)) {
+			done = false;
 			// pogledamo kateri dogodki so se zgodili
 			switch (event.type) {
 			case SDL_QUIT: // ce je bil pritisnjen krizec
@@ -266,7 +352,59 @@ void GameManager::pause() {
 				refresh = false;
 			}
 		}
+		if (!done) {
+			system("cls");
+			printf("### Pavza ###\n");
+			for (int i = 1; i <= 3; ++i) {
+				if (cur_pos == i) {
+					printf("->");
+				}
+				else
+					printf("  ");
+				switch (i) {
+				case 1:
+					printf("Nadaljuj [nazaj v igro]\n");
+					break;
+				case 2:
+					printf("Shrani   [shrani in zapri]\n");
+					break;
+				case 3:
+					printf("Zavrzi   [zapri brez shranjevanja]\n");
+					break;
+				}
+			}
+			done = true;
+		}
 		okno.omejiFrame();
 	}
 	Casovnik::paused = false;
+	system("cls");
+	cout << "### Tjulenlandija ###" << endl;
+	for (int i = 0; i <= 5; ++i) {
+		if (trenutniNivo == i) {
+			cout << "->";
+		}
+		else
+			cout << "  ";
+		switch (i) {
+		case 0:
+			cout << "1. nivo" << endl;
+			break;
+		case 1:
+			cout << "2. nivo" << endl;
+			break;
+		case 2:
+			cout << "3. nivo" << endl;
+			break;
+		case 3:
+			cout << "4. nivo" << endl;
+			break;
+		case 4:
+			cout << "5. nivo (glavni bebec)" << endl;
+			break;
+		case 5:
+			cout << "Tjulenlandija resena!" << endl;
+			break;
+		}
+	}
 }

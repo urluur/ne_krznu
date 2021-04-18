@@ -11,7 +11,7 @@ int main(int argv, char** args) {
 	// ustvarimo objekt igra, vecina potrebnega je ze pripravljenega
 	GameManager igra;
 
-	//*
+	/*
 	igra.sound.toggle();
 	//*/
 
@@ -123,6 +123,31 @@ void narisi(GameManager& igra, short& cur_pos, Image& cursor, Image& main) {
 	}
 	cursor.display(igra.okno.ren); // kazalec se bo pokazal
 	SDL_RenderPresent(igra.okno.ren); // na oknu se prikaze spremenjeno stanje
+
+	system("cls");
+	printf("### NE KRZNU -urlu ###\n");
+	for (int i = 1; i <= 4; ++i) {
+		if (cur_pos == i) {
+			printf("->");
+		}
+		else {
+			printf("  ");
+		}
+		switch (i) {
+		case 1:
+			printf("Zacni      [Nova igra/nadaljuj]\n");
+			break;
+		case 2:
+			printf("Vec        [lestvica, koda, reset]\n");
+			break;
+		case 3:
+			printf("Nastavitve [slika, zvok, ime]\n");
+			break;
+		case 4:
+			printf("Izhod      [zapri program]\n");
+			break;
+		}
+	}
 }
 
 // klicemo ko zelimo potrditi izbrano z kazalcem in nadaljevati v funkcijo oz. izhod
