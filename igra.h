@@ -19,6 +19,7 @@
 #include "ZivoBitje.h"
 #include "tekst.h"
 #include "igralec.h"
+#include "Casovnik.h"
 
 class GameManager {
 public:
@@ -79,7 +80,10 @@ public:
 	void predvajiBOOM();
 	void brisiBossa();
 	void preveriSmrt(short i);
+	void cmdLevels();
 	friend class Kepa;
+	friend void overworld(GameManager&);
+	friend void premakniNaXY(GameManager&, short&, short&, short, short, Image&, Image&, short);
 private:
 	class Image* jaz, *srcki;
 	vector <class komoucar*> enemy, aktivisti;

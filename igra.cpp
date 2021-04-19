@@ -2,6 +2,7 @@
 
 void GameManager::pripraviVse() { // funkcija se klice na zacetku usakega od petih nivojev
 	SDL_PollEvent(&event);
+	cmdLevels();
 
 	// vse spremenljivke glede nivoja so resetirane
 	konecLevela = false; adios = false;
@@ -105,6 +106,7 @@ GameManager::GameManager() { // konstruktor je klican le enkrat, zgolj ko se pro
 	staminadown = false;
 	for (int i = 0; i < 5; ++i) {
 		najboljsi[i] = "";
+		najbolse[i] = 0;
 	}
 	stamina = 100;
 	hitrost = 2;
@@ -273,4 +275,37 @@ void GameManager::updateSrcki() {
 	path[pathFragment.size()] = '\0';
 	srcki->init(*this, path, 1080, 670, 200, 50);
 	delete[] path;
+}
+
+void GameManager::cmdLevels() {
+	system("cls");
+	cout << "### Tjulenlandija ###" << endl;
+	for (int i = 0; i <= 5; ++i) {
+		if (trenutniNivo == i) {
+			cout << "->";
+		}
+		else {
+			cout << "  ";
+		}
+		switch (i) {
+		case 1:
+			cout << "1. nivo" << endl; // neki cudno se to obnasa nevemzakaj.. zdi se mi zato k mam nekje -1 samo nevem kje
+			break;
+		case 2:
+			cout << "  2. nivo" << endl;
+			break;
+		case 3:
+			cout << "  3. nivo" << endl;
+			break;
+		case 4:
+			cout << "  4. nivo" << endl;
+			break;
+		case 5:
+			cout << "  5. nivo (glavni bebec)" << endl;
+			break;
+		case 6:
+			cout << "Tjulenlandija resena!" << endl;
+			break;
+		}
+	}
 }

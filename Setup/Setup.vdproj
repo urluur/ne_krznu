@@ -105,6 +105,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_20311E26124B42D4AC0D5E51B60F3E2B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_25209997B83A4564BBFC423725527810"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -255,6 +261,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5ACB332094C64D46B827FEC81CD1D280"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5AE9665F58ED401D80AD552AA04E685B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5B7F7F86123840BD9CDC5BB29B798C9C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -315,6 +333,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7CC72814B2FD49FEB168B9B21CE2ADE3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7CE14B1994C545C9ABCE5CAAEC261496"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -328,6 +352,12 @@
         "Entry"
         {
         "MsmKey" = "8:_8D87C1F466D84FAB8829DF7FB690A9CD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9254B0968BCD4D7D9064485B6B2479B8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -441,6 +471,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B87CECC390334601A026566204468102"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_BD273277C37C4EF1B6BD02C72F8EC871"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -508,6 +544,12 @@
         "Entry"
         {
         "MsmKey" = "8:_CD01C1C7220544F990896175DF2D7B5D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CDCAE91D117F483281AC885C252B14A5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -628,6 +670,12 @@
         "Entry"
         {
         "MsmKey" = "8:_E3A7BE7D15054B40B00417FE60CBF1F1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E645ACA6722A4AF6981992C7434516B4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1098,6 +1146,26 @@
             "TargetName" = "8:srcki2.png"
             "Tag" = "8:"
             "Folder" = "8:_C642E1AFD5184759B766B87B7CAC1BD1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_20311E26124B42D4AC0D5E51B60F3E2B"
+            {
+            "SourcePath" = "8:..\\common\\txt\\animacija1.txt"
+            "TargetName" = "8:animacija1.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_5E48B72BBA9E48C2BC746A91C04821B3"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1612,6 +1680,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5ACB332094C64D46B827FEC81CD1D280"
+            {
+            "SourcePath" = "8:..\\common\\txt\\animacija5.txt"
+            "TargetName" = "8:animacija5.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_5E48B72BBA9E48C2BC746A91C04821B3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5AE9665F58ED401D80AD552AA04E685B"
+            {
+            "SourcePath" = "8:..\\common\\txt\\animacija6.txt"
+            "TargetName" = "8:animacija6.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_5E48B72BBA9E48C2BC746A91C04821B3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5B7F7F86123840BD9CDC5BB29B798C9C"
             {
             "SourcePath" = "8:..\\lib\\x86\\zlib1.dll"
@@ -1812,6 +1920,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7CC72814B2FD49FEB168B9B21CE2ADE3"
+            {
+            "SourcePath" = "8:..\\common\\txt\\animacija-1.txt"
+            "TargetName" = "8:animacija-1.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_5E48B72BBA9E48C2BC746A91C04821B3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7CE14B1994C545C9ABCE5CAAEC261496"
             {
             "SourcePath" = "8:..\\common\\sounds\\animacija3.wav"
@@ -1858,6 +1986,26 @@
             "TargetName" = "8:libmpg123-0.dll"
             "Tag" = "8:"
             "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9254B0968BCD4D7D9064485B6B2479B8"
+            {
+            "SourcePath" = "8:..\\common\\txt\\animacija3.txt"
+            "TargetName" = "8:animacija3.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_5E48B72BBA9E48C2BC746A91C04821B3"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2232,6 +2380,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B87CECC390334601A026566204468102"
+            {
+            "SourcePath" = "8:..\\common\\txt\\animacija4.txt"
+            "TargetName" = "8:animacija4.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_5E48B72BBA9E48C2BC746A91C04821B3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BD273277C37C4EF1B6BD02C72F8EC871"
             {
             "SourcePath" = "8:..\\common\\img\\boss_sad.png"
@@ -2458,6 +2626,26 @@
             "TargetName" = "8:0.png"
             "Tag" = "8:"
             "Folder" = "8:_34B22CE7476749909E4F7AF185984EE7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CDCAE91D117F483281AC885C252B14A5"
+            {
+            "SourcePath" = "8:..\\common\\txt\\animacija2.txt"
+            "TargetName" = "8:animacija2.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_5E48B72BBA9E48C2BC746A91C04821B3"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2858,6 +3046,26 @@
             "TargetName" = "8:libogg-0.dll"
             "Tag" = "8:"
             "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E645ACA6722A4AF6981992C7434516B4"
+            {
+            "SourcePath" = "8:..\\common\\txt\\animacija7.txt"
+            "TargetName" = "8:animacija7.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_5E48B72BBA9E48C2BC746A91C04821B3"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3299,6 +3507,17 @@
                     "Property" = "8:_4FFFFD453031433794D44E6CF4C6C98B"
                         "Folders"
                         {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_5E48B72BBA9E48C2BC746A91C04821B3"
+                            {
+                            "Name" = "8:txt"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_F3940E0A898148EBBABC79FEE65169C7"
+                                "Folders"
+                                {
+                                }
+                            }
                             "{9EF0B969-E518-4E46-987F-47570745A589}:_DC736CFDD06F4EB4810B362FE050F5A7"
                             {
                             "Name" = "8:sounds"

@@ -58,6 +58,8 @@ void overworld(GameManager& igra) { // klice se iz glavnega menija -> zacni
 		img_overworld.display(igra.okno.ren);
 		narisiFarmeAliDosezke(igra, level_clear); // narise igluje oz. farme
 		SDL_RenderPresent(igra.okno.ren);
+		
+		igra.cmdLevels();
 
 		switch (level_clear) { // odvisno od koncanega levela nadaljujemo po svetu
 		case 0:
@@ -188,6 +190,8 @@ void animacija(GameManager& igra, int stAnim) { // se klice iz overworld-a, ko z
 	bool halt = true;
 
 	SDL_PollEvent(&igra.event); // osvezimo stanje pritisnjenih tipk
+	static bool done;
+	done = false;
 	while (halt) {
 		igra.okno.stejFrame();
 		SDL_PollEvent(&igra.event);
@@ -209,6 +213,39 @@ void animacija(GameManager& igra, int stAnim) { // se klice iz overworld-a, ko z
 			}
 			halt = false;
 		}
+
+		if (!done) {
+			system("cls");
+			cout << "### Animacija " << stAnim << " ###" << endl;
+			switch (stAnim) {
+			case -1:
+				system("type common\\txt\\animacija-1.txt");
+				break;
+			case 1:
+				system("type common\\txt\\animacija1.txt");
+				break;
+			case 2:
+				system("type common\\txt\\animacija2.txt");
+				break;
+			case 3:
+				system("type common\\txt\\animacija3.txt");
+				break;
+			case 4:
+				system("type common\\txt\\animacija4.txt");
+				break;
+			case 5:
+				system("type common\\txt\\animacija5.txt");
+				break;
+			case 6:
+				system("type common\\txt\\animacija6.txt");
+				break;
+			case 7:
+				system("type common\\txt\\animacija7.txt");
+				break;
+			}
+			done = true;
+		}
+
 		igra.okno.omejiFrame();
 	}
 	Mix_HaltChannel(-1); // ce preskocimo animacijo se bo zvok zgodbe izklopil
@@ -217,6 +254,7 @@ void animacija(GameManager& igra, int stAnim) { // se klice iz overworld-a, ko z
 void premakniNaXY(GameManager& igra, short& mov_x, short& mov_y, short to_x, short to_y, Image& img_overworld, Image& img_player, short nivo) {
 	// klice se ko premikamo igralca po overworldu (ne nivoju)
 	short i = 0;
+	igra.cmdLevels();
 	while (true) {
 		igra.okno.stejFrame();
 		igra.preveriEsc(nivo); // vsakic ko osvezimo sliko preverimo ali je pritisnjen esc, ki shrani igro
