@@ -135,18 +135,36 @@ void narisi(GameManager& igra, short& cur_pos, Image& cursor, Image& main) {
 		}
 		switch (i) {
 		case 1:
-			printf("Zacni      [Nova igra/nadaljuj]\n");
+			printf("Zacni");
 			break;
 		case 2:
-			printf("Vec        [lestvica, koda, reset]\n");
+			printf("Vec");
 			break;
 		case 3:
-			printf("Nastavitve [slika, zvok, ime]\n");
+			printf("Nastavitve");
 			break;
 		case 4:
-			printf("Izhod      [zapri program]\n");
+			printf("Izhod");
 			break;
 		}
+		if (cur_pos == i) {
+			switch (cur_pos) {
+			case 1:
+				printf("      [Nova igra/nadaljuj]");
+				break;
+			case 2:
+				printf("        [lestvica, koda, reset]");
+				break;
+			case 3:
+				printf(" [slika, zvok, ime]");
+				break;
+			case 4:
+				printf("      [zapri program (esc)]");
+				break;
+			}
+		}
+		
+		printf("\n");
 	}
 }
 

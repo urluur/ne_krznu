@@ -58,35 +58,8 @@ void overworld(GameManager& igra) { // klice se iz glavnega menija -> zacni
 		img_overworld.display(igra.okno.ren);
 		narisiFarmeAliDosezke(igra, level_clear); // narise igluje oz. farme
 		SDL_RenderPresent(igra.okno.ren);
-		system("cls");
-		cout << "### Tjulenlandija ###" << endl;
-		for (int i = 0; i <= 5; ++i) {
-			if (igra.trenutniNivo == i) {
-				cout << "->";
-			}
-			else
-				cout << "  ";
-			switch (i) {
-			case 0:
-				cout << "1. nivo" << endl;
-				break;
-			case 1:
-				cout << "2. nivo" << endl;
-				break;
-			case 2:
-				cout << "3. nivo" << endl;
-				break;
-			case 3:
-				cout << "4. nivo" << endl;
-				break;
-			case 4:
-				cout << "5. nivo" << endl;
-				break;
-			case 5:
-				cout << "Tjulenlandija resena!" << endl;
-				break;
-			}
-		}
+		
+		igra.cmdLevels();
 
 		switch (level_clear) { // odvisno od koncanega levela nadaljujemo po svetu
 		case 0:
@@ -281,35 +254,7 @@ void animacija(GameManager& igra, int stAnim) { // se klice iz overworld-a, ko z
 void premakniNaXY(GameManager& igra, short& mov_x, short& mov_y, short to_x, short to_y, Image& img_overworld, Image& img_player, short nivo) {
 	// klice se ko premikamo igralca po overworldu (ne nivoju)
 	short i = 0;
-	system("cls");
-	cout << "### Tjulenlandija ###" << endl;
-	for (int i = 0; i <= 5; ++i) {
-		if (igra.trenutniNivo == i) {
-			cout << "->";
-		}
-		else
-			cout << "  ";
-		switch (i) {
-		case 0:
-			cout << "1. nivo" << endl;
-			break;
-		case 1:
-			cout << "2. nivo" << endl;
-			break;
-		case 2:
-			cout << "3. nivo" << endl;
-			break;
-		case 3:
-			cout << "4. nivo" << endl;
-			break;
-		case 4:
-			cout << "5. nivo" << endl;
-			break;
-		case 5:
-			cout << "Tjulenlandija resena!" << endl;
-			break;
-		}
-	}
+	igra.cmdLevels();
 	while (true) {
 		igra.okno.stejFrame();
 		igra.preveriEsc(nivo); // vsakic ko osvezimo sliko preverimo ali je pritisnjen esc, ki shrani igro

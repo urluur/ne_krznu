@@ -72,6 +72,7 @@ void GameManager::branjeShranjenega(string& mainString, short& mainShort) {
 
 // lestvoco beremo in shranimo v spremenljivke, pred shranjevanjem ko koncamo igro in vec->lestvica
 void GameManager::branjeLestvice() {
+	printf("\n");
 	ifstream lestvica;
 	lestvica.open("lestvica.txt");
 	if (lestvica.fail()) {
