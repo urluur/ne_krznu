@@ -7,7 +7,7 @@ using namespace std;
 
 class ZivoBitje {
 protected:
-	short x, y, w, h;
+	short x=0, y=0, w=0, h=0;
 	class Image* img = nullptr;
 public:
 	friend class GameManager; // to odpravi nepotrebne funkcije getX, getY, a ni se popravljeno v programu
@@ -25,13 +25,13 @@ public:
 
 class komoucar: public ZivoBitje {
 private:
-	float dest_x = 0, dest_y = 0; // spremen u float za ragemode
-	float hitrost; // same here
+	short dest_x = 0, dest_y = 0; // spremen u float za ragemode
+	short hitrost; // same here
 public:
 	short nosim = -1;
 	komoucar();
 	~komoucar();
-	void rage() { hitrost = 1.2; } //1.2 za ragemode
+	void rage() { hitrost = 2; } //1.2 za ragemode
 	void chill() { hitrost = 1; }
 	void initImg(class GameManager&, const char*, short, short);
 	void updateImg(class GameManager&, const char*);
