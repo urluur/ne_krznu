@@ -101,13 +101,16 @@ void narisi(GameManager& igra, short& cur_pos, Image& cursor, Image& main) {
 	if (igra.isCompleted()) {
 		if (igra.perfectRun()) {
 			main.ini(igra, "common/img/main_perfect.png");
+			igra.rageModeSet(true);
 		}
 		else {
 			main.ini(igra, "common/img/main_completed.png");
+			igra.rageModeSet(false);
 		}
 	}
 	else {
 		main.ini(igra, "common/img/main.png");
+		igra.rageModeSet(false);
 	}
 
 	// narisemo kazalec na dolocenih koordinatih na zaslonu, odvisno od pozicije
@@ -181,9 +184,6 @@ void nadaljuj(GameManager& igra, short& cur_pos, bool& izhod_switch) {
 	switch (cur_pos) { // predvajamo zvok in naredimo zeljeno stvar
 	case 1:
 		igra.sound.predvajaj("common/sounds/zacni.wav");
-		if (igra.perfectRun()) {
-			igra.rageModeSet(true);
-		}
 		overworld(igra); // zacnemo igro
 		break;
 	case 2:
