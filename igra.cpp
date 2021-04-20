@@ -33,10 +33,17 @@ void GameManager::pripraviVse() { // funkcija se klice na zacetku usakega od pet
 	updateSrcki();
 
 	// stevilo aktivistov, nasprotnikov in tjulnov, ki jih bomo videli v nivoju
-	//           1.              2.              3.              4.             5. nivo
+	//           1.              2.              3.              4.              5. nivo
 	stAktiv[0] = 2; stAktiv[1] = 2; stAktiv[2] = 1; stAktiv[3] = 1; stAktiv[4] = 0;
 	stNaspr[0] = 2; stNaspr[1] = 3; stNaspr[2] = 4; stNaspr[3] = 5; stNaspr[4] = 1;
 	stTjuln[0] = 4; stTjuln[1] = 6; stTjuln[2] = 8; stTjuln[3] = 6; stTjuln[4] = 0;
+
+	// te stevilke malo spremenimo za nightmare mode
+	if (rageMode) {
+		stAktiv[0] = 0; stAktiv[1] = 0; stAktiv[2] = 0; stAktiv[3] = 0;
+		stNaspr[0] = 5; stNaspr[1] = 6; stNaspr[2] = 7; stNaspr[3] = 8;
+		stTjuln[0] = 10; stTjuln[1] = 15; stTjuln[2] = 20; stTjuln[3] = 25;
+	}
 
 	// ustvarimo toliko nasprotnikov, kolikor jih v nivoju potrebujemo
 	for (int i = 0; i < stNaspr[trenutniNivo - 1]; ++i) {
