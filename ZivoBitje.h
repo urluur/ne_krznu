@@ -25,13 +25,13 @@ public:
 
 class komoucar: public ZivoBitje {
 private:
-	short dest_x = 0, dest_y = 0; // spremen u float za ragemode
-	short hitrost; // same here
+	float dest_x = 0, dest_y = 0; // spremen u float za ragemode
+	float hitrost; // same here
 public:
 	short nosim = -1;
 	komoucar();
 	~komoucar();
-	void rage() { hitrost = 2; } //1.2 za ragemode
+	void rage() { hitrost = 1.2; } //1.2 za ragemode
 	void chill() { hitrost = 1; }
 	void initImg(class GameManager&, const char*, short, short);
 	void updateImg(class GameManager&, const char*);

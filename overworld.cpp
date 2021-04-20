@@ -138,9 +138,7 @@ void overworld(GameManager& igra) { // klice se iz glavnega menija -> zacni
 			narisiFarmeAliDosezke(igra, level_clear);
 			SDL_RenderPresent(igra.okno.ren);
 
-			// naredi: ispisvanje lestvice na zaslon
 			igra.shranjevanjeLestvice();
-			SDL_Delay(3000);
 			stay = false;
 			igra.setCompleted(true); // igro smo koncali, to nam spremeni zacetni menu na veselo razlicico
 			break;

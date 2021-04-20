@@ -179,6 +179,8 @@ void GameManager::deleteOnlySave() {
 		igralec.setName("bumbar");
 		setNivo(0);
 		setCompleted(false);
+		perfect_run = false;
+		rageModeSet(false);
 		datoteka << "bumbar\n0\n3\n0\n"; // zapisemo privzete podatke
 	}
 	else {
