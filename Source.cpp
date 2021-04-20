@@ -99,7 +99,12 @@ void narisi(GameManager& igra, short& cur_pos, Image& cursor, Image& main) {
 
 	// ce igro zacnes se ti narise zalosten zacetek, ce si igro koncal pa srecen konec
 	if (igra.isCompleted()) {
-		main.ini(igra, "common/img/main_completed.png");
+		if (igra.perfectRun()) {
+			main.ini(igra, "common/img/main_perfect.png");
+		}
+		else {
+			main.ini(igra, "common/img/main_completed.png");
+		}
 	}
 	else {
 		main.ini(igra, "common/img/main.png");
@@ -176,6 +181,9 @@ void nadaljuj(GameManager& igra, short& cur_pos, bool& izhod_switch) {
 	switch (cur_pos) { // predvajamo zvok in naredimo zeljeno stvar
 	case 1:
 		igra.sound.predvajaj("common/sounds/zacni.wav");
+		if (igra.perfectRun()) {
+			igra.rageModeSet(true);
+		}
 		overworld(igra); // zacnemo igro
 		break;
 	case 2:
@@ -203,9 +211,11 @@ bool aliSmoNovIgralec(GameManager& igra) { // klice se na zacetku, da odlocimo a
 
 	// ce je prebrano enako privzetemu, domnevamo, da je igralec nov
 	if ((tempName == "bumbar" && tempLvl == 0)) {
+		igra.perfectRun(true);
 		return true;
 	}
 	else {
+		igra.perfectRun(false);
 		return false;
 	}
 }

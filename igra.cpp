@@ -118,6 +118,7 @@ GameManager::GameManager() { // konstruktor je klican le enkrat, zgolj ko se pro
 	skupne_tocke = 0;
 	trenutne_tocke = 0;
 	boss_hp = 100;
+	perfect_run = true;
 	SDL_PollEvent(&event);
 }
 

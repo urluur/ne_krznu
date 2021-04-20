@@ -81,6 +81,10 @@ public:
 	void brisiBossa();
 	void preveriSmrt(short i);
 	void cmdLevels();
+	void perfectRun(bool notr) { perfect_run = notr; }
+	bool perfectRun() { return perfect_run; }
+	void rageModeSet(bool notr) { rageMode = notr; }
+	bool returnRageMode() { return rageMode; }
 	friend class Kepa;
 	friend void overworld(GameManager&);
 	friend void premakniNaXY(GameManager&, short&, short&, short, short, Image&, Image&, short);
@@ -92,7 +96,7 @@ private:
 	class Image* stamina_wheel;
 	string najboljsi[5];
 	int najbolse[5];
-	bool konecLevela, semNaIzhodniLokaciji, staminadown, fillingStamina;
+	bool konecLevela, perfect_run, semNaIzhodniLokaciji, staminadown, fillingStamina;
 	bool rageMode = false; //rageMode je v alfa testingu (spremeni na true za ZELO tezko igro)
 	bool w = false, a = false, s = false, d = false;
 	bool completed; // zato da se spremeni main menu na koncu zgodbe

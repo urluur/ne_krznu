@@ -42,6 +42,7 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 		if (cajt.odstej()) { // odsteje cas na casovniku
 			sound.predvajaj("common/sounds/au.wav");
 			--zivljenja;
+			perfect_run = false;
 			adios = true;
 		}
 		// ce poberes vse tjulne in si na doloceni izhodni lokaciji si opravil nivo
@@ -156,6 +157,7 @@ void GameManager::obnasanjeNaPolju() {
 
 								//predvajamo zvocni efekt ko pobere tjulna
 								if (enemy.at(i)->nosim == -1) {
+									perfect_run = false;
 									sound.predvajaj("common/sounds/fvt.wav");
 								}
 
@@ -273,6 +275,7 @@ void GameManager::preveriSmrt(short i) {
 	if (isPlayerCollidingAt(enemy.at(i)->x, enemy.at(i)->y, enemy.at(i)->w, enemy.at(i)->h)) {
 		printf("smrt\n");
 		adios = true; // igrlec more ponoviti nivo od zacetka
+		perfect_run = false;
 		sound.predvajaj("common/sounds/au.wav");
 		SDL_Delay(200);
 		--zivljenja;
