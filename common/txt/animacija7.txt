@@ -1,9 +1,9 @@
 
- +----------------------------------------------------------------+
- | Tjulenlandija je resena! Vsi proizvajalci krzna in             |
- | njihove farme so pokoncane! Tjulni lahko ponovno               |
- | zivijo v miru pred nevarnostjo...                              |
- |                                                                |
+ +----------------------------------------------------+-----------+
+ | Tjulenlandija je resena! Vsi proizvajalci krzna in |           |
+ | njihove farme so pokoncane! Tjulni lahko ponovno   |           |
+ | zivijo v miru pred nevarnostjo...                  |           |
+ +----------------------------------------------------+           |
  |                                                                |
  |                                                                |
  |                                                                |

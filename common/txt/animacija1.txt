@@ -4,7 +4,7 @@
  | je stal otok, ki se je imenoval tjulenlandija. To je bil raj   |
  | za tjulne. A prisli so hudobci in zaceli tjulne iztrebljati za |
  | krzno. Zato smo tu mi, da preprecimo to norost.                |
- |                                                                |
+ +----------------------------------------------------------------+
  |                                           oOOo                 |
  |                                   oOOo             oOOOOo      |
  |             /|\                            _                   |
