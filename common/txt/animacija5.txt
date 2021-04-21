@@ -1,18 +1,17 @@
 
  +-------------------------------------+--------------------------+
- |                                     |  Priblizujemo se najbolj |
- |                                     |   nevarnemu nasprotniku, |
- |                                     | ki je imel vse farme pod |
- |                                     |      svojim nadzorom. Ce |
- |                                     | ustavimo njega, bodo vsi |
- |                                     |          zapustili otok. |
- |                                     +--------------------------+
- |                                                                |
- |                                                                |
- |                                                                |
- |                                                                |
- |                                                                |
- |                                                                |
- |                                                                |
- |                                                                |
+ |       ^             oOOOo           |  Priblizujemo se najbolj |
+ | oOOO/   \_ oOOo                     |   nevarnemu nasprotniku, |
+ |    /       \_                       | ki je imel vse farme pod |
+ |   / /=====/\  \_                    |      svojim nadzorom. Ce |
+ |  / /=====/  \    \_                 | ustavimo njega, bodo vsi |
+ | /  |     |  |   (o) \_              |          zapustili otok. |
+ |/_I_|_____|__|__ lS|   \    __       +--------------------------+
+ |/  |            \_||___ \ /    \                                |
+ | ,,|.                  \ | ((   |                               |
+ |(ˇ)j                     |      |                               |
+ |L||                      |      |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+ | ||                      |      |                               |
+ | /L                      |      |      ~~                       |
+ |/                        |      |                   ~~          |
  +----------------------------------------------------------------+
