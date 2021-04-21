@@ -23,6 +23,17 @@ void SoundManager::toggle() { // klicemo, ko zelimo vkolopiti ali izklopiti zvok
 	}
 	mute = !mute;
 }
+
+void SoundManager::toggle(bool notr) { // klicemo, ko zelimo pod nujno odprt ali zaprt zvok
+	mute = notr;
+	if (!mute) { // zvok se izklopi
+		Mix_PauseMusic();
+	}
+	else { // zvok se vklopi
+		Mix_ResumeMusic();
+	}
+}
+
 void SoundManager::soundAnimacija(int animSt) {
 	// predvaja se zvok zgodbe
 	if (!mute) {

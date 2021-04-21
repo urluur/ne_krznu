@@ -416,7 +416,7 @@ void GameManager::pause() {
 				case 3:
 					printf("Zavrzi");
 					if (cur_pos == 3) {
-						printf("   [zapri brez shranjevanja]\naja pa ne dotikaj se scr lk!!!");
+						printf("   [zapri brez shranjevanja]");
 					}
 					break;
 				}

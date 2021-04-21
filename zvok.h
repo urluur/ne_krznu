@@ -12,6 +12,7 @@ public:
 	SoundManager();
 	void predvajaj(const char*);
 	void toggle();
+	void toggle(bool);
 	void soundAnimacija(int);
 	bool vrniMute() { return mute; }
 	~SoundManager();
