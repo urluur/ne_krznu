@@ -107,8 +107,9 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 		skupne_tocke += trenutne_tocke;
 		++nivo;
 	}
-	else if (adios)
+	else if (adios) {
 		zasilnoShranjevanje();
+	}
 }
 
 void GameManager::obnasanjeNaPolju() {

@@ -208,6 +208,7 @@ void vec(GameManager& igra) {
 				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&igra.event); }
 				igra.sound.predvajaj("common/sounds/lestvica.wav");
 				igra.branjeLestvice();
+				igra.izpisLesviceNaZaslon();
 			}
 			break;
 		case 2:

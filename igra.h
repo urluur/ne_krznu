@@ -86,6 +86,7 @@ public:
 	bool perfectRun() { return perfect_run; }
 	void rageModeSet(bool notr) { rageMode = notr; }
 	bool returnRageMode() { return rageMode; }
+	void izpisLesviceNaZaslon();
 	friend class Kepa;
 	friend void overworld(GameManager&);
 	friend void premakniNaXY(GameManager&, short&, short&, short, short, Image&, Image&, short);

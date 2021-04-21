@@ -327,7 +327,7 @@ void funFact() {
 	system("cls");
 	cout << endl << "Ali ste vedeli: ";
 	vector <string> facts;
-
+//*
 	facts.push_back("To igro je delal en clovek 4 mesece.\nCyberpunk je naredilo vec kot 400 ljudi v 4ih letih.\nNe krznu je boljsi od Cyberpunk.\nCD Projekt zaposlite me.");
 	facts.push_back("Ko pritisnemo pavzo lahko opazimo nekaj zanimivega...");
 	facts.push_back("Ce ne izgubimo niti enega zivljenja in se nasprotnik ne dotakne niti enega tjulna\nste opravili perfektni poizkus. Le kaj se zgodi za tem?");
@@ -344,7 +344,7 @@ void funFact() {
 	facts.push_back("Ime 'NE krznu' izvira iz dolge tradicije poimenovanj iger,\nki jih Vegovci programirajo v tretjem letniku.\nImena iger iz prejsnjih let so:\n- Johnny Englishhh (2016/17)\n- Sea shepherd rules (2017/18)\n- Dol s plastiko (2018/19)\n- Resi amazonski pragozd (2019/20)\n- NE krznu (2020/21)\nKdo ve kaksna imena se bodo profesorji se spomnili... ;)");
 	facts.push_back("Ce se zelite po polju hitreje premikati, tecite posevno.");
 	facts.push_back("Ce se vam zdi da razvijalec te igre obvlada programiranje\nvas bo to sokiralo: v drugem letniku je imel zakljuceno 2,\nv tretjem pa povprecje kaze na 3 (2,75)");
-	facts.push_back("Lukov zgled za razvijanje iger je definitivno Nintendo.\nIgre imajo vec globine, kot se nam zdi na prvi pogled,\nin zelo pomembno je, da ko jo nekdo igra uziva in se ima fajn.");
+	facts.push_back("Lukov zgled za razvijanje iger je Nintendo.\nIgre imajo vec globine, kot se nam zdi na prvi pogled,\nin zelo pomembno je, da ko jo nekdo igra uziva in se ima fajn.");
 	facts.push_back("Od razvijanja te igre sem odnesel nekaj pametnih nasvetov za programerje:\n1. Uporabljajte aplikacijo Workrave, ki lahko izboljsa vase zdravje.\n2. Ko ne veste kako se necesa lotiti zaprite IDE in pisite po tabli (lahko virtualni, npr MS Whiteboard)\n3. Za vse projekte uporabljajte Git. Veliko bolje od ostalih online drive-ov.");
 	facts.push_back("Ce naletite na napako, jo prijavite na vec -> izvorna koda -> issues -> new issue");
 	facts.push_back("Resolucija zaslona 360p je ustvarjena izklucno za to\nker zelim igro narediti primirno za igranje na telefonu.");
@@ -356,12 +356,16 @@ void funFact() {
 	facts.push_back("Ideja za krog uzdrzljivosti izvira iz igre The Legend of Zelda: Breath of the Wild");
 	facts.push_back("Ideja za kazalec v menujih izvira iz igre Final Fantasy VII");
 	facts.push_back("Ideja za izgled otoka izvira iz igre Super Mario World");
-	facts.push_back("Ideja za boj z glavnim nasprotnikom izvira iz igre Xenoblade Chronicles in mnogih drugih iger.");
+	facts.push_back("Ideja za boj z glavnim nasprotnikom se mi je porodila\nko sem igral igro Xenoblade Chronicles.");
 	facts.push_back("Ce pritisnemo tipko esc se igra shrani in zapre.");
 	facts.push_back("Problemi, na katere sem naletel ob programiranju: (od najmanjsega do najvecjega)\n- implementiranje novega znanja v projekt\n- prilagajanje velikosti zaslona\n- optimiziranje programa\n- izjeme (pri vektorjih)\nmoji mozgani so bili pretegnjeni po dolgem in pocez da sem naredil\nobnasanje nasprotnikov, aktivistov in tjulnov z vektorji");
 	facts.push_back("Odkar je bila ta igra v razvoju je bilo vec hrane pojedene v sobi kot v jedilnici.");
 	facts.push_back("Programerji obozujejo kavo. Med programiranjem te igre ni bila popita niti ena skodelica kave.");
-
+	facts.push_back("Ta igra je sprva delovala v razmerju slike 4:3 v resoluciji 800x600.\nKasneje so bile grafike veckrat prenovljene.");
+	facts.push_back("Ko sem zacel delat igro je bila prva stvar glavni meni.\nNaredil sem stiri slike. Vse enake,\nle kazalec se je bil na vsaki na drugem mestu. Ko je igralec pritisnil tipko,\nse je le slika zamenjala.. Zelo neprofesionalno... :>");
+	facts.push_back("Veliko dela je bilo vlozenega v izpise v terminal, saj ga malokdo spregleda.");
+	facts.push_back("Nisem nekdo ki bi ponavadi prosil za donacije,\nAMPAK! Ce imate slucajno namescen Brave Browser, mi na GitHubu\nlahko donirate kaksen novcic v BAT kriptovaluti. <3");
+//*/
 
 	if (facts.size() >= 0) {
 		b = (short)facts.size();
@@ -370,6 +374,22 @@ void funFact() {
 	}
 
 	facts.clear();
-	printf("Pritisni katerokoli tipko za izhod.\n");
+	printf("Pritisni katerokoli tipko za izhod.");
 	char ni_vazno = _getch();
+}
+
+void GameManager::izpisLesviceNaZaslon() {
+	Text pisava_lestvica(okno.ren, "common/pisave/8-bit-operator/8bitOperatorPlus8-Regular.ttf", okno.scaleCal(40), "Luknjac 46290", { 0, 0, 0, 255 });
+	for (int i = 0; i < 5; ++i) {
+		pisava_lestvica.update(okno.ren, to_string(i + 1) + ". " + to_string(najbolse[i]) + " " + najboljsi[i], { 0, 0, 0, 255 });
+		pisava_lestvica.display(okno.scaleCal(950), okno.scaleCal(40 + (100 * (i + 1))), okno.ren);
+	}
+	SDL_RenderPresent(okno.ren);
+	haltEnter(5);
+	SDL_Delay(100);
+	while (keys[SDL_SCANCODE_RETURN]) {
+		okno.stejFrame();
+		SDL_PollEvent(&event);
+		okno.omejiFrame();
+	}
 }

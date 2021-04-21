@@ -153,10 +153,10 @@ void overworld(GameManager& igra) { // klice se iz glavnega menija -> zacni
 			igra.zasilnoShranjevanje();
 		}
 	}
-	SDL_RenderClear(igra.okno.ren);
+	//SDL_RenderClear(igra.okno.ren);
 	if (igra.isCompleted()) {
-		// naredi: prikazovanje lestvice najboljsih
 		// naredi: sound effect odvisno od tega kolk si dobr
+		igra.izpisLesviceNaZaslon();
 	}
 }
 
