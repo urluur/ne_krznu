@@ -75,6 +75,9 @@
     <ClCompile Include="Casovnik.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="terminal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">

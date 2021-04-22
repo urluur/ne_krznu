@@ -22,6 +22,8 @@
 #include "igralec.h"
 #include "Casovnik.h"
 
+void funFact();
+
 class GameManager {
 public:
 	WindowManager okno;
