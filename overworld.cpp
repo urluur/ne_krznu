@@ -157,6 +157,8 @@ void overworld(GameManager& igra) { // klice se iz glavnega menija -> zacni
 	if (igra.isCompleted()) {
 		// naredi: sound effect odvisno od tega kolk si dobr
 		igra.izpisLesviceNaZaslon();
+		igra.replay->predvajaj();
+		igra.replay->cleanup();
 	}
 }
 

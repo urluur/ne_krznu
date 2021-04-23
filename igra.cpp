@@ -219,7 +219,6 @@ void GameManager::setCompleted(bool resnica) { // se klice, ko koncamo vseh 5 ni
 		exit(1);
 	}
 	quicksave.close();
-	replay->cleanup();
 }
 
 void GameManager::cleanupVectors() { // se klice, ko hocemo izbrisati dinamicni pomnilnik (po vsakem nivoju in na koncu igre)
