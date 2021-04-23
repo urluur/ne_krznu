@@ -78,6 +78,9 @@
     <ClCompile Include="terminal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ponovitev.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -108,6 +111,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Casovnik.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ponovitev.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

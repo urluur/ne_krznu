@@ -94,6 +94,7 @@ void GameManager::updateMap() { // funkcija se klice na koncu zanke nivoja
 	jaz->display(okno.ren);
 	srcki->display(okno.ren);
 	SDL_RenderPresent(okno.ren); // na oknu se prikaze spremenjeno stanje
+	replay->checkSnap();
 	okno.omejiFrame(); // omejimo hitrost prikaza
 }
 
@@ -126,6 +127,7 @@ GameManager::GameManager() { // konstruktor je klican le enkrat, zgolj ko se pro
 	trenutne_tocke = 0;
 	boss_hp = 100;
 	perfect_run = true;
+	replay = new ponovitev(*this);
 	SDL_PollEvent(&event);
 }
 
@@ -256,10 +258,14 @@ void GameManager::cleanupVectors() { // se klice, ko hocemo izbrisati dinamicni 
 		kepe.clear();  // izbrisemo vse kazalce na izbrisane kepe
 	}
 	kepe.shrink_to_fit(); // vektorjevo kapaciteto zmanjsamo, ce je mogoce
-
 }
 
 void GameManager::cleanup() { // se klice ko zelimo popolnoma zapreti igro
+	// pocistimo replay buffer
+	replay->cleanup();
+	delete replay;
+	replay = nullptr;
+
 	boss_red_hp = nullptr;
 	if (stamina_wheel != nullptr) {
 		delete stamina_wheel; // sliko igralcene uzdrzljivosti brisemo le enkrat, saj jo dinamicno dolocimo le enkrat

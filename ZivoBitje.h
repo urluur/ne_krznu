@@ -10,15 +10,9 @@ protected:
 	short x=0, y=0, w=0, h=0;
 	class Image* img = nullptr;
 public:
-	friend class GameManager; // to odpravi nepotrebne funkcije getX, getY, a ni se popravljeno v programu
+	friend class GameManager;
 	void setX(short notr) { x = (notr < (1280 - w) && notr > 0) ? notr : x; }
 	void setY(short notr) { y = (notr < (720 - h) && notr > 0) ? notr : y; }
-	/*
-	short getX() { return x; }
-	short getY() { return y; }
-	short getW() { return w; }
-	short getH() { return h; }
-	//*/
 	// ManhattanDistance vrne razdaljo med dvema koordinatama
 	inline short ManhattanDistance(short x1, short y1, short x2, short y2) { return short(abs(x1 - x2) + abs(y1 - y2)); }
 };
@@ -28,6 +22,7 @@ private:
 	short dest_x = 0, dest_y = 0; // spremen u float za ragemode
 	short hitrost; // same here
 public:
+	friend class ponovitev;
 	short nosim = -1;
 	komoucar();
 	~komoucar();
@@ -43,6 +38,7 @@ public:
 
 class Tjuln: public ZivoBitje {
 public:
+	friend class ponovitev;
 	short nosilec = -1;
 	Tjuln();
 	~Tjuln();
@@ -59,6 +55,7 @@ private:
 	bool ww, a, s, d, ignore_me;
 	short hitrost;
 public:
+	friend class ponovitev;
 	friend class GameManager;
 	friend class Igralec;
 	Kepa(GameManager &);

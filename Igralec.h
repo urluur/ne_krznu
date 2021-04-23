@@ -12,6 +12,7 @@ private:
 public:
 	friend class GameManager;
 	friend class Kepa;
+	friend class ponovitev;
 	void setName();
 	string getName() { return ime; }
 	void setName(string);
