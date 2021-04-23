@@ -41,6 +41,7 @@ void GameManager::level(short& nivo) { // glavna zanka nivo-ja, klice se iz funk
 		handleEvents(); // preverimo pritisnjene tipke, trke z okoljem, obdelamo igralcevo uzdrljivost in premikanje
 		if (cajt.odstej()) { // odsteje cas na casovniku
 			sound.predvajaj("common/sounds/au.wav");
+			replay->cleanLastLevel();
 			--zivljenja;
 			perfect_run = false;
 			adios = true;
@@ -278,6 +279,7 @@ void GameManager::preveriSmrt(short i) {
 		adios = true; // igrlec more ponoviti nivo od zacetka
 		perfect_run = false;
 		sound.predvajaj("common/sounds/au.wav");
+		replay->cleanLastLevel();
 		SDL_Delay(200);
 		--zivljenja;
 		if (!zivljenja) {

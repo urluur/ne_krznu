@@ -68,8 +68,17 @@ void ponovitev::cleanup() {
 	buffer.clear();
 }
 
+void ponovitev::cleanLastLevel() {
+	for (unsigned int i = 0; i < buffer.size(); ++i) {
+		if (buffer.at(i).nivo == igra->trenutniNivo) {
+			buffer.erase(buffer.begin()+i);
+			--i;
+		}
+	}
+}
+
 void ponovitev::predvajaj() {
 	for (unsigned int i = 0; i < buffer.size(); ++i) {
-		// tuki pride actual izris na zaslon
+		// napis izris na zaslon
 	}
 }

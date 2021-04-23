@@ -34,4 +34,5 @@ public:
 	void snapShot();
 	void predvajaj();
 	void cleanup();
+	void cleanLastLevel();
 };
