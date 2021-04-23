@@ -55,7 +55,6 @@ void funFact() {
 	facts.push_back("Ime 'NE krznu' izvira iz dolge tradicije poimenovanj iger,\nki jih Vegovci programirajo v tretjem letniku.\nImena iger iz prejsnjih let so:\n- Johnny Englishhh (2016/17)\n- Sea shepherd rules (2017/18)\n- Dol s plastiko (2018/19)\n- Resi amazonski pragozd (2019/20)\n- NE krznu (2020/21)\nKdo ve kaksna imena se bodo profesorji se spomnili... ;)");
 	facts.push_back("Ce se zelite po polju hitreje premikati, tecite posevno.");
 	facts.push_back("Ce se vam zdi da razvijalec te igre obvlada programiranje\nvas bo to sokiralo: v drugem letniku je imel zakljuceno 2,\nv tretjem pa povprecje kaze na 3 (2,75)");
-	facts.push_back("Lukov zgled za razvijanje iger je Nintendo.\nIgre imajo vec globine, kot se nam zdi na prvi pogled,\nin zelo pomembno je, da ko jo nekdo igra uziva in se ima fajn.");
 	facts.push_back("Od razvijanja te igre sem odnesel nekaj pametnih nasvetov za programerje:\n1. Uporabljajte aplikacijo Workrave, ki lahko izboljsa vase zdravje.\n2. Ko ne veste kako se necesa lotiti zaprite IDE in pisite po tabli (lahko virtualni, npr MS Whiteboard)\n3. Za vse projekte uporabljajte Git. Veliko bolje od ostalih online drive-ov.");
 	facts.push_back("Ce naletite na napako, jo prijavite na vec -> izvorna koda -> issues -> new issue");
 	facts.push_back("Resolucija zaslona 360p je ustvarjena izklucno za to\nker zelim igro narediti primirno za igranje na telefonu.");
@@ -70,7 +69,6 @@ void funFact() {
 	facts.push_back("Ideja za boj z glavnim nasprotnikom se mi je porodila\nko sem igral igro Xenoblade Chronicles.");
 	facts.push_back("Ce pritisnemo tipko esc se igra shrani in zapre.");
 	facts.push_back("Problemi, na katere sem naletel ob programiranju: (od najmanjsega do najvecjega)\n- implementiranje novega znanja v projekt\n- prilagajanje velikosti zaslona\n- optimiziranje programa\n- izjeme (pri vektorjih)\nmoji mozgani so bili pretegnjeni po dolgem in pocez da sem naredil\nobnasanje nasprotnikov, aktivistov in tjulnov z vektorji");
-	facts.push_back("Odkar je bila ta igra v razvoju je bilo vec hrane pojedene v sobi kot v jedilnici.");
 	facts.push_back("Programerji obozujejo kavo. Med programiranjem te igre ni bila popita niti ena skodelica kave.");
 	facts.push_back("Ta igra je sprva delovala v razmerju slike 4:3 v resoluciji 800x600.\nKasneje so bile grafike veckrat prenovljene.");
 	facts.push_back("Ko sem zacel delat igro je bila prva stvar glavni meni.\nNaredil sem stiri slike. Vse enake,\nle kazalec se je bil na vsaki na drugem mestu. Ko je igralec pritisnil tipko,\nse je le slika zamenjala.. Zelo neprofesionalno... :>");

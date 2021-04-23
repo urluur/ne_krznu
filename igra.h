@@ -11,6 +11,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <vector>
+#include <list>
 #include <conio.h>
 
 #include "okno.h"

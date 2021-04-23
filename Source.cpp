@@ -6,14 +6,18 @@ void overworld(GameManager&);
 void narisi(GameManager&, short&, Image&, Image&);
 void nadaljuj(GameManager&, short&, bool&);
 bool aliSmoNovIgralec(GameManager&);
+bool aliSmoAdmin();
 
 int main(int argv, char** args) {
+
+	if (!aliSmoAdmin()) {
+		printf("Zazeni igro kot administrator!");
+		bool za_izhod = _getch();
+		return EXIT_SUCCESS;
+	}
+
 	// ustvarimo objekt igra, vecina potrebnega je ze pripravljenega
 	GameManager igra;
-
-	/*
-	igra.sound.toggle();
-	//*/
 
 	// ce je igralec nov bo vpisal svoje ime
 	if (aliSmoNovIgralec(igra)) {
@@ -216,6 +220,19 @@ bool aliSmoNovIgralec(GameManager& igra) { // klice se na zacetku, da odlocimo a
 	}
 	else {
 		igra.perfectRun(false);
+		return false;
+	}
+}
+
+bool aliSmoAdmin() {
+	ofstream preveri;
+	preveri.open("testiram.txt");
+	if (preveri.is_open()) {
+		preveri.close();
+		remove("testiram.txt");
+		return true;
+	}
+	else {
 		return false;
 	}
 }

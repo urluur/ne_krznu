@@ -179,7 +179,7 @@ int GameManager::init() { // funkcija se klice le enkrat, ko se zazene SDL okno
 	}
 	*/
 
-	srand(time(NULL)); // poskrbi da generiramo nakljucna stevila
+	srand((unsigned int)time(NULL)); // poskrbi da generiramo nakljucna stevila
 	return EXIT_SUCCESS;
 }
 
