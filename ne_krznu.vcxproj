@@ -157,6 +157,7 @@
     <ClCompile Include="igralec.cpp" />
     <ClCompile Include="kepa.cpp" />
     <ClCompile Include="komoucar.cpp" />
+    <ClCompile Include="ponovitev.cpp" />
     <ClCompile Include="slika.cpp" />
     <ClCompile Include="level.cpp" />
     <ClCompile Include="shranjevanje.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="igra.h" />
     <ClInclude Include="igralec.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="ponovitev.h" />
     <ClInclude Include="slika.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="ZivoBitje.h" />

@@ -16,12 +16,12 @@
 
 #include "okno.h"
 #include "zvok.h"
-#include "SDL_ttf.h"
 #include "slika.h"
 #include "ZivoBitje.h"
 #include "tekst.h"
 #include "igralec.h"
 #include "Casovnik.h"
+#include "ponovitev.h"
 
 void funFact();
 
@@ -91,9 +91,11 @@ public:
 	bool returnRageMode() { return rageMode; }
 	void izpisLesviceNaZaslon();
 	friend class Kepa;
+	friend class ponovitev;
 	friend void overworld(GameManager&);
 	friend void premakniNaXY(GameManager&, short&, short&, short, short, Image&, Image&, short);
 private:
+	class ponovitev* replay;
 	class Image* jaz, *srcki;
 	vector <class komoucar*> enemy, aktivisti;
 	vector <class Tjuln*> tjulni;
