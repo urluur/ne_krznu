@@ -19,7 +19,7 @@ ponovitev::ponovitev(GameManager &notr) {
 }
 
 void ponovitev::checkSnap() {
-	if ((Casovnik::sekunde > lastSnapTime && !Casovnik::paused) || Casovnik::sekunde == lastSnapTime - snapInterval) {
+	if ((Casovnik::sekunde > lastSnapTime && !Casovnik::paused) || Casovnik::sekunde <= lastSnapTime - snapInterval) {
 		lastSnapTime = Casovnik::sekunde;
 		snapShot();
 	}
@@ -80,6 +80,8 @@ void ponovitev::cleanLastLevel() {
 void ponovitev::predvajaj() {
 	Image odzadje, nasprotnik, aktivist, tjulen, igralec;
 	unsigned int buffer_index = 0;
+	bool play = true;
+	igra->haltEnter(0);
 	for (short levl = 1; levl <= 5; ++levl) {
 
 		// pripravi odzadje
@@ -117,7 +119,7 @@ void ponovitev::predvajaj() {
 				for (unsigned int i = 0; i < buffer.at(buffer_index).snap_tjulni.size(); ++i) {
 					short x = buffer.at(buffer_index).snap_tjulni.at(i).x;
 					short y = buffer.at(buffer_index).snap_tjulni.at(i).y;
-					tjulen.init(*igra, "common/img/tjuln.png", x, y, 29, 64);
+					tjulen.init(*igra, "common/img/tjuln.png", x, y, 63, 42);
 					tjulen.display(igra->okno.ren);
 				}
 
@@ -126,18 +128,34 @@ void ponovitev::predvajaj() {
 				igralec.init(*igra, "common/img/player.png", x, y, 29, 64);
 				igralec.display(igra->okno.ren);
 
-				++buffer_index;
+				while(SDL_PollEvent(&igra->event)){
+					switch (igra->event.type) {
+					case SDL_KEYDOWN:
+						cout << "neki smo prtisnli" << endl;
+						if ((igra->event.key.keysym.sym == SDLK_LEFT || igra->event.key.keysym.sym == SDLK_a) && !play && buffer_index > 0) {
+							--buffer_index;
+						}
+						if ((igra->event.key.keysym.sym == SDLK_RIGHT || igra->event.key.keysym.sym == SDLK_d) && !play && buffer_index + 1 < igra->replay->buffer.size()) {
+							++buffer_index;
+						}
+						if (igra->keys[SDL_SCANCODE_SPACE]) {
+							play = !play;
+						}
+						break;
+					}
+				}
+
+				if (play) {
+					++buffer_index;
+					SDL_Delay(500);
+				}
 				SDL_RenderPresent(igra->okno.ren);
-				igra->okno.omejiFrame();
-				SDL_Delay(100);
 				if (buffer_index + 1 == igra->replay->buffer.size()) {
 					break;
 				}
+				igra->okno.omejiFrame();
 			}
 		}
-		else {
-			cout << "buffer je prazen!" << endl;
-			char wait = _getch();
-		}
 	}
+	igra->haltEnter(0);
 }
