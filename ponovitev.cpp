@@ -78,7 +78,9 @@ void ponovitev::cleanLastLevel() {
 }
 
 void ponovitev::predvajaj() {
-	Image odzadje, nasprotnik, aktivist, tjulen, igralec;
+	Image odzadje, nasprotnik, aktivist, tjulen, igralec, puscica, pauzica;
+	puscica.init(*igra, "common/img/puscica.png", 20, 20, 50, 50);
+	pauzica.init(*igra, "common/img/pauzica.png", 20, 20, 50, 50);
 	unsigned int buffer_index = 0;
 	bool play = true;
 	igra->haltEnter(0);
@@ -132,13 +134,13 @@ void ponovitev::predvajaj() {
 					switch (igra->event.type) {
 					case SDL_KEYDOWN:
 						cout << "neki smo prtisnli" << endl;
-						if ((igra->event.key.keysym.sym == SDLK_LEFT || igra->event.key.keysym.sym == SDLK_a) && !play && buffer_index > 0) {
+						if ((igra->event.key.keysym.sym == SDLK_LEFT || igra->event.key.keysym.sym == SDLK_a) && !play && buffer_index > 0 && igra->replay->buffer.at(buffer_index).nivo == levl) {
 							--buffer_index;
 						}
 						if ((igra->event.key.keysym.sym == SDLK_RIGHT || igra->event.key.keysym.sym == SDLK_d) && !play && buffer_index + 1 < igra->replay->buffer.size()) {
 							++buffer_index;
 						}
-						if (igra->keys[SDL_SCANCODE_SPACE]) {
+						if (igra->event.key.keysym.sym == SDLK_SPACE) {
 							play = !play;
 						}
 						break;
@@ -147,8 +149,15 @@ void ponovitev::predvajaj() {
 
 				if (play) {
 					++buffer_index;
+					puscica.display(igra->okno.ren);
 					SDL_Delay(500);
+					// nared casovnik namesto delay
+					
 				}
+				else {
+					pauzica.display(igra->okno.ren);
+				}
+				
 				SDL_RenderPresent(igra->okno.ren);
 				if (buffer_index + 1 == igra->replay->buffer.size()) {
 					break;
@@ -158,4 +167,6 @@ void ponovitev::predvajaj() {
 		}
 	}
 	igra->haltEnter(0);
+	SDL_Delay(100);
+	SDL_PollEvent(&igra->event);
 }

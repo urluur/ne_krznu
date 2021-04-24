@@ -129,6 +129,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2676674A700ADF5F865024049B69E6E3"
+        "OwnerKey" = "8:_1740C80938FE4DC394E891783023150A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_269F99FA9ED947C0837252CCDF62A169"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -197,6 +203,12 @@
         {
         "MsmKey" = "8:_3A803F852D304E97B4852C142778E3AD"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_41698C8D54EABBB6247B96A4BD31AAA5"
+        "OwnerKey" = "8:_1740C80938FE4DC394E891783023150A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -309,6 +321,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6390EA2EB2244D57835A4DC43433BD3F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_644EA55B227C4BD9B67F97BA5D045305"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -375,6 +393,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_97B41D2BF0421867D7942B120D194C65"
+        "OwnerKey" = "8:_1740C80938FE4DC394E891783023150A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_97B5C0481FF449D183C647C3C11AE6CE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -401,6 +425,12 @@
         {
         "MsmKey" = "8:_9C6CEE74A3AC4E39B3CFE55FB8E3C6C9"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9EE0A342ED1B8589ABB96C08618E0D95"
+        "OwnerKey" = "8:_1740C80938FE4DC394E891783023150A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -520,6 +550,12 @@
         "Entry"
         {
         "MsmKey" = "8:_C69AA5AEC4B542FD8DBF536D3260FD56"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C6F13E9400BE4559A9931E874CBC142A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1252,6 +1288,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2676674A700ADF5F865024049B69E6E3"
+            {
+            "SourcePath" = "8:SDL2_mixer.dll"
+            "TargetName" = "8:SDL2_mixer.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_269F99FA9ED947C0837252CCDF62A169"
             {
             "SourcePath" = "8:..\\lib\\x86\\libfreetype-6.dll"
@@ -1490,6 +1546,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_41698C8D54EABBB6247B96A4BD31AAA5"
+            {
+            "SourcePath" = "8:SDL2_image.dll"
+            "TargetName" = "8:SDL2_image.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_420985747A5B4A88BED4F24715F1ED58"
@@ -1852,6 +1928,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6390EA2EB2244D57835A4DC43433BD3F"
+            {
+            "SourcePath" = "8:..\\common\\img\\pauzica.png"
+            "TargetName" = "8:pauzica.png"
+            "Tag" = "8:"
+            "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_644EA55B227C4BD9B67F97BA5D045305"
             {
             "SourcePath" = "8:..\\common\\sounds\\izhod.wav"
@@ -2072,6 +2168,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_97B41D2BF0421867D7942B120D194C65"
+            {
+            "SourcePath" = "8:SDL2.dll"
+            "TargetName" = "8:SDL2.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_97B5C0481FF449D183C647C3C11AE6CE"
             {
             "SourcePath" = "8:..\\common\\img\\github.png"
@@ -2170,6 +2286,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9EE0A342ED1B8589ABB96C08618E0D95"
+            {
+            "SourcePath" = "8:SDL2_ttf.dll"
+            "TargetName" = "8:SDL2_ttf.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_D3B1CD372A3A4927B58C68B78845D502"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A6935719A07A483FAD054C4370A349E0"
@@ -2558,6 +2694,26 @@
             "TargetName" = "8:srcki3.png"
             "Tag" = "8:"
             "Folder" = "8:_C642E1AFD5184759B766B87B7CAC1BD1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C6F13E9400BE4559A9931E874CBC142A"
+            {
+            "SourcePath" = "8:..\\common\\img\\puscica.png"
+            "TargetName" = "8:puscica.png"
+            "Tag" = "8:"
+            "Folder" = "8:_FBC4B1B65E3C4D679D7F4E0AAA33FBF2"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
