@@ -84,5 +84,6 @@ void funFact() {
 
 	facts.clear();
 	printf("Pritisni katerokoli tipko za izhod.");
+	fflush(stdin);
 	char ni_vazno = _getch();
 }

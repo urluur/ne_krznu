@@ -36,3 +36,10 @@ public:
 	void cleanup();
 	void cleanLastLevel();
 };
+
+class crta {
+private:
+	short x = 0, y = 0, xprev = 0, yprev = 0;
+public:
+	friend class ponovitev;
+};

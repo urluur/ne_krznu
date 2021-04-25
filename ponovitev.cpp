@@ -84,7 +84,12 @@ void ponovitev::predvajaj() {
 	unsigned int buffer_index = 0;
 	bool play = true;
 	igra->haltEnter(0);
+	short play_speed = 1;
+	igra->cajt.set(play_speed);
+	vector <crta> crte;
 	for (short levl = 1; levl <= 5; ++levl) {
+
+		crte.clear();
 
 		// pripravi odzadje
 		string pathFragment = "common/img/odzadje";
@@ -127,6 +132,34 @@ void ponovitev::predvajaj() {
 
 				short x = buffer.at(buffer_index).snap_igralec.x;
 				short y = buffer.at(buffer_index).snap_igralec.y;
+				
+				/*
+				if (buffer_index > 0) {
+					if (buffer.at(buffer_index - 1).nivo == levl) {
+						short xprev = buffer.at(buffer_index - 1).snap_igralec.x;
+						short yprev = buffer.at(buffer_index - 1).snap_igralec.y;
+						SDL_RenderDrawLine(igra->okno.ren, x, y, xprev, yprev);
+					}
+				}
+				*/
+
+				if (buffer_index > 0) {
+					if (buffer.at(buffer_index - 1).nivo == levl) {
+						crta temp;
+						temp.x = x + (igra->igralec.getW());
+						temp.y = y + (igra->igralec.getH() / 2);
+						temp.xprev = buffer.at(buffer_index - 1).snap_igralec.x + igra->igralec.getW();
+						temp.yprev = buffer.at(buffer_index - 1).snap_igralec.y + igra->igralec.getH() / 2;
+						crte.push_back(temp);
+					}
+				}
+				for (unsigned int i = 0; i < crte.size(); ++i) {
+					SDL_RenderDrawLine(igra->okno.ren,
+						crte.at(i).x, crte.at(i).y,
+						crte.at(i).xprev, crte.at(i).yprev
+					);
+				}
+				
 				igralec.init(*igra, "common/img/player.png", x, y, 29, 64);
 				igralec.display(igra->okno.ren);
 
@@ -134,7 +167,7 @@ void ponovitev::predvajaj() {
 					switch (igra->event.type) {
 					case SDL_KEYDOWN:
 						cout << "neki smo prtisnli" << endl;
-						if ((igra->event.key.keysym.sym == SDLK_LEFT || igra->event.key.keysym.sym == SDLK_a) && !play && buffer_index > 0 && igra->replay->buffer.at(buffer_index).nivo == levl) {
+						if ((igra->event.key.keysym.sym == SDLK_LEFT || igra->event.key.keysym.sym == SDLK_a) && !play && buffer_index > 0 && igra->replay->buffer.at(buffer_index - 1).nivo == levl) {
 							--buffer_index;
 						}
 						if ((igra->event.key.keysym.sym == SDLK_RIGHT || igra->event.key.keysym.sym == SDLK_d) && !play && buffer_index + 1 < igra->replay->buffer.size()) {
@@ -148,11 +181,11 @@ void ponovitev::predvajaj() {
 				}
 
 				if (play) {
-					++buffer_index;
 					puscica.display(igra->okno.ren);
-					SDL_Delay(500);
-					// nared casovnik namesto delay
-					
+					if (igra->cajt.odstej()) {
+						++buffer_index;
+						igra->cajt.set(play_speed);
+					}
 				}
 				else {
 					pauzica.display(igra->okno.ren);
