@@ -119,6 +119,8 @@ void nastavitve(GameManager& igra) {
 							printf("864p]");
 							break;
 						case 100:
+							printf("prilagodljiv fullscreen]");
+							break;
 						case 15:
 							printf("1080p]");
 							break;

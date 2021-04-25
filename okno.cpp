@@ -6,6 +6,9 @@ WindowManager::WindowManager() { // konstruktor inicializira spremenljivke
 	ren = nullptr;
 	frameStart = 0;
 	frameTime = 0;
+	if (SDL_GetDesktopDisplayMode(0, &current) != 0) {
+		bool well_inicializiral_smo_current = true; // to je tuki za brezveze sam pac more bit
+	}
 }
 
 WindowManager::~WindowManager() { // klice se ko se unici objekt "igra"
@@ -69,7 +72,10 @@ int WindowManager::scaleCal(int stevilo) { // klice se pri postavljanju argument
 	case 5:
 		return int(stevilo * 0.5);
 	case 100:
-		return int(stevilo * 1.5); // naredi: support za zaslone ki niso 1080p
+		if (SDL_GetDesktopDisplayMode(0, &current) != 0) {
+			SDL_Log("SDL_GetDesktopDisplayMode failed: %s", SDL_GetError());
+		}
+		return int((float)stevilo * (float)(current.h / (float)Window_height));
 	default:
 		cerr << "Error: scaleCal: " << scaler << endl;
 		return 0;
