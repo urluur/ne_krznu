@@ -146,17 +146,17 @@ void ponovitev::predvajaj() {
 				if (buffer_index > 0) {
 					if (buffer.at(buffer_index - 1).nivo == levl) {
 						crta temp;
-						temp.x = x + (igra->igralec.getW());
-						temp.y = y + (igra->igralec.getH() / 2);
-						temp.xprev = buffer.at(buffer_index - 1).snap_igralec.x + igra->igralec.getW();
-						temp.yprev = buffer.at(buffer_index - 1).snap_igralec.y + igra->igralec.getH() / 2;
+						temp.x = x + (igra->igralec.getW() / 2);
+						temp.y = y + (igra->igralec.getH());
+						temp.xprev = buffer.at(buffer_index - 1).snap_igralec.x + igra->igralec.getW() / 2;
+						temp.yprev = buffer.at(buffer_index - 1).snap_igralec.y + igra->igralec.getH();
 						crte.push_back(temp);
 					}
 				}
 				for (unsigned int i = 0; i < crte.size(); ++i) {
 					SDL_RenderDrawLine(igra->okno.ren,
-						crte.at(i).x, crte.at(i).y,
-						crte.at(i).xprev, crte.at(i).yprev
+						igra->okno.scaleCal(crte.at(i).x), igra->okno.scaleCal(crte.at(i).y),
+						igra->okno.scaleCal(crte.at(i).xprev), igra->okno.scaleCal(crte.at(i).yprev)
 					);
 				}
 				
