@@ -158,7 +158,6 @@ void overworld(GameManager& igra) { // klice se iz glavnega menija -> zacni
 		// naredi: sound effect odvisno od tega kolk si dobr
 		igra.izpisLesviceNaZaslon();
 		igra.replay->predvajaj();
-		igra.replay->cleanup();
 	}
 }
 

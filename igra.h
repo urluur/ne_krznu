@@ -90,10 +90,12 @@ public:
 	void rageModeSet(bool notr) { rageMode = notr; }
 	bool returnRageMode() { return rageMode; }
 	void izpisLesviceNaZaslon();
+	bool zelisReplay();
 	friend class Kepa;
 	friend class ponovitev;
 	friend void overworld(GameManager&);
 	friend void premakniNaXY(GameManager&, short&, short&, short, short, Image&, Image&, short);
+	friend void nadaljuj(GameManager&, short&, bool&);
 private:
 	class ponovitev* replay;
 	class Image* jaz, *srcki;

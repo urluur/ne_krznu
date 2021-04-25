@@ -189,6 +189,7 @@ void GameManager::deleteOnlySave() {
 		exit(1);
 	}
 	datoteka.close();
+	replay->cleanup();
 }
 
 void GameManager::deleteSave() { // se klice v menuju "vec->izbris podatkov"

@@ -188,6 +188,7 @@ void nadaljuj(GameManager& igra, short& cur_pos, bool& izhod_switch) {
 	switch (cur_pos) { // predvajamo zvok in naredimo zeljeno stvar
 	case 1:
 		igra.sound.predvajaj("common/sounds/zacni.wav");
+		igra.replay->cleanup();
 		overworld(igra); // zacnemo igro
 		break;
 	case 2:

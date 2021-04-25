@@ -77,12 +77,17 @@ void ponovitev::cleanLastLevel() {
 }
 
 void ponovitev::predvajaj() {
+	// uprasamo ce clovek zeli videti replay
+	if (!igra->zelisReplay()) {
+		return;
+	}
+
+	// ce clovek zeli replay
 	Image odzadje, nasprotnik, aktivist, tjulen, igralec, puscica, pauzica;
 	puscica.init(*igra, "common/img/puscica.png", 20, 20, 50, 50);
 	pauzica.init(*igra, "common/img/pauzica.png", 20, 20, 50, 50);
 	unsigned int buffer_index = 0;
 	bool play = true;
-	igra->haltEnter(0);
 	short play_speed = 1;
 	igra->cajt.set(play_speed);
 	vector <crta> crte;
@@ -160,7 +165,6 @@ void ponovitev::predvajaj() {
 				while(SDL_PollEvent(&igra->event)){
 					switch (igra->event.type) {
 					case SDL_KEYDOWN:
-						cout << "neki smo prtisnli" << endl;
 						if ((igra->event.key.keysym.sym == SDLK_LEFT || igra->event.key.keysym.sym == SDLK_a) && !play && buffer_index > 0 && igra->replay->buffer.at(buffer_index - 1).nivo == levl) {
 							--buffer_index;
 						}
@@ -196,4 +200,103 @@ void ponovitev::predvajaj() {
 	igra->haltEnter(0);
 	SDL_Delay(100);
 	SDL_PollEvent(&igra->event);
+}
+
+void narisiReplay(GameManager& igra, short& cur_pos, Image& cursor, Image& main) {
+	SDL_RenderClear(igra.okno.ren); // resetiramo renderer
+
+	// ce igro zacnes se ti narise zalosten zacetek, ce si igro koncal pa srecen konec
+	main.ini(igra, "common/img/replay.png");
+
+	// narisemo kazalec na dolocenih koordinatih na zaslonu, odvisno od pozicije
+	main.display(igra.okno.ren);
+	switch (cur_pos) {
+	case 1:
+		cursor.init(igra, "common/img/cursor.png", 520, 240, 98, 49);
+		break;
+	case 2:
+		cursor.init(igra, "common/img/cursor.png", 520, 330, 98, 49);
+		break;
+	}
+	cursor.display(igra.okno.ren); // kazalec se bo pokazal
+	SDL_RenderPresent(igra.okno.ren); // na oknu se prikaze spremenjeno stanje
+
+	system("cls");
+	printf("### Ogled premikov? ###\n");
+	for (int i = 1; i <= 2; ++i) {
+		if (cur_pos == i) {
+			printf("->");
+		}
+		else {
+			printf("  ");
+		}
+		switch (i) {
+		case 1:
+			printf("Da");
+			break;
+		case 2:
+			printf("Ne");
+			break;
+		}
+		printf("\n");
+	}
+}
+
+bool nadaljujReplay(GameManager& igra, short& cur_pos, bool& izhod_switch) {
+	while (igra.checkEnter()) { // dokler drzimo na tipko nas ne pusti naprej
+		SDL_PollEvent(&igra.event);
+	}
+	switch (cur_pos) { // predvajamo zvok in naredimo zeljeno stvar
+	case 1:
+		return true;
+	case 2:
+		break;
+	}
+	return false;
+}
+
+bool GameManager::zelisReplay() {
+	SDL_PollEvent(&event);
+
+	// kazalec nastavimo na prvo mesto
+	Image cursor;
+	short cur_pos = 1;
+
+	// ustvarimo sliko menija in meni narisemo na zaslon
+	Image main;
+	narisiReplay(*this, cur_pos, cursor, main);
+
+	bool izhod_switch = false;
+
+	while (!izhod_switch) {
+		okno.stejFrame(); // oznacimo zacetek zanke
+		SDL_PollEvent(&event); // osvezivo stanje pritinjenih tipk
+
+		// preverimo ce so bile pritisnjene tipke gor dol start ali enter
+		if (checkUp() || checkDown()) {
+			while (checkUp() || checkDown()) { // ko tipko pritisnemo caka da jo spustimo
+				SDL_PollEvent(&event);
+			}
+			// predvaja zvok kazalca
+			sound.predvajaj("common/sounds/cur_mov.wav");
+			// premakne kazalec na zeljeno mesto
+			if (cur_pos == 1) {
+				++cur_pos;
+			}
+			else {
+				--cur_pos;
+			}
+			narisiReplay(*this, cur_pos, cursor, main);
+		}
+		else if (checkEnter()) {
+			while (!checkEnter()) {
+				okno.stejFrame(); // oznacimo zacetek zanke
+				SDL_PollEvent(&event);
+				okno.omejiFrame(); // omejimo hitrost prikaza
+			}
+			return nadaljujReplay(*this, cur_pos, izhod_switch);
+		}
+		okno.omejiFrame(); // omejimo hitrost prikaza
+	}
+	return false;
 }
