@@ -66,6 +66,7 @@ void nastavitve(GameManager& igra) {
 				while (igra.keys[SDL_SCANCODE_RETURN]) { SDL_PollEvent(&igra.event); }
 				igra.sound.predvajaj("common/sounds/spremeni_ime.wav");
 				igra.igralec.setName();
+				SDL_RaiseWindow(igra.okno.window);
 				done = false;
 			}
 			break;

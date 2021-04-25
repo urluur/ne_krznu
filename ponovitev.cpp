@@ -61,7 +61,6 @@ void ponovitev::snapShot() {
 	}
 
 	buffer.push_back(temp);
-	printf("*snap*\n");
 }
 
 void ponovitev::cleanup() {
@@ -132,17 +131,6 @@ void ponovitev::predvajaj() {
 
 				short x = buffer.at(buffer_index).snap_igralec.x;
 				short y = buffer.at(buffer_index).snap_igralec.y;
-				
-				/*
-				if (buffer_index > 0) {
-					if (buffer.at(buffer_index - 1).nivo == levl) {
-						short xprev = buffer.at(buffer_index - 1).snap_igralec.x;
-						short yprev = buffer.at(buffer_index - 1).snap_igralec.y;
-						SDL_RenderDrawLine(igra->okno.ren, x, y, xprev, yprev);
-					}
-				}
-				*/
-
 				if (buffer_index > 0) {
 					if (buffer.at(buffer_index - 1).nivo == levl) {
 						crta temp;
@@ -153,7 +141,13 @@ void ponovitev::predvajaj() {
 						crte.push_back(temp);
 					}
 				}
+				int vidnost;
 				for (unsigned int i = 0; i < crte.size(); ++i) {
+					vidnost = int(255 - (float((float)i / crte.size()) * 255));
+					if (vidnost < 0 || vidnost > 255) {
+						vidnost = 255;
+					}
+					SDL_SetRenderDrawColor(igra->okno.ren, vidnost, vidnost, vidnost, SDL_ALPHA_OPAQUE);
 					SDL_RenderDrawLine(igra->okno.ren,
 						igra->okno.scaleCal(crte.at(i).x), igra->okno.scaleCal(crte.at(i).y),
 						igra->okno.scaleCal(crte.at(i).xprev), igra->okno.scaleCal(crte.at(i).yprev)

@@ -11,7 +11,7 @@ bool aliSmoAdmin();
 int main(int argv, char** args) {
 
 	if (!aliSmoAdmin()) {
-		printf("Zazeni igro kot administrator!");
+		printf("Zazeni igro kot administrator.\n(Potrebno za shranjevanje podatkov.)");
 		bool za_izhod = _getch();
 		return EXIT_SUCCESS;
 	}

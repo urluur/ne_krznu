@@ -180,7 +180,7 @@ int GameManager::init() { // funkcija se klice le enkrat, ko se zazene SDL okno
 		joystick = SDL_JoystickOpen(0);
 	}
 	*/
-
+	SDL_RaiseWindow(okno.window);
 	srand((unsigned int)time(NULL)); // poskrbi da generiramo nakljucna stevila
 	return EXIT_SUCCESS;
 }

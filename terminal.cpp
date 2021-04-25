@@ -74,8 +74,8 @@ void funFact() {
 	facts.push_back("Ko sem zacel delat igro je bila prva stvar glavni meni.\nNaredil sem stiri slike. Vse enake,\nle kazalec se je bil na vsaki na drugem mestu. Ko je igralec pritisnil tipko,\nse je le slika zamenjala.. Zelo neprofesionalno... :>");
 	facts.push_back("Veliko dela je bilo vlozenega v izpise v terminal, saj ga malokdo spregleda.");
 	facts.push_back("Nisem nekdo ki bi ponavadi prosil za donacije,\nAMPAK! Ce imate slucajno namescen Brave Browser, mi na GitHubu\nlahko donirate kaksen novcic v BAT kriptovaluti. <3");
+	facts.push_back("Med ogledom svojih premikov lahko pritisnete\npresledek da ustavite ali nadaljujete predvajanje.\nZ tipkama levo in desno se lahko rocno sprehajate po svojih premikih.");
 	//*/
-
 	if (facts.size() >= 0) {
 		b = (short)facts.size();
 		unsigned short nakljucni_fact = rand() % (b - a) + a;
