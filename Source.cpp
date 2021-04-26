@@ -236,10 +236,33 @@ bool aliSmoNovIgralec(GameManager& igra) { // klice se na zacetku, da odlocimo a
 
 bool aliSmoAdmin() {
 	ofstream preveri;
+	ifstream preveri_branje;
 	preveri.open("testiram.txt");
 	if (preveri.is_open()) {
 		preveri.close();
 		remove("testiram.txt");
+
+		// preverimo tudi ostale datoteke
+		preveri_branje.open("quicksave.txt");
+		if (preveri_branje.fail()) {
+			preveri.open("quicksave.txt");
+			preveri << "bumbar\n0\n3\n0\n";
+			preveri.close();
+		}
+		else {
+			preveri_branje.close();
+		}
+
+		preveri_branje.open("lestvica.txt");
+		if (preveri_branje.fail()) {
+			preveri.open("lestvica.txt");
+			preveri << "[prosto] 0\n[prosto] 0\n[prosto] 0\n[prosto] 0\n[prosto] 0\n";
+			preveri.close();
+		}
+		else {
+			preveri_branje.close();
+		}
+
 		return true;
 	}
 	else {
