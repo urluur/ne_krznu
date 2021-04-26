@@ -23,6 +23,7 @@ private:
 	short hitrost; // same here
 public:
 	friend class ponovitev;
+	friend class Kepa;
 	short nosim = -1;
 	komoucar();
 	~komoucar();
@@ -61,5 +62,7 @@ public:
 	Kepa(GameManager &);
 	~Kepa();
 	void startMoving();
+	Kepa(GameManager&, komoucar*);
+	void startMoving(komoucar*);
 	bool move();
 };

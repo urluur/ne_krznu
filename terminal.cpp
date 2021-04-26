@@ -75,6 +75,8 @@ void funFact() {
 	facts.push_back("Veliko dela je bilo vlozenega v izpise v terminal, saj ga malokdo spregleda.");
 	facts.push_back("Nisem nekdo ki bi ponavadi prosil za donacije,\nAMPAK! Ce imate slucajno namescen Brave Browser, mi na GitHubu\nlahko donirate kaksen novcic v BAT kriptovaluti. <3");
 	facts.push_back("Med ogledom svojih premikov lahko pritisnete\npresledek da ustavite ali nadaljujete predvajanje.\nZ tipkama levo in desno se lahko rocno sprehajate po svojih premikih.");
+	facts.push_back("Nasprotnik v zadnjem nivoju nas ne bo napadal,\nko nosi tjulna na farmo.");
+	facts.push_back("Nasprotnik v zadnjem nivoju nam vedno sledi,\nin v tisto stran bo vrgel kepo. To lahko iskoristimo,\nda kepo zgresi, ce se premikamo cikcak.");
 	//*/
 	if (facts.size() >= 0) {
 		b = (short)facts.size();

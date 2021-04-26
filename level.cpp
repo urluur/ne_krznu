@@ -197,7 +197,7 @@ void GameManager::obnasanjeNaPolju() {
 						//*/
 					}
 				}
-				if (isPlayerCollidingAt(enemy.at(i)->x - 100, enemy.at(i)->y - 100, enemy.at(i)->w + 200, enemy.at(i)->h + 200) && trenutniNivo == 5) {
+				if (trenutniNivo == 5 && enemy.at(i)->nosim == -1) {
 					enemy.at(i)->setDest(igralec.x, igralec.y); // nasprotnikov cilj se spremeni na igralceve koordinate
 				}
 			}

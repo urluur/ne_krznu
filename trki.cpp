@@ -80,7 +80,12 @@ void GameManager::trkiMiTjulni() {
 				tjulni.erase(tjulni.begin() + i);
 				--stTjuln[trenutniNivo - 1];
 				popravi(); // popravi problem pri dolocanju parov kdo koga nosi
-				trenutne_tocke = trenutne_tocke + (Casovnik::sekunde * trenutniNivo * zivljenja)/10;
+				if (rageMode) {
+					trenutne_tocke = trenutne_tocke + (Casovnik::sekunde * trenutniNivo * zivljenja) / 2;
+				}
+				else {
+					trenutne_tocke = trenutne_tocke + (Casovnik::sekunde * trenutniNivo * zivljenja) / 10;
+				}
 				break;
 			}
 		}

@@ -25,6 +25,49 @@ Kepa::Kepa(GameManager &pointerNaIgro) {
 	startMoving();
 }
 
+Kepa::Kepa(GameManager& pointerNaIgro, komoucar* pointerNaBossa) {
+	// nastavimo privzete spremenljivke
+	x = 0;
+	y = 0;
+	w = 30;
+	h = 30;
+
+	to_go = 100;
+	done = 0;
+	igra = &pointerNaIgro;
+	if (!igra->returnRageMode()) {
+		hitrost = 3;
+	}
+	else {
+		hitrost = 4;
+	}
+	nosilec = -1;
+	ignore_me = false;
+
+	ww = false;
+	a = false;
+	s = false;
+	d = false;
+	if (pointerNaBossa->dest_x < pointerNaBossa->x) {
+		a = true;
+	}
+	else if (!(pointerNaBossa->dest_x == pointerNaBossa->x)) {
+		d = true;
+	}
+	if (pointerNaBossa->dest_y < pointerNaBossa->y) {
+		ww = true;
+	}
+	else if (!(pointerNaBossa->dest_y == pointerNaBossa->y)) {
+		s = true;
+	}
+	startMoving(pointerNaBossa);
+}
+
+void Kepa::startMoving(komoucar* pointerNaBossa) {
+	x = pointerNaBossa->x;
+	y = pointerNaBossa->y;
+}
+
 Kepa::~Kepa() {
 	if (img != nullptr) {
 		delete img;

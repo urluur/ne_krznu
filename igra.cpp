@@ -15,7 +15,7 @@ void GameManager::pripraviVse() { // funkcija se klice na zacetku usakega od pet
 	boss_hp = 100;
 
 	// nastavimo timer primeren nivoju
-	short casovnik_na_nivo[5] = { 100, 80, 60, 50, 60 };
+	short casovnik_na_nivo[5] = { 100, 80, 60, 50, 90 };
 	cajt.set(casovnik_na_nivo[trenutniNivo - 1]);
 
 	// pozicija na na kateri se igralec pokaze

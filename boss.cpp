@@ -1,4 +1,5 @@
 #include "igra.h"
+#include "menu.h"
 
 void GameManager::boss() {
 	// gledamo zadetke vseh kep
@@ -6,7 +7,7 @@ void GameManager::boss() {
 		// preverimo ce smo zadeli nasprotnika s kepo
 		if (!enemy.empty()) { // izognemo se izjemi, ce smo premagali nasprotnika
 			if (univerzalniTrk(enemy.at(0)->x, enemy.at(0)->y, enemy.at(0)->w, enemy.at(0)->h,
-					kepe.at(i)->x, kepe.at(i)->y, kepe.at(i)->w, kepe.at(i)->h)) {
+				kepe.at(i)->x, kepe.at(i)->y, kepe.at(i)->w, kepe.at(i)->h)) {
 				if (!kepe.at(i)->ignore_me) { // kepa ima upliv le ob prvem dotiku
 					kepe.at(i)->ignore_me = true;
 					// nocemo, da od blizu zelo hitro mecemo kepe, a vseeno ni pravicno da so na zaslonu veliko casa
@@ -28,7 +29,58 @@ void GameManager::boss() {
 		// premaknemo kepo, ce je sla dovolj dalec jo zbrisemo
 		if (!kepe.at(i)->move()) {
 			delete kepe.at(i);
-			kepe.erase(kepe.begin()+i);
+			kepe.erase(kepe.begin() + i);
+		}
+	}
+
+	// gledamo zadetke slabih kep
+	for (unsigned int i = 0; i < slabe_kepe.size(); ++i) {
+		if (!enemy.empty()) {
+			// ali nas je kepa zadela
+			if (isPlayerCollidingAt(slabe_kepe.at(i)->x, slabe_kepe.at(i)->y, slabe_kepe.at(i)->w, slabe_kepe.at(i)->h)) {
+				if (!slabe_kepe.at(i)->ignore_me) { // kepa ima upliv le ob prvem dotiku
+					slabe_kepe.at(i)->ignore_me = true;
+					// nocemo, da od blizu zelo hitro mecemo slabe_kepe, a vseeno ni pravicno da so na zaslonu veliko casa
+					slabe_kepe.at(i)->to_go /= 2;
+					// prever a crknes
+					perfect_run = false;
+					sound.predvajaj("common/sounds/au.wav");
+					--zivljenja;
+					updateSrcki();
+					if (!zivljenja) {
+						deleteOnlySave();
+						if (Mix_PlayingMusic()) {
+							Mix_PauseMusic();
+						}
+						animacija(*this, -1);
+						cleanup();
+						exit(0);
+					}
+				}
+			}
+		}
+	}
+
+	// cez slabe_kepe gremo se enkrat v novem loopu zaradi moznega brisanja
+	for (unsigned int i = 0; i < slabe_kepe.size(); ++i) {
+		if (!slabe_kepe.at(i)->move()) {
+			delete slabe_kepe.at(i);
+			slabe_kepe.erase(slabe_kepe.begin() + i);
+		}
+	}
+
+	if (rageMode) {
+		if (cajt.sekunde % 2 == 0 && slabe_kepe.size() == 0 && enemy.size() > 0) {
+			if (enemy.at(0)->nosim == -1) {
+				slabe_kepe.push_back(new Kepa(*this, enemy.at(0)));
+			}
+		}
+	}
+	else {
+		if (cajt.sekunde % 4 == 0 && slabe_kepe.size() == 0 && enemy.size() > 0) {
+			if (enemy.at(0)->nosim == -1) {
+				slabe_kepe.push_back(new Kepa(*this, enemy.at(0)));
+			}
 		}
 	}
 }
