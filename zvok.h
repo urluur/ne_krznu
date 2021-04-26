@@ -15,5 +15,6 @@ public:
 	void toggle(bool);
 	void soundAnimacija(int);
 	bool vrniMute() { return mute; }
+	void setMus(const char*);
 	~SoundManager();
 };

@@ -105,16 +105,25 @@ void narisi(GameManager& igra, short& cur_pos, Image& cursor, Image& main) {
 	if (igra.isCompleted()) {
 		if (igra.perfectRun()) {
 			main.ini(igra, "common/img/main_perfect.png");
-			igra.rageModeSet(true);
+			if (!igra.returnRageMode()) {
+				igra.sound.setMus("common/sounds/soundtrack_doom.mp3");
+				igra.rageModeSet(true);
+			}
 		}
 		else {
 			main.ini(igra, "common/img/main_completed.png");
-			igra.rageModeSet(false);
+			if (igra.returnRageMode()) {
+				igra.sound.setMus("common/sounds/soundtrack.wav");
+				igra.rageModeSet(false);
+			}
 		}
 	}
 	else {
 		main.ini(igra, "common/img/main.png");
-		igra.rageModeSet(false);
+		if (igra.returnRageMode()) {
+			igra.sound.setMus("common/sounds/soundtrack.wav");
+			igra.rageModeSet(false);
+		}
 	}
 
 	// narisemo kazalec na dolocenih koordinatih na zaslonu, odvisno od pozicije

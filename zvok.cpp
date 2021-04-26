@@ -65,3 +65,12 @@ SoundManager::~SoundManager() {
 	Mix_CloseAudio();
 	Mix_Quit();
 }
+
+void SoundManager::setMus(const char* path) {
+	if (Mix_PlayingMusic()) {
+		Mix_FreeMusic(bgm);
+		bgm = Mix_LoadMUS(path);
+		if (!Mix_PlayingMusic() && !mute)
+			Mix_PlayMusic(bgm, -1);
+	}
+}
