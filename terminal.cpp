@@ -66,7 +66,7 @@ void funFact() {
 	facts.push_back("Ideja za krog uzdrzljivosti izvira iz igre The Legend of Zelda: Breath of the Wild");
 	facts.push_back("Ideja za kazalec v menujih izvira iz igre Final Fantasy VII");
 	facts.push_back("Ideja za izgled otoka izvira iz igre Super Mario World");
-	facts.push_back("Ideja za boj z glavnim nasprotnikom se mi je porodila\nko sem igral igro Xenoblade Chronicles.");
+	facts.push_back("Ideja za boj z glavnim nasprotnikom se mi je porodila\nmed igranjem igre Xenoblade Chronicles.");
 	facts.push_back("Ce pritisnemo tipko esc se igra shrani in zapre.");
 	facts.push_back("Problemi, na katere sem naletel ob programiranju: (od najmanjsega do najvecjega)\n- implementiranje novega znanja v projekt\n- prilagajanje velikosti zaslona\n- optimiziranje programa\n- izjeme (pri vektorjih)\nmoji mozgani so bili pretegnjeni po dolgem in pocez da sem naredil\nobnasanje nasprotnikov, aktivistov in tjulnov z vektorji");
 	facts.push_back("Programerji obozujejo kavo. Med programiranjem te igre ni bila popita niti ena skodelica kave.");
@@ -77,6 +77,7 @@ void funFact() {
 	facts.push_back("Med ogledom svojih premikov lahko pritisnete\npresledek da ustavite ali nadaljujete predvajanje.\nZ tipkama levo in desno se lahko rocno sprehajate po svojih premikih.");
 	facts.push_back("Nasprotnik v zadnjem nivoju nas ne bo napadal,\nko nosi tjulna na farmo.");
 	facts.push_back("Nasprotnik v zadnjem nivoju nam vedno sledi,\nin v tisto stran bo vrgel kepo. To lahko iskoristimo,\nda kepo zgresi, ce se premikamo cikcak.");
+	facts.push_back("Ko poskodujemo zadnjega nasprotnika lahko\nslisimo slavnega ne-reperja Supa Hot Fire.");
 	//*/
 	if (facts.size() >= 0) {
 		b = (short)facts.size();
