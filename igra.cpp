@@ -199,6 +199,11 @@ void GameManager::haltEnter(short nivo) { // se klice, ko cakamo da igralec prit
 		preveriEsc(nivo);
 		okno.omejiFrame(); // omejimo osvezevanje zaslona, da racunalnik ne dela kolikor hitro zmore
 	}
+	while (keys[SDL_SCANCODE_RETURN]) {
+		okno.stejFrame();
+		SDL_PollEvent(&event);
+		okno.omejiFrame();
+	}
 }
 
 void GameManager::setCompleted(bool resnica) { // se klice, ko koncamo vseh 5 nivojev
@@ -301,10 +306,4 @@ void GameManager::izpisLesviceNaZaslon() {
 	}
 	SDL_RenderPresent(okno.ren);
 	haltEnter(5);
-	SDL_Delay(100);
-	while (keys[SDL_SCANCODE_RETURN]) {
-		okno.stejFrame();
-		SDL_PollEvent(&event);
-		okno.omejiFrame();
-	}
 }

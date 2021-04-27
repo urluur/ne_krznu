@@ -198,8 +198,6 @@ void ponovitev::predvajaj() {
 		}
 	}
 	igra->haltEnter(0);
-	SDL_Delay(100);
-	SDL_PollEvent(&igra->event);
 }
 
 void narisiReplay(GameManager& igra, short& cur_pos, Image& cursor, Image& main) {
