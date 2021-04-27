@@ -69,7 +69,7 @@ void GameManager::handleEvents() { // funkcija je klicana v glavni zanki nivoja
 				if (event.key.keysym.sym == SDLK_f || event.key.keysym.sym == SDLK_MINUS)
 					vrziTjulna();
 			}
-			//* za testiranje nivojev lahko nivo preskocis s tipko "end"
+			/* za testiranje nivojev lahko nivo preskocis s tipko "end"
 			if (event.key.keysym.sym == SDLK_END)
 				konecLevela = true;
 			//*/

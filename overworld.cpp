@@ -158,6 +158,13 @@ void overworld(GameManager& igra) { // klice se iz glavnega menija -> zacni
 		// naredi: sound effect odvisno od tega kolk si dobr
 		igra.izpisLesviceNaZaslon();
 		igra.replay->predvajaj();
+		if (igra.returnRageMode()) {
+			Image credits;
+			credits.ini(igra, "common/img/credits.png");
+			credits.display(igra.okno.ren);
+			SDL_RenderPresent(igra.okno.ren);
+			igra.haltEnter(0);
+		}
 	}
 }
 

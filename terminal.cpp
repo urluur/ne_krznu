@@ -41,7 +41,7 @@ void funFact() {
 	//*
 	facts.push_back("To igro je delal en clovek 4 mesece.\nCyberpunk je naredilo vec kot 400 ljudi v 4ih letih.\nNe krznu je boljsi od Cyberpunk.\nCD Projekt zaposlite me.");
 	facts.push_back("Ko pritisnemo pavzo lahko opazimo nekaj zanimivega...");
-	facts.push_back("Ce ne izgubimo niti enega zivljenja in se nasprotnik ne dotakne niti enega tjulna\nste opravili perfektni poizkus. Le kaj se zgodi za tem?");
+	facts.push_back("Ce ne izgubimo niti enega zivljenja in nasprotnik ne nese na farmo niti\nenega tjulna ste opravili perfektni poizkus. Le kaj se zgodi za tem?");
 	facts.push_back("Najboljsa strategija za premagovanje zadnjega nasprotnika je, da ga udarimo,\nnato pa vrzemo tri kepe, ko se nam obnavlja uzdrzljivost.");
 	facts.push_back("Vsa koda in njena zgodovina je javno dostopna,\nkar pomeni da si jo lahko ogledate, spremenite\nin te spremembe predlagate za naslednjo razlicico.");
 	facts.push_back("Ce imate ustvarjalno zilico lahko po svojih zeljah\nslike v /common/img mapi spremenite ali zamenjate.\nEnako lahko naredite s /common/sounds/soundtrack.wav");
@@ -78,6 +78,8 @@ void funFact() {
 	facts.push_back("Nasprotnik v zadnjem nivoju nas ne bo napadal,\nko nosi tjulna na farmo.");
 	facts.push_back("Nasprotnik v zadnjem nivoju nam vedno sledi,\nin v tisto stran bo vrgel kepo. To lahko iskoristimo,\nda kepo zgresi, ce se premikamo cikcak.");
 	facts.push_back("Ko poskodujemo zadnjega nasprotnika lahko\nslisimo slavnega ne-reperja Supa Hot Fire.");
+	facts.push_back("Nacin [spoiler] ni nemogoc. Preizkuseno :)");
+	facts.push_back("Ce vas nasprotnikova kepa zadane v manj kot sekundi\nbo hitro vrgel se eno kepo. Zato je dobro drzati\nnekaj razdalje z njim.");
 	//*/
 	if (facts.size() >= 0) {
 		b = (short)facts.size();

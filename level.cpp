@@ -159,7 +159,6 @@ void GameManager::obnasanjeNaPolju() {
 
 								//predvajamo zvocni efekt ko pobere tjulna
 								if (enemy.at(i)->nosim == -1) {
-									perfect_run = false;
 									sound.predvajaj("common/sounds/fvt.wav");
 								}
 
@@ -177,6 +176,7 @@ void GameManager::obnasanjeNaPolju() {
 								if (univerzalniTrk(farmPos[0][trenutniNivo - 1], farmPos[1][trenutniNivo - 1], 20, 20,
 									tjulni.at(t)->x, tjulni.at(t)->y, tjulni.at(t)->w, tjulni.at(t)->h))
 								{
+									perfect_run = false;
 									++stTjulnFarma;
 									if (!tjulni.empty()) {
 										sound.predvajaj("common/sounds/oh.wav");

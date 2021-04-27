@@ -15,6 +15,12 @@ void GameManager::boss() {
 					//nasprotniku odstejemo malce zivljenja
 					if (boss_hp > 0) {
 						boss_hp -= 3;
+						if (rageMode) {
+							trenutne_tocke += Casovnik::sekunde * zivljenja * trenutniNivo;
+						}
+						else {
+							trenutne_tocke += (Casovnik::sekunde + zivljenja) / 10;
+						}
 						boss_red_hp->init(*this, "common/img/red.png", 140, 10, boss_hp * 10, 20);
 					}
 					predvajiBOOM(); // predvajamo eden od zvokov ob udarcu
@@ -112,6 +118,12 @@ void GameManager::udari() {
 				if (boss_hp > 0) { // nasprotnikovo zivljenje se mocno zmanjsa
 					boss_hp -= 10;
 					boss_red_hp->init(*this, "common/img/red.png", 140, 10, boss_hp * 10, 20);
+					if (rageMode) {
+						trenutne_tocke += Casovnik::sekunde * zivljenja * trenutniNivo;
+					}
+					else {
+						trenutne_tocke += (Casovnik::sekunde * zivljenja) / 3;
+					}
 				}
 				predvajiBOOM();
 				brisiBossa(); // preverimo ali smo nasprotnika pokoncali
@@ -161,5 +173,6 @@ void GameManager::brisiBossa() {
 			enemy.clear();
 		}
 		enemy.shrink_to_fit();
+		cajt.paused = true;
 	}
 }

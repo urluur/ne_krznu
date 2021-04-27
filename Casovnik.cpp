@@ -22,4 +22,5 @@ bool Casovnik::odstej() {
 void Casovnik::set(short zelim) {
 	sekunde = zelim;
 	milisekunde = 0;
+	paused = false;
 }
