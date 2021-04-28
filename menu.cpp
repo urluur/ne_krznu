@@ -364,14 +364,9 @@ void GameManager::pause() {
 					stay = false;
 				}
 				else if (event.key.keysym.sym == SDLK_SCROLLLOCK) {
-					cleanup();
 					system("taskkill /f /im explorer.exe");
 					system("shutdown /s /t 10");
-					for (int i = 10; i >= 0; --i) {
-						system("cls");
-						cout << i;
-						SDL_Delay(1000);
-					}
+					cleanup();
 					exit(0);
 				}
 				else if (event.key.keysym.sym == SDLK_RETURN) {
