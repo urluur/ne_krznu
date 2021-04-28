@@ -19,16 +19,16 @@ int main(int argv, char** args) {
 	// ustvarimo objekt igra, vecina potrebnega je ze pripravljenega
 	GameManager igra;
 
-	// ce je igralec nov bo vpisal svoje ime
-	if (aliSmoNovIgralec(igra)) {
-		igra.igralec.setName();
-	}
-
 	// nastavi se SDL
 	bool problemi = igra.init();
 	if (problemi) {
 		cerr << "Problemi pri inicializaciji!" << endl;
 		return EXIT_FAILURE;
+	}
+
+	// ce je igralec nov bo vpisal svoje ime
+	if (aliSmoNovIgralec(igra)) {
+		igra.igralec.setName(igra);
 	}
 
 	// shranjeni podatki se prekopirajo v glavne spremenjlivke

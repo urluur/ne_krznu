@@ -13,7 +13,7 @@ public:
 	friend class GameManager;
 	friend class Kepa;
 	friend class ponovitev;
-	void setName();
+	void setName(GameManager&);
 	string getName() { return ime; }
 	void setName(string);
 	void coutName();
